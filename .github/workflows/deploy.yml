@@ -16,6 +16,7 @@ jobs:
           pip install -q cos-python-sdk-v5
           python3 << 'PYEOF'
           import os
+          import mimetypes
           from qcloud_cos import CosConfig, CosS3Client
 
           config = CosConfig(
@@ -34,14 +35,31 @@ jobs:
               for f in files:
                   local_path = os.path.join(root, f)
                   remote_key = os.path.relpath(local_path)
-                  print(f'Uploading: {remote_key}')
+
+                  # 自动判断文件类型，HTML/CSS/JS 都要正确设置
+                  content_type, _ = mimetypes.guess_type(local_path)
+                  if content_type is None:
+                      content_type = 'application/octet-stream'
+
+                  # HTML 文件强制设置为 text/html（解决自动下载问题）
+                  if f.endswith('.html'):
+                      content_type = 'text/html'
+                  elif f.endswith('.css'):
+                      content_type = 'text/css'
+                  elif f.endswith('.js'):
+                      content_type = 'application/javascript'
+                  elif f.endswith('.json'):
+                      content_type = 'application/json'
+
+                  print(f'Uploading: {remote_key} ({content_type})')
                   client.upload_file(
                       Bucket=bucket,
                       LocalFilePath=local_path,
                       Key=remote_key,
                       PartSize=1,
                       MAXThread=1,
-                      EnableMD5=False
+                      EnableMD5=False,
+                      ContentType=content_type
                   )
                   total += 1
 
