@@ -1,9 +1,39 @@
 {
   "series": [
-  { "name": "公式服", "slug": "formula", "cover": "./assets/img/formula-badge.svg", "note": "经典公式服柄图系列", "order": 1 },
-  { "name": "夏祭り", "slug": "summer-festival", "cover": "./assets/img/summer-stand.svg", "note": "夏日祭主题柄图系列", "order": 2 },
-  { "name": "Chibi Q版", "slug": "chibi", "cover": "./assets/img/chibi-polaroid.svg", "note": "Q版角色柄图系列", "order": 3 },
-  { "name": "OTP 2024", "slug": "otp-2024", "cover": "./assets/img/otp-ticket.svg", "note": "Otomate Party 2024 活动系列", "order": 4 },
-  { "name": "秋风", "slug": "autumn", "cover": "./assets/img/autumn-clear-card.svg", "note": "秋季主题柄图系列", "order": 5 }
-]
+    {
+      "name": "公式服",
+      "slug": "formula",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793697025/%E7%94%BB%E6%9D%BF_1.png",
+      "note": "经典公式服柄图系列",
+      "order": 1
+    },
+    {
+      "name": "夏祭り",
+      "slug": "summer-festival",
+      "cover": "./assets/img/summer-stand.svg",
+      "note": "夏日祭主题柄图系列",
+      "order": 2
+    },
+    {
+      "name": "Chibi Q版",
+      "slug": "chibi",
+      "cover": "./assets/img/chibi-polaroid.svg",
+      "note": "Q版角色柄图系列",
+      "order": 3
+    },
+    {
+      "name": "OTP 2024",
+      "slug": "otp-2024",
+      "cover": "./assets/img/otp-ticket.svg",
+      "note": "Otomate Party 2024 活动系列",
+      "order": 4
+    },
+    {
+      "name": "秋风",
+      "slug": "autumn",
+      "cover": "./assets/img/autumn-clear-card.svg",
+      "note": "秋季主题柄图系列",
+      "order": 5
+    }
+  ]
 }
