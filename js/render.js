@@ -1,6 +1,6 @@
 // 卡片字段集中配置：增删卡面字段时优先调整这里。
 export const CARD_FIELDS = ["type", "year", "platforms"];
-const FALLBACK_IMAGE = "./assets/img/fallback.svg";
+const FALLBACK_IMAGE = "./assets/img/placeholder.png";
 
 export function escapeHtml(value = "") {
   return String(value).replace(/[&<>'"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
