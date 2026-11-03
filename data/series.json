@@ -5,6 +5,18 @@
       "name": "立绘柄",
       "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793720713/c18_1.png",
       "slug": "lihui"
+    },
+    {
+      "order": 2,
+      "name": "QQR",
+      "slug": "qqr",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793721185/2026-10-24_115125.png"
+    },
+    {
+      "order": 3,
+      "name": "幼年柄",
+      "slug": "younian",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793721390/25%E7%A7%8B%E9%A3%8E%E7%8F%A0%E5%85%89%E5%8D%A1.png"
     }
   ]
 }
