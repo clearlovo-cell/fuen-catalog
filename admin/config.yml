@@ -1,19 +1,19 @@
 backend:
   name: github
-  repo: YOUR_GITHUB_OWNER/YOUR_REPOSITORY
+  repo: clearlovo-cell/fuen-catalog
   branch: main
   base_url: https://YOUR_API_GATEWAY_DOMAIN
   auth_endpoint: auth
 
 publish_mode: simple
-site_url: https://YOUR_COS_STATIC_WEBSITE_DOMAIN
+site_url: https://clearlovo-cell.github.io/fuen-catalog
 locale: zh_Hans
 
 media_library:
   name: cloudinary
   config:
-    cloud_name: YOUR_CLOUDINARY_CLOUD_NAME
-    api_key: YOUR_CLOUDINARY_API_KEY
+    cloud_name: prs1zzcr
+    api_key: 619593793193615
 
 collections:
   - name: series
