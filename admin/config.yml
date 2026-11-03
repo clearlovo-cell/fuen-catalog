@@ -58,8 +58,8 @@ collections:
                 collection: series
                 file: series
                 value_field: "series.*.slug"
-                display_fields: "series.*.name"
-                search_fields: "series.*.name"
+                display_fields: ["series.*.name"]
+                search_fields: ["series.*.name"]
               - name: type
                 label: 制品类型
                 widget: select
