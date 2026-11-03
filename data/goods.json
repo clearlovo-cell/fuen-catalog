@@ -65,22 +65,6 @@
     },
     {
       "platforms": [
-        "Wondergoo"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "wdg fd店特",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "FD店特",
-      "type": "吧唧",
-      "id": "ace04566-59de-423a-858b-d8b1155c4fe3",
-      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
         "StellaWorth"
       ],
       "material": "马口铁",
@@ -92,6 +76,22 @@
       "event": "FD店特",
       "type": "吧唧",
       "id": "924e4ade-7600-47be-b6a0-3e50de855d1c",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Wondergoo"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "wdg fd店特",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "ace04566-59de-423a-858b-d8b1155c4fe3",
       "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
       "year": 2026
     },
@@ -190,6 +190,182 @@
       "id": "88e0553c-2833-49c5-bf86-bbb74cd3044c",
       "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
       "year": 2024
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "25秋风吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "younian",
+      "event": "秋风",
+      "type": "吧唧",
+      "id": "8b66cd48-4c34-49a1-94cc-5705c098d8a9",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "25OTP吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "吧唧",
+      "id": "12988acb-a136-4253-8569-e96943cf844f",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "25冬市吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "吧唧",
+      "id": "c99bc12b-af1d-4237-a0d4-09b71e18ded7",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26甜品趴吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "甜品趴",
+      "type": "吧唧",
+      "id": "d7e05eb4-fbc7-4483-8114-3a1d174a64bc",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26夏市吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "吧唧",
+      "id": "9a61699b-95f2-454b-a62b-1cbe949b92d5",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26OTP吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "吧唧",
+      "id": "49f91be1-70a2-4e70-88c8-3e148178bd03",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26OTP QQR",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "吧唧",
+      "id": "b1a6f7cd-6b0d-4476-af03-fc0a7cbf93c9",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Coolb"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "coolb公式书吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "book",
+      "event": "其他",
+      "type": "吧唧",
+      "id": "07622ee9-e5e2-4f14-8549-3cefcf94b223",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "s店公式书吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "book",
+      "event": "其他",
+      "type": "吧唧",
+      "id": "f7950269-9462-404b-bfd0-4b9d3d0176ae",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "FD繁中特装吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "huimou",
+      "event": "FD繁中限定",
+      "type": "吧唧",
+      "id": "3aa674ea-dd0f-404b-92af-bea5cfdb52a7",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26冬市吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "冬市",
+      "type": "吧唧",
+      "id": "c1155137-a234-4e6c-a02f-c16a86d3eefe",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
     }
   ]
 }
