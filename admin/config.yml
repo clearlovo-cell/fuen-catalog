@@ -14,7 +14,7 @@ media_library:
   config:
     cloud_name: prs1zzcr
     api_key: 619593793193615
-    upload_preset：clearlovo
+    upload_preset: clearlovo
 
 collections:
   - name: series
