@@ -110,6 +110,86 @@
       "id": "f1d81efe-f2aa-450f-9b21-203dafdd23a4",
       "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "Wondergoo"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "wdh fd仙人伞吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "2f564df3-2b90-43a4-9383-f0c0c7da0908",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Wondergoo"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "wdg fd红衣伞吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "ca0c9367-3421-44db-81aa-0ddcace26fb3",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Ebten"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "e店 fd店特",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "a68284ca-48b4-4644-a5b5-05025c460d48",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "s店 涂鸦QQR吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qqr",
+      "event": "其他",
+      "type": "吧唧",
+      "id": "292093c9-fd61-4ed0-b229-1a54dd88e524",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "繁中福袋吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "本篇繁中限定",
+      "type": "吧唧",
+      "id": "88e0553c-2833-49c5-bf86-bbb74cd3044c",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2024
     }
   ]
 }
