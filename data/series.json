@@ -17,6 +17,48 @@
       "name": "幼年柄",
       "slug": "younian",
       "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793721390/25%E7%A7%8B%E9%A3%8E%E7%8F%A0%E5%85%89%E5%8D%A1.png"
+    },
+    {
+      "order": 4,
+      "name": "执事柄",
+      "slug": "zhishi",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793721835/25%E5%86%AC%E5%B8%82%E6%8B%8D%E7%AB%8B%E5%BE%97.png"
+    },
+    {
+      "order": 5,
+      "name": "海军柄",
+      "slug": "haijun",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793721912/26%E5%A4%8F%E5%B8%82%E6%8B%8D%E7%AB%8B%E5%BE%97.png"
+    },
+    {
+      "order": 6,
+      "name": "公式书柄",
+      "slug": "book",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793722069/%E5%85%AC%E5%BC%8F%E4%B9%A6_%E7%BA%A2%E5%8C%85.png"
+    },
+    {
+      "order": 7,
+      "name": "CG柄",
+      "slug": "cg",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793722507/2025121722420400_c.jpg"
+    },
+    {
+      "order": 8,
+      "name": "香薰柄",
+      "slug": "xiangxun",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793722664/2026-09-23_154739.jpg"
+    },
+    {
+      "order": 9,
+      "name": "回眸",
+      "slug": "huimou",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793722508/2026042223082000_s.jpg"
+    },
+    {
+      "order": 10,
+      "name": "其他",
+      "slug": "qita",
+      "cover": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793722665/ScreenShot_2026-10-16_184448_491.png"
     }
   ]
 }
