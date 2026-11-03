@@ -253,3 +253,38 @@ desktopQuery.addEventListener("change", updateMoreFiltersVisibility);
 
 $("#current-year").textContent = String(new Date().getFullYear());
 loadData();
+
+// === 柄图系列：电脑端鼠标拖拽滚动 ===
+(function () {
+  const rail = document.getElementById('series-rail');
+  if (!rail) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  rail.addEventListener('mousedown', (e) => {
+    isDown = true;
+    rail.classList.add('active');
+    startX = e.pageX - rail.offsetLeft;
+    scrollLeft = rail.scrollLeft;
+  });
+
+  rail.addEventListener('mouseleave', () => {
+    isDown = false;
+    rail.classList.remove('active');
+  });
+
+  rail.addEventListener('mouseup', () => {
+    isDown = false;
+    rail.classList.remove('active');
+  });
+
+  rail.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - rail.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    rail.scrollLeft = scrollLeft - walk;
+  });
+})();
