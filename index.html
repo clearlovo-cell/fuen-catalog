@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="《茉莉花之炯》斐恩官方周边中文图鉴，按柄图系列、制品类型、发售平台与年份查找。">
+  <meta name="theme-color" content="#FDFCF7">
+  <title>斐恩官周图鉴｜茉莉花之炯</title>
+  <link rel="icon" href="./assets/img/fallback.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/tokens.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#catalog">跳至图鉴列表</a>
+
+  <header class="site-header lace-bottom">
+    <div class="container hero">
+      <div class="hero__copy">
+        <p class="hero__eyebrow"><span lang="ja">茉莉花之炯</span><span aria-hidden="true">·</span><span lang="ja">フィン</span></p>
+        <h1>斐恩<span>官周图鉴</span></h1>
+        <p class="hero__intro" lang="ja">お前の顔を、絵にして残したい、そう思ったよ。</p>
+      </div>
+      <aside class="hero__note" aria-label="图鉴收录统计">
+        <svg class="hero__flower" viewBox="0 0 80 80" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1.5">
+            <ellipse cx="40" cy="21" rx="10" ry="19"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(72 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(144 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(216 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(288 40 40)"/><circle cx="40" cy="40" r="5"/>
+          </g>
+        </svg>
+        <p>已收录 <strong id="total-count">—</strong> 件谷子</p>
+        <span lang="ja">マツリカの炯-kEi-</span>
+        <small>示例图鉴 · 持续整理中</small>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="series-section container" aria-labelledby="series-title">
+      <div class="section-heading">
+        <h2 id="series-title">柄图系列</h2>
+        <span>左右滑动，挑选一页心动</span>
+      </div>
+      <div id="series-rail" class="rail" aria-label="按柄图系列筛选">
+        <div class="rail__skeleton" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="filter-section lace-bottom" aria-labelledby="filter-title">
+      <div class="container">
+        <div class="section-heading section-heading--filter">
+          <h2 id="filter-title">图鉴检索</h2>
+          <button id="reset-filters" class="text-button" type="button" hidden>清除全部筛选</button>
+        </div>
+
+        <div class="filters__bar">
+          <div class="search">
+            <label class="sr-only" for="search-input">搜索谷子名称、系列或平台</label>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+            <input id="search-input" class="search__input" type="search" placeholder="搜索名称、系列、平台…" autocomplete="off">
+          </div>
+          <button id="filters-toggle" class="filters__toggle" type="button" aria-expanded="false" aria-controls="filters-panel">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            筛选<span id="filter-count" class="filter-count" hidden>0</span>
+          </button>
+        </div>
+
+        <div id="filters-panel" class="filters__panel" data-expanded="false">
+          <div class="field" data-dimension="type">
+            <label class="field__label" for="filter-type">制品类型</label>
+            <select id="filter-type" class="select" data-filter="type"><option value="">全部类型</option></select>
+          </div>
+          <div class="field" data-dimension="platforms">
+            <label class="field__label" for="filter-platform">发售平台</label>
+            <select id="filter-platform" class="select" data-filter="platforms"><option value="">全部平台</option></select>
+          </div>
+          <div class="field filters-extra" data-dimension="year">
+            <label class="field__label" for="filter-year">发售年份</label>
+            <select id="filter-year" class="select" data-filter="year"><option value="">全部年份</option></select>
+          </div>
+          <div class="field filters-extra" data-dimension="event">
+            <label class="field__label" for="filter-event">活动</label>
+            <select id="filter-event" class="select" data-filter="event"><option value="">全部活动</option></select>
+          </div>
+          <div class="field filters-extra" data-dimension="release_type">
+            <label class="field__label" for="filter-release">发售性质</label>
+            <select id="filter-release" class="select" data-filter="release_type"><option value="">全部性质</option></select>
+          </div>
+          <div id="material-field" class="field field--full filters-extra" data-dimension="material">
+            <div class="field__label-row">
+              <span class="field__label" id="material-label">材质 <small>可多选</small></span>
+              <button id="material-more" class="text-button text-button--small" type="button" aria-expanded="false" hidden>展开更多</button>
+            </div>
+            <div id="material-chips" class="material-chips" role="group" aria-labelledby="material-label"></div>
+          </div>
+          <div id="size-field" class="field field--size filters-extra" data-dimension="size">
+            <span class="field__label">尺寸信息</span>
+            <label class="size-switch">
+              <input id="filter-size" type="checkbox">
+              <span class="size-switch__track" aria-hidden="true"><span></span></span>
+              <span>仅看有尺寸信息</span>
+            </label>
+          </div>
+        </div>
+        <button id="more-filters" class="more-filters" type="button" aria-expanded="false" hidden>展开更多筛选<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
+      </div>
+    </section>
+
+    <section id="catalog" class="catalog container" aria-labelledby="catalog-title">
+      <div class="catalog__heading">
+        <h2 id="catalog-title">全部谷子</h2>
+        <p id="result-count" role="status" aria-live="polite">正在整理图鉴…</p>
+      </div>
+
+      <div id="loading-state" class="state-panel" role="status">
+        <span class="loading-flower" aria-hidden="true"></span>
+        <p>正在翻开图鉴…</p>
+      </div>
+      <div id="error-state" class="state-panel" role="alert" hidden>
+        <p class="state-panel__face" aria-hidden="true">(；´Д｀)</p>
+        <h3>数据加载失败，请刷新重试</h3>
+        <p>请检查网络连接，或稍后再来一次。</p>
+        <button id="retry-load" class="btn" type="button">重新加载</button>
+      </div>
+      <div id="empty-state" class="state-panel" hidden>
+        <p class="state-panel__face" aria-hidden="true">(｡•́︿•̀｡)</p>
+        <h3>没有找到符合条件的谷子</h3>
+        <p>试着减少一个筛选条件，或换个关键词吧。</p>
+        <button id="empty-reset" class="btn" type="button">查看全部谷子</button>
+      </div>
+      <div id="goods-grid" class="goods-grid" aria-live="polite"></div>
+      <noscript><p class="state-panel">请启用 JavaScript 以浏览和筛选图鉴。</p></noscript>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <div><span class="footer__mark" aria-hidden="true">✳</span><strong>制作人@clear lovo</strong></div>
+      <p>© <span id="current-year"></span> 图片版权归官方所有，仅供图鉴参考</p>
+      <p class="footer__sample">当前为示例数据与示意图，不代表实际收录数量。</p>
+    </div>
+  </footer>
+
+  <button id="back-to-top" class="fab" type="button" aria-label="返回顶部">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>
+  </button>
+
+  <div id="lightbox-overlay" class="lightbox-overlay" hidden>
+    <section id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <button id="modal-close" class="modal-close" type="button" aria-label="关闭详情">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+      <div id="modal-content"></div>
+    </section>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

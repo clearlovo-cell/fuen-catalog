@@ -1,0 +1,238 @@
+import { filterGoods, splitMaterials, uniqueValues } from "./filter.js";
+import { bindImageFallbacks, escapeHtml, renderCard, renderImage, renderModal } from "./render.js";
+
+const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
+const state = { goods: [], series: [], filters: emptyFilters(), loaded: false };
+const $ = selector => document.querySelector(selector);
+const els = {
+  rail: $("#series-rail"), grid: $("#goods-grid"), total: $("#total-count"), result: $("#result-count"), catalogTitle: $("#catalog-title"),
+  loading: $("#loading-state"), error: $("#error-state"), empty: $("#empty-state"), search: $("#search-input"), reset: $("#reset-filters"),
+  panel: $("#filters-panel"), toggle: $("#filters-toggle"), filterCount: $("#filter-count"), moreFilters: $("#more-filters"),
+  materialChips: $("#material-chips"), materialMore: $("#material-more"), materialField: $("#material-field"), sizeField: $("#size-field"),
+  size: $("#filter-size"), overlay: $("#lightbox-overlay"), modal: $("#lightbox"), modalContent: $("#modal-content"), modalClose: $("#modal-close"),
+  fab: $("#back-to-top")
+};
+const desktopQuery = window.matchMedia("(min-width: 768px)");
+let lastFocusedElement = null;
+let modalTimer;
+
+async function fetchJson(path) {
+  const response = await fetch(`${path}${path.includes("?") ? "&" : "?"}v=${Date.now()}`, { cache: "no-cache" });
+  if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
+  const data = await response.json();
+  if (!Array.isArray(data)) throw new Error(`${path}: 数据格式应为数组`);
+  return data;
+}
+
+async function loadData() {
+  els.loading.hidden = false;
+  els.error.hidden = true;
+  els.empty.hidden = true;
+  els.grid.hidden = true;
+  try {
+    const [goods, series] = await Promise.all([fetchJson("./data/goods.json"), fetchJson("./data/series.json")]);
+    state.series = series.sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
+    const seriesMap = new Map(state.series.map(item => [item.slug, item.name]));
+    state.goods = goods.map((item, index) => ({ ...item, id: item.id || `goods-${index}`, seriesName: seriesMap.get(item.series) || item.series }));
+    state.loaded = true;
+    els.total.textContent = String(state.goods.length);
+    initialiseFilters();
+    renderSeriesRail();
+    applyFilters();
+  } catch (error) {
+    console.error("图鉴数据加载失败", error);
+    els.loading.hidden = true;
+    els.error.hidden = false;
+    els.grid.hidden = true;
+    els.result.textContent = "暂时无法读取数据";
+  }
+}
+
+function fillSelect(key, values) {
+  const select = document.querySelector(`[data-filter="${key}"]`);
+  if (!select) return;
+  const field = select.closest(".field");
+  field.hidden = values.length === 0;
+  values.forEach(value => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = value;
+    select.append(option);
+  });
+}
+
+function initialiseFilters() {
+  fillSelect("type", uniqueValues(state.goods, "type"));
+  fillSelect("platforms", uniqueValues(state.goods, "platforms"));
+  fillSelect("year", uniqueValues(state.goods, "year").reverse());
+  fillSelect("event", uniqueValues(state.goods, "event"));
+  fillSelect("release_type", uniqueValues(state.goods, "release_type"));
+
+  const materials = [...new Set(state.goods.flatMap(item => splitMaterials(item.material)))].sort((a, b) => a.localeCompare(b, "zh-CN"));
+  els.materialField.hidden = materials.length === 0;
+  els.materialChips.innerHTML = materials.map(material => `<button class="material-chip" type="button" data-material="${escapeHtml(material)}" aria-pressed="false">${escapeHtml(material)}</button>`).join("");
+  els.sizeField.hidden = !state.goods.some(item => String(item.size || "").trim());
+  updateMoreFiltersVisibility();
+  requestAnimationFrame(updateMaterialMoreVisibility);
+}
+
+function renderSeriesRail() {
+  const allIcon = `<span class="rail__cover rail__cover--all"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="9" rx="4" ry="8"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(72 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(144 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(216 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(288 16 16)"/></g></svg></span>`;
+  const allButton = `<button class="rail__item" type="button" data-series="" aria-pressed="${state.filters.seriesId === ""}">${allIcon}<span class="rail__name">全部</span></button>`;
+  const items = state.series.map(series => `<button class="rail__item" type="button" data-series="${escapeHtml(series.slug)}" aria-pressed="${state.filters.seriesId === series.slug}" title="${escapeHtml(series.note || series.name)}">
+    ${renderImage({ src: series.cover, alt: "", className: "rail__cover", width: 160, height: 160 })}<span class="rail__name">${escapeHtml(series.name)}</span></button>`).join("");
+  els.rail.innerHTML = `<div class="rail__track">${allButton}${items}</div>`;
+  bindImageFallbacks(els.rail);
+}
+
+function applyFilters() {
+  if (!state.loaded) return;
+  const filtered = filterGoods(state.goods, state.filters);
+  els.loading.hidden = true;
+  els.error.hidden = true;
+  els.grid.hidden = filtered.length === 0;
+  els.empty.hidden = filtered.length !== 0;
+  els.grid.innerHTML = filtered.map(renderCard).join("");
+  bindImageFallbacks(els.grid);
+  const selectedSeries = state.series.find(item => item.slug === state.filters.seriesId);
+  els.catalogTitle.textContent = selectedSeries ? selectedSeries.name : "全部谷子";
+  els.result.textContent = `找到 ${filtered.length} 件谷子`;
+  updateFilterIndicators();
+}
+
+function activeFilterCount() {
+  const f = state.filters;
+  return [f.seriesId, f.type, f.event, f.year, f.release_type, f.search, f.hasSize].filter(Boolean).length + f.platforms.length + f.materials.length;
+}
+
+function updateFilterIndicators() {
+  const count = activeFilterCount();
+  els.filterCount.hidden = count === 0;
+  els.filterCount.textContent = String(count);
+  els.reset.hidden = count === 0;
+}
+
+function resetFilters() {
+  state.filters = emptyFilters();
+  els.search.value = "";
+  els.size.checked = false;
+  document.querySelectorAll("[data-filter]").forEach(select => { select.value = ""; });
+  els.materialChips.querySelectorAll("[data-material]").forEach(chip => chip.setAttribute("aria-pressed", "false"));
+  renderSeriesRail();
+  applyFilters();
+}
+
+function updateMoreFiltersVisibility() {
+  const hasVisibleExtras = [...els.panel.querySelectorAll(".filters-extra")].some(field => !field.hidden);
+  els.moreFilters.hidden = desktopQuery.matches || els.panel.dataset.expanded !== "true" || !hasVisibleExtras;
+}
+
+function updateMaterialMoreVisibility() {
+  if (els.materialField.hidden || !els.materialChips.children.length) {
+    els.materialMore.hidden = true;
+    return;
+  }
+  const wasExpanded = els.materialChips.classList.contains("is-expanded");
+  if (wasExpanded) els.materialChips.classList.remove("is-expanded");
+  els.materialMore.hidden = els.materialChips.scrollHeight <= els.materialChips.clientHeight + 2;
+  if (wasExpanded) els.materialChips.classList.add("is-expanded");
+}
+
+/** 打开详情并管理焦点；浮层内只有必需的关闭按钮。 */
+function openModal(id) {
+  const item = state.goods.find(goods => String(goods.id) === String(id));
+  if (!item) return;
+  clearTimeout(modalTimer);
+  lastFocusedElement = document.activeElement;
+  els.modalContent.innerHTML = renderModal(item);
+  bindImageFallbacks(els.modalContent);
+  els.overlay.hidden = false;
+  document.body.classList.add("is-modal-open");
+  els.modal.scrollTop = 0;
+  requestAnimationFrame(() => {
+    els.overlay.classList.add("is-open");
+    els.modalClose.focus();
+  });
+}
+
+function closeModal() {
+  if (els.overlay.hidden) return;
+  els.overlay.classList.remove("is-open");
+  document.body.classList.remove("is-modal-open");
+  const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 220;
+  modalTimer = window.setTimeout(() => {
+    els.overlay.hidden = true;
+    els.modalContent.innerHTML = "";
+    if (lastFocusedElement?.isConnected) lastFocusedElement.focus();
+  }, delay);
+}
+
+els.rail.addEventListener("click", event => {
+  const button = event.target.closest("[data-series]");
+  if (!button) return;
+  state.filters.seriesId = button.dataset.series;
+  els.rail.querySelectorAll("[data-series]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+  applyFilters();
+});
+
+els.search.addEventListener("input", () => { state.filters.search = els.search.value; applyFilters(); });
+document.querySelectorAll("[data-filter]").forEach(select => {
+  select.addEventListener("change", () => {
+    const key = select.dataset.filter;
+    state.filters[key] = key === "platforms" ? (select.value ? [select.value] : []) : select.value;
+    applyFilters();
+  });
+});
+els.size.addEventListener("change", () => { state.filters.hasSize = els.size.checked; applyFilters(); });
+els.materialChips.addEventListener("click", event => {
+  const chip = event.target.closest("[data-material]");
+  if (!chip) return;
+  const value = chip.dataset.material;
+  const selected = state.filters.materials.includes(value);
+  state.filters.materials = selected ? state.filters.materials.filter(item => item !== value) : [...state.filters.materials, value];
+  chip.setAttribute("aria-pressed", String(!selected));
+  applyFilters();
+});
+els.materialMore.addEventListener("click", () => {
+  const expanded = els.materialChips.classList.toggle("is-expanded");
+  els.materialMore.setAttribute("aria-expanded", String(expanded));
+  els.materialMore.textContent = expanded ? "收起材质" : "展开更多";
+});
+els.toggle.addEventListener("click", () => {
+  const expanded = els.toggle.getAttribute("aria-expanded") !== "true";
+  els.toggle.setAttribute("aria-expanded", String(expanded));
+  els.panel.dataset.expanded = String(expanded);
+  updateMoreFiltersVisibility();
+});
+els.moreFilters.addEventListener("click", () => {
+  const expanded = !els.panel.classList.contains("show-all");
+  els.panel.classList.toggle("show-all", expanded);
+  els.moreFilters.setAttribute("aria-expanded", String(expanded));
+  els.moreFilters.firstChild.textContent = expanded ? "收起更多筛选" : "展开更多筛选";
+  requestAnimationFrame(updateMaterialMoreVisibility);
+});
+els.reset.addEventListener("click", resetFilters);
+$("#empty-reset").addEventListener("click", resetFilters);
+$("#retry-load").addEventListener("click", loadData);
+els.grid.addEventListener("click", event => {
+  const card = event.target.closest("[data-goods-id]");
+  if (card) openModal(card.dataset.goodsId);
+});
+els.modalClose.addEventListener("click", closeModal);
+els.overlay.addEventListener("click", event => { if (event.target === els.overlay) closeModal(); });
+document.addEventListener("keydown", event => {
+  if (els.overlay.hidden) return;
+  if (event.key === "Escape") { event.preventDefault(); closeModal(); }
+  if (event.key === "Tab") {
+    // 详情中仅有关闭按钮可聚焦，因此焦点始终留在浮层内。
+    event.preventDefault();
+    els.modalClose.focus();
+  }
+});
+els.fab.addEventListener("click", () => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
+window.addEventListener("scroll", () => els.fab.classList.toggle("is-visible", window.scrollY > 300), { passive: true });
+window.addEventListener("resize", () => requestAnimationFrame(() => { updateMoreFiltersVisibility(); updateMaterialMoreVisibility(); }));
+desktopQuery.addEventListener("change", updateMoreFiltersVisibility);
+
+$("#current-year").textContent = String(new Date().getFullYear());
+loadData();
