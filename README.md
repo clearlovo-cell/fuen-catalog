@@ -80,7 +80,7 @@ python3 -m http.server 8080
 1. 打开 `/admin/` 并通过 GitHub 授权。
 2. 进入 **谷子 → 谷子列表**，在列表中添加一项。
 3. 填写名称、系列、类型、平台、年份、状态等字段；上传建议不低于 800×800px、单张不超过 5MB 的图片。
-4. 保存并提交。CMS 会更新 `data/goods.json`，推送后由 GitHub Actions 同步到 COS。
+4. 保存并提交。 CMS 会更新 `data/goods.json`，推送后由 GitHub Actions 同步到 COS。
 
 ### 替换兜底图
 
