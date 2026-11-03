@@ -75,7 +75,7 @@ collections:
                 widget: select
                 options: [OTP, 朗读剧, 甜品趴, 夏市, 秋风, 冬市, OTG, 店特, 其他]
               - { name: year, label: 发售年份, widget: number, value_type: int, min: 2000, max: 2100 }
-              - { name: date, label: 具体发售日, widget: date, format: YYYY-MM-DD, required: false }
+              - { name: date, label: 具体发售日(可选), widget: date, format: "YYYY-MM-DD", required: false }
               - { name: price, label: 日元定价, widget: number, value_type: int, min: 0, required: false }
               - { name: status, label: 当前状态, widget: select, options: [预售, 在售, 完售], default: 预售 }
               - { name: release_type, label: 发售性质, widget: select, options: [初版, 复刻], default: 初版 }
