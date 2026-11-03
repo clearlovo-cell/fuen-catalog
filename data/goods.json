@@ -30,6 +30,86 @@
       "id": "76dfb29e-827b-4f60-bb5c-9bea4bbde462",
       "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725073/IMG_3346.jpg",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "s店方吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "吧唧",
+      "id": "3184e320-50a5-4a55-a0b6-ac01f415e6b3",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "s店fd店特吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "5e15f316-bef1-4f7f-accd-e4a8f4830ebc",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Wondergoo"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "wdg fd店特",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "ace04566-59de-423a-858b-d8b1155c4fe3",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "s店留言方吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "924e4ade-7600-47be-b6a0-3e50de855d1c",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "宝岛"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "宝岛fd方吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "f1d81efe-f2aa-450f-9b21-203dafdd23a4",
+      "image": "https://res.cloudinary.com/prs1zzcr/image/upload/v1793725643/1d0edf7442941d16d0a42c3049db087a.png",
+      "year": 2026
     }
   ]
 }
