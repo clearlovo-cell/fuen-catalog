@@ -16,12 +16,29 @@ const desktopQuery = window.matchMedia("(min-width: 768px)");
 let lastFocusedElement = null;
 let modalTimer;
 
-async function fetchJson(path) {
-  const response = await fetch(`${path}${path.includes("?") ? "&" : "?"}v=${Date.now()}`, { cache: "no-cache" });
-  if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
-  const data = await response.json();
-  if (!Array.isArray(data)) throw new Error(`${path}: 数据格式应为数组`);
-  return data;
+async function fetchJson(url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`${url}: ${res.status}`);
+    const data = await res.json();
+    
+    // 兼容 CMS 保存的对象格式 { goods: [...] } 或 { series: [...] }
+    if (Array.isArray(data)) {
+        return data;
+    }
+    
+    if (data && typeof data === 'object') {
+        if (url.includes('goods') && Array.isArray(data.goods)) {
+            return data.goods;
+        }
+        if (url.includes('series') && Array.isArray(data.series)) {
+            return data.series;
+        }
+        // 兜底：找第一个数组属性
+        const arr = Object.values(data).find(v => Array.isArray(v));
+        if (arr) return arr;
+    }
+    
+    throw new Error(`${url}: 数据格式应为数组`);
 }
 
 async function loadData() {
