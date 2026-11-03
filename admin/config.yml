@@ -69,11 +69,11 @@ collections:
                 label: 发售平台
                 widget: select
                 multiple: true
-                options: [Otomate Store, StellaWorth, Animate, Ebten, Alice, 其他]
+                options: [Otomate, Joyoland, StellaWorth, Alice, Ebten, oioi, Wondergoo, Neowing, Gamecity, Trader, Challe, B's-log, Coolb, 宝岛, 乐天, Trangle Teezer, Lovaroma, 其他]
               - name: event
-                label: 活动
+                label: event
                 widget: select
-                options: [OTP, 朗读剧, 甜品趴, 夏市, 秋风, 冬市, OTG, 店特, 其他]
+                options: [本篇店特, FD店特, 本篇繁中限定, FD繁中限定, 夏市, 秋风, 冬市, 甜品趴, OTP, AGF, 亚洲限定, 联名, 其他]
               - { name: year, label: 发售年份, widget: number, value_type: int, min: 2000, max: 2100 }
               - { name: date, label: 具体发售日, widget: date, format: "YYYY-MM-DD", required: false }
               - { name: price, label: 日元定价, widget: number, value_type: int, min: 0, required: false }
