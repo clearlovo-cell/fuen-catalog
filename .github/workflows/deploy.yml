@@ -12,11 +12,43 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Upload to Tencent COS
-        uses: zkqiang/tencent-cos-action@v1
-        with:
-          secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
-          secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
-          bucket: ${{ secrets.COS_BUCKET }}
-          region: ${{ secrets.COS_REGION }}
-          commands: |
-            cp -r ./ cos://${{ secrets.COS_BUCKET }}/
+        run: |
+          pip install -q cos-python-sdk-v5
+          python3 << 'PYEOF'
+          import os
+          from qcloud_cos import CosConfig, CosS3Client
+
+          config = CosConfig(
+              Region=os.environ['COS_REGION'],
+              SecretId=os.environ['TENCENT_CLOUD_SECRET_ID'],
+              SecretKey=os.environ['TENCENT_CLOUD_SECRET_KEY']
+          )
+          client = CosS3Client(config)
+          bucket = os.environ['COS_BUCKET']
+
+          skip = {'.git', '.github', '__pycache__', 'node_modules'}
+          total = 0
+
+          for root, dirs, files in os.walk('.'):
+              dirs[:] = [d for d in dirs if d not in skip]
+              for f in files:
+                  local_path = os.path.join(root, f)
+                  remote_key = os.path.relpath(local_path)
+                  print(f'Uploading: {remote_key}')
+                  client.upload_file(
+                      Bucket=bucket,
+                      LocalFilePath=local_path,
+                      Key=remote_key,
+                      PartSize=1,
+                      MAXThread=1,
+                      EnableMD5=False
+                  )
+                  total += 1
+
+          print(f'\nDone! Total {total} files uploaded.')
+          PYEOF
+        env:
+          TENCENT_CLOUD_SECRET_ID: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
+          TENCENT_CLOUD_SECRET_KEY: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
+          COS_BUCKET: ${{ secrets.COS_BUCKET }}
+          COS_REGION: ${{ secrets.COS_REGION }}
