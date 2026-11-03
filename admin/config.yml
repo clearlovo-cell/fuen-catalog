@@ -2,7 +2,7 @@ backend:
   name: github
   repo: clearlovo-cell/fuen-catalog
   branch: main
-  base_url: https://YOUR_API_GATEWAY_DOMAIN
+  base_url: https://fuen-oauth.lovoclear.workers.dev
   auth_endpoint: auth
 
 publish_mode: simple
