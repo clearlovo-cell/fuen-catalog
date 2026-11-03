@@ -1,6 +1,6 @@
 {
   "goods": [
-   {
+ {
     "id": "formula-badge-001",
     "name": "公式服 茉莉金边闪徽章",
     "series": "formula",
@@ -17,8 +17,8 @@
     "material": "马口铁",
     "image": "./assets/img/formula-badge.svg",
     "note": "示例数据；名称与图片均为图鉴演示用途。"
-   },
-   {
+  },
+  {
     "id": "summer-stand-001",
     "name": "夏祭り 亚克力立牌",
     "series": "summer-festival",
@@ -35,8 +35,8 @@
     "material": "亚克力",
     "image": "./assets/img/summer-stand.svg",
     "note": "示例数据；实际商品信息请以官方公告为准。"
-   },
-   {
+  },
+  {
     "id": "chibi-polaroid-001",
     "name": "Chibi Q版 珠光拍立得套组",
     "series": "chibi",
@@ -53,8 +53,8 @@
     "material": "纸",
     "image": "./assets/img/chibi-polaroid.svg",
     "note": "示例数据；一套两枚的虚构套组。"
-   },
-   {
+  },
+  {
     "id": "otp-ticket-001",
     "name": "OTP 2024 茉莉纪念镭射票",
     "series": "otp-2024",
@@ -71,8 +71,8 @@
     "material": "纸、PET",
     "image": "./assets/img/otp-ticket.svg",
     "note": "示例数据；镭射效果以浅色渐变示意。"
-   },
-   {
+  },
+  {
     "id": "autumn-clear-card-001",
     "name": "秋风 透卡 斐恩单人款",
     "series": "autumn",
@@ -89,6 +89,6 @@
     "material": "PVC",
     "image": "./assets/img/autumn-clear-card.svg",
     "note": "示例数据；透明材质以半透明底色示意。"
-   }
- ]
+  }
+]
 }
