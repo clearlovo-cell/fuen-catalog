@@ -977,6 +977,38 @@
       "id": "74265727-d217-475b-b15e-242b22b070e8",
       "image": "assets/img/uploads/loading.png",
       "year": 2021
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中特装立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "huimou",
+      "event": "FD繁中限定",
+      "type": "立牌",
+      "id": "17140f3c-5711-4220-8a23-f4a8bca9c8c8",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中豪华双插立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "FD繁中限定",
+      "type": "立牌",
+      "id": "63e15bc4-5178-4c0f-b7b8-99ac0eda0085",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
     }
   ]
 }
