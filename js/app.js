@@ -32,7 +32,7 @@ const els = {
   panel: $("#filters-panel"), toggle: $("#filters-toggle"), filterCount: $("#filter-count"), moreFilters: $("#more-filters"),
   materialChips: $("#material-chips"), materialMore: $("#material-more"), materialField: $("#material-field"), sizeField: $("#size-field"),
   size: $("#filter-size"), overlay: $("#lightbox-overlay"), modal: $("#lightbox"), modalContent: $("#modal-content"), modalClose: $("#modal-close"),
-  fab: $("#back-to-top")
+  fab: $("#back-to-top"), fabBottom: $("#go-to-bottom")
 };
 const desktopQuery = window.matchMedia("(min-width: 768px)");
 let lastFocusedElement = null;
@@ -268,8 +268,17 @@ document.addEventListener("keydown", event => {
     els.modalClose.focus();
   }
 });
-els.fab.addEventListener("click", () => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
-window.addEventListener("scroll", () => els.fab.classList.toggle("is-visible", window.scrollY > 300), { passive: true });
+const getScrollBehavior = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+els.fab.addEventListener("click", () => window.scrollTo({ top: 0, behavior: getScrollBehavior() }));
+els.fabBottom.addEventListener("click", () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: getScrollBehavior() }));
+
+function updateScrollButtons() {
+  const maxScrollTop = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  els.fab.classList.toggle("is-visible", window.scrollY > 300);
+  els.fabBottom.classList.toggle("is-visible", maxScrollTop > 100 && window.scrollY < maxScrollTop - 100);
+}
+window.addEventListener("scroll", updateScrollButtons, { passive: true });
+updateScrollButtons();
 window.addEventListener("resize", () => requestAnimationFrame(() => { updateMoreFiltersVisibility(); updateMaterialMoreVisibility(); }));
 desktopQuery.addEventListener("change", updateMoreFiltersVisibility);
 
