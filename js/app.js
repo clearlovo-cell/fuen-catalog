@@ -137,6 +137,7 @@ function applyFilters() {
   els.catalogTitle.textContent = selectedSeries ? selectedSeries.name : "全部谷子";
   els.result.textContent = `找到 ${filtered.length} 件谷子`;
   updateFilterIndicators();
+  requestAnimationFrame(updateScrollButtons);
 }
 
 function activeFilterCount() {
@@ -279,7 +280,7 @@ function updateScrollButtons() {
 }
 window.addEventListener("scroll", updateScrollButtons, { passive: true });
 updateScrollButtons();
-window.addEventListener("resize", () => requestAnimationFrame(() => { updateMoreFiltersVisibility(); updateMaterialMoreVisibility(); }));
+window.addEventListener("resize", () => requestAnimationFrame(() => { updateMoreFiltersVisibility(); updateMaterialMoreVisibility(); updateScrollButtons(); }));
 desktopQuery.addEventListener("change", updateMoreFiltersVisibility);
 
 $("#current-year").textContent = String(new Date().getFullYear());
