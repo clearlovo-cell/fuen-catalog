@@ -861,7 +861,7 @@
       "event": "OTP",
       "type": "留言卡",
       "id": "ac611c8a-7f8a-46b2-82df-71ac4abda34b",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otp留言卡.png",
       "year": 2025
     },
     {
@@ -877,7 +877,7 @@
       "event": "OTP",
       "type": "立牌",
       "id": "799b4492-08ea-4f60-845d-590c86c74f5c",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otp立牌.png",
       "year": 2025
     },
     {
@@ -893,7 +893,7 @@
       "event": "OTP",
       "type": "立牌",
       "id": "f7af369f-53a2-499d-8abf-b2a7741a051e",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otp-q立.png",
       "year": 2025
     },
     {
@@ -909,7 +909,7 @@
       "event": "OTP",
       "type": "挂件",
       "id": "c4d244f2-703b-4494-8b6f-11e292fb64dc",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otpq挂.png",
       "year": 2024
     },
     {
@@ -924,7 +924,7 @@
       "event": "OTP",
       "type": "挂件",
       "id": "0fa407e8-5acb-4203-8595-16aef1c18717",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otp气球挂件.png",
       "year": 2025
     },
     {
@@ -939,7 +939,7 @@
       "event": "OTP",
       "type": "镭射票",
       "id": "4fe7bc02-dd9d-4048-b90b-75989eadc501",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otp票根.png",
       "year": 2025
     },
     {
@@ -955,7 +955,7 @@
       "event": "OTP",
       "type": "ID卡",
       "id": "13a644e3-33a8-4447-9345-2ae9a54b7147",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otp-id卡.png",
       "year": 2025
     },
     {
@@ -970,7 +970,7 @@
       "event": "OTP",
       "type": "其他",
       "id": "e256ed0d-3d3f-4b00-a9af-bdbc5762c04c",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otp大王扇.png",
       "year": 2025
     },
     {
@@ -986,7 +986,7 @@
       "event": "OTP",
       "type": "其他",
       "id": "a4835cea-1584-4183-8841-9759ba942126",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25otp贴纸.png",
       "year": 2025
     },
     {
