@@ -639,6 +639,166 @@
       "id": "9fc64496-d410-4d60-a860-179159bc87ab",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "Challe"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "kuji A赏立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "立牌",
+      "id": "8b4c5677-d36b-426b-805c-93491fb3b56a",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "繁中福袋立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "本篇繁中限定",
+      "type": "立牌",
+      "id": "33a4cc78-94d7-4af2-8db6-88a6d95fdeac",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "oioi"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "oioi立牌",
+      "release_type": "初版",
+      "status": "在售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "立牌",
+      "id": "2167de1e-773f-4061-abef-4de5491c3f36",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "亚洲限定立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "亚洲限定",
+      "type": "立牌",
+      "id": "b89982a3-e778-4751-a274-37f4c8da3d0c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "宝岛"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD甜盒立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qita",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "82a0f6a3-e9bc-4649-a2ab-18ddc82086df",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Wondergoo"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "wdg fd红衣立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "0f46d214-b1ac-4a99-80b1-657441f25cdc",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Wondergoo"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "wdg fd仙人立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "5591fff8-f9a8-463f-9bad-58336dc3dd85",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Ebten"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "e店店特立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "538c5704-71cd-49c4-ae86-b23a280ac376",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25OTP留言立",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "立牌",
+      "id": "799b4492-08ea-4f60-845d-590c86c74f5c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26OTP留言立",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "立牌",
+      "id": "3d493756-5f9c-4940-aef2-e3857e5b99f2",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
     }
   ]
 }
