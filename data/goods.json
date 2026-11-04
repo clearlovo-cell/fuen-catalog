@@ -1465,6 +1465,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "W72.3mm×H63.1mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26OTP心形透卡",
@@ -1474,7 +1475,7 @@
       "event": "OTP",
       "type": "透卡",
       "id": "c232da2f-fbc4-4932-919f-0fe1c2ecb487",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26otp心透.png",
       "year": 2026
     },
     {
