@@ -1626,6 +1626,139 @@
       "id": "c6b383fe-34ef-4d59-a994-6f6fd7497355",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "25OTP ID卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "ID卡",
+      "id": "13a644e3-33a8-4447-9345-2ae9a54b7147",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "26甜品趴 ID卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "ID卡",
+      "id": "9f6d94dd-02ad-4a49-8915-f60c937a3b0b",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "纸、亚克力",
+      "character": "斐恩",
+      "name": "26OTP ID卡 名札",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "ID卡",
+      "id": "74db3358-b1a5-4d40-ae3a-f87a3c0af1b4",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log25年11月刊封面 FD新绘",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "huimou",
+      "event": "其他",
+      "type": "杂志",
+      "id": "c0429f69-2fc1-48c3-9765-026c8c389aad",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log25年12月刊封底 海报",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "qita",
+      "event": "其他",
+      "type": "杂志",
+      "id": "370921a8-83ad-47ff-a7d4-a67b415c66dd",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log26年1月刊内页 FD新绘",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "qita",
+      "event": "其他",
+      "type": "杂志",
+      "id": "512fd66a-7b81-44f2-84fc-f73fc90ca834",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log26年4月刊内页",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "qita",
+      "event": "其他",
+      "type": "杂志",
+      "id": "850a7eb1-3824-4591-8946-2cd49fc5cc19",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log26年6月刊内页",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "qita",
+      "event": "其他",
+      "type": "杂志",
+      "id": "a09aa267-957a-413b-9b49-e294aceadc82",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
     }
   ]
 }
