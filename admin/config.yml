@@ -9,12 +9,8 @@ publish_mode: simple
 site_url: https://clearlovo-cell.github.io/fuen-catalog
 locale: zh_Hans
 
-media_library:
-  name: cloudinary
-  config:
-    cloud_name: prs1zzcr
-    api_key: 619593793193615
-    upload_preset: clearlovo
+media_folder: "assets/img/uploads"
+public_folder: "./assets/img/uploads"
 
 collections:
   - name: series
@@ -34,7 +30,6 @@ collections:
               - name: cover
                 label: 系列封面
                 widget: image
-                media_folder: "/{{fields.slug}}"
                 hint: "建议 ≥400×400px，单张 ≤5MB。"
               - { name: note, label: 备注, widget: text, required: false }
               - { name: order, label: 排序权重, widget: number, value_type: int, default: 10, hint: "数字越小越靠前。" }
@@ -85,6 +80,5 @@ collections:
               - name: image
                 label: 制品图片
                 widget: image
-                media_folder: "/{{fields.series}}"
                 hint: "建议 ≥800×800px，单张 ≤5MB；按所选系列 slug 自动分文件夹。"
               - { name: note, label: 备注, widget: text, required: false }
