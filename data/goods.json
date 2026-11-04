@@ -799,6 +799,184 @@
       "id": "3d493756-5f9c-4940-aef2-e3857e5b99f2",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25OTP Q立",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "立牌",
+      "id": "f7af369f-53a2-499d-8abf-b2a7741a051e",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26甜品趴 Q立",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "甜品趴",
+      "type": "立牌",
+      "id": "cf33672a-4ba7-4217-8f36-6f94fb91f77d",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "s店涂鸦 QQR立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qqr",
+      "event": "其他",
+      "type": "立牌",
+      "id": "66a6bd51-331f-4fab-82a3-183c5be995d5",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26OTP Q立",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "立牌",
+      "id": "8270e061-4c56-414d-a9ae-553447d21ed0",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25秋风茶包小立牌（夹子）",
+      "release_type": "初版",
+      "note": "背后有小夹子可以立住",
+      "status": "完售",
+      "series": "younian",
+      "event": "秋风",
+      "type": "立牌",
+      "id": "305b2a03-bb15-4261-b284-2bf5e46526f8",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2022
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市茶包小立牌（夹子）",
+      "release_type": "初版",
+      "note": "背后有小夹子可以立住",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "立牌",
+      "id": "9c1016d4-fb77-4d4b-9085-a8ecfb5f7d1c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2021
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25秋风糖果吧唧立牌",
+      "release_type": "初版",
+      "note": "背后有别针，有小夹子可以立住所以放在立牌类了",
+      "status": "完售",
+      "series": "younian",
+      "event": "秋风",
+      "type": "立牌",
+      "id": "d16b4e40-bf19-4e12-a0ff-d10782f7f78b",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25秋风立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "秋风",
+      "type": "立牌",
+      "id": "4f1d4b2c-2dac-45ef-81e5-9f14367647d0",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "立牌",
+      "id": "38c470f8-2fc5-4faa-ba15-816b8dd49b8e",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26夏市立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "立牌",
+      "id": "4b1f2596-18fd-46f1-bce2-a1879240ed1e",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Coolb"
+      ],
+      "character": "斐恩",
+      "name": "cool公式书立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "book",
+      "event": "其他",
+      "type": "立牌",
+      "id": "74265727-d217-475b-b15e-242b22b070e8",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2021
     }
   ]
 }
