@@ -3,62 +3,62 @@
     {
       "order": 1,
       "name": "立绘柄",
-      "cover": "assets/img/uploads/c18_1.png",
+      "cover": "assets/img/uploads/series-stand.png",
       "slug": "lihui"
     },
     {
       "order": 2,
       "name": "QQR",
       "slug": "qqr",
-      "cover": "assets/img/uploads/2026-10-24-115125.png"
+      "cover": "assets/img/uploads/serious-qqr.png"
     },
     {
       "order": 3,
       "name": "幼年柄",
       "slug": "younian",
-      "cover": "assets/img/uploads/25秋风珠光卡.png"
+      "cover": "assets/img/uploads/series-25fall.png"
     },
     {
       "order": 4,
       "name": "执事柄",
       "slug": "zhishi",
-      "cover": "assets/img/uploads/25冬市拍立得.png"
+      "cover": "assets/img/uploads/series-25winter.png"
     },
     {
       "order": 5,
       "name": "海军柄",
       "slug": "haijun",
-      "cover": "assets/img/uploads/26夏市拍立得.png"
+      "cover": "assets/img/uploads/series-26sum.png"
     },
     {
       "order": 6,
       "name": "公式书柄",
       "slug": "book",
-      "cover": "assets/img/uploads/公式书-红包.png"
+      "cover": "assets/img/uploads/series-book.png"
     },
     {
       "order": 7,
       "name": "CG柄",
       "slug": "cg",
-      "cover": "assets/img/uploads/2025121722420400_c.jpg"
+      "cover": "assets/img/uploads/series-cg.jpg"
     },
     {
       "order": 8,
       "name": "香薰柄",
       "slug": "xiangxun",
-      "cover": "assets/img/uploads/2026-09-23-154739.jpg"
+      "cover": "assets/img/uploads/series-lova.jpg"
     },
     {
       "order": 9,
       "name": "回眸",
       "slug": "huimou",
-      "cover": "assets/img/uploads/2026042223082000_s.jpg"
+      "cover": "assets/img/uploads/series-glance.jpg"
     },
     {
       "order": 10,
       "name": "其他",
       "slug": "qita",
-      "cover": "assets/img/uploads/screenshot_2026-10-16_184448_491.png"
+      "cover": "assets/img/uploads/series-other.png"
     }
   ]
 }
