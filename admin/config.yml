@@ -46,8 +46,8 @@ collections:
             label: 谷子
             widget: list
             fields:
-              - { name: id, label: 唯一 ID, widget: uuid }
               - { name: name, label: 制品名称, widget: string }
+              - { name: id, label: 唯一 ID, widget: uuid }
               - name: series
                 label: 柄图系列
                 widget: relation
