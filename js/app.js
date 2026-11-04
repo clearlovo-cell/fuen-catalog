@@ -3,6 +3,28 @@ import { bindImageFallbacks, escapeHtml, renderCard, renderImage, renderModal } 
 
 const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
 const state = { goods: [], series: [], filters: emptyFilters(), loaded: false };
+// 前端下拉菜单的自定义显示顺序
+const filterOrders = {
+  type: [ "吧唧", "立牌", "透卡", "色纸", "挂件", "相卡", "拍立得", "留言卡", "ID卡", "书签", "镭射票", "珠光卡", "杂志", "杯垫", "其他"],
+  platforms: [ "Otomate", "Joyoland", "StellaWorth", "Alice", "Ebten", "oioi", "Wondergoo", "Neowing", "Gamecity", "Trader", "Challe", "B's-log", "Coolb", "宝岛", "乐天", "Trangle Teezer", "Lovaroma", "其他"],
+  event: [
+    "本篇店特", "FD店特", "本篇繁中限定", "FD繁中限定", "夏市", "秋风", "冬市", "甜品趴", "OTP", "AGF", "亚洲限定", "联名", "其他"]
+};
+
+// 按指定数组排序；未指定的选项排在最后
+function sortByCustomOrder(values, order) {
+  const rank = new Map(order.map((value, index) => [value, index]));
+
+  return [...values].sort((a, b) => {
+    const aIndex = rank.get(a) ?? order.length;
+    const bIndex = rank.get(b) ?? order.length;
+
+    if (aIndex !== bIndex) return aIndex - bIndex;
+
+    // 两个选项都没有指定顺序时，保持按名称排序
+    return a.localeCompare(b, "zh-CN", { numeric: true });
+  });
+}
 const $ = selector => document.querySelector(selector);
 const els = {
   rail: $("#series-rail"), grid: $("#goods-grid"), total: $("#total-count"), result: $("#result-count"), catalogTitle: $("#catalog-title"),
@@ -79,10 +101,10 @@ function fillSelect(key, values) {
 }
 
 function initialiseFilters() {
-  fillSelect("type", uniqueValues(state.goods, "type"));
-  fillSelect("platforms", uniqueValues(state.goods, "platforms"));
+  fillSelect("type", sortByCustomOrder(uniqueValues(state.goods, "type"), filterOrders.type));
+  fillSelect("platforms", sortByCustomOrder(uniqueValues(state.goods, "platforms"), filterOrders.platforms));
   fillSelect("year", uniqueValues(state.goods, "year").reverse());
-  fillSelect("event", uniqueValues(state.goods, "event"));
+  fillSelect("event", sortByCustomOrder(uniqueValues(state.goods, "event"), filterOrders.event));
   fillSelect("release_type", uniqueValues(state.goods, "release_type"));
 
   const materials = [...new Set(state.goods.flatMap(item => splitMaterials(item.material)))].sort((a, b) => a.localeCompare(b, "zh-CN"));
