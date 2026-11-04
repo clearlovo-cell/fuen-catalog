@@ -1759,6 +1759,100 @@
       "id": "a09aa267-957a-413b-9b49-e294aceadc82",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "Challe"
+      ],
+      "material": "涤纶",
+      "character": "斐恩",
+      "name": "kuji B赏方巾",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "其他",
+      "id": "7103f2fe-222f-47a5-a2d1-e32a96ce9399",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "宝岛"
+      ],
+      "material": "涤纶",
+      "character": "斐恩",
+      "name": "宝岛FD店特挂画",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "其他",
+      "id": "cf44c505-f1f0-4e03-890c-73e56445e3c0",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "character": "斐恩",
+      "name": "25OTP 大王扇",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "其他",
+      "id": "e256ed0d-3d3f-4b00-a9af-bdbc5762c04c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "25OTP 贴纸",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "其他",
+      "id": "a4835cea-1584-4183-8841-9759ba942126",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市杯垫",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "杯垫",
+      "id": "37698163-2d98-4480-bd8e-ea731ec4e02c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Trangle Teezer"
+      ],
+      "character": "斐恩",
+      "name": "tangle teezer 气垫梳",
+      "release_type": "初版",
+      "status": "在售",
+      "series": "huimou",
+      "event": "联名",
+      "type": "其他",
+      "id": "13760ce7-132f-4c5b-8c1f-8c2a1fb9c195",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
     }
   ]
 }
