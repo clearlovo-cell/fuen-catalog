@@ -1009,6 +1009,227 @@
       "id": "63e15bc4-5178-4c0f-b7b8-99ac0eda0085",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "character": "斐恩",
+      "name": "S店CG透卡1",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "其他",
+      "type": "透卡",
+      "id": "9fbacc3a-752b-4f5c-b456-00bc4509959f",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "character": "斐恩",
+      "name": "S店CG透卡2",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "其他",
+      "type": "透卡",
+      "id": "d025546b-8332-4c26-b37b-17f71d83d77a",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Ebten"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "e店fd店特透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "透卡",
+      "id": "5d1c13ed-f3d7-4853-921a-707a0006410c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "S店透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "透卡",
+      "id": "fc6c655a-c12e-498c-9fe8-6bce3242d210",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25AGF小透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "AGF",
+      "type": "透卡",
+      "id": "bf1203c9-0c38-4871-986e-1208f71edf33",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25AGF大透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "AGF",
+      "type": "透卡",
+      "id": "c845aaa8-4296-422b-810e-7aa3a5e55a55",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "宝岛"
+      ],
+      "character": "斐恩",
+      "name": "宝岛FD店特透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "透卡",
+      "id": "3216bd8f-dcde-40eb-9bf8-44e414844a76",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25秋风透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "younian",
+      "event": "秋风",
+      "type": "透卡",
+      "id": "6bbdcc1e-dfe9-424b-9425-a71d5616b051",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市透卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "透卡",
+      "id": "c343c11e-f9b5-4a0f-9661-77e6215d591b",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2022
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26甜品趴透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "甜品趴",
+      "type": "透卡",
+      "id": "13bcf9b8-6cb9-4f95-977c-d45ddf3d1624",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26夏市小透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "透卡",
+      "id": "57ab58c5-dd65-42b1-90b4-f4643edf5040",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26夏市大透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "透卡",
+      "id": "77425139-c7b3-4176-b193-c4ddfd159073",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26OTP心形透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "younian",
+      "event": "OTP",
+      "type": "透卡",
+      "id": "c232da2f-fbc4-4932-919f-0fe1c2ecb487",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "亚洲限定双面透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "亚洲限定",
+      "type": "透卡",
+      "id": "89971ff3-2f8e-4b97-8485-bc7cd8604012",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
     }
   ]
 }
