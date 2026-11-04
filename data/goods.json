@@ -2,34 +2,19 @@
   "goods": [
     {
       "platforms": [
-        "Lovaroma"
+        "Otomate"
       ],
       "material": "纸",
       "character": "斐恩",
-      "name": "香薰联名留言卡",
+      "name": "24秋风SSC留言卡",
       "release_type": "初版",
-      "status": "预售",
-      "series": "xiangxun",
-      "event": "联名",
+      "status": "完售",
+      "series": "qita",
+      "event": "秋风",
       "type": "留言卡",
-      "id": "2b123ad2-5db2-4f66-87e1-0856d74bc2e5",
+      "id": "fcba566e-7981-4263-a8fa-dd99fe84c392",
       "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Lovaroma"
-      ],
-      "character": "斐恩",
-      "name": "香薰机",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "xiangxun",
-      "event": "联名",
-      "type": "其他",
-      "id": "76dfb29e-827b-4f60-bb5c-9bea4bbde462",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
+      "year": 2024
     },
     {
       "platforms": [
@@ -51,6 +36,38 @@
       "platforms": [
         "StellaWorth"
       ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "s店书签",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "本篇店特",
+      "type": "书签",
+      "id": "155897ef-3ee2-42d3-abcb-2ee7af54e428",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "S店透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "透卡",
+      "id": "fc6c655a-c12e-498c-9fe8-6bce3242d210",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
       "material": "马口铁",
       "character": "斐恩",
       "name": "s店fd店特吧唧",
@@ -60,6 +77,22 @@
       "event": "FD店特",
       "type": "吧唧",
       "id": "5e15f316-bef1-4f7f-accd-e4a8f4830ebc",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "s店FD店特挂件（立牌）",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "FD店特",
+      "type": "挂件",
+      "id": "2b4b5b03-3681-4825-80b2-56a81ea4a2a6",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
     },
@@ -81,6 +114,84 @@
     },
     {
       "platforms": [
+        "StellaWorth"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "s店早期预约相卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "FD店特",
+      "type": "相卡",
+      "id": "05de908f-bbb7-4379-9006-67dc710b8411",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "s店 满赠留言卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "留言卡",
+      "id": "f8b59bec-0276-4951-a527-da47c6a254b3",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "character": "斐恩",
+      "name": "S店CG透卡1",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "其他",
+      "type": "透卡",
+      "id": "9fbacc3a-752b-4f5c-b456-00bc4509959f",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "character": "斐恩",
+      "name": "S店CG透卡2",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "其他",
+      "type": "透卡",
+      "id": "d025546b-8332-4c26-b37b-17f71d83d77a",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "s店脸红丝带麻将挂件",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "挂件",
+      "id": "feb07384-7e7c-4491-9fe5-0e4758c8e851",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
         "Wondergoo"
       ],
       "material": "马口铁",
@@ -92,22 +203,6 @@
       "event": "FD店特",
       "type": "吧唧",
       "id": "ace04566-59de-423a-858b-d8b1155c4fe3",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "宝岛"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "宝岛fd方吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "FD店特",
-      "type": "吧唧",
-      "id": "f1d81efe-f2aa-450f-9b21-203dafdd23a4",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
     },
@@ -145,246 +240,6 @@
     },
     {
       "platforms": [
-        "Ebten"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "e店 fd店特",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "FD店特",
-      "type": "吧唧",
-      "id": "a68284ca-48b4-4644-a5b5-05025c460d48",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "s店 涂鸦QQR吧唧",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "qqr",
-      "event": "其他",
-      "type": "吧唧",
-      "id": "292093c9-fd61-4ed0-b229-1a54dd88e524",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "繁中福袋吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "本篇繁中限定",
-      "type": "吧唧",
-      "id": "88e0553c-2833-49c5-bf86-bbb74cd3044c",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "25秋风吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "younian",
-      "event": "秋风",
-      "type": "吧唧",
-      "id": "8b66cd48-4c34-49a1-94cc-5705c098d8a9",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "25OTP吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "OTP",
-      "type": "吧唧",
-      "id": "12988acb-a136-4253-8569-e96943cf844f",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "25冬市吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "zhishi",
-      "event": "冬市",
-      "type": "吧唧",
-      "id": "c99bc12b-af1d-4237-a0d4-09b71e18ded7",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "26甜品趴吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "甜品趴",
-      "type": "吧唧",
-      "id": "d7e05eb4-fbc7-4483-8114-3a1d174a64bc",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "26夏市吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "haijun",
-      "event": "夏市",
-      "type": "吧唧",
-      "id": "9a61699b-95f2-454b-a62b-1cbe949b92d5",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "26OTP吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "OTP",
-      "type": "吧唧",
-      "id": "49f91be1-70a2-4e70-88c8-3e148178bd03",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "26OTP QQR",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "OTP",
-      "type": "吧唧",
-      "id": "b1a6f7cd-6b0d-4476-af03-fc0a7cbf93c9",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Coolb"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "coolb公式书吧唧",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "book",
-      "event": "其他",
-      "type": "吧唧",
-      "id": "07622ee9-e5e2-4f14-8549-3cefcf94b223",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "s店公式书吧唧",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "book",
-      "event": "其他",
-      "type": "吧唧",
-      "id": "f7950269-9462-404b-bfd0-4b9d3d0176ae",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "FD繁中特装吧唧",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "huimou",
-      "event": "FD繁中限定",
-      "type": "吧唧",
-      "id": "3aa674ea-dd0f-404b-92af-bea5cfdb52a7",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "26冬市吧唧",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "qita",
-      "event": "冬市",
-      "type": "吧唧",
-      "id": "c1155137-a234-4e6c-a02f-c16a86d3eefe",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "s店早期预约相卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "FD店特",
-      "type": "相卡",
-      "id": "05de908f-bbb7-4379-9006-67dc710b8411",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
         "StellaWorth"
       ],
       "material": "纸",
@@ -417,6 +272,197 @@
     },
     {
       "platforms": [
+        "Wondergoo"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "wdg fd红衣立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "0f46d214-b1ac-4a99-80b1-657441f25cdc",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Wondergoo"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "wdg fd仙人立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "5591fff8-f9a8-463f-9bad-58336dc3dd85",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Ebten"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "e店 fd店特吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "a68284ca-48b4-4644-a5b5-05025c460d48",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Ebten"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "e店 fd店特立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "538c5704-71cd-49c4-ae86-b23a280ac376",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Ebten"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "e店fd店特透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "透卡",
+      "id": "5d1c13ed-f3d7-4853-921a-707a0006410c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "宝岛"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "宝岛fd方吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "吧唧",
+      "id": "f1d81efe-f2aa-450f-9b21-203dafdd23a4",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "宝岛"
+      ],
+      "character": "斐恩",
+      "name": "宝岛FD店特透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "透卡",
+      "id": "3216bd8f-dcde-40eb-9bf8-44e414844a76",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "宝岛"
+      ],
+      "material": "涤纶",
+      "character": "斐恩",
+      "name": "宝岛FD店特挂画",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "其他",
+      "id": "cf44c505-f1f0-4e03-890c-73e56445e3c0",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "宝岛"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD甜盒立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qita",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "82a0f6a3-e9bc-4649-a2ab-18ddc82086df",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Trader"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "trader FD店特挂件",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "FD店特",
+      "type": "挂件",
+      "id": "c649da45-e561-4d53-8ffd-4ae9cbd0e587",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "乐天"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "乐天FD店特挂件",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "挂件",
+      "id": "87787d52-37b1-4256-b2d5-be04d0994de5",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "oioi"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "oioi立牌",
+      "release_type": "初版",
+      "status": "在售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "立牌",
+      "id": "2167de1e-773f-4061-abef-4de5491c3f36",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
         "Gamecity"
       ],
       "material": "亚克力",
@@ -444,22 +490,6 @@
       "event": "FD店特",
       "type": "留言卡",
       "id": "2bd13baa-fb5b-405c-8e4e-c737dd6ef76b",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "otg 相卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "相卡",
-      "id": "1b898df4-3c9f-4459-924d-8de05c6cb86b",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
     },
@@ -498,17 +528,16 @@
     },
     {
       "platforms": [
-        "StellaWorth"
+        "Neowing"
       ],
-      "material": "纸",
       "character": "斐恩",
-      "name": "s店 满赠留言卡",
+      "name": "neowing FD店特书签",
       "release_type": "初版",
       "status": "完售",
-      "series": "lihui",
+      "series": "huimou",
       "event": "FD店特",
-      "type": "留言卡",
-      "id": "f8b59bec-0276-4951-a527-da47c6a254b3",
+      "type": "书签",
+      "id": "110e0623-ce11-4ed8-bd0a-3ccdf1c0874d",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
     },
@@ -518,127 +547,15 @@
       ],
       "material": "纸",
       "character": "斐恩",
-      "name": "24秋风SSC留言卡",
+      "name": "otg 相卡",
       "release_type": "初版",
       "status": "完售",
-      "series": "qita",
-      "event": "秋风",
-      "type": "留言卡",
-      "id": "fcba566e-7981-4263-a8fa-dd99fe84c392",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "Lovaroma"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "lovaroma香薰留言卡",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "xiangxun",
-      "event": "联名",
-      "type": "留言卡",
-      "id": "a7176de1-4ef5-4cf0-a7ac-44f15514a75d",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "s店公式书相卡",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "book",
+      "series": "lihui",
       "event": "其他",
       "type": "相卡",
-      "id": "45da54f6-0e9e-4770-a552-2a7534de4e88",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Coolb"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "coolb公式书红包",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "book",
-      "event": "其他",
-      "type": "其他",
-      "id": "f09a3185-5f58-433b-be0d-791fcfa038be",
+      "id": "1b898df4-3c9f-4459-924d-8de05c6cb86b",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "繁中福袋色纸",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "cg",
-      "event": "本篇繁中限定",
-      "type": "色纸",
-      "id": "2b7b17c5-9fda-4ecc-b842-b65a5c45c329",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "25OTP留言卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "OTP",
-      "type": "留言卡",
-      "id": "ac611c8a-7f8a-46b2-82df-71ac4abda34b",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26甜品趴留言卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "甜品趴",
-      "type": "留言卡",
-      "id": "516b4f1b-4596-4aa8-a3b6-258d3fc9104d",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "26OTP留言卡",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "lihui",
-      "event": "OTP",
-      "type": "留言卡",
-      "id": "9fc64496-d410-4d60-a860-179159bc87ab",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
     },
     {
       "platforms": [
@@ -658,33 +575,65 @@
     },
     {
       "platforms": [
+        "Challe"
+      ],
+      "material": "涤纶",
+      "character": "斐恩",
+      "name": "kuji B赏方巾",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "其他",
+      "id": "7103f2fe-222f-47a5-a2d1-e32a96ce9399",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
         "Joyoland"
       ],
-      "material": "亚克力",
+      "material": "马口铁",
       "character": "斐恩",
-      "name": "繁中福袋立牌",
+      "name": "繁中福袋吧唧",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
       "event": "本篇繁中限定",
-      "type": "立牌",
-      "id": "33a4cc78-94d7-4af2-8db6-88a6d95fdeac",
+      "type": "吧唧",
+      "id": "88e0553c-2833-49c5-bf86-bbb74cd3044c",
       "image": "assets/img/uploads/loading.png",
       "year": 2024
     },
     {
       "platforms": [
-        "oioi"
+        "Joyoland"
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "oioi立牌",
+      "name": "繁中福袋色纸",
       "release_type": "初版",
-      "status": "在售",
+      "status": "完售",
+      "series": "cg",
+      "event": "本篇繁中限定",
+      "type": "色纸",
+      "id": "2b7b17c5-9fda-4ecc-b842-b65a5c45c329",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "亚洲限定镭射票",
+      "release_type": "初版",
+      "status": "完售",
       "series": "lihui",
-      "event": "其他",
-      "type": "立牌",
-      "id": "2167de1e-773f-4061-abef-4de5491c3f36",
+      "event": "亚洲限定",
+      "type": "镭射票",
+      "id": "9408748b-5008-4127-84c3-7941ee92b389",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
     },
@@ -706,161 +655,49 @@
     },
     {
       "platforms": [
-        "宝岛"
+        "Joyoland"
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "FD甜盒立牌",
+      "name": "亚洲限定双面透卡",
       "release_type": "初版",
       "status": "完售",
-      "series": "qita",
-      "event": "FD店特",
-      "type": "立牌",
-      "id": "82a0f6a3-e9bc-4649-a2ab-18ddc82086df",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2023
-    },
-    {
-      "platforms": [
-        "Wondergoo"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "wdg fd红衣立牌",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "FD店特",
-      "type": "立牌",
-      "id": "0f46d214-b1ac-4a99-80b1-657441f25cdc",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2023
-    },
-    {
-      "platforms": [
-        "Wondergoo"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "wdg fd仙人立牌",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "FD店特",
-      "type": "立牌",
-      "id": "5591fff8-f9a8-463f-9bad-58336dc3dd85",
+      "series": "cg",
+      "event": "亚洲限定",
+      "type": "透卡",
+      "id": "89971ff3-2f8e-4b97-8485-bc7cd8604012",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
     },
     {
       "platforms": [
-        "Ebten"
+        "Joyoland"
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "e店店特立牌",
+      "name": "繁中福袋立牌",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
-      "event": "FD店特",
+      "event": "本篇繁中限定",
       "type": "立牌",
-      "id": "538c5704-71cd-49c4-ae86-b23a280ac376",
+      "id": "33a4cc78-94d7-4af2-8db6-88a6d95fdeac",
       "image": "assets/img/uploads/loading.png",
-      "year": 2026
+      "year": 2024
     },
     {
       "platforms": [
         "Otomate"
       ],
-      "material": "亚克力",
+      "material": "马口铁",
       "character": "斐恩",
-      "name": "25OTP留言立",
+      "name": "25秋风吧唧",
       "release_type": "初版",
       "status": "完售",
-      "series": "lihui",
-      "event": "OTP",
-      "type": "立牌",
-      "id": "799b4492-08ea-4f60-845d-590c86c74f5c",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26OTP留言立",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "OTP",
-      "type": "立牌",
-      "id": "3d493756-5f9c-4940-aef2-e3857e5b99f2",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "25OTP Q立",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "OTP",
-      "type": "立牌",
-      "id": "f7af369f-53a2-499d-8abf-b2a7741a051e",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26甜品趴 Q立",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "甜品趴",
-      "type": "立牌",
-      "id": "cf33672a-4ba7-4217-8f36-6f94fb91f77d",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2023
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "s店涂鸦 QQR立牌",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "qqr",
-      "event": "其他",
-      "type": "立牌",
-      "id": "66a6bd51-331f-4fab-82a3-183c5be995d5",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2023
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26OTP Q立",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "qqr",
-      "event": "OTP",
-      "type": "立牌",
-      "id": "8270e061-4c56-414d-a9ae-553447d21ed0",
+      "series": "younian",
+      "event": "秋风",
+      "type": "吧唧",
+      "id": "8b66cd48-4c34-49a1-94cc-5705c098d8a9",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
     },
@@ -880,23 +717,6 @@
       "id": "305b2a03-bb15-4261-b284-2bf5e46526f8",
       "image": "assets/img/uploads/loading.png",
       "year": 2022
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "25冬市茶包小立牌（夹子）",
-      "release_type": "初版",
-      "note": "背后有小夹子可以立住",
-      "status": "完售",
-      "series": "zhishi",
-      "event": "冬市",
-      "type": "立牌",
-      "id": "9c1016d4-fb77-4d4b-9085-a8ecfb5f7d1c",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2021
     },
     {
       "platforms": [
@@ -937,13 +757,13 @@
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "25冬市立牌",
+      "name": "25秋风透卡",
       "release_type": "初版",
       "status": "完售",
-      "series": "zhishi",
-      "event": "冬市",
-      "type": "立牌",
-      "id": "38c470f8-2fc5-4faa-ba15-816b8dd49b8e",
+      "series": "younian",
+      "event": "秋风",
+      "type": "透卡",
+      "id": "6bbdcc1e-dfe9-424b-9425-a71d5616b051",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
     },
@@ -953,124 +773,31 @@
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "26夏市立牌",
+      "name": "25秋风挂件",
       "release_type": "初版",
       "status": "完售",
-      "series": "haijun",
-      "event": "夏市",
-      "type": "立牌",
-      "id": "4b1f2596-18fd-46f1-bce2-a1879240ed1e",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2023
-    },
-    {
-      "platforms": [
-        "Coolb"
-      ],
-      "character": "斐恩",
-      "name": "cool公式书立牌",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "book",
-      "event": "其他",
-      "type": "立牌",
-      "id": "74265727-d217-475b-b15e-242b22b070e8",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2021
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "FD繁中特装立牌",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "huimou",
-      "event": "FD繁中限定",
-      "type": "立牌",
-      "id": "17140f3c-5711-4220-8a23-f4a8bca9c8c8",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "FD繁中豪华双插立牌",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "qita",
-      "event": "FD繁中限定",
-      "type": "立牌",
-      "id": "63e15bc4-5178-4c0f-b7b8-99ac0eda0085",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "character": "斐恩",
-      "name": "S店CG透卡1",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "cg",
-      "event": "其他",
-      "type": "透卡",
-      "id": "9fbacc3a-752b-4f5c-b456-00bc4509959f",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "character": "斐恩",
-      "name": "S店CG透卡2",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "cg",
-      "event": "其他",
-      "type": "透卡",
-      "id": "d025546b-8332-4c26-b37b-17f71d83d77a",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Ebten"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "e店fd店特透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "FD店特",
-      "type": "透卡",
-      "id": "5d1c13ed-f3d7-4853-921a-707a0006410c",
+      "series": "younian",
+      "event": "秋风",
+      "type": "挂件",
+      "id": "8175e414-df29-4ecb-a346-11a54473ca6c",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
     },
     {
       "platforms": [
-        "StellaWorth"
+        "Otomate"
       ],
-      "material": "亚克力",
+      "material": "纸",
       "character": "斐恩",
-      "name": "S店透卡",
+      "name": "25秋风珠光卡",
       "release_type": "初版",
       "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "透卡",
-      "id": "fc6c655a-c12e-498c-9fe8-6bce3242d210",
+      "series": "younian",
+      "event": "秋风",
+      "type": "珠光卡",
+      "id": "26a3eb2e-e44e-4af1-aa09-c06a7caf10e4",
       "image": "assets/img/uploads/loading.png",
-      "year": 2024
+      "year": 2025
     },
     {
       "platforms": [
@@ -1106,194 +833,67 @@
     },
     {
       "platforms": [
-        "宝岛"
+        "Otomate"
       ],
+      "material": "马口铁",
       "character": "斐恩",
-      "name": "宝岛FD店特透卡",
+      "name": "25OTP吧唧",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
-      "event": "FD店特",
-      "type": "透卡",
-      "id": "3216bd8f-dcde-40eb-9bf8-44e414844a76",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "25秋风透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "younian",
-      "event": "秋风",
-      "type": "透卡",
-      "id": "6bbdcc1e-dfe9-424b-9425-a71d5616b051",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "25冬市透卡",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "zhishi",
-      "event": "冬市",
-      "type": "透卡",
-      "id": "c343c11e-f9b5-4a0f-9661-77e6215d591b",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2022
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26甜品趴透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "甜品趴",
-      "type": "透卡",
-      "id": "13bcf9b8-6cb9-4f95-977c-d45ddf3d1624",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26夏市小透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "haijun",
-      "event": "夏市",
-      "type": "透卡",
-      "id": "57ab58c5-dd65-42b1-90b4-f4643edf5040",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26夏市大透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "haijun",
-      "event": "夏市",
-      "type": "透卡",
-      "id": "77425139-c7b3-4176-b193-c4ddfd159073",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26OTP心形透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "younian",
       "event": "OTP",
-      "type": "透卡",
-      "id": "c232da2f-fbc4-4932-919f-0fe1c2ecb487",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "亚洲限定双面透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "cg",
-      "event": "亚洲限定",
-      "type": "透卡",
-      "id": "89971ff3-2f8e-4b97-8485-bc7cd8604012",
+      "type": "吧唧",
+      "id": "12988acb-a136-4253-8569-e96943cf844f",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
     },
     {
       "platforms": [
-        "Trader"
+        "Otomate"
       ],
-      "material": "亚克力",
+      "material": "纸",
       "character": "斐恩",
-      "name": "trader FD店特挂件",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "FD店特",
-      "type": "挂件",
-      "id": "c649da45-e561-4d53-8ffd-4ae9cbd0e587",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "乐天"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "乐天FD店特挂件",
+      "name": "25OTP留言卡",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
-      "event": "FD店特",
-      "type": "挂件",
-      "id": "87787d52-37b1-4256-b2d5-be04d0994de5",
+      "event": "OTP",
+      "type": "留言卡",
+      "id": "ac611c8a-7f8a-46b2-82df-71ac4abda34b",
       "image": "assets/img/uploads/loading.png",
-      "year": 2026
+      "year": 2025
     },
     {
       "platforms": [
-        "StellaWorth"
+        "Otomate"
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "s店FD店特挂件（立牌）",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "FD店特",
-      "type": "挂件",
-      "id": "2b4b5b03-3681-4825-80b2-56a81ea4a2a6",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "s店脸红丝带麻将挂件",
+      "name": "25OTP留言立",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
-      "event": "其他",
-      "type": "挂件",
-      "id": "feb07384-7e7c-4491-9fe5-0e4758c8e851",
+      "event": "OTP",
+      "type": "立牌",
+      "id": "799b4492-08ea-4f60-845d-590c86c74f5c",
       "image": "assets/img/uploads/loading.png",
-      "year": 2026
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25OTP Q立",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "立牌",
+      "id": "f7af369f-53a2-499d-8abf-b2a7741a051e",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
     },
     {
       "platforms": [
@@ -1330,197 +930,6 @@
       "platforms": [
         "Otomate"
       ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26甜品趴 Q挂",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "甜品趴",
-      "type": "挂件",
-      "id": "e194e31c-c6de-4d4c-9209-1b3e7cf8c4e4",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26甜品趴 ID挂件",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qita",
-      "event": "甜品趴",
-      "type": "挂件",
-      "id": "9b85e914-35ac-40ed-95fa-08e8ba89fdb0",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26OTP Q挂",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "OTP",
-      "type": "挂件",
-      "id": "45cdbf9b-d698-4dcc-ae48-dccabf2b579f",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "25秋风挂件",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "younian",
-      "event": "秋风",
-      "type": "挂件",
-      "id": "8175e414-df29-4ecb-a346-11a54473ca6c",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "25冬市挂件",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "zhishi",
-      "event": "冬市",
-      "type": "挂件",
-      "id": "8008eded-ee02-4948-b57b-ef428740f7b1",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "26夏市挂件",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "haijun",
-      "event": "夏市",
-      "type": "挂件",
-      "id": "8a495470-af36-42a9-8571-552748e0dec5",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2023
-    },
-    {
-      "platforms": [
-        "Lovaroma"
-      ],
-      "material": "其他",
-      "character": "斐恩",
-      "name": "lovaroma扩香石挂件",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "xiangxun",
-      "event": "联名",
-      "type": "挂件",
-      "id": "19007a12-c8d8-4ba5-810c-0b3b17af0b0a",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "亚洲限定镭射票",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "亚洲限定",
-      "type": "镭射票",
-      "id": "9408748b-5008-4127-84c3-7941ee92b389",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Neowing"
-      ],
-      "character": "斐恩",
-      "name": "neowing FD店特书签",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "huimou",
-      "event": "FD店特",
-      "type": "书签",
-      "id": "110e0623-ce11-4ed8-bd0a-3ccdf1c0874d",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "s店书签",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "本篇店特",
-      "type": "书签",
-      "id": "155897ef-3ee2-42d3-abcb-2ee7af54e428",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "26甜品趴 Q版闪卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "甜品趴",
-      "type": "珠光卡",
-      "id": "3b474bc2-fdad-45ff-8b18-9b3efbef1c6b",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "26甜品趴 正比闪卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "甜品趴",
-      "type": "珠光卡",
-      "id": "586c3476-08a9-4199-b709-a85105fee02e",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
       "character": "斐恩",
       "name": "25OTP 票根",
       "release_type": "初版",
@@ -1536,16 +945,32 @@
       "platforms": [
         "Otomate"
       ],
+      "material": "纸",
       "character": "斐恩",
-      "name": "26OTP 票根",
+      "name": "25OTP ID卡",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
       "event": "OTP",
-      "type": "镭射票",
-      "id": "3d8199db-2748-424a-b4e1-7a06165007e6",
+      "type": "ID卡",
+      "id": "13a644e3-33a8-4447-9345-2ae9a54b7147",
       "image": "assets/img/uploads/loading.png",
-      "year": 2026
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "character": "斐恩",
+      "name": "25OTP 大王扇",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "其他",
+      "id": "e256ed0d-3d3f-4b00-a9af-bdbc5762c04c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
     },
     {
       "platforms": [
@@ -1553,13 +978,94 @@
       ],
       "material": "纸",
       "character": "斐恩",
-      "name": "25秋风珠光卡",
+      "name": "25OTP 贴纸",
       "release_type": "初版",
       "status": "完售",
-      "series": "younian",
-      "event": "秋风",
-      "type": "珠光卡",
-      "id": "26a3eb2e-e44e-4af1-aa09-c06a7caf10e4",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "其他",
+      "id": "a4835cea-1584-4183-8841-9759ba942126",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "25冬市吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "吧唧",
+      "id": "c99bc12b-af1d-4237-a0d4-09b71e18ded7",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市茶包小立牌（夹子）",
+      "release_type": "初版",
+      "note": "背后有小夹子可以立住",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "立牌",
+      "id": "9c1016d4-fb77-4d4b-9085-a8ecfb5f7d1c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2021
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "立牌",
+      "id": "38c470f8-2fc5-4faa-ba15-816b8dd49b8e",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市透卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "透卡",
+      "id": "c343c11e-f9b5-4a0f-9661-77e6215d591b",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2022
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市挂件",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "挂件",
+      "id": "8008eded-ee02-4948-b57b-ef428740f7b1",
       "image": "assets/img/uploads/loading.png",
       "year": 2025
     },
@@ -1599,6 +1105,246 @@
       "platforms": [
         "Otomate"
       ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "25冬市杯垫",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "zhishi",
+      "event": "冬市",
+      "type": "杯垫",
+      "id": "37698163-2d98-4480-bd8e-ea731ec4e02c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26甜品趴吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "甜品趴",
+      "type": "吧唧",
+      "id": "d7e05eb4-fbc7-4483-8114-3a1d174a64bc",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26甜品趴留言卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "甜品趴",
+      "type": "留言卡",
+      "id": "516b4f1b-4596-4aa8-a3b6-258d3fc9104d",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26甜品趴 Q立",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "甜品趴",
+      "type": "立牌",
+      "id": "cf33672a-4ba7-4217-8f36-6f94fb91f77d",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26甜品趴透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "甜品趴",
+      "type": "透卡",
+      "id": "13bcf9b8-6cb9-4f95-977c-d45ddf3d1624",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26甜品趴 Q挂",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "甜品趴",
+      "type": "挂件",
+      "id": "e194e31c-c6de-4d4c-9209-1b3e7cf8c4e4",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26甜品趴 ID挂件",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qita",
+      "event": "甜品趴",
+      "type": "挂件",
+      "id": "9b85e914-35ac-40ed-95fa-08e8ba89fdb0",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "26甜品趴 Q版闪卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "甜品趴",
+      "type": "珠光卡",
+      "id": "3b474bc2-fdad-45ff-8b18-9b3efbef1c6b",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "26甜品趴 正比闪卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "甜品趴",
+      "type": "珠光卡",
+      "id": "586c3476-08a9-4199-b709-a85105fee02e",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "26甜品趴 ID卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "ID卡",
+      "id": "9f6d94dd-02ad-4a49-8915-f60c937a3b0b",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26夏市吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "吧唧",
+      "id": "9a61699b-95f2-454b-a62b-1cbe949b92d5",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26夏市立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "立牌",
+      "id": "4b1f2596-18fd-46f1-bce2-a1879240ed1e",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26夏市小透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "透卡",
+      "id": "57ab58c5-dd65-42b1-90b4-f4643edf5040",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26夏市大透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "透卡",
+      "id": "77425139-c7b3-4176-b193-c4ddfd159073",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26夏市挂件",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "haijun",
+      "event": "夏市",
+      "type": "挂件",
+      "id": "8a495470-af36-42a9-8571-552748e0dec5",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
       "material": "纸",
       "character": "斐恩",
       "name": "26夏市珠光卡",
@@ -1631,17 +1377,33 @@
       "platforms": [
         "Otomate"
       ],
-      "material": "纸",
+      "material": "马口铁",
       "character": "斐恩",
-      "name": "25OTP ID卡",
+      "name": "26OTP吧唧",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
       "event": "OTP",
-      "type": "ID卡",
-      "id": "13a644e3-33a8-4447-9345-2ae9a54b7147",
+      "type": "吧唧",
+      "id": "49f91be1-70a2-4e70-88c8-3e148178bd03",
       "image": "assets/img/uploads/loading.png",
-      "year": 2025
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26OTP QQR",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "吧唧",
+      "id": "b1a6f7cd-6b0d-4476-af03-fc0a7cbf93c9",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
     },
     {
       "platforms": [
@@ -1649,13 +1411,92 @@
       ],
       "material": "纸",
       "character": "斐恩",
-      "name": "26甜品趴 ID卡",
+      "name": "26OTP留言卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "留言卡",
+      "id": "9fc64496-d410-4d60-a860-179159bc87ab",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26OTP留言立",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
       "event": "OTP",
-      "type": "ID卡",
-      "id": "9f6d94dd-02ad-4a49-8915-f60c937a3b0b",
+      "type": "立牌",
+      "id": "3d493756-5f9c-4940-aef2-e3857e5b99f2",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26OTP Q立",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "立牌",
+      "id": "8270e061-4c56-414d-a9ae-553447d21ed0",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26OTP心形透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "younian",
+      "event": "OTP",
+      "type": "透卡",
+      "id": "c232da2f-fbc4-4932-919f-0fe1c2ecb487",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26OTP Q挂",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "qqr",
+      "event": "OTP",
+      "type": "挂件",
+      "id": "45cdbf9b-d698-4dcc-ae48-dccabf2b579f",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "character": "斐恩",
+      "name": "26OTP 票根",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "OTP",
+      "type": "镭射票",
+      "id": "3d8199db-2748-424a-b4e1-7a06165007e6",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
     },
@@ -1672,6 +1513,117 @@
       "event": "OTP",
       "type": "ID卡",
       "id": "74db3358-b1a5-4d40-ae3a-f87a3c0af1b4",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "s店 涂鸦QQR吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qqr",
+      "event": "其他",
+      "type": "吧唧",
+      "id": "292093c9-fd61-4ed0-b229-1a54dd88e524",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "s店涂鸦 QQR立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qqr",
+      "event": "其他",
+      "type": "立牌",
+      "id": "66a6bd51-331f-4fab-82a3-183c5be995d5",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2023
+    },
+    {
+      "platforms": [
+        "Coolb"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "coolb公式书吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "book",
+      "event": "其他",
+      "type": "吧唧",
+      "id": "07622ee9-e5e2-4f14-8549-3cefcf94b223",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Coolb"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "coolb公式书红包",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "book",
+      "event": "其他",
+      "type": "其他",
+      "id": "f09a3185-5f58-433b-be0d-791fcfa038be",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Coolb"
+      ],
+      "character": "斐恩",
+      "name": "cool公式书立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "book",
+      "event": "其他",
+      "type": "立牌",
+      "id": "74265727-d217-475b-b15e-242b22b070e8",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2021
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "s店公式书吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "book",
+      "event": "其他",
+      "type": "吧唧",
+      "id": "f7950269-9462-404b-bfd0-4b9d3d0176ae",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "s店公式书相卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "book",
+      "event": "其他",
+      "type": "相卡",
+      "id": "45da54f6-0e9e-4770-a552-2a7534de4e88",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
     },
@@ -1762,85 +1714,6 @@
     },
     {
       "platforms": [
-        "Challe"
-      ],
-      "material": "涤纶",
-      "character": "斐恩",
-      "name": "kuji B赏方巾",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "其他",
-      "id": "7103f2fe-222f-47a5-a2d1-e32a96ce9399",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "宝岛"
-      ],
-      "material": "涤纶",
-      "character": "斐恩",
-      "name": "宝岛FD店特挂画",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "FD店特",
-      "type": "其他",
-      "id": "cf44c505-f1f0-4e03-890c-73e56445e3c0",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "character": "斐恩",
-      "name": "25OTP 大王扇",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "OTP",
-      "type": "其他",
-      "id": "e256ed0d-3d3f-4b00-a9af-bdbc5762c04c",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "25OTP 贴纸",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "qqr",
-      "event": "OTP",
-      "type": "其他",
-      "id": "a4835cea-1584-4183-8841-9759ba942126",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "25冬市杯垫",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "zhishi",
-      "event": "冬市",
-      "type": "杯垫",
-      "id": "37698163-2d98-4480-bd8e-ea731ec4e02c",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
         "Trangle Teezer"
       ],
       "character": "斐恩",
@@ -1851,6 +1724,117 @@
       "event": "联名",
       "type": "其他",
       "id": "13760ce7-132f-4c5b-8c1f-8c2a1fb9c195",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Lovaroma"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "lovaroma香薰留言卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "xiangxun",
+      "event": "联名",
+      "type": "留言卡",
+      "id": "a7176de1-4ef5-4cf0-a7ac-44f15514a75d",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Lovaroma"
+      ],
+      "character": "斐恩",
+      "name": "lovaroma香薰机",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "xiangxun",
+      "event": "联名",
+      "type": "其他",
+      "id": "76dfb29e-827b-4f60-bb5c-9bea4bbde462",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Lovaroma"
+      ],
+      "material": "其他",
+      "character": "斐恩",
+      "name": "lovaroma扩香石挂件",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "xiangxun",
+      "event": "联名",
+      "type": "挂件",
+      "id": "19007a12-c8d8-4ba5-810c-0b3b17af0b0a",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "FD繁中特装吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "huimou",
+      "event": "FD繁中限定",
+      "type": "吧唧",
+      "id": "3aa674ea-dd0f-404b-92af-bea5cfdb52a7",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中特装立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "huimou",
+      "event": "FD繁中限定",
+      "type": "立牌",
+      "id": "17140f3c-5711-4220-8a23-f4a8bca9c8c8",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中豪华双插立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "FD繁中限定",
+      "type": "立牌",
+      "id": "63e15bc4-5178-4c0f-b7b8-99ac0eda0085",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26冬市吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "冬市",
+      "type": "吧唧",
+      "id": "c1155137-a234-4e6c-a02f-c16a86d3eefe",
       "image": "assets/img/uploads/loading.png",
       "year": 2026
     }
