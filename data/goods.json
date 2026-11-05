@@ -1138,6 +1138,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "Φ57mm",
       "material": "马口铁",
       "character": "斐恩",
       "name": "26甜品趴吧唧",
@@ -1147,13 +1148,14 @@
       "event": "甜品趴",
       "type": "吧唧",
       "id": "d7e05eb4-fbc7-4483-8114-3a1d174a64bc",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26甜品趴吧唧.png",
       "year": 2026
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "130×90mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26甜品趴留言卡",
@@ -1170,6 +1172,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "（プレート）W71mm×H102mm（台座）Φ25mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26甜品趴 Q立",
@@ -1179,13 +1182,14 @@
       "event": "甜品趴",
       "type": "立牌",
       "id": "cf33672a-4ba7-4217-8f36-6f94fb91f77d",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2023
+      "image": "assets/img/uploads/26甜品趴Q立.png",
+      "year": 2026
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "55×80mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26甜品趴透卡",
@@ -1195,13 +1199,14 @@
       "event": "甜品趴",
       "type": "透卡",
       "id": "13bcf9b8-6cb9-4f95-977c-d45ddf3d1624",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26甜品趴亚克力卡.png",
       "year": 2026
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "40×40mm内",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26甜品趴 Q挂",
@@ -1211,13 +1216,14 @@
       "event": "甜品趴",
       "type": "挂件",
       "id": "e194e31c-c6de-4d4c-9209-1b3e7cf8c4e4",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25甜品趴Q挂.png",
       "year": 2026
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "60×60mm内",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26甜品趴 ID挂件",
@@ -1227,13 +1233,14 @@
       "event": "甜品趴",
       "type": "挂件",
       "id": "9b85e914-35ac-40ed-95fa-08e8ba89fdb0",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
+      "image": "assets/img/uploads/26甜品趴ID挂件.png",
+      "year": 2026
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "55×80mm",
       "material": "纸",
       "character": "斐恩",
       "name": "26甜品趴 Q版闪卡",
@@ -1243,13 +1250,14 @@
       "event": "甜品趴",
       "type": "珠光卡",
       "id": "3b474bc2-fdad-45ff-8b18-9b3efbef1c6b",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26甜品趴Q版闪卡.png",
       "year": 2026
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "55×80mm",
       "material": "纸",
       "character": "斐恩",
       "name": "26甜品趴 正比闪卡",
@@ -1259,7 +1267,7 @@
       "event": "甜品趴",
       "type": "珠光卡",
       "id": "586c3476-08a9-4199-b709-a85105fee02e",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26甜品趴正比闪卡.png",
       "year": 2026
     },
     {
@@ -1275,7 +1283,7 @@
       "event": "OTP",
       "type": "ID卡",
       "id": "9f6d94dd-02ad-4a49-8915-f60c937a3b0b",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26甜品趴ID卡.png",
       "year": 2026
     },
     {
