@@ -10,14 +10,16 @@ export function splitMaterials(value = "") {
  */
 export function filterGoods(allData, filters) {
   const keyword = String(filters.search || "").trim().toLocaleLowerCase("zh-CN");
+  const selectedTypes = filters.type || [];
   const selectedPlatforms = filters.platforms || [];
+  const selectedEvents = filters.event || [];
   const selectedMaterials = filters.materials || [];
 
   return allData.filter(item => {
     if (filters.seriesId && item.series !== filters.seriesId) return false;
-    if (filters.type && item.type !== filters.type) return false;
+    if (selectedTypes.length && !selectedTypes.includes(item.type)) return false;
     if (selectedPlatforms.length && !selectedPlatforms.some(value => (item.platforms || []).includes(value))) return false;
-    if (filters.event && item.event !== filters.event) return false;
+    if (selectedEvents.length && !selectedEvents.includes(item.event)) return false;
     if (filters.year && String(item.year) !== String(filters.year)) return false;
     if (filters.release_type && item.release_type !== filters.release_type) return false;
     if (filters.hasSize && !String(item.size || "").trim()) return false;
