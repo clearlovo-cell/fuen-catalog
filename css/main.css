@@ -87,7 +87,7 @@
 .card:hover .card__img { transform: scale(1.03); }
 .card__body { padding: var(--sp-3); border-top: 1px dashed var(--c-line); }
 .card__title { display: -webkit-box; min-height: 2.8em; margin-bottom: var(--sp-2); overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: var(--fs-sm); font-weight: 700; line-height: 1.4; }
-.card__size { display: -webkit-box; min-height: 2.8em; margin: 0 0 var(--sp-2); overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow-wrap: anywhere; color: var(--c-text-2); font-size: var(--fs-xs); line-height: 1.4;}
+.card__size { display: -webkit-box; margin: 0 0 4px; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow-wrap: anywhere; color: var(--c-text-2); font-size: var(--fs-xs); line-height: 1.4;}
 .card__meta { display: flex; flex-wrap: wrap; gap: 4px 8px; color: var(--c-text-2); font-size: var(--fs-xs); }
 .card__meta span + span::before { content: "·"; margin-right: 8px; color: var(--c-text-3); }
 .card__platform { margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--c-text-2); font-size: 11px; }
