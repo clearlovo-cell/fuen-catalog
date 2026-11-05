@@ -411,7 +411,7 @@
       "event": "FD店特",
       "type": "立牌",
       "id": "82a0f6a3-e9bc-4649-a2ab-18ddc82086df",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/甜盒立牌.png",
       "year": 2026
     },
     {
@@ -818,12 +818,13 @@
       "character": "斐恩",
       "name": "25AGF小透卡",
       "release_type": "初版",
+      "note": "本制品图片收集自 Mercari公开页面，仅用于制品资料整理与展示，图片相关权利归原作者及其他合法权利人所有。本人尊重并无意侵犯任何第三方的合法权益。若您是相关权利人，认为本页使用的图片存在不妥，请通过网页底部邮箱地址与我联系，并告知具体图片或页面；经核实后，我会及时予以删除或更正。由此给您带来不便，深表歉意，也感谢您的理解与提醒。",
       "status": "完售",
       "series": "lihui",
       "event": "AGF",
       "type": "透卡",
       "id": "bf1203c9-0c38-4871-986e-1208f71edf33",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25agf小透卡.jpg",
       "year": 2025
     },
     {
@@ -834,12 +835,13 @@
       "character": "斐恩",
       "name": "25AGF大透卡",
       "release_type": "初版",
+      "note": "本制品图片收集自 Mercari公开页面，仅用于制品资料整理与展示，图片相关权利归原作者及其他合法权利人所有。本人尊重并无意侵犯任何第三方的合法权益。若您是相关权利人，认为本页使用的图片存在不妥，请通过网页底部邮箱地址与我联系，并告知具体图片或页面；经核实后，我会及时予以删除或更正。由此给您带来不便，深表歉意，也感谢您的理解与提醒。",
       "status": "完售",
       "series": "cg",
       "event": "AGF",
       "type": "透卡",
       "id": "c845aaa8-4296-422b-810e-7aa3a5e55a55",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25agf大透卡.jpg",
       "year": 2025
     },
     {
@@ -1126,12 +1128,13 @@
       "character": "斐恩",
       "name": "25冬市杯垫",
       "release_type": "初版",
+      "note": "本制品图片收集自 Mercari公开页面，仅用于制品资料整理与展示，图片相关权利归原作者及其他合法权利人所有。本人尊重并无意侵犯任何第三方的合法权益。若您是相关权利人，认为本页使用的图片存在不妥，请通过网页底部邮箱地址与我联系，并告知具体图片或页面；经核实后，我会及时予以删除或更正。由此给您带来不便，深表歉意，也感谢您的理解与提醒。",
       "status": "完售",
       "series": "zhishi",
       "event": "冬市",
       "type": "杯垫",
       "id": "37698163-2d98-4480-bd8e-ea731ec4e02c",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25冬市杯垫.jpg",
       "year": 2025
     },
     {
