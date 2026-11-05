@@ -8,7 +8,8 @@ const filterOrders = {
   type: [ "吧唧", "立牌", "透卡", "色纸", "挂件", "相卡", "拍立得", "留言卡", "ID卡", "书签", "镭射票", "珠光卡", "杂志", "杯垫", "其他"],
   platforms: [ "Otomate", "Joyoland", "StellaWorth", "Alice", "Ebten", "oioi", "Wondergoo", "Neowing", "Gamecity", "Trader", "Challe", "B's-log", "Coolb", "宝岛", "乐天", "Trangle Teezer", "Lovaroma", "其他"],
   event: [
-    "本篇店特", "FD店特", "本篇繁中限定", "FD繁中限定", "夏市", "秋风", "冬市", "甜品趴", "OTP", "AGF", "亚洲限定", "联名", "其他"]
+    "本篇店特", "FD店特", "本篇繁中限定", "FD繁中限定", "夏市", "秋风", "冬市", "甜品趴", "OTP", "AGF", "亚洲限定", "联名", "其他"],
+  materials: ["马口铁", "亚克力", "纸", "PET", "涤纶", "其他"]
 };
 
 // 按指定数组排序；未指定的选项排在最后
@@ -107,7 +108,7 @@ function initialiseFilters() {
   fillSelect("event", sortByCustomOrder(uniqueValues(state.goods, "event"), filterOrders.event));
   fillSelect("release_type", uniqueValues(state.goods, "release_type"));
 
-  const materials = [...new Set(state.goods.flatMap(item => splitMaterials(item.material)))].sort((a, b) => a.localeCompare(b, "zh-CN"));
+  const materials = sortByCustomOrder([...new Set(state.goods.flatMap(item => splitMaterials(item.material)))], filterOrders.materials);
   els.materialField.hidden = materials.length === 0;
   els.materialChips.innerHTML = materials.map(material => `<button class="material-chip" type="button" data-material="${escapeHtml(material)}" aria-pressed="false">${escapeHtml(material)}</button>`).join("");
   els.sizeField.hidden = !state.goods.some(item => String(item.size || "").trim());
