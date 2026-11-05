@@ -635,7 +635,7 @@
       "event": "亚洲限定",
       "type": "镭射票",
       "id": "9408748b-5008-4127-84c3-7941ee92b389",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/亚洲限定镭射票.png",
       "year": 2025
     },
     {
@@ -651,7 +651,7 @@
       "event": "亚洲限定",
       "type": "立牌",
       "id": "b89982a3-e778-4751-a274-37f4c8da3d0c",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/亚洲限定立牌.png",
       "year": 2025
     },
     {
@@ -667,7 +667,7 @@
       "event": "亚洲限定",
       "type": "透卡",
       "id": "89971ff3-2f8e-4b97-8485-bc7cd8604012",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/亚洲限定双面透卡.png",
       "year": 2025
     },
     {
@@ -676,14 +676,14 @@
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "繁中福袋立牌",
+      "name": "繁中福袋双插立牌",
       "release_type": "初版",
       "status": "完售",
       "series": "lihui",
       "event": "本篇繁中限定",
       "type": "立牌",
       "id": "33a4cc78-94d7-4af2-8db6-88a6d95fdeac",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/繁中双插立牌.png",
       "year": 2024
     },
     {
