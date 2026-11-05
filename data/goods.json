@@ -539,7 +539,7 @@
       "event": "FD店特",
       "type": "书签",
       "id": "110e0623-ce11-4ed8-bd0a-3ccdf1c0874d",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/neowing fd书签.png",
       "year": 2026
     },
     {
@@ -571,7 +571,7 @@
       "event": "其他",
       "type": "立牌",
       "id": "8b4c5677-d36b-426b-805c-93491fb3b56a",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/kuji立牌.png",
       "year": 2025
     },
     {
@@ -587,7 +587,7 @@
       "event": "其他",
       "type": "其他",
       "id": "7103f2fe-222f-47a5-a2d1-e32a96ce9399",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/kuji方巾.png",
       "year": 2025
     },
     {
@@ -1082,7 +1082,7 @@
       "event": "冬市",
       "type": "挂件",
       "id": "8008eded-ee02-4948-b57b-ef428740f7b1",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25冬市挂件.png",
       "year": 2025
     },
     {
@@ -1098,7 +1098,7 @@
       "event": "冬市",
       "type": "珠光卡",
       "id": "198818ec-f9e9-4310-b618-171de1e196b2",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25冬市珠光卡.png",
       "year": 2025
     },
     {
@@ -1114,7 +1114,7 @@
       "event": "冬市",
       "type": "拍立得",
       "id": "dcc439d9-ea12-4a04-8422-c5ea52ff673c",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25冬市拍立得.png",
       "year": 2025
     },
     {
@@ -1165,7 +1165,7 @@
       "event": "甜品趴",
       "type": "留言卡",
       "id": "516b4f1b-4596-4aa8-a3b6-258d3fc9104d",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26甜品趴留言卡.png",
       "year": 2026
     },
     {
@@ -1299,7 +1299,7 @@
       "event": "夏市",
       "type": "吧唧",
       "id": "9a61699b-95f2-454b-a62b-1cbe949b92d5",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26夏市吧唧.png",
       "year": 2026
     },
     {
@@ -1315,7 +1315,7 @@
       "event": "夏市",
       "type": "立牌",
       "id": "4b1f2596-18fd-46f1-bce2-a1879240ed1e",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26夏市立牌.png",
       "year": 2026
     },
     {
@@ -1331,7 +1331,7 @@
       "event": "夏市",
       "type": "透卡",
       "id": "57ab58c5-dd65-42b1-90b4-f4643edf5040",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26夏市小透卡.png",
       "year": 2026
     },
     {
@@ -1347,7 +1347,7 @@
       "event": "夏市",
       "type": "透卡",
       "id": "77425139-c7b3-4176-b193-c4ddfd159073",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26夏市大透卡.png",
       "year": 2026
     },
     {
@@ -1363,7 +1363,7 @@
       "event": "夏市",
       "type": "挂件",
       "id": "8a495470-af36-42a9-8571-552748e0dec5",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26夏市挂件.png",
       "year": 2026
     },
     {
@@ -1379,7 +1379,7 @@
       "event": "夏市",
       "type": "珠光卡",
       "id": "de65cd1c-bc1c-48fc-b196-e3046ae9c338",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26夏市珠光卡.png",
       "year": 2026
     },
     {
@@ -1395,7 +1395,7 @@
       "event": "夏市",
       "type": "拍立得",
       "id": "c6b383fe-34ef-4d59-a994-6f6fd7497355",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26夏市拍立得.png",
       "year": 2026
     },
     {
@@ -1411,7 +1411,7 @@
       "event": "OTP",
       "type": "吧唧",
       "id": "49f91be1-70a2-4e70-88c8-3e148178bd03",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26OTP吧唧.png",
       "year": 2026
     },
     {
@@ -1420,14 +1420,14 @@
       ],
       "material": "马口铁",
       "character": "斐恩",
-      "name": "26OTP QQR",
+      "name": "26OTP QQR吧唧",
       "release_type": "初版",
       "status": "完售",
       "series": "qqr",
       "event": "OTP",
       "type": "吧唧",
       "id": "b1a6f7cd-6b0d-4476-af03-fc0a7cbf93c9",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26OTP QQR吧唧.png",
       "year": 2026
     },
     {
@@ -1459,7 +1459,7 @@
       "event": "OTP",
       "type": "立牌",
       "id": "3d493756-5f9c-4940-aef2-e3857e5b99f2",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26OTP留言立.png",
       "year": 2026
     },
     {
@@ -1475,7 +1475,7 @@
       "event": "OTP",
       "type": "立牌",
       "id": "8270e061-4c56-414d-a9ae-553447d21ed0",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26OTP Q立.png",
       "year": 2026
     },
     {
@@ -1508,13 +1508,14 @@
       "event": "OTP",
       "type": "挂件",
       "id": "45cdbf9b-d698-4dcc-ae48-dccabf2b579f",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26OTPQ挂.png",
       "year": 2026
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "material": "纸",
       "character": "斐恩",
       "name": "26OTP 票根",
       "release_type": "初版",
@@ -1523,7 +1524,7 @@
       "event": "OTP",
       "type": "镭射票",
       "id": "3d8199db-2748-424a-b4e1-7a06165007e6",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26OTP票根.png",
       "year": 2026
     },
     {
@@ -1539,7 +1540,7 @@
       "event": "OTP",
       "type": "ID卡",
       "id": "74db3358-b1a5-4d40-ae3a-f87a3c0af1b4",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/26OTPID卡名札.png",
       "year": 2026
     },
     {
@@ -1555,7 +1556,7 @@
       "event": "其他",
       "type": "吧唧",
       "id": "292093c9-fd61-4ed0-b229-1a54dd88e524",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/s店 涂鸦QQR吧唧.png",
       "year": 2026
     },
     {
@@ -1571,7 +1572,7 @@
       "event": "其他",
       "type": "立牌",
       "id": "66a6bd51-331f-4fab-82a3-183c5be995d5",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/s店涂鸦Q立.png",
       "year": 2026
     },
     {
@@ -1587,7 +1588,7 @@
       "event": "其他",
       "type": "吧唧",
       "id": "07622ee9-e5e2-4f14-8549-3cefcf94b223",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/coolb公式书心形吧唧.png",
       "year": 2026
     },
     {
@@ -1603,13 +1604,14 @@
       "event": "其他",
       "type": "其他",
       "id": "f09a3185-5f58-433b-be0d-791fcfa038be",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/CB公式书红包.png",
       "year": 2026
     },
     {
       "platforms": [
         "Coolb"
       ],
+      "material": "亚克力",
       "character": "斐恩",
       "name": "cool公式书立牌",
       "release_type": "初版",
@@ -1618,7 +1620,7 @@
       "event": "其他",
       "type": "立牌",
       "id": "74265727-d217-475b-b15e-242b22b070e8",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/公式书立牌.png",
       "year": 2026
     },
     {
@@ -1634,7 +1636,7 @@
       "event": "其他",
       "type": "吧唧",
       "id": "f7950269-9462-404b-bfd0-4b9d3d0176ae",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/s店公式书吧唧.png",
       "year": 2026
     },
     {
@@ -1650,7 +1652,7 @@
       "event": "其他",
       "type": "相卡",
       "id": "45da54f6-0e9e-4770-a552-2a7534de4e88",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/s店公式书相卡.png",
       "year": 2026
     },
     {
@@ -1659,7 +1661,7 @@
       ],
       "material": "纸",
       "character": "斐恩",
-      "name": "B's-Log25年11月刊封面 FD新绘",
+      "name": "B's-Log25年11月刊内页 FD新绘",
       "release_type": "初版",
       "note": "电子版在售",
       "status": "在售",
@@ -1667,7 +1669,7 @@
       "event": "其他",
       "type": "杂志",
       "id": "c0429f69-2fc1-48c3-9765-026c8c389aad",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/bs2511.png",
       "year": 2025
     },
     {
@@ -1684,7 +1686,7 @@
       "event": "其他",
       "type": "杂志",
       "id": "370921a8-83ad-47ff-a7d4-a67b415c66dd",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/bs2512.png",
       "year": 2025
     },
     {
@@ -1701,7 +1703,7 @@
       "event": "其他",
       "type": "杂志",
       "id": "512fd66a-7b81-44f2-84fc-f73fc90ca834",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/bs2601.png",
       "year": 2025
     },
     {
@@ -1718,7 +1720,7 @@
       "event": "其他",
       "type": "杂志",
       "id": "850a7eb1-3824-4591-8946-2cd49fc5cc19",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/bs2604.png",
       "year": 2026
     },
     {
@@ -1735,7 +1737,7 @@
       "event": "其他",
       "type": "杂志",
       "id": "a09aa267-957a-413b-9b49-e294aceadc82",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/bs2606.png",
       "year": 2026
     },
     {
@@ -1750,7 +1752,7 @@
       "event": "联名",
       "type": "其他",
       "id": "13760ce7-132f-4c5b-8c1f-8c2a1fb9c195",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/TT梳.png",
       "year": 2026
     },
     {
@@ -1766,7 +1768,7 @@
       "event": "联名",
       "type": "留言卡",
       "id": "a7176de1-4ef5-4cf0-a7ac-44f15514a75d",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/lova留言卡.png",
       "year": 2026
     },
     {
@@ -1781,7 +1783,7 @@
       "event": "联名",
       "type": "其他",
       "id": "76dfb29e-827b-4f60-bb5c-9bea4bbde462",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/lova香薰机.png",
       "year": 2026
     },
     {
@@ -1797,7 +1799,7 @@
       "event": "联名",
       "type": "挂件",
       "id": "19007a12-c8d8-4ba5-810c-0b3b17af0b0a",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/lova留香石挂件.png",
       "year": 2026
     },
     {
