@@ -1825,7 +1825,7 @@
       "name": "FD繁中特装立牌",
       "release_type": "初版",
       "status": "预售",
-      "series": "huimou",
+      "series": "lihui",
       "event": "FD繁中限定",
       "type": "立牌",
       "id": "17140f3c-5711-4220-8a23-f4a8bca9c8c8",
@@ -1846,22 +1846,6 @@
       "type": "立牌",
       "id": "63e15bc4-5178-4c0f-b7b8-99ac0eda0085",
       "image": "assets/img/uploads/FD繁中新绘双插立牌.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "26冬市吧唧",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "qita",
-      "event": "冬市",
-      "type": "吧唧",
-      "id": "c1155137-a234-4e6c-a02f-c16a86d3eefe",
-      "image": "assets/img/uploads/loading.png",
       "year": 2026
     },
     {
@@ -1942,6 +1926,22 @@
       "type": "透卡",
       "id": "990f7c55-f9be-4df6-8885-f52598105930",
       "image": "assets/img/uploads/FD繁中新绘PET透卡.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26冬市吧唧",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "冬市",
+      "type": "吧唧",
+      "id": "c1155137-a234-4e6c-a02f-c16a86d3eefe",
+      "image": "assets/img/uploads/loading.png",
       "year": 2026
     }
   ]
