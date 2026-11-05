@@ -48,13 +48,25 @@ export function renderCard(item) {
     const value = item[key];
     return value ? `<span>${escapeHtml(value)}</span>` : "";
   }).join("");
-  const platforms = CARD_FIELDS.includes("platforms") ? `<p class="card__platform">${escapeHtml((item.platforms || []).join(" / ") || "平台待定")}</p>` : "";
+
+  const platforms = CARD_FIELDS.includes("platforms")
+    ? `<p class="card__platform">${escapeHtml((item.platforms || []).join(" / ") || "平台待定")}</p>`
+    : "";
+
+  // 单独读取尺寸，没有填写时显示提示
+  const size = String(item.size || "").trim();
+
   return `<button class="card" type="button" data-goods-id="${escapeHtml(item.id)}" aria-label="查看${escapeHtml(item.name)}详情">
     <div class="card__media">
       <span class="badge badge--${statusClass(item.status)}">${escapeHtml(item.status)}</span>
       ${renderImage({ src: item.image, alt: item.name, className: "card__img", width: 600, height: 600 })}
     </div>
-    <div class="card__body"><h3 class="card__title">${escapeHtml(item.name)}</h3><div class="card__meta">${meta}</div>${platforms}</div>
+    <div class="card__body">
+      <h3 class="card__title">${escapeHtml(item.name)}</h3>
+      <p class="card__size" title="${escapeHtml(size)}">${escapeHtml(size || "尺寸待补充")}</p>
+      <div class="card__meta">${meta}</div>
+      ${platforms}
+    </div>
   </button>`;
 }
 
