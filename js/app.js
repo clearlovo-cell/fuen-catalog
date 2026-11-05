@@ -1,7 +1,7 @@
 import { filterGoods, splitMaterials, uniqueValues } from "./filter.js";
 import { bindImageFallbacks, escapeHtml, renderCard, renderImage, renderModal } from "./render.js";
 
-const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
+const emptyFilters = () => ({ seriesId: "", type: [], platforms: [], event: [], year: "", release_type: "", search: "", materials: [], hasSize: false });
 const state = { goods: [], series: [], filters: emptyFilters(), loaded: false };
 // 前端下拉菜单的自定义显示顺序
 const filterOrders = {
@@ -101,11 +101,30 @@ function fillSelect(key, values) {
   });
 }
 
+function fillMultiSelect(key, values) {
+  const root = document.querySelector(`[data-multi="${key}"]`);
+  root.closest(".field").hidden = values.length === 0;
+  root.querySelector(".multi-select__menu").innerHTML = values.map(value => `<label class="multi-select__option"><input type="checkbox" value="${escapeHtml(value)}"><span>${escapeHtml(value)}</span></label>`).join("");
+}
+
+function updateMultiSelectLabel(key) {
+  const count = state.filters[key].length;
+  const button = document.querySelector(`[data-multi="${key}"] .multi-select__trigger`);
+  button.textContent = count ? `已选 ${count} 项` : key === "type" ? "全部类型" : "全部event";
+}
+
+function closeMultiSelects() {
+  document.querySelectorAll(".multi-select").forEach(root => {
+    root.querySelector(".multi-select__trigger").setAttribute("aria-expanded", "false");
+    root.querySelector(".multi-select__menu").hidden = true;
+  });
+}
+
 function initialiseFilters() {
-  fillSelect("type", sortByCustomOrder(uniqueValues(state.goods, "type"), filterOrders.type));
+  fillMultiSelect("type", sortByCustomOrder(uniqueValues(state.goods, "type"), filterOrders.type));
   fillSelect("platforms", sortByCustomOrder(uniqueValues(state.goods, "platforms"), filterOrders.platforms));
   fillSelect("year", uniqueValues(state.goods, "year").reverse());
-  fillSelect("event", sortByCustomOrder(uniqueValues(state.goods, "event"), filterOrders.event));
+  fillMultiSelect("event", sortByCustomOrder(uniqueValues(state.goods, "event"), filterOrders.event));
   fillSelect("release_type", uniqueValues(state.goods, "release_type"));
 
   const materials = sortByCustomOrder([...new Set(state.goods.flatMap(item => splitMaterials(item.material)))], filterOrders.materials);
@@ -143,7 +162,7 @@ function applyFilters() {
 
 function activeFilterCount() {
   const f = state.filters;
-  return [f.seriesId, f.type, f.event, f.year, f.release_type, f.search, f.hasSize].filter(Boolean).length + f.platforms.length + f.materials.length;
+  return [f.seriesId, f.year, f.release_type, f.search, f.hasSize].filter(Boolean).length + f.type.length + f.platforms.length + f.event.length + f.materials.length;
 }
 
 function updateFilterIndicators() {
@@ -158,10 +177,13 @@ function resetFilters() {
   els.search.value = "";
   els.size.checked = false;
   document.querySelectorAll("[data-filter]").forEach(select => { select.value = ""; });
+  document.querySelectorAll(".multi-select__menu input").forEach(input => { input.checked = false; });["type", "event"].forEach(updateMultiSelectLabel);
+  closeMultiSelects();
   els.materialChips.querySelectorAll("[data-material]").forEach(chip => chip.setAttribute("aria-pressed", "false"));
   renderSeriesRail();
   applyFilters();
 }
+
 
 function updateMoreFiltersVisibility() {
   const hasVisibleExtras = [...els.panel.querySelectorAll(".filters-extra")].some(field => !field.hidden);
@@ -224,6 +246,27 @@ document.querySelectorAll("[data-filter]").forEach(select => {
     applyFilters();
   });
 });
+document.querySelectorAll(".multi-select__trigger").forEach(button => {
+  button.addEventListener("click", () => {
+    const root = button.closest(".multi-select");
+    const shouldOpen = button.getAttribute("aria-expanded") !== "true";
+    closeMultiSelects();
+    button.setAttribute("aria-expanded", String(shouldOpen));
+    root.querySelector(".multi-select__menu").hidden = !shouldOpen;
+  });
+});
+
+document.querySelectorAll(".multi-select__menu").forEach(menu => {
+  menu.addEventListener("change", () => {
+    const key = menu.closest(".multi-select").dataset.multi;
+    state.filters[key] = [...menu.querySelectorAll("input:checked")].map(input => input.value);
+    updateMultiSelectLabel(key);
+    applyFilters();
+  });
+});
+
+document.addEventListener("click", event => { if (!event.target.closest(".multi-select")) closeMultiSelects(); });
+document.addEventListener("keydown", event => { if (event.key === "Escape") closeMultiSelects(); });
 els.size.addEventListener("change", () => { state.filters.hasSize = els.size.checked; applyFilters(); });
 els.materialChips.addEventListener("click", event => {
   const chip = event.target.closest("[data-material]");
