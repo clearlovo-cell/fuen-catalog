@@ -1,21 +1,8 @@
 # 斐恩官周图鉴
 
-《茉莉花之炯》角色斐恩的中文官方周边静态图鉴。站长通过 Decap CMS 维护 JSON 数据与 Cloudinary 图片。
+《茉莉花之炯》角色斐恩的中文官方周边静态图鉴。站长通过 Decap CMS 维护 JSON 数据与图片。
 
-> 当前仓库附带 5 条虚构示例数据与本地 SVG 示意图，用于演示完整交互，不代表真实收录数量或官方商品信息。
-
-## 1. 本地预览
-
-本项目无构建步骤，需要通过 HTTP 服务打开（不能直接双击 `index.html`，否则浏览器会拦截 JSON 请求）：
-
-```bash
-python3 -m http.server 8080
-# 或：npx serve .
-```
-
-访问 `http://localhost:8080`。内容管理入口为 `http://localhost:8080/admin/`，但 GitHub OAuth 与 CMS 写入需要先完成后文配置。
-
-## 2. 目录与数据
+## 1. 目录与数据
 
 - `data/series.json`：柄图系列数组，`order` 越小越靠前。
 - `data/goods.json`：谷子数组，`series` 保存对应系列的 `slug`。
@@ -26,7 +13,7 @@ python3 -m http.server 8080
 
 前台每次加载 JSON 都附加时间戳并使用 `cache: "no-cache"`，避免 CDN 或浏览器长期保留旧数据。COS 如另外配置了强缓存，请给 `data/*.json` 设置较短的缓存时间。
 
-## 3. GitHub Actions 同步 COS
+## 2. GitHub Actions 同步 COS
 
 工作流位于 `.github/workflows/deploy.yml`，使用腾讯云官方 [`TencentCloud/cos-action`](https://github.com/TencentCloud/cos-action)。
 
@@ -40,18 +27,7 @@ python3 -m http.server 8080
 4. 推送 `main` 分支后，Actions 会把 `index.html`、前台资源、JSON 和 `admin/` 同步到 COS 根目录；也可在 Actions 页手动运行。
 5. 直接使用 COS 默认静态网站域名通常不要求为该域名另行备案；若绑定中国大陆自定义域名与 CDN，需按腾讯云要求完成 ICP 备案后再接入。
 
-## 4. Cloudinary 与 Decap CMS
-
-编辑 `admin/config.yml`：
-
-- `backend.repo`：改为 `GitHub用户名/仓库名`。
-- `backend.base_url`：改为 API 网关暴露的 OAuth 服务根地址，末尾不要带 `/`。
-- `site_url`：改为 COS 静态网站地址。
-- `media_library.config.cloud_name` 与 `api_key`：从 Cloudinary 控制台取得。公开 API Key 可出现在前端配置中；**API Secret 绝不能写入此文件或前端仓库**。
-
-制品图片字段使用 `media_folder: "/{{fields.series}}"`，按当前记录的系列 slug 组织上传目录，例如 `/formula/`、`/chibi/`。首次正式使用时请在 CMS 中实际上传一张测试图，确认 Cloudinary 控制台中的目录符合预期；若所用 Decap/Cloudinary 版本不展开该模板，请改用自定义媒体库文件夹逻辑，不要静默把所有图片传到同一目录。
-
-## 5. 腾讯云 SCF OAuth 部署
+## 3. 腾讯云 SCF OAuth 部署
 
 1. 在腾讯云云函数（SCF）新建 **Node.js 18 或更高版本** 的空白函数，将 `functions/oauth/index.js` 与 `package.json` 上传。函数不依赖第三方 npm 包。
 2. 配置环境变量：
@@ -63,7 +39,7 @@ python3 -m http.server 8080
 4. 验证 `https://网关根地址/auth` 会跳转 GitHub。若网关切分路径后函数收到的 `path` 不含 `/callback`，代码也会根据 `code` 参数识别回调。
 5. 切勿在日志中记录 Client Secret、授权码或访问令牌。
 
-## 6. GitHub OAuth App
+## 4. GitHub OAuth App
 
 在 GitHub 进入 **Settings → Developer settings → OAuth Apps → New OAuth App**：
 
@@ -73,7 +49,7 @@ python3 -m http.server 8080
 
 创建后把 Client ID 和新生成的 Client Secret 写入 SCF 环境变量。Decap 的 `base_url` 是网关根地址，`auth_endpoint: auth` 会访问其 `/auth` 路径。
 
-## 7. 日常维护
+## 5. 日常维护
 
 ### 新增一条谷子
 
@@ -97,4 +73,4 @@ python3 -m http.server 8080
 
 ## 8. 发布边界
 
-公开浏览部分完全静态，无用户系统、收藏、订单或跨设备个人数据。只有站长使用 CMS 时需要 GitHub 授权。Kimi 预览用于查看示例页面；正式发布按上述 COS 流程由仓库拥有者执行。
+公开浏览部分完全静态，无用户系统、收藏、订单或跨设备个人数据。只有站长使用 CMS 时需要 GitHub 授权。
