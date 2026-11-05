@@ -276,22 +276,6 @@
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "wdg fd红衣立牌",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "FD店特",
-      "type": "立牌",
-      "id": "0f46d214-b1ac-4a99-80b1-657441f25cdc",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Wondergoo"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
       "name": "wdg fd仙人立牌",
       "release_type": "初版",
       "status": "完售",
@@ -300,6 +284,22 @@
       "type": "立牌",
       "id": "5591fff8-f9a8-463f-9bad-58336dc3dd85",
       "image": "assets/img/uploads/wdg-fd仙人立牌.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Wondergoo"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "wdg fd红衣立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "0f46d214-b1ac-4a99-80b1-657441f25cdc",
+      "image": "assets/img/uploads/wdg-fd红衣立牌.png",
       "year": 2026
     },
     {
