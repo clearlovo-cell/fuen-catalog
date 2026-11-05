@@ -626,6 +626,7 @@
       "platforms": [
         "Joyoland"
       ],
+      "size": "68×186mm",
       "material": "纸",
       "character": "斐恩",
       "name": "亚洲限定镭射票",
@@ -642,6 +643,7 @@
       "platforms": [
         "Joyoland"
       ],
+      "size": "60×80×3mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "亚洲限定立牌",
@@ -658,6 +660,7 @@
       "platforms": [
         "Joyoland"
       ],
+      "size": "73×113×3mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "亚洲限定双面透卡",
@@ -1001,6 +1004,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "Φ54mm",
       "material": "马口铁",
       "character": "斐恩",
       "name": "25冬市吧唧",
@@ -1010,13 +1014,14 @@
       "event": "冬市",
       "type": "吧唧",
       "id": "c99bc12b-af1d-4237-a0d4-09b71e18ded7",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25冬市吧唧.png",
       "year": 2025
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "49×46mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "25冬市茶包小立牌（夹子）",
@@ -1027,13 +1032,14 @@
       "event": "冬市",
       "type": "立牌",
       "id": "9c1016d4-fb77-4d4b-9085-a8ecfb5f7d1c",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25冬市小立牌.png",
       "year": 2021
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "（組み立て時）113×117×57mm（本体）72×102mm（台座）57×57mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "25冬市立牌",
@@ -1043,13 +1049,14 @@
       "event": "冬市",
       "type": "立牌",
       "id": "38c470f8-2fc5-4faa-ba15-816b8dd49b8e",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25冬市立牌.png",
       "year": 2025
     },
     {
       "platforms": [
         "Otomate"
       ],
+      "size": "54×86mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "25冬市透卡",
@@ -1059,7 +1066,7 @@
       "event": "冬市",
       "type": "透卡",
       "id": "c343c11e-f9b5-4a0f-9661-77e6215d591b",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/25冬市透卡.png",
       "year": 2022
     },
     {
@@ -1114,6 +1121,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "Φ96mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "25冬市杯垫",
