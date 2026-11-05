@@ -8,45 +8,45 @@
     },
     {
       "order": 2,
-      "name": "QQR",
-      "slug": "qqr",
-      "cover": "assets/img/uploads/serious-qqr.png"
-    },
-    {
-      "order": 3,
-      "name": "幼年柄",
-      "slug": "younian",
-      "cover": "assets/img/uploads/series-25fall.png"
-    },
-    {
-      "order": 4,
-      "name": "执事柄",
-      "slug": "zhishi",
-      "cover": "assets/img/uploads/series-25winter.png"
-    },
-    {
-      "order": 5,
-      "name": "海军柄",
-      "slug": "haijun",
-      "cover": "assets/img/uploads/series-26sum.png"
-    },
-    {
-      "order": 6,
-      "name": "公式书柄",
-      "slug": "book",
-      "cover": "assets/img/uploads/series-book.png"
-    },
-    {
-      "order": 7,
       "name": "CG柄",
       "slug": "cg",
       "cover": "assets/img/uploads/series-cg.jpg"
     },
     {
-      "order": 8,
+      "order": 3,
+      "name": "QQR",
+      "slug": "qqr",
+      "cover": "assets/img/uploads/serious-qqr.png"
+    },
+    {
+      "order": 4,
+      "name": "幼年柄",
+      "slug": "younian",
+      "cover": "assets/img/uploads/series-25fall.png"
+    },
+    {
+      "order": 5,
+      "name": "执事柄",
+      "slug": "zhishi",
+      "cover": "assets/img/uploads/series-25winter.png"
+    },
+    {
+      "order": 6,
+      "name": "海军柄",
+      "slug": "haijun",
+      "cover": "assets/img/uploads/series-26sum.png"
+    },
+    {
+      "order": 7,
       "name": "香薰柄",
       "slug": "xiangxun",
       "cover": "assets/img/uploads/series-lova.png"
+    },
+    {
+      "order": 8,
+      "name": "公式书柄",
+      "slug": "book",
+      "cover": "assets/img/uploads/series-book.png"
     },
     {
       "order": 9,
@@ -56,6 +56,12 @@
     },
     {
       "order": 10,
+      "name": "FD繁中新绘",
+      "slug": "fdfzxh",
+      "cover": "assets/img/uploads/series-fdfzxh.png"
+    },
+    {
+      "order": 11,
       "name": "其他",
       "slug": "qita",
       "cover": "assets/img/uploads/series-other.png"
