@@ -1813,7 +1813,7 @@
       "event": "FD繁中限定",
       "type": "吧唧",
       "id": "3aa674ea-dd0f-404b-92af-bea5cfdb52a7",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/fd繁中特装吧唧.png",
       "year": 2026
     },
     {
@@ -1829,7 +1829,7 @@
       "event": "FD繁中限定",
       "type": "立牌",
       "id": "17140f3c-5711-4220-8a23-f4a8bca9c8c8",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/FD繁中特装立牌.png",
       "year": 2026
     },
     {
@@ -1838,14 +1838,14 @@
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "FD繁中豪华双插立牌",
+      "name": "FD繁中新绘双插立牌",
       "release_type": "初版",
       "status": "预售",
       "series": "qita",
       "event": "FD繁中限定",
       "type": "立牌",
       "id": "63e15bc4-5178-4c0f-b7b8-99ac0eda0085",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/FD繁中新绘双插立牌.png",
       "year": 2026
     },
     {
@@ -1862,6 +1862,86 @@
       "type": "吧唧",
       "id": "c1155137-a234-4e6c-a02f-c16a86d3eefe",
       "image": "assets/img/uploads/loading.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中特装厚立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qqr",
+      "event": "FD繁中限定",
+      "type": "立牌",
+      "id": "32ebc96f-8df0-40f4-ba56-d9eaf189de06",
+      "image": "assets/img/uploads/FD繁中QQR厚立牌.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中新绘杯垫",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "FD繁中限定",
+      "type": "杯垫",
+      "id": "c0055ba2-eb16-40de-91ee-0bb426972588",
+      "image": "assets/img/uploads/fd繁中新绘亚克力杯垫.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "FD繁中新绘珠光卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "FD繁中限定",
+      "type": "珠光卡",
+      "id": "b2779eb1-4d23-44a9-a1ae-4f1bbdaedd16",
+      "image": "assets/img/uploads/FD繁中新绘珠光卡.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中新绘亚克力画块",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "FD繁中限定",
+      "type": "透卡",
+      "id": "cd79f4ca-6479-464e-a9a6-d3cb9b700669",
+      "image": "assets/img/uploads/FD繁中豪华版亚克力画块.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "PET",
+      "character": "斐恩",
+      "name": "FD繁中新绘透卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "qita",
+      "event": "FD繁中限定",
+      "type": "透卡",
+      "id": "990f7c55-f9be-4df6-8885-f52598105930",
+      "image": "assets/img/uploads/FD繁中新绘PET透卡.png",
       "year": 2026
     }
   ]
