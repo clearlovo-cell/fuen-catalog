@@ -13,7 +13,7 @@
       "event": "秋风",
       "type": "留言卡",
       "id": "fcba566e-7981-4263-a8fa-dd99fe84c392",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/24秋风SSC留言卡.png",
       "year": 2024
     },
     {
@@ -93,7 +93,7 @@
       "event": "FD店特",
       "type": "挂件",
       "id": "2b4b5b03-3681-4825-80b2-56a81ea4a2a6",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/s店fdq挂.png",
       "year": 2026
     },
     {
@@ -125,7 +125,7 @@
       "event": "FD店特",
       "type": "相卡",
       "id": "05de908f-bbb7-4379-9006-67dc710b8411",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/s店早期预约相卡.png",
       "year": 2026
     },
     {
@@ -187,7 +187,7 @@
       "event": "其他",
       "type": "挂件",
       "id": "feb07384-7e7c-4491-9fe5-0e4758c8e851",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/s店脸红丝带麻.png",
       "year": 2026
     },
     {
@@ -395,7 +395,7 @@
       "event": "FD店特",
       "type": "其他",
       "id": "cf44c505-f1f0-4e03-890c-73e56445e3c0",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/宝岛fd挂画.png",
       "year": 2026
     },
     {
@@ -427,7 +427,7 @@
       "event": "FD店特",
       "type": "挂件",
       "id": "c649da45-e561-4d53-8ffd-4ae9cbd0e587",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/trader fd挂件.png",
       "year": 2026
     },
     {
@@ -443,7 +443,7 @@
       "event": "FD店特",
       "type": "挂件",
       "id": "87787d52-37b1-4256-b2d5-be04d0994de5",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/乐天fd店特.png",
       "year": 2026
     },
     {
@@ -459,7 +459,7 @@
       "event": "其他",
       "type": "立牌",
       "id": "2167de1e-773f-4061-abef-4de5491c3f36",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/oioi立牌.png",
       "year": 2026
     },
     {
@@ -475,7 +475,7 @@
       "event": "FD店特",
       "type": "相卡",
       "id": "b8a8ecca-74a6-4b88-8750-d23d9ea8056f",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/gcfd相卡.png",
       "year": 2026
     },
     {
@@ -491,7 +491,7 @@
       "event": "FD店特",
       "type": "留言卡",
       "id": "2bd13baa-fb5b-405c-8e4e-c737dd6ef76b",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/gcfd留言卡.png",
       "year": 2026
     },
     {
@@ -626,6 +626,22 @@
       "platforms": [
         "Joyoland"
       ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "繁中福袋双插立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "本篇繁中限定",
+      "type": "立牌",
+      "id": "33a4cc78-94d7-4af2-8db6-88a6d95fdeac",
+      "image": "assets/img/uploads/繁中双插立牌.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
       "size": "68×186mm",
       "material": "纸",
       "character": "斐恩",
@@ -672,22 +688,6 @@
       "id": "89971ff3-2f8e-4b97-8485-bc7cd8604012",
       "image": "assets/img/uploads/亚洲限定双面透卡.png",
       "year": 2025
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "繁中福袋双插立牌",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "本篇繁中限定",
-      "type": "立牌",
-      "id": "33a4cc78-94d7-4af2-8db6-88a6d95fdeac",
-      "image": "assets/img/uploads/繁中双插立牌.png",
-      "year": 2024
     },
     {
       "platforms": [
