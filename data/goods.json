@@ -203,7 +203,7 @@
       "event": "FD店特",
       "type": "吧唧",
       "id": "ace04566-59de-423a-858b-d8b1155c4fe3",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/wdg fd店特QQR吧唧.png",
       "year": 2026
     },
     {
@@ -219,7 +219,7 @@
       "event": "FD店特",
       "type": "吧唧",
       "id": "2f564df3-2b90-43a4-9383-f0c0c7da0908",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/wdg fd店特仙人吧唧.png",
       "year": 2026
     },
     {
@@ -235,7 +235,7 @@
       "event": "FD店特",
       "type": "吧唧",
       "id": "ca0c9367-3421-44db-81aa-0ddcace26fb3",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/wdg fd店特红衣吧唧.png",
       "year": 2026
     },
     {
@@ -315,7 +315,7 @@
       "event": "FD店特",
       "type": "吧唧",
       "id": "a68284ca-48b4-4644-a5b5-05025c460d48",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/e店fd店特吧唧.png",
       "year": 2026
     },
     {
@@ -331,7 +331,7 @@
       "event": "FD店特",
       "type": "立牌",
       "id": "538c5704-71cd-49c4-ae86-b23a280ac376",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/e店fd店特立牌.png",
       "year": 2026
     },
     {
@@ -347,8 +347,8 @@
       "event": "FD店特",
       "type": "透卡",
       "id": "5d1c13ed-f3d7-4853-921a-707a0006410c",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
+      "image": "assets/img/uploads/e店fd店特透卡.png",
+      "year": 2026
     },
     {
       "platforms": [
@@ -363,13 +363,14 @@
       "event": "FD店特",
       "type": "吧唧",
       "id": "f1d81efe-f2aa-450f-9b21-203dafdd23a4",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/宝岛fd店特吧唧.png",
       "year": 2026
     },
     {
       "platforms": [
         "宝岛"
       ],
+      "material": "PET",
       "character": "斐恩",
       "name": "宝岛FD店特透卡",
       "release_type": "初版",
@@ -378,7 +379,7 @@
       "event": "FD店特",
       "type": "透卡",
       "id": "3216bd8f-dcde-40eb-9bf8-44e414844a76",
-      "image": "assets/img/uploads/loading.png",
+      "image": "assets/img/uploads/宝岛fd店特透卡.png",
       "year": 2026
     },
     {
