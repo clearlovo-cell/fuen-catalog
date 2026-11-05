@@ -64,19 +64,14 @@
           </button>
         </div>
 
-        <div class="field" data-dimension="type">
-          <span class="field__label" id="type-label">制品类型 <small>可多选</small></span>
-          <div class="multi-select" data-multi="type">
-            <button id="filter-type" class="select multi-select__trigger" type="button" aria-expanded="false" aria-controls="type-options">全部类型</button>
-            <div id="type-options" class="multi-select__menu" role="group" aria-labelledby="type-label" hidden></div>
+        <div id="filters-panel" class="filters__panel" data-expanded="false">
+          <div class="field" data-dimension="type">
+            <label class="field__label" for="filter-type">制品类型</label>
+            <select id="filter-type" class="select" data-filter="type"><option value="">全部类型</option></select>
           </div>
-        </div>
           <div class="field filters-extra" data-dimension="event">
-            <span class="field__label" id="event-label">event <small>可多选</small></span>
-            <div class="multi-select" data-multi="event">
-              <button id="filter-event" class="select multi-select__trigger" type="button" aria-expanded="false" aria-controls="event-options">全部event</button>
-              <div id="event-options" class="multi-select__menu" role="group" aria-labelledby="event-label" hidden></div>
-            </div>
+            <label class="field__label" for="filter-event">event</label>
+            <select id="filter-event" class="select" data-filter="event"><option value="">全部event</option></select>
           </div>
           <div class="field" data-dimension="platforms">
             <label class="field__label" for="filter-platform">发售平台</label>
