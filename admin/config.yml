@@ -6,7 +6,7 @@ backend:
   auth_endpoint: auth
 
 publish_mode: simple
-site_url: https://clearlovo-cell.github.io/fuen-catalog
+site_url: https://fuenatlas.cn
 locale: zh_Hans
 
 media_folder: "assets/img/uploads"
