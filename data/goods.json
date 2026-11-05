@@ -1077,6 +1077,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "全長約125mm（上パーツ）41×50mm、（下パーツ）18×23mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "25冬市挂件",
@@ -1093,6 +1094,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "63×89mm",
       "material": "纸",
       "character": "斐恩",
       "name": "25冬市珠光卡",
@@ -1113,6 +1115,7 @@
       "character": "斐恩",
       "name": "25冬市拍立得",
       "release_type": "初版",
+      "note": "54×86mm",
       "status": "完售",
       "series": "zhishi",
       "event": "冬市",
@@ -1295,6 +1298,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "Φ54mm",
       "material": "马口铁",
       "character": "斐恩",
       "name": "26夏市吧唧",
@@ -1311,6 +1315,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "（組み立て時）113×117×50mm（本体）72×102mm（台座）53×50mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26夏市立牌",
@@ -1327,6 +1332,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "54×86mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26夏市小透卡",
@@ -1343,6 +1349,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "80×120mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26夏市大透卡",
@@ -1359,6 +1366,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "全長約125mm（上パーツ）45×50mm、（下パーツ）18×23mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26夏市挂件",
@@ -1375,6 +1383,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "63×89mm",
       "material": "纸",
       "character": "斐恩",
       "name": "26夏市珠光卡",
@@ -1391,6 +1400,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "54×86mm",
       "material": "纸",
       "character": "斐恩",
       "name": "26夏市拍立得",
@@ -1407,6 +1417,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "Φ57mm",
       "material": "马口铁",
       "character": "斐恩",
       "name": "26OTP吧唧",
@@ -1423,6 +1434,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "Φ57mm",
       "material": "马口铁",
       "character": "斐恩",
       "name": "26OTP QQR吧唧",
@@ -1439,6 +1451,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "（2つ折り）89×127mm（展開）178mm×127mm",
       "material": "纸",
       "character": "斐恩",
       "name": "26OTP留言卡",
@@ -1455,6 +1468,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "（本体）80mm×120mm（台座）49.7×34.6mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26OTP留言立",
@@ -1471,7 +1485,9 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "（本体）60mm×60mm内（台座）Φ25mm",
       "material": "亚克力",
+      "price": "",
       "character": "斐恩",
       "name": "26OTP Q立",
       "release_type": "初版",
@@ -1504,6 +1520,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "W42mm×H88mm 厚さ：5mm；W50mm×H50mm内",
       "material": "亚克力",
       "character": "斐恩",
       "name": "26OTP Q挂",
@@ -1520,6 +1537,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "170×70mm",
       "material": "纸",
       "character": "斐恩",
       "name": "26OTP 票根",
@@ -1536,6 +1554,7 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "名札：70×H30mm以内；ID Pass：86mm×54mm",
       "material": "纸、亚克力",
       "character": "斐恩",
       "name": "26OTP ID卡 名札",
