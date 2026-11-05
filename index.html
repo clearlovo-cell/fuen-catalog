@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="《茉莉花之炯》斐恩官方周边中文图鉴，按柄图系列、制品类型、发售平台与年份查找。">
+  <meta name="description" content="《茉莉花之炯》斐恩官方周边中文图鉴，按柄图、制品类型、发售平台与年份查找。">
   <meta name="theme-color" content="#FDFCF7">
   <title>斐恩官周图鉴｜茉莉花之炯</title>
   <link rel="icon" href="./favicon.png" type="image/png">
@@ -27,9 +27,9 @@
             <ellipse cx="40" cy="21" rx="10" ry="19"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(72 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(144 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(216 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(288 40 40)"/><circle cx="40" cy="40" r="5"/>
           </g>
         </svg>
-        <p>已收录 <strong id="total-count">—</strong> 件谷子</p>
+        <p>已收录 <strong id="total-count">—</strong> 件</p>
         <span lang="ja">マツリカの炯-kEi-</span>
-        <small>图鉴持续整理中</small>
+        <small>持续整理中</small>
       </aside>
     </div>
   </header>
@@ -37,10 +37,10 @@
   <main>
     <section class="series-section container" aria-labelledby="series-title">
       <div class="section-heading">
-        <h2 id="series-title">柄图系列</h2>
+        <h2 id="series-title">柄图</h2>
         <span>左右滑动选择柄图</span>
       </div>
-      <div id="series-rail" class="rail" aria-label="按柄图系列筛选">
+      <div id="series-rail" class="rail" aria-label="按柄图筛选">
         <div class="rail__skeleton" aria-hidden="true"></div>
       </div>
     </section>
@@ -54,9 +54,9 @@
 
         <div class="filters__bar">
           <div class="search">
-            <label class="sr-only" for="search-input">搜索谷子名称、系列或平台</label>
+            <label class="sr-only" for="search-input">搜索谷子名称、店铺、event</label>
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-            <input id="search-input" class="search__input" type="search" placeholder="搜索名称、系列、平台…" autocomplete="off">
+            <input id="search-input" class="search__input" type="search" placeholder="搜索名称、店铺、event…" autocomplete="off">
           </div>
           <button id="filters-toggle" class="filters__toggle" type="button" aria-expanded="false" aria-controls="filters-panel">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
@@ -69,6 +69,10 @@
             <label class="field__label" for="filter-type">制品类型</label>
             <select id="filter-type" class="select" data-filter="type"><option value="">全部类型</option></select>
           </div>
+          <div class="field filters-extra" data-dimension="event">
+            <label class="field__label" for="filter-event">event</label>
+            <select id="filter-event" class="select" data-filter="event"><option value="">全部event</option></select>
+          </div>
           <div class="field" data-dimension="platforms">
             <label class="field__label" for="filter-platform">发售平台</label>
             <select id="filter-platform" class="select" data-filter="platforms"><option value="">全部平台</option></select>
@@ -76,10 +80,6 @@
           <div class="field filters-extra" data-dimension="year">
             <label class="field__label" for="filter-year">发售年份</label>
             <select id="filter-year" class="select" data-filter="year"><option value="">全部年份</option></select>
-          </div>
-          <div class="field filters-extra" data-dimension="event">
-            <label class="field__label" for="filter-event">event</label>
-            <select id="filter-event" class="select" data-filter="event"><option value="">全部event</option></select>
           </div>
           <div class="field filters-extra" data-dimension="release_type">
             <label class="field__label" for="filter-release">发售情况</label>
@@ -136,7 +136,7 @@
     <div class="container footer__inner">
       <div><span class="footer__mark" aria-hidden="true">🎐</span>clearlovo</div>
       <p>© <span id="current-year"></span> 图片版权归官方所有，仅供图鉴参考</p>
-      <p class="footer__sample">如需联系请将您的来意投递至邮箱1374643958@qq.com</p>
+      <p class="footer__sample">CONTACT:1374643958@qq.com</p>
     </div>
   </footer>
 
