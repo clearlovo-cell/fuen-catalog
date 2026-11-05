@@ -49,9 +49,14 @@ export function renderCard(item) {
     return value ? `<span>${escapeHtml(value)}</span>` : "";
   }).join("");
 
-  const platforms = CARD_FIELDS.includes("platforms")
-    ? `<p class="card__platform">${escapeHtml((item.platforms || []).join(" / ") || "平台待定")}</p>`
-    : "";
+  const platformName = (item.platforms || []).join(" / ") || "平台待定";
+const platformAndEvent = item.event
+  ? `${platformName} · ${item.event}`
+  : platformName;
+
+const platforms = CARD_FIELDS.includes("platforms")
+  ? `<p class="card__platform">${escapeHtml(platformAndEvent)}</p>`
+  : "";
 
   // 单独读取尺寸，没有填写时显示提示
   const size = String(item.size || "").trim();
