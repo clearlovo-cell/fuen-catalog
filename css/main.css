@@ -178,3 +178,13 @@
   .filter-section .section-heading--filter { margin-bottom: var(--sp-4); }
 }
 @media (min-width: 1240px) { .goods-grid { grid-template-columns: repeat(5,minmax(0,1fr)); } }
+
+/* 统一尺寸、类型年份、平台活动三行的文字样式 */
+  .card__size,
+  .card__meta,
+  .card__platform { color: var(--c-text-2); font-size: var(--fs-xs); line-height: 1.4;}
+/* 第一行与第二行之间保持 4px */
+  .card__size { margin: 0 0 4px;}
+  .card__meta { margin: 0;}
+/* 第二行与第三行之间也保持 4px */
+  .card__platform { margin: 4px 0 0;}
