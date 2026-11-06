@@ -40,7 +40,7 @@ export function bindImageFallbacks(scope = document) {
 }
 
 function statusClass(status) {
-  return ({ "在售": "onsale", "预售": "preorder", "完售": "soldout" })[status] || "soldout";
+  return ({ "长期通贩": "onsale", "受付中": "preorder", "受注终了": "ended", "情报公开": "info", "完售": "soldout" })[status] || "soldout";
 }
 
 export function renderCard(item) {
