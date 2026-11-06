@@ -631,6 +631,55 @@
     },
     {
       "platforms": [
+        "StellaWorth"
+      ],
+      "size": "55×70×5mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "s店脸红丝带麻将挂件",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "挂件",
+      "id": "feb07384-7e7c-4491-9fe5-0e4758c8e851",
+      "image": "assets/img/uploads/s店脸红丝带麻.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "size": "55×91mm",
+      "character": "斐恩",
+      "name": "S店CG透卡2",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "其他",
+      "type": "透卡",
+      "id": "d025546b-8332-4c26-b37b-17f71d83d77a",
+      "image": "assets/img/uploads/s店CG透卡2.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "size": "55×91mm",
+      "character": "斐恩",
+      "name": "S店CG透卡1",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "其他",
+      "type": "透卡",
+      "id": "9fbacc3a-752b-4f5c-b456-00bc4509959f",
+      "image": "assets/img/uploads/s店CG透卡1.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
         "B's-log"
       ],
       "size": "236×287mm",
@@ -1338,108 +1387,6 @@
     },
     {
       "platforms": [
-        "Joyoland"
-      ],
-      "size": "73×113×3mm",
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "亚洲限定双面透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "cg",
-      "event": "亚洲限定",
-      "type": "透卡",
-      "id": "89971ff3-2f8e-4b97-8485-bc7cd8604012",
-      "image": "assets/img/uploads/亚洲限定双面透卡.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "size": "60×80×3mm",
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "亚洲限定立牌",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "亚洲限定",
-      "type": "立牌",
-      "id": "b89982a3-e778-4751-a274-37f4c8da3d0c",
-      "image": "assets/img/uploads/亚洲限定立牌.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "size": "68×186mm",
-      "material": "纸",
-      "character": "斐恩",
-      "name": "亚洲限定镭射票",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "亚洲限定",
-      "type": "镭射票",
-      "id": "9408748b-5008-4127-84c3-7941ee92b389",
-      "image": "assets/img/uploads/亚洲限定镭射票.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Challe"
-      ],
-      "size": "约200×200mm",
-      "material": "涤纶",
-      "character": "斐恩",
-      "name": "kuji B赏方巾",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "其他",
-      "id": "7103f2fe-222f-47a5-a2d1-e32a96ce9399",
-      "image": "assets/img/uploads/kuji方巾.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Challe"
-      ],
-      "size": "约200mm",
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "kuji A赏立牌",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "立牌",
-      "id": "8b4c5677-d36b-426b-805c-93491fb3b56a",
-      "image": "assets/img/uploads/kuji立牌.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "size": "89×127mm（L判）",
-      "material": "纸",
-      "character": "斐恩",
-      "name": "otg 相卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "相卡",
-      "id": "1b898df4-3c9f-4459-924d-8de05c6cb86b",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
         "Neowing"
       ],
       "size": "48×147mm",
@@ -1800,55 +1747,6 @@
       "platforms": [
         "StellaWorth"
       ],
-      "size": "55×70×5mm",
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "s店脸红丝带麻将挂件",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "挂件",
-      "id": "feb07384-7e7c-4491-9fe5-0e4758c8e851",
-      "image": "assets/img/uploads/s店脸红丝带麻.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "size": "55×91mm",
-      "character": "斐恩",
-      "name": "S店CG透卡2",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "cg",
-      "event": "其他",
-      "type": "透卡",
-      "id": "d025546b-8332-4c26-b37b-17f71d83d77a",
-      "image": "assets/img/uploads/s店CG透卡2.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "size": "55×91mm",
-      "character": "斐恩",
-      "name": "S店CG透卡1",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "cg",
-      "event": "其他",
-      "type": "透卡",
-      "id": "9fbacc3a-752b-4f5c-b456-00bc4509959f",
-      "image": "assets/img/uploads/s店CG透卡1.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
       "size": "89×127mm（L判）",
       "material": "纸",
       "character": "斐恩",
@@ -1962,6 +1860,108 @@
       "id": "83dd2de9-7fdc-4006-9dac-74bc80e323b6",
       "image": "assets/img/uploads/永寿嘉福小册子CG页.png",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "Challe"
+      ],
+      "size": "约200×200mm",
+      "material": "涤纶",
+      "character": "斐恩",
+      "name": "kuji B赏方巾",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "其他",
+      "id": "7103f2fe-222f-47a5-a2d1-e32a96ce9399",
+      "image": "assets/img/uploads/kuji方巾.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Challe"
+      ],
+      "size": "约200mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "kuji A赏立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "立牌",
+      "id": "8b4c5677-d36b-426b-805c-93491fb3b56a",
+      "image": "assets/img/uploads/kuji立牌.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "size": "73×113×3mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "亚洲限定双面透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "亚洲限定",
+      "type": "透卡",
+      "id": "89971ff3-2f8e-4b97-8485-bc7cd8604012",
+      "image": "assets/img/uploads/亚洲限定双面透卡.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "size": "60×80×3mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "亚洲限定立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "亚洲限定",
+      "type": "立牌",
+      "id": "b89982a3-e778-4751-a274-37f4c8da3d0c",
+      "image": "assets/img/uploads/亚洲限定立牌.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "size": "68×186mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "亚洲限定镭射票",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "亚洲限定",
+      "type": "镭射票",
+      "id": "9408748b-5008-4127-84c3-7941ee92b389",
+      "image": "assets/img/uploads/亚洲限定镭射票.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "size": "89×127mm（L判）",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "otg 相卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "相卡",
+      "id": "1b898df4-3c9f-4459-924d-8de05c6cb86b",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2025
     },
     {
       "platforms": [
