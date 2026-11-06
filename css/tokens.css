@@ -14,7 +14,7 @@
   --c-primary: #FFD966;
   --c-primary-soft: #F2DFA4;
   --c-primary-strong: #C9A84C;
-    /* 长期通贩（原“在售”的颜色，不变） */
+  /* 长期通贩（原“在售”的颜色，不变） */
   --c-on-bg: #E3F3E7;
   --c-on-fg: #1F6B41;
   --c-on-bd: #BCE0C8;
@@ -78,7 +78,7 @@
   --dur-1: 120ms;
   --dur-2: 220ms;
   --ease: cubic-bezier(.2,.7,.3,1);
-  --z-header: 10;
+  --z-header: 50;
   --z-fab: 30;
   --z-filter-panel: 40;
   --z-modal: 100;
