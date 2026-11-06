@@ -400,12 +400,13 @@
     },
     {
       "platforms": [
-        "宝岛"
+        "Otomate"
       ],
       "material": "亚克力",
       "character": "斐恩",
       "name": "FD甜盒立牌",
       "release_type": "初版",
+      "note": "",
       "status": "完售",
       "series": "qita",
       "event": "FD店特",
