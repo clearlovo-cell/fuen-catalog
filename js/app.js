@@ -138,7 +138,7 @@ function applyFilters() {
   bindImageFallbacks(els.grid);
   const selectedSeries = state.series.find(item => item.slug === state.filters.seriesId);
   els.catalogTitle.textContent = selectedSeries ? selectedSeries.name : "全部谷子";
-  els.result.textContent = `找到 ${filtered.length} 件谷子${state.reverse ? " · 已倒序" : ""}`;
+  els.result.textContent = `找到 ${filtered.length} 件谷子${state.reverse ? " · 已逆序" : ""}`;
   updateFilterIndicators();
   requestAnimationFrame(updateScrollButtons);
 }
