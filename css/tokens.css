@@ -40,7 +40,7 @@
   --c-end-bd: #C9C3E2;
   --c-end-dot: #8B7FB5;
 
-  --font-display: "LXGW WenKai", "ZCOOL KuaiLe", "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif CJK SC", serif;
+  --font-display: var(--font-body);
   --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
   --font-num: "Quicksand", "Nunito", var(--font-body);
 
