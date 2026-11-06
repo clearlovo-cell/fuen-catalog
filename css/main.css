@@ -96,6 +96,8 @@
 .badge--onsale { background: var(--c-on-bg); color: var(--c-on-fg); border-color: var(--c-on-bd); }
 .badge--preorder { background: var(--c-pre-bg); color: var(--c-pre-fg); border-color: var(--c-pre-bd); }
 .badge--soldout { background: var(--c-out-bg); color: var(--c-out-fg); border-color: var(--c-out-bd); }
+.badge--info { background: var(--c-info-bg); color: var(--c-info-fg); border-color: var(--c-info-bd); }
+.badge--ended { background: var(--c-end-bg); color: var(--c-end-fg); border-color: var(--c-end-bd); }
 .is-fallback { object-fit: contain !important; background: var(--c-primary-soft); }
 .state-panel { grid-column: 1/-1; padding: var(--sp-12) var(--sp-4); text-align: center; border: 1px dashed var(--c-line-input); border-radius: var(--r-card); background: rgba(253,252,247,.82); }
 .state-panel__face { margin-bottom: var(--sp-3); font-family: var(--font-display); font-size: var(--fs-2xl); color: var(--c-primary-strong); }
