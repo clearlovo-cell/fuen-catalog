@@ -278,7 +278,7 @@ els.orderToggle.addEventListener("click", () => {
   els.orderToggle.setAttribute("aria-pressed", String(state.reverse));
   els.orderToggle.setAttribute("aria-label", state.reverse ? "关闭倒序查看，恢复正序" : "开启倒序查看");
   els.orderToggle.title = state.reverse ? "恢复当前图鉴列表的正序排列" : "将当前图鉴列表倒序排列";
-  els.orderToggle.querySelector("span").textContent = state.reverse ? "正序" : "倒序";
+  els.orderToggle.querySelector("span").textContent = state.reverse ? "顺" : "逆";
   applyFilters();
 });
 els.fab.addEventListener("click", () => window.scrollTo({ top: 0, behavior: getScrollBehavior() }));
