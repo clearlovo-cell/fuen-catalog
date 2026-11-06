@@ -36,6 +36,38 @@
       "platforms": [
         "Joyoland"
       ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中新绘杯垫",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "fdfzxh",
+      "event": "FD繁中限定",
+      "type": "杯垫",
+      "id": "c0055ba2-eb16-40de-91ee-0bb426972588",
+      "image": "assets/img/uploads/fd繁中新绘亚克力杯垫.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD繁中新绘双插立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "fdfzxh",
+      "event": "FD繁中限定",
+      "type": "立牌",
+      "id": "63e15bc4-5178-4c0f-b7b8-99ac0eda0085",
+      "image": "assets/img/uploads/FD繁中新绘双插立牌.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
       "material": "PET",
       "character": "斐恩",
       "name": "FD繁中新绘透卡",
@@ -86,14 +118,14 @@
       ],
       "material": "亚克力",
       "character": "斐恩",
-      "name": "FD繁中新绘杯垫",
+      "name": "FD繁中特装立牌",
       "release_type": "初版",
       "status": "预售",
-      "series": "fdfzxh",
+      "series": "lihui",
       "event": "FD繁中限定",
-      "type": "杯垫",
-      "id": "c0055ba2-eb16-40de-91ee-0bb426972588",
-      "image": "assets/img/uploads/fd繁中新绘亚克力杯垫.png",
+      "type": "立牌",
+      "id": "17140f3c-5711-4220-8a23-f4a8bca9c8c8",
+      "image": "assets/img/uploads/FD繁中特装立牌.png",
       "year": 2026
     },
     {
@@ -110,38 +142,6 @@
       "type": "立牌",
       "id": "32ebc96f-8df0-40f4-ba56-d9eaf189de06",
       "image": "assets/img/uploads/FD繁中QQR厚立牌.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "FD繁中新绘双插立牌",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "fdfzxh",
-      "event": "FD繁中限定",
-      "type": "立牌",
-      "id": "63e15bc4-5178-4c0f-b7b8-99ac0eda0085",
-      "image": "assets/img/uploads/FD繁中新绘双插立牌.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "FD繁中特装立牌",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "lihui",
-      "event": "FD繁中限定",
-      "type": "立牌",
-      "id": "17140f3c-5711-4220-8a23-f4a8bca9c8c8",
-      "image": "assets/img/uploads/FD繁中特装立牌.png",
       "year": 2026
     },
     {
