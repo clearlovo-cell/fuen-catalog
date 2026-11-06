@@ -51,7 +51,7 @@ export function renderCard(item) {
 
   const platformName = (item.platforms || []).join(" / ") || "平台待定";
 const platformAndEvent = item.event
-  ? `${platformName} · ${item.event}`
+  ? `${platformName}  ·  ${item.event}`
   : platformName;
 
 const platforms = CARD_FIELDS.includes("platforms")
@@ -80,7 +80,7 @@ export function renderModal(item) {
     ["柄图系列", item.seriesName], ["制品类型", item.type], ["发售平台", (item.platforms || []).join(" / ")],
     ["活动", item.event], ["发售年份", item.year], ["具体发售日", item.date],
     ["日元定价", item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : ""], ["发售性质", item.release_type],
-    ["尺寸", item.size], ["材质", item.material], ["角色", item.character || "斐恩"]
+    ["尺寸", item.size], ["材质", item.material]
   ];
   const details = rows.map(([label, value]) => `<div class="detail-list__row"><dt>${label}</dt><dd>${escapeHtml(value || "待补充")}</dd></div>`).join("");
   const note = `<div class="detail-list__row detail-list__row--full"><dt>备注</dt><dd>${escapeHtml(item.note || "暂无备注")}</dd></div>`;
