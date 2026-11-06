@@ -54,7 +54,8 @@ a.stats__item:hover { background: rgba(255,217,102,.12); }
 .stats__number small { color: var(--c-text-2); font-family: var(--font-body); font-size: 10px; font-weight: 500; }
 
 /* 筛选 */
-.filter-section { margin-top: var(--sp-5); padding-block: var(--sp-5); background: var(--c-surface-sunken); border-block: 1px solid var(--c-line); }
+.filter-section { margin-top: var(--sp-5); padding-block: var(--sp-5); background: rgba(253,252,247,.76); border-block: 1px solid var(--c-line); }
+.filter-section::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg,transparent,rgba(255,217,102,.13),transparent); }
 .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-3); padding-inline: 2px; }
 .section-heading h2, .catalog__heading h2 { font-family: var(--font-display); font-size: var(--fs-xl); font-weight: 600; letter-spacing: .06em; }
 .section-heading > span { color: var(--c-text-2); font-size: var(--fs-xs); }
