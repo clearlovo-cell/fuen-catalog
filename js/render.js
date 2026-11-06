@@ -1,4 +1,3 @@
-```javascript
 // 卡片字段集中配置：增删卡面字段时优先调整这里。
 export const CARD_FIELDS = ["type", "year", "platforms"];
 const FALLBACK_IMAGE = "./assets/img/placeholder.png";
