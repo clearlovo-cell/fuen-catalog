@@ -18,6 +18,40 @@
     },
     {
       "platforms": [
+        "Otomate"
+      ],
+      "size": "210×148mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "永寿嘉福小册子CG页",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "cg",
+      "event": "FD店特",
+      "type": "其他",
+      "id": "83dd2de9-7fdc-4006-9dac-74bc80e323b6",
+      "image": "assets/img/uploads/永寿嘉福小册子CG页.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "FD甜盒立牌",
+      "release_type": "初版",
+      "note": "",
+      "status": "完售",
+      "series": "qita",
+      "event": "FD店特",
+      "type": "立牌",
+      "id": "82a0f6a3-e9bc-4649-a2ab-18ddc82086df",
+      "image": "assets/img/uploads/甜盒立牌.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
         "StellaWorth"
       ],
       "material": "马口铁",
@@ -396,23 +430,6 @@
       "type": "其他",
       "id": "cf44c505-f1f0-4e03-890c-73e56445e3c0",
       "image": "assets/img/uploads/宝岛fd挂画.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "FD甜盒立牌",
-      "release_type": "初版",
-      "note": "",
-      "status": "完售",
-      "series": "qita",
-      "event": "FD店特",
-      "type": "立牌",
-      "id": "82a0f6a3-e9bc-4649-a2ab-18ddc82086df",
-      "image": "assets/img/uploads/甜盒立牌.png",
       "year": 2026
     },
     {
@@ -1763,6 +1780,23 @@
       "type": "杂志",
       "id": "a09aa267-957a-413b-9b49-e294aceadc82",
       "image": "assets/img/uploads/bs2606.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "其他"
+      ],
+      "size": "110×91mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "三得利联名贴纸",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "huimou",
+      "event": "联名",
+      "type": "其他",
+      "id": "49161fc0-eae3-44fb-87f2-74878cdbf87e",
+      "image": "assets/img/uploads/三得利贴纸.png",
       "year": 2026
     },
     {
