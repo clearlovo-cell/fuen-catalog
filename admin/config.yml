@@ -73,7 +73,7 @@ collections:
               - { name: year, label: 发售年份, widget: number, value_type: int, min: 2000, max: 2100 }
               - { name: date, label: 具体发售日, widget: date, format: "YYYY-MM-DD", required: false }
               - { name: price, label: 日元定价, widget: number, value_type: int, min: 0, required: false }
-              - { name: status, label: 当前状态, widget: select, options: [预售, 在售, 完售], default: 预售 }
+              - { name: status, label: 当前状态, widget: select, options: [情报公开, 受付中, 受注终了, 完售, 长期通贩], default: 情报公开 }
               - { name: release_type, label: 发售性质, widget: select, options: [初版, 复刻], default: 初版 }
               - { name: character, label: 角色, widget: hidden, default: 斐恩 }
               - { name: size, label: 尺寸, widget: string, required: false, hint: "格式统一为：H56×W56mm 或 Φ56mm，多种尺寸用分号分隔。" }
