@@ -162,176 +162,6 @@
     },
     {
       "platforms": [
-        "Lovaroma"
-      ],
-      "material": "其他",
-      "character": "斐恩",
-      "name": "lovaroma扩香石挂件",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "xiangxun",
-      "event": "联名",
-      "type": "挂件",
-      "id": "19007a12-c8d8-4ba5-810c-0b3b17af0b0a",
-      "image": "assets/img/uploads/lova留香石挂件.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Lovaroma"
-      ],
-      "character": "斐恩",
-      "name": "lovaroma香薰机",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "xiangxun",
-      "event": "联名",
-      "type": "其他",
-      "id": "76dfb29e-827b-4f60-bb5c-9bea4bbde462",
-      "image": "assets/img/uploads/lova香薰机.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Lovaroma"
-      ],
-      "material": "纸",
-      "character": "斐恩",
-      "name": "lovaroma香薰留言卡",
-      "release_type": "初版",
-      "status": "预售",
-      "series": "xiangxun",
-      "event": "联名",
-      "type": "留言卡",
-      "id": "a7176de1-4ef5-4cf0-a7ac-44f15514a75d",
-      "image": "assets/img/uploads/lova留言卡.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "Trangle Teezer"
-      ],
-      "size": "80×35×236mm",
-      "character": "斐恩",
-      "name": "tangle teezer 气垫梳",
-      "release_type": "初版",
-      "status": "在售",
-      "series": "huimou",
-      "event": "联名",
-      "type": "其他",
-      "id": "13760ce7-132f-4c5b-8c1f-8c2a1fb9c195",
-      "image": "assets/img/uploads/TT梳.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "其他"
-      ],
-      "size": "110×91mm",
-      "material": "纸",
-      "character": "斐恩",
-      "name": "三得利联名贴纸",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "huimou",
-      "event": "联名",
-      "type": "其他",
-      "id": "49161fc0-eae3-44fb-87f2-74878cdbf87e",
-      "image": "assets/img/uploads/三得利贴纸.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "B's-log"
-      ],
-      "size": "236×287mm",
-      "material": "纸",
-      "character": "斐恩",
-      "name": "B's-Log26年6月刊内页",
-      "release_type": "初版",
-      "note": "电子版在售",
-      "status": "在售",
-      "series": "qita",
-      "event": "其他",
-      "type": "杂志",
-      "id": "a09aa267-957a-413b-9b49-e294aceadc82",
-      "image": "assets/img/uploads/bs2606.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "B's-log"
-      ],
-      "size": "236×287mm",
-      "material": "纸",
-      "character": "斐恩",
-      "name": "B's-Log26年4月刊内页",
-      "release_type": "初版",
-      "note": "电子版在售",
-      "status": "在售",
-      "series": "qita",
-      "event": "其他",
-      "type": "杂志",
-      "id": "850a7eb1-3824-4591-8946-2cd49fc5cc19",
-      "image": "assets/img/uploads/bs2604.png",
-      "year": 2026
-    },
-    {
-      "platforms": [
-        "B's-log"
-      ],
-      "size": "236×287mm",
-      "material": "纸",
-      "character": "斐恩",
-      "name": "B's-Log26年1月刊内页 FD新绘",
-      "release_type": "初版",
-      "note": "电子版在售",
-      "status": "在售",
-      "series": "qita",
-      "event": "其他",
-      "type": "杂志",
-      "id": "512fd66a-7b81-44f2-84fc-f73fc90ca834",
-      "image": "assets/img/uploads/bs2601.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "B's-log"
-      ],
-      "size": "236×287mm；海报162×513mm",
-      "material": "纸",
-      "character": "斐恩",
-      "name": "B's-Log25年12月刊封底 海报",
-      "release_type": "初版",
-      "note": "电子版在售",
-      "status": "在售",
-      "series": "qita",
-      "event": "其他",
-      "type": "杂志",
-      "id": "370921a8-83ad-47ff-a7d4-a67b415c66dd",
-      "image": "assets/img/uploads/bs2512.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
-        "B's-log"
-      ],
-      "size": "236×287mm",
-      "material": "纸",
-      "character": "斐恩",
-      "name": "B's-Log25年11月刊内页 FD新绘",
-      "release_type": "初版",
-      "note": "电子版在售",
-      "status": "在售",
-      "series": "huimou",
-      "event": "其他",
-      "type": "杂志",
-      "id": "c0429f69-2fc1-48c3-9765-026c8c389aad",
-      "image": "assets/img/uploads/bs2511.png",
-      "year": 2025
-    },
-    {
-      "platforms": [
         "StellaWorth"
       ],
       "size": "127×178mm（2L判）",
@@ -410,6 +240,69 @@
       "type": "吧唧",
       "id": "07622ee9-e5e2-4f14-8549-3cefcf94b223",
       "image": "assets/img/uploads/coolb公式书心形吧唧.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Lovaroma"
+      ],
+      "material": "其他",
+      "character": "斐恩",
+      "name": "lovaroma扩香石挂件",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "xiangxun",
+      "event": "联名",
+      "type": "挂件",
+      "id": "19007a12-c8d8-4ba5-810c-0b3b17af0b0a",
+      "image": "assets/img/uploads/lova留香石挂件.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Lovaroma"
+      ],
+      "character": "斐恩",
+      "name": "lovaroma香薰机",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "xiangxun",
+      "event": "联名",
+      "type": "其他",
+      "id": "76dfb29e-827b-4f60-bb5c-9bea4bbde462",
+      "image": "assets/img/uploads/lova香薰机.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Lovaroma"
+      ],
+      "material": "纸",
+      "character": "斐恩",
+      "name": "lovaroma香薰留言卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "xiangxun",
+      "event": "联名",
+      "type": "留言卡",
+      "id": "a7176de1-4ef5-4cf0-a7ac-44f15514a75d",
+      "image": "assets/img/uploads/lova留言卡.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Trangle Teezer"
+      ],
+      "size": "80×35×236mm",
+      "character": "斐恩",
+      "name": "tangle teezer 气垫梳",
+      "release_type": "初版",
+      "status": "在售",
+      "series": "huimou",
+      "event": "联名",
+      "type": "其他",
+      "id": "13760ce7-132f-4c5b-8c1f-8c2a1fb9c195",
+      "image": "assets/img/uploads/TT梳.png",
       "year": 2026
     },
     {
@@ -718,6 +611,113 @@
       "id": "9a61699b-95f2-454b-a62b-1cbe949b92d5",
       "image": "assets/img/uploads/26夏市吧唧.png",
       "year": 2026
+    },
+    {
+      "platforms": [
+        "其他"
+      ],
+      "size": "110×91mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "三得利联名贴纸",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "huimou",
+      "event": "联名",
+      "type": "其他",
+      "id": "49161fc0-eae3-44fb-87f2-74878cdbf87e",
+      "image": "assets/img/uploads/三得利贴纸.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "size": "236×287mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log26年6月刊内页",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "qita",
+      "event": "其他",
+      "type": "杂志",
+      "id": "a09aa267-957a-413b-9b49-e294aceadc82",
+      "image": "assets/img/uploads/bs2606.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "size": "236×287mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log26年4月刊内页",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "qita",
+      "event": "其他",
+      "type": "杂志",
+      "id": "850a7eb1-3824-4591-8946-2cd49fc5cc19",
+      "image": "assets/img/uploads/bs2604.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "size": "236×287mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log26年1月刊内页 FD新绘",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "qita",
+      "event": "其他",
+      "type": "杂志",
+      "id": "512fd66a-7b81-44f2-84fc-f73fc90ca834",
+      "image": "assets/img/uploads/bs2601.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "size": "236×287mm；海报162×513mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log25年12月刊封底 海报",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "qita",
+      "event": "其他",
+      "type": "杂志",
+      "id": "370921a8-83ad-47ff-a7d4-a67b415c66dd",
+      "image": "assets/img/uploads/bs2512.png",
+      "year": 2025
+    },
+    {
+      "platforms": [
+        "B's-log"
+      ],
+      "size": "236×287mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "B's-Log25年11月刊内页 FD新绘",
+      "release_type": "初版",
+      "note": "电子版在售",
+      "status": "在售",
+      "series": "huimou",
+      "event": "其他",
+      "type": "杂志",
+      "id": "c0429f69-2fc1-48c3-9765-026c8c389aad",
+      "image": "assets/img/uploads/bs2511.png",
+      "year": 2025
     },
     {
       "platforms": [
@@ -1389,56 +1389,6 @@
     },
     {
       "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "繁中福袋双插立牌",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "本篇繁中限定",
-      "type": "立牌",
-      "id": "33a4cc78-94d7-4af2-8db6-88a6d95fdeac",
-      "image": "assets/img/uploads/繁中双插立牌.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "繁中福袋色纸",
-      "release_type": "初版",
-      "note": "这是我……自己拼的……",
-      "status": "完售",
-      "series": "cg",
-      "event": "本篇繁中限定",
-      "type": "色纸",
-      "id": "2b7b17c5-9fda-4ecc-b842-b65a5c45c329",
-      "image": "assets/img/uploads/繁中福袋色纸.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "Joyoland"
-      ],
-      "size": "",
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "繁中福袋吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "本篇繁中限定",
-      "type": "吧唧",
-      "id": "88e0553c-2833-49c5-bf86-bbb74cd3044c",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
         "Challe"
       ],
       "size": "约200×200mm",
@@ -1980,56 +1930,6 @@
     },
     {
       "platforms": [
-        "StellaWorth"
-      ],
-      "size": "68×88mm",
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "S店透卡",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "透卡",
-      "id": "fc6c655a-c12e-498c-9fe8-6bce3242d210",
-      "image": "assets/img/uploads/s店透卡.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "size": "19×119mm；丝带5mm×35mm",
-      "material": "亚克力",
-      "character": "斐恩",
-      "name": "s店书签",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "本篇店特",
-      "type": "书签",
-      "id": "155897ef-3ee2-42d3-abcb-2ee7af54e428",
-      "image": "assets/img/uploads/s店书签.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
-        "StellaWorth"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "s店方吧唧",
-      "release_type": "初版",
-      "status": "完售",
-      "series": "lihui",
-      "event": "其他",
-      "type": "吧唧",
-      "id": "3184e320-50a5-4a55-a0b6-ac01f415e6b3",
-      "image": "assets/img/uploads/s店方吧唧.png",
-      "year": 2024
-    },
-    {
-      "platforms": [
         "Otomate"
       ],
       "size": "本体26×55mm；底座边长7mm正九边形",
@@ -2078,6 +1978,106 @@
       "type": "留言卡",
       "id": "fcba566e-7981-4263-a8fa-dd99fe84c392",
       "image": "assets/img/uploads/24秋风SSC留言卡.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "繁中福袋双插立牌",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "本篇繁中限定",
+      "type": "立牌",
+      "id": "33a4cc78-94d7-4af2-8db6-88a6d95fdeac",
+      "image": "assets/img/uploads/繁中双插立牌.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "繁中福袋色纸",
+      "release_type": "初版",
+      "note": "这是我……自己拼的……",
+      "status": "完售",
+      "series": "cg",
+      "event": "本篇繁中限定",
+      "type": "色纸",
+      "id": "2b7b17c5-9fda-4ecc-b842-b65a5c45c329",
+      "image": "assets/img/uploads/繁中福袋色纸.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "Joyoland"
+      ],
+      "size": "",
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "繁中福袋吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "本篇繁中限定",
+      "type": "吧唧",
+      "id": "88e0553c-2833-49c5-bf86-bbb74cd3044c",
+      "image": "assets/img/uploads/loading.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "size": "68×88mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "S店透卡",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "透卡",
+      "id": "fc6c655a-c12e-498c-9fe8-6bce3242d210",
+      "image": "assets/img/uploads/s店透卡.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "size": "19×119mm；丝带5mm×35mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "s店书签",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "本篇店特",
+      "type": "书签",
+      "id": "155897ef-3ee2-42d3-abcb-2ee7af54e428",
+      "image": "assets/img/uploads/s店书签.png",
+      "year": 2024
+    },
+    {
+      "platforms": [
+        "StellaWorth"
+      ],
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "s店方吧唧",
+      "release_type": "初版",
+      "status": "完售",
+      "series": "lihui",
+      "event": "其他",
+      "type": "吧唧",
+      "id": "3184e320-50a5-4a55-a0b6-ac01f415e6b3",
+      "image": "assets/img/uploads/s店方吧唧.png",
       "year": 2024
     }
   ]
