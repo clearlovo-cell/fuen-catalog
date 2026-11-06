@@ -1,67 +1,82 @@
 import { filterGoods, splitMaterials, uniqueValues } from "./filter.js";
 import { bindImageFallbacks, escapeHtml, renderCard, renderImage, renderModal } from "./render.js";
+import { createBackup, getIds, hasItem, importBackup, isStorageAvailable, subscribe, toggleItem } from "./storage.js";
 
 const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
-const state = { goods: [], series: [], filters: emptyFilters(), loaded: false, reverse: false };
-// 前端下拉菜单的自定义显示顺序
+const ROUTES = {
+  catalog: { title: "茉莉花之炯｜斐恩官周图鉴", listTitle: "全部谷子" },
+  warehouse: { kind: "owned", title: "已入库｜斐恩官周图鉴", heading: "已入库", listTitle: "已入库谷子", emptyTitle: "仓库还是空的", emptyText: "打开图鉴，把已经拥有的谷子收进来吧。" },
+  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "加入心愿单", listTitle: "心愿谷子", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" }
+};
 const filterOrders = {
-  type: [ "吧唧", "立牌", "透卡", "色纸", "挂件", "相卡", "拍立得", "留言卡", "ID卡", "书签", "镭射票", "珠光卡", "杂志", "杯垫", "其他"],
-  platforms: [ "Otomate", "Joyoland", "StellaWorth", "Alice", "Ebten", "oioi", "Wondergoo", "Neowing", "Gamecity", "Trader", "Challe", "B's-log", "Coolb", "宝岛", "乐天", "Trangle Teezer", "Lovaroma", "其他"],
-  event: [
-    "本篇店特", "FD店特", "本篇繁中限定", "FD繁中限定", "夏市", "秋风", "冬市", "甜品趴", "OTP", "AGF", "亚洲限定", "联名", "其他"],
+  type: ["吧唧", "立牌", "透卡", "色纸", "挂件", "相卡", "拍立得", "留言卡", "ID卡", "书签", "镭射票", "珠光卡", "杂志", "杯垫", "其他"],
+  platforms: ["Otomate", "Joyoland", "StellaWorth", "Alice", "Ebten", "oioi", "Wondergoo", "Neowing", "Gamecity", "Trader", "Challe", "B's-log", "Coolb", "宝岛", "乐天", "Trangle Teezer", "Lovaroma", "其他"],
+  event: ["本篇店特", "FD店特", "本篇繁中限定", "FD繁中限定", "夏市", "秋风", "冬市", "甜品趴", "OTP", "AGF", "亚洲限定", "联名", "其他"],
   materials: ["马口铁", "亚克力", "纸", "PET", "涤纶", "其他"]
 };
 
-// 按指定数组排序；未指定的选项排在最后
-function sortByCustomOrder(values, order) {
-  const rank = new Map(order.map((value, index) => [value, index]));
-
-  return [...values].sort((a, b) => {
-    const aIndex = rank.get(a) ?? order.length;
-    const bIndex = rank.get(b) ?? order.length;
-
-    if (aIndex !== bIndex) return aIndex - bIndex;
-
-    // 两个选项都没有指定顺序时，保持按名称排序
-    return a.localeCompare(b, "zh-CN", { numeric: true });
-  });
+function routeFromHash() {
+  const route = location.hash.replace(/^#\/?/, "").split(/[/?]/)[0];
+  return Object.hasOwn(ROUTES, route) ? route : "catalog";
 }
+
+const initialRoute = routeFromHash();
+const state = {
+  goods: [],
+  series: [],
+  route: initialRoute,
+  filtersByRoute: { catalog: emptyFilters(), warehouse: emptyFilters(), wishlist: emptyFilters() },
+  filters: emptyFilters(),
+  loaded: false,
+  reverse: false
+};
+state.filters = state.filtersByRoute[initialRoute];
+
 const $ = selector => document.querySelector(selector);
 const els = {
-  rail: $("#series-rail"), grid: $("#goods-grid"), total: $("#total-count"), result: $("#result-count"), catalogTitle: $("#catalog-title"),
-  loading: $("#loading-state"), error: $("#error-state"), empty: $("#empty-state"), search: $("#search-input"), reset: $("#reset-filters"),
+  rail: $("#series-rail"), grid: $("#goods-grid"), result: $("#result-count"), catalogTitle: $("#catalog-title"),
+  loading: $("#loading-state"), error: $("#error-state"), empty: $("#empty-state"), emptyTitle: $("#empty-title"),
+  emptyDescription: $("#empty-description"), emptyReset: $("#empty-reset"), search: $("#search-input"), reset: $("#reset-filters"),
   panel: $("#filters-panel"), toggle: $("#filters-toggle"), filterCount: $("#filter-count"), moreFilters: $("#more-filters"),
   materialChips: $("#material-chips"), materialMore: $("#material-more"), materialField: $("#material-field"), sizeField: $("#size-field"),
   size: $("#filter-size"), overlay: $("#lightbox-overlay"), modal: $("#lightbox"), modalContent: $("#modal-content"), modalClose: $("#modal-close"),
-  orderToggle: $("#reverse-order"), fab: $("#back-to-top"), fabBottom: $("#go-to-bottom")
+  orderToggle: $("#reverse-order"), fab: $("#back-to-top"), fabBottom: $("#go-to-bottom"), filterTitle: $("#filter-title"),
+  catalogHero: $("#catalog-hero"), collectionHero: $("#collection-hero"), homeStats: $("#home-stats"),
+  collectionTitle: $("#collection-title"), collectionCount: $("#collection-count"), collectionTotal: $("#collection-total"),
+  collectionProgress: $("#collection-progress"), collectionProgressFill: $("#collection-progress-fill"), collectionPercent: $("#collection-percent"),
+  guideOverlay: $("#guide-overlay"), guideModal: $("#guide-modal"), guideClose: $("#guide-close"), guideContent: $("#guide-content"),
+  backupFile: $("#backup-file"), toast: $("#toast")
 };
 const desktopQuery = window.matchMedia("(min-width: 768px)");
 let lastFocusedElement = null;
+let guideLastFocusedElement = null;
+let currentGoodsId = null;
 let modalTimer;
+let guideTimer;
+let toastTimer;
+let guideRequest = 0;
+
+function sortByCustomOrder(values, order) {
+  const rank = new Map(order.map((value, index) => [value, index]));
+  return [...values].sort((a, b) => {
+    const aIndex = rank.get(a) ?? order.length;
+    const bIndex = rank.get(b) ?? order.length;
+    if (aIndex !== bIndex) return aIndex - bIndex;
+    return a.localeCompare(b, "zh-CN", { numeric: true });
+  });
+}
 
 async function fetchJson(url) {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`${url}: ${res.status}`);
-    const data = await res.json();
-    
-    // 兼容 CMS 保存的对象格式 { goods: [...] } 或 { series: [...] }
-    if (Array.isArray(data)) {
-        return data;
-    }
-    
-    if (data && typeof data === 'object') {
-        if (url.includes('goods') && Array.isArray(data.goods)) {
-            return data.goods;
-        }
-        if (url.includes('series') && Array.isArray(data.series)) {
-            return data.series;
-        }
-        // 兜底：找第一个数组属性
-        const arr = Object.values(data).find(v => Array.isArray(v));
-        if (arr) return arr;
-    }
-    
-    throw new Error(`${url}: 数据格式应为数组`);
+  const separator = url.includes("?") ? "&" : "?";
+  const res = await fetch(`${url}${separator}_=${Date.now()}`, { cache: "no-cache" });
+  if (!res.ok) throw new Error(`${url}: ${res.status}`);
+  return res.json();
+}
+
+function dataList(data, key) {
+  if (Array.isArray(data)) return data;
+  if (data && Array.isArray(data[key])) return data[key];
+  throw new Error(`${key} 数据格式不正确`);
 }
 
 async function loadData() {
@@ -70,16 +85,18 @@ async function loadData() {
   els.empty.hidden = true;
   els.grid.hidden = true;
   try {
-    const [goods, series] = await Promise.all([fetchJson("./data/goods.json"), fetchJson("./data/series.json")]);
+    const [goodsData, seriesData] = await Promise.all([fetchJson("./data/goods.json"), fetchJson("./data/series.json")]);
+    const goods = dataList(goodsData, "goods");
+    const series = dataList(seriesData, "series");
     state.series = series.sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
     const seriesMap = new Map(state.series.map(item => [item.slug, item.name]));
     state.goods = goods.map((item, index) => ({ ...item, id: item.id || `goods-${index}`, seriesName: seriesMap.get(item.series) || item.series }));
     state.loaded = true;
     els.orderToggle.disabled = false;
-    els.total.textContent = String(state.goods.length);
     initialiseFilters();
     renderSeriesRail();
-    applyFilters();
+    updatePersonalUI();
+    if (!isStorageAvailable()) showToast("浏览器未允许本地保存，请及时导出备份");
   } catch (error) {
     console.error("图鉴数据加载失败", error);
     els.loading.hidden = true;
@@ -93,6 +110,7 @@ function fillSelect(key, values) {
   const select = document.querySelector(`[data-filter="${key}"]`);
   if (!select) return;
   const field = select.closest(".field");
+  select.length = 1;
   field.hidden = values.length === 0;
   values.forEach(value => {
     const option = document.createElement("option");
@@ -108,11 +126,11 @@ function initialiseFilters() {
   fillSelect("year", uniqueValues(state.goods, "year").reverse());
   fillSelect("event", sortByCustomOrder(uniqueValues(state.goods, "event"), filterOrders.event));
   fillSelect("release_type", uniqueValues(state.goods, "release_type"));
-
   const materials = sortByCustomOrder([...new Set(state.goods.flatMap(item => splitMaterials(item.material)))], filterOrders.materials);
   els.materialField.hidden = materials.length === 0;
-  els.materialChips.innerHTML = materials.map(material => `<button class="material-chip" type="button" data-material="${escapeHtml(material)}" aria-pressed="false">${escapeHtml(material)}</button>`).join("");
+  els.materialChips.innerHTML = materials.map(material => `<button class="material-chip" type="button" data-material="${escapeHtml(material)}" aria-pressed="${state.filters.materials.includes(material)}">${escapeHtml(material)}</button>`).join("");
   els.sizeField.hidden = !state.goods.some(item => String(item.size || "").trim());
+  syncFilterControls();
   updateMoreFiltersVisibility();
   requestAnimationFrame(updateMaterialMoreVisibility);
 }
@@ -126,9 +144,15 @@ function renderSeriesRail() {
   bindImageFallbacks(els.rail);
 }
 
+function baseGoodsForRoute() {
+  const kind = ROUTES[state.route].kind;
+  return kind ? state.goods.filter(item => hasItem(kind, item.id)) : state.goods;
+}
+
 function applyFilters() {
   if (!state.loaded) return;
-  const filtered = filterGoods(state.goods, state.filters);
+  const baseGoods = baseGoodsForRoute();
+  const filtered = filterGoods(baseGoods, state.filters);
   const orderedGoods = state.reverse ? [...filtered].reverse() : filtered;
   els.loading.hidden = true;
   els.error.hidden = true;
@@ -136,9 +160,16 @@ function applyFilters() {
   els.empty.hidden = filtered.length !== 0;
   els.grid.innerHTML = orderedGoods.map(renderCard).join("");
   bindImageFallbacks(els.grid);
+
   const selectedSeries = state.series.find(item => item.slug === state.filters.seriesId);
-  els.catalogTitle.textContent = selectedSeries ? selectedSeries.name : "全部谷子";
+  els.catalogTitle.textContent = selectedSeries ? selectedSeries.name : ROUTES[state.route].listTitle;
   els.result.textContent = `找到 ${filtered.length} 件谷子${state.reverse ? " · 已逆序" : ""}`;
+
+  const route = ROUTES[state.route];
+  const personalEmpty = route.kind && baseGoods.length === 0;
+  els.emptyTitle.textContent = personalEmpty ? route.emptyTitle : "没有找到符合条件的谷子";
+  els.emptyDescription.textContent = personalEmpty ? route.emptyText : "试着减少一个筛选条件，或换个关键词吧。";
+  els.emptyReset.textContent = personalEmpty ? "去图鉴看看" : "查看全部谷子";
   updateFilterIndicators();
   requestAnimationFrame(updateScrollButtons);
 }
@@ -155,14 +186,99 @@ function updateFilterIndicators() {
   els.reset.hidden = count === 0;
 }
 
+function setFilters(patch) {
+  state.filters = { ...state.filters, ...patch };
+  state.filtersByRoute[state.route] = state.filters;
+}
+
+function syncFilterControls() {
+  els.search.value = state.filters.search;
+  els.size.checked = state.filters.hasSize;
+  document.querySelectorAll("[data-filter]").forEach(select => {
+    const key = select.dataset.filter;
+    select.value = key === "platforms" ? (state.filters.platforms[0] || "") : state.filters[key];
+  });
+  els.materialChips.querySelectorAll("[data-material]").forEach(chip => {
+    chip.setAttribute("aria-pressed", String(state.filters.materials.includes(chip.dataset.material)));
+  });
+}
+
 function resetFilters() {
   state.filters = emptyFilters();
-  els.search.value = "";
-  els.size.checked = false;
-  document.querySelectorAll("[data-filter]").forEach(select => { select.value = ""; });
-  els.materialChips.querySelectorAll("[data-material]").forEach(chip => chip.setAttribute("aria-pressed", "false"));
+  state.filtersByRoute[state.route] = state.filters;
+  syncFilterControls();
   renderSeriesRail();
   applyFilters();
+}
+
+function validPersonalCount(kind) {
+  const goodsIds = new Set(state.goods.map(item => String(item.id)));
+  return getIds(kind).filter(id => goodsIds.has(String(id))).length;
+}
+
+function updateStats() {
+  const total = state.goods.length;
+  const owned = validPersonalCount("owned");
+  const wishlist = validPersonalCount("wishlist");
+  $("#total-count").textContent = state.loaded ? String(total) : "—";
+  $("#owned-count").textContent = String(owned);
+  $("#wishlist-count").textContent = String(wishlist);
+  $("#owned-total").textContent = state.loaded ? String(total) : "—";
+  $("#wishlist-total").textContent = state.loaded ? String(total) : "—";
+
+  const kind = ROUTES[state.route].kind;
+  if (!kind) return;
+  const count = kind === "owned" ? owned : wishlist;
+  const percent = total ? Math.round(count / total * 100) : 0;
+  els.collectionCount.textContent = String(count);
+  els.collectionTotal.textContent = state.loaded ? String(total) : "—";
+  els.collectionPercent.textContent = `${percent}%`;
+  els.collectionProgressFill.style.width = `${percent}%`;
+  els.collectionProgress.setAttribute("aria-valuenow", String(percent));
+  els.collectionProgress.setAttribute("aria-valuetext", `${count}／${total} 件，${percent}%`);
+}
+
+function updateModalActions() {
+  if (!currentGoodsId || els.overlay.hidden) return;
+  els.modalContent.querySelectorAll("[data-personal-action]").forEach(button => {
+    const kind = button.dataset.personalAction;
+    const active = hasItem(kind, currentGoodsId);
+    const owned = kind === "owned";
+    button.setAttribute("aria-pressed", String(active));
+    button.querySelector("span").textContent = active ? (owned ? "已入库" : "已加入心愿") : (owned ? "入库" : "心愿");
+    button.querySelector("small").textContent = active ? "再次点击可移除" : (owned ? "加入个人仓库" : "加入个人心愿单");
+  });
+}
+
+function updatePersonalUI() {
+  updateStats();
+  applyFilters();
+  updateModalActions();
+}
+
+function updateRoute({ initial = false } = {}) {
+  state.route = routeFromHash();
+  state.filters = state.filtersByRoute[state.route];
+  const route = ROUTES[state.route];
+  document.body.dataset.route = state.route;
+  document.title = route.title;
+  document.querySelectorAll("[data-route-link]").forEach(link => {
+    if (link.dataset.routeLink === state.route) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
+  els.catalogHero.hidden = state.route !== "catalog";
+  els.homeStats.hidden = state.route !== "catalog";
+  els.collectionHero.hidden = state.route === "catalog";
+  els.collectionTitle.textContent = route.heading || "斐恩官周图鉴";
+  els.filterTitle.textContent = state.route === "catalog" ? "图鉴检索" : "筛选";
+  syncFilterControls();
+  if (state.loaded) {
+    renderSeriesRail();
+    updatePersonalUI();
+  } else {
+    updateStats();
+  }
+  if (!initial) window.scrollTo({ top: 0, behavior: "auto" });
 }
 
 function updateMoreFiltersVisibility() {
@@ -181,13 +297,13 @@ function updateMaterialMoreVisibility() {
   if (wasExpanded) els.materialChips.classList.add("is-expanded");
 }
 
-/** 打开详情并管理焦点；浮层内只有必需的关闭按钮。 */
 function openModal(id) {
   const item = state.goods.find(goods => String(goods.id) === String(id));
   if (!item) return;
   clearTimeout(modalTimer);
+  currentGoodsId = String(id);
   lastFocusedElement = document.activeElement;
-  els.modalContent.innerHTML = renderModal(item);
+  els.modalContent.innerHTML = renderModal(item, { owned: hasItem("owned", id), wishlist: hasItem("wishlist", id) });
   bindImageFallbacks(els.modalContent);
   els.overlay.hidden = false;
   document.body.classList.add("is-modal-open");
@@ -200,39 +316,122 @@ function openModal(id) {
 
 function closeModal() {
   if (els.overlay.hidden) return;
+  clearTimeout(modalTimer);
   els.overlay.classList.remove("is-open");
-  document.body.classList.remove("is-modal-open");
   const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 220;
   modalTimer = window.setTimeout(() => {
     els.overlay.hidden = true;
     els.modalContent.innerHTML = "";
+    currentGoodsId = null;
+    if (els.guideOverlay.hidden) document.body.classList.remove("is-modal-open");
     if (lastFocusedElement?.isConnected) lastFocusedElement.focus();
+    else document.querySelector(`[data-route-link="${state.route}"]`)?.focus();
   }, delay);
+}
+
+function renderGuide(text) {
+  const paragraphs = String(text || "").trim().split(/\n\s*\n/).filter(Boolean);
+  if (!paragraphs.length) return;
+  els.guideContent.innerHTML = paragraphs.map(paragraph => `<p>${escapeHtml(paragraph).replace(/\n/g, "<br>")}</p>`).join("");
+}
+
+async function loadGuideText() {
+  const request = ++guideRequest;
+  try {
+    const site = await fetchJson("./data/site.json");
+    if (request === guideRequest && typeof site.guide === "string") renderGuide(site.guide);
+  } catch (error) {
+    console.warn("使用说明远程内容加载失败，保留默认说明", error);
+  }
+}
+
+function openGuide() {
+  clearTimeout(guideTimer);
+  guideLastFocusedElement = document.activeElement;
+  els.guideOverlay.hidden = false;
+  document.body.classList.add("is-modal-open");
+  els.guideModal.scrollTop = 0;
+  loadGuideText();
+  requestAnimationFrame(() => {
+    els.guideOverlay.classList.add("is-open");
+    els.guideClose.focus();
+  });
+}
+
+function closeGuide() {
+  if (els.guideOverlay.hidden) return;
+  clearTimeout(guideTimer);
+  guideRequest += 1;
+  els.guideOverlay.classList.remove("is-open");
+  const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 220;
+  guideTimer = window.setTimeout(() => {
+    els.guideOverlay.hidden = true;
+    if (els.overlay.hidden) document.body.classList.remove("is-modal-open");
+    if (guideLastFocusedElement?.isConnected) guideLastFocusedElement.focus();
+  }, delay);
+}
+
+function trapFocus(event, container) {
+  const focusable = [...container.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+    .filter(element => element.getClientRects().length > 0);
+  if (!focusable.length) {
+    event.preventDefault();
+    container.focus();
+    return;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function showToast(message) {
+  clearTimeout(toastTimer);
+  els.toast.textContent = message;
+  els.toast.hidden = false;
+  toastTimer = window.setTimeout(() => { els.toast.hidden = true; }, 3000);
+}
+
+function exportPersonalData() {
+  const blob = new Blob([JSON.stringify(createBackup(), null, 2)], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `斐恩图鉴备份-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast("备份已导出，请妥善保存文件");
 }
 
 els.rail.addEventListener("click", event => {
   const button = event.target.closest("[data-series]");
   if (!button) return;
-  state.filters.seriesId = button.dataset.series;
+  setFilters({ seriesId: button.dataset.series });
   els.rail.querySelectorAll("[data-series]").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
   applyFilters();
 });
-
-els.search.addEventListener("input", () => { state.filters.search = els.search.value; applyFilters(); });
+els.search.addEventListener("input", () => { setFilters({ search: els.search.value }); applyFilters(); });
 document.querySelectorAll("[data-filter]").forEach(select => {
   select.addEventListener("change", () => {
     const key = select.dataset.filter;
-    state.filters[key] = key === "platforms" ? (select.value ? [select.value] : []) : select.value;
+    setFilters({ [key]: key === "platforms" ? (select.value ? [select.value] : []) : select.value });
     applyFilters();
   });
 });
-els.size.addEventListener("change", () => { state.filters.hasSize = els.size.checked; applyFilters(); });
+els.size.addEventListener("change", () => { setFilters({ hasSize: els.size.checked }); applyFilters(); });
 els.materialChips.addEventListener("click", event => {
   const chip = event.target.closest("[data-material]");
   if (!chip) return;
   const value = chip.dataset.material;
   const selected = state.filters.materials.includes(value);
-  state.filters.materials = selected ? state.filters.materials.filter(item => item !== value) : [...state.filters.materials, value];
+  setFilters({ materials: selected ? state.filters.materials.filter(item => item !== value) : [...state.filters.materials, value] });
   chip.setAttribute("aria-pressed", String(!selected));
   applyFilters();
 });
@@ -255,7 +454,10 @@ els.moreFilters.addEventListener("click", () => {
   requestAnimationFrame(updateMaterialMoreVisibility);
 });
 els.reset.addEventListener("click", resetFilters);
-$("#empty-reset").addEventListener("click", resetFilters);
+els.emptyReset.addEventListener("click", () => {
+  if (ROUTES[state.route].kind && baseGoodsForRoute().length === 0) location.hash = "#/catalog";
+  else resetFilters();
+});
 $("#retry-load").addEventListener("click", loadData);
 els.grid.addEventListener("click", event => {
   const card = event.target.closest("[data-goods-id]");
@@ -263,15 +465,48 @@ els.grid.addEventListener("click", event => {
 });
 els.modalClose.addEventListener("click", closeModal);
 els.overlay.addEventListener("click", event => { if (event.target === els.overlay) closeModal(); });
+els.modalContent.addEventListener("click", event => {
+  const button = event.target.closest("[data-personal-action]");
+  if (!button || !currentGoodsId) return;
+  const kind = button.dataset.personalAction;
+  const { added, persisted } = toggleItem(kind, currentGoodsId);
+  const actionName = kind === "owned" ? (added ? "已加入仓库" : "已移出仓库") : (added ? "已加入心愿单" : "已移出心愿单");
+  showToast(persisted ? actionName : `${actionName}，但仅在本次页面中有效`);
+});
+
+$("#open-guide").addEventListener("click", openGuide);
+els.guideClose.addEventListener("click", closeGuide);
+els.guideOverlay.addEventListener("click", event => { if (event.target === els.guideOverlay) closeGuide(); });
 document.addEventListener("keydown", event => {
+  if (!els.guideOverlay.hidden) {
+    if (event.key === "Escape") { event.preventDefault(); closeGuide(); }
+    if (event.key === "Tab") trapFocus(event, els.guideModal);
+    return;
+  }
   if (els.overlay.hidden) return;
   if (event.key === "Escape") { event.preventDefault(); closeModal(); }
-  if (event.key === "Tab") {
-    // 详情中仅有关闭按钮可聚焦，因此焦点始终留在浮层内。
-    event.preventDefault();
-    els.modalClose.focus();
+  if (event.key === "Tab") trapFocus(event, els.modal);
+});
+
+document.querySelectorAll('[data-backup-action="export"]').forEach(button => button.addEventListener("click", exportPersonalData));
+document.querySelectorAll('[data-backup-action="import"]').forEach(button => button.addEventListener("click", () => {
+  els.backupFile.value = "";
+  els.backupFile.click();
+}));
+els.backupFile.addEventListener("change", async () => {
+  const file = els.backupFile.files?.[0];
+  if (!file) return;
+  try {
+    if (file.size > 2 * 1024 * 1024) throw new Error("备份文件过大，请选择本网站导出的 JSON 文件");
+    const counts = importBackup(await file.text());
+    showToast(`备份已合并：仓库 ${counts.owned} 条，心愿 ${counts.wishlist} 条`);
+  } catch (error) {
+    showToast(error.message || "备份导入失败，请检查文件");
+  } finally {
+    els.backupFile.value = "";
   }
 });
+
 const getScrollBehavior = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
 els.orderToggle.addEventListener("click", () => {
   state.reverse = !state.reverse;
@@ -283,51 +518,36 @@ els.orderToggle.addEventListener("click", () => {
 });
 els.fab.addEventListener("click", () => window.scrollTo({ top: 0, behavior: getScrollBehavior() }));
 els.fabBottom.addEventListener("click", () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: getScrollBehavior() }));
-
 function updateScrollButtons() {
   const maxScrollTop = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
   els.fab.classList.toggle("is-visible", window.scrollY > 300);
   els.fabBottom.classList.toggle("is-visible", maxScrollTop > 100 && window.scrollY < maxScrollTop - 100);
 }
 window.addEventListener("scroll", updateScrollButtons, { passive: true });
-updateScrollButtons();
 window.addEventListener("resize", () => requestAnimationFrame(() => { updateMoreFiltersVisibility(); updateMaterialMoreVisibility(); updateScrollButtons(); }));
+window.addEventListener("hashchange", () => updateRoute());
 desktopQuery.addEventListener("change", updateMoreFiltersVisibility);
+subscribe(updatePersonalUI);
+
+// 柄图系列：电脑端鼠标拖拽滚动。
+let isDraggingRail = false;
+let railStartX = 0;
+let railScrollLeft = 0;
+els.rail.addEventListener("mousedown", event => {
+  isDraggingRail = true;
+  railStartX = event.pageX - els.rail.offsetLeft;
+  railScrollLeft = els.rail.scrollLeft;
+});
+els.rail.addEventListener("mouseleave", () => { isDraggingRail = false; });
+els.rail.addEventListener("mouseup", () => { isDraggingRail = false; });
+els.rail.addEventListener("mousemove", event => {
+  if (!isDraggingRail) return;
+  event.preventDefault();
+  els.rail.scrollLeft = railScrollLeft - (event.pageX - els.rail.offsetLeft - railStartX) * 1.5;
+});
 
 $("#current-year").textContent = String(new Date().getFullYear());
+if (location.hash !== `#/${initialRoute}`) history.replaceState(null, "", `#/${initialRoute}`);
+updateRoute({ initial: true });
+updateScrollButtons();
 loadData();
-
-// === 柄图系列：电脑端鼠标拖拽滚动 ===
-(function () {
-  const rail = document.getElementById('series-rail');
-  if (!rail) return;
-
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  rail.addEventListener('mousedown', (e) => {
-    isDown = true;
-    rail.classList.add('active');
-    startX = e.pageX - rail.offsetLeft;
-    scrollLeft = rail.scrollLeft;
-  });
-
-  rail.addEventListener('mouseleave', () => {
-    isDown = false;
-    rail.classList.remove('active');
-  });
-
-  rail.addEventListener('mouseup', () => {
-    isDown = false;
-    rail.classList.remove('active');
-  });
-
-  rail.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - rail.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    rail.scrollLeft = scrollLeft - walk;
-  });
-})();
