@@ -3,46 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="《茉莉花之炯》斐恩官方周边中文图鉴，按柄图、制品类型、发售平台与年份查找。">
+  <meta name="description" content="《茉莉花之炯》斐恩官方周边中文图鉴，支持检索、个人仓库、心愿单与本地备份。">
   <meta name="theme-color" content="#FDFCF7">
-  <title>斐恩官周图鉴｜茉莉花之炯</title>
+  <title>茉莉花之炯｜斐恩官周图鉴</title>
   <link rel="icon" href="./favicon.png" type="image/png">
   <link rel="stylesheet" href="./css/tokens.css">
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/main.css">
 </head>
-<body id="top">
-  <a class="skip-link" href="#catalog">跳至图鉴列表</a>
+<body id="top" data-route="catalog">
+  <a class="skip-link" href="#catalog">跳至当前谷子列表</a>
 
-  <header class="site-header lace-bottom">
-    <div class="container hero">
-      <div class="hero__copy">
-        <p class="hero__eyebrow"><span lang="ja">茉莉花之炯</span><span aria-hidden="true">·</span><span lang="ja">フエン</span></p>
-        <h1>斐恩<span>官周图鉴</span></h1>
-        <p class="hero__intro" lang="ja">お前の顔を、絵にして残したい、そう思ったよ。</p>
-      </div>
-      <aside class="hero__note" aria-label="图鉴收录统计">
-        <svg class="hero__flower" viewBox="0 0 80 80" aria-hidden="true">
-          <g fill="none" stroke="currentColor" stroke-width="1.5">
-            <ellipse cx="40" cy="21" rx="10" ry="19"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(72 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(144 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(216 40 40)"/><ellipse cx="40" cy="21" rx="10" ry="19" transform="rotate(288 40 40)"/><circle cx="40" cy="40" r="5"/>
-          </g>
-        </svg>
-        <p>已收录 <strong id="total-count">—</strong> 件</p>
-        <span lang="ja">マツリカの炯-kEi-</span>
-        <small>持续整理中</small>
-      </aside>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="topbar__brand" href="#/catalog" aria-label="返回斐恩官周图鉴首页">
+        <span class="topbar__brand-full"><span lang="ja">茉莉花之炯</span><span aria-hidden="true"> · </span><span lang="ja">フエン</span></span>
+        <span class="topbar__brand-short">斐恩图鉴</span>
+      </a>
+      <nav class="topbar__nav" aria-label="主导航">
+        <a href="#/catalog" data-route-link="catalog" aria-current="page">图鉴</a>
+        <a href="#/warehouse" data-route-link="warehouse">仓库</a>
+        <a href="#/wishlist" data-route-link="wishlist">心愿</a>
+        <button id="open-guide" type="button">说明</button>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <section class="series-section container" aria-labelledby="series-title">
-      <div class="section-heading">
-        <h2 id="series-title">柄图</h2>
-        <span>左右滑动选择柄图</span>
+  <main id="main-content">
+    <header class="site-header lace-bottom">
+      <div id="catalog-hero" class="container hero">
+        <div class="hero__copy">
+          <p class="hero__eyebrow"><span lang="ja">
+          <h1>斐恩<span>官周图鉴</span></h1>
+          <p class="hero__intro" lang="ja">お前の顔を、絵にして残したい、そう思ったよ。</p>
+        </div>
       </div>
-      <div id="series-rail" class="rail" aria-label="按柄图筛选">
-        <div class="rail__skeleton" aria-hidden="true"></div>
+
+      <div id="collection-hero" class="container collection-hero" hidden>
+        <p class="collection-hero__note">只保存在这台设备上</p>
+        <h1 id="collection-title">已入库</h1>
+        <p class="collection-hero__count"><strong id="collection-count">0</strong><span>／</span><span id="collection-total">0</span><span> 件</span></p>
+        <div class="progress-row">
+          <div id="collection-progress" class="progress-track" role="progressbar" aria-label="图鉴完成度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span id="collection-progress-fill"></span>
+          </div>
+          <span id="collection-percent" class="progress-percent">0%</span>
+        </div>
+        <div id="collection-tools" class="collection-tools" aria-label="本地数据备份">
+          <button class="btn btn--small" type="button" data-backup-action="export">导出备份</button>
+          <button class="btn btn--small btn--secondary" type="button" data-backup-action="import">导入备份</button>
+          <span>导入会合并记录，不覆盖现有数据</span>
+        </div>
       </div>
+    </header>
+
+    <section id="home-stats" class="stats-bar container" aria-label="图鉴与个人统计">
+      <div class="stats__item">
+        <span class="stats__label">已收录</span>
+        <strong class="stats__number"><span id="total-count">—</span><small> 件</small></strong>
+      </div>
+      <a class="stats__item" href="#/warehouse">
+        <span class="stats__label">已入库</span>
+        <strong class="stats__number"><span id="owned-count">0</span><small>／<span id="owned-total">—</span> 件</small></strong>
+      </a>
+      <a class="stats__item" href="#/wishlist">
+        <span class="stats__label">心愿单</span>
+        <strong class="stats__number"><span id="wishlist-count">0</span><small>／<span id="wishlist-total">—</span> 件</small></strong>
+      </a>
     </section>
 
     <section class="filter-section lace-bottom" aria-labelledby="filter-title">
@@ -105,6 +132,16 @@
       </div>
     </section>
 
+    <section class="series-section container" aria-labelledby="series-title">
+      <div class="section-heading">
+        <h2 id="series-title">柄图</h2>
+        <span>左右滑动选择柄图</span>
+      </div>
+      <div id="series-rail" class="rail" aria-label="按柄图筛选">
+        <div class="rail__skeleton" aria-hidden="true"></div>
+      </div>
+    </section>
+
     <section id="catalog" class="catalog container" aria-labelledby="catalog-title">
       <div class="catalog__heading">
         <h2 id="catalog-title">全部谷子</h2>
@@ -123,8 +160,8 @@
       </div>
       <div id="empty-state" class="state-panel" hidden>
         <p class="state-panel__face" aria-hidden="true">(｡•́︿•̀｡)</p>
-        <h3>没有找到符合条件的谷子</h3>
-        <p>试着减少一个筛选条件，或换个关键词吧。</p>
+        <h3 id="empty-title">没有找到符合条件的谷子</h3>
+        <p id="empty-description">试着减少一个筛选条件，或换个关键词吧。</p>
         <button id="empty-reset" class="btn" type="button">查看全部谷子</button>
       </div>
       <div id="goods-grid" class="goods-grid" aria-live="polite"></div>
@@ -134,15 +171,13 @@
 
   <footer class="site-footer">
     <div class="container footer__inner">
-      <div><span class="footer__mark" aria-hidden="true">🎐</span>clearlovo</div>
+      <div><span class="footer__mark" aria-hidden="true">✦</span>clearlovo</div>
       <p>© <span id="current-year"></span> 图片版权归官方所有，仅供图鉴参考</p>
       <p class="footer__sample">CONTACT:1374643958@qq.com</p>
     </div>
   </footer>
 
-  <button id="reverse-order" class="order-toggle" type="button" aria-pressed="false" aria-label="开启倒序查看" title="将当前图鉴列表倒序排列" disabled>
-  <span>逆</span>
-</button>
+  <button id="reverse-order" class="order-toggle" type="button" aria-pressed="false" aria-label="开启倒序查看" title="将当前图鉴列表倒序排列" disabled><span>逆</span></button>
   <button id="back-to-top" class="fab fab--up" type="button" aria-label="返回顶部" title="返回顶部"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg></button>
   <button id="go-to-bottom" class="fab" type="button" aria-label="前往底部" title="前往底部"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 10 6 6 6-6"/></svg></button>
 
@@ -154,6 +189,26 @@
       <div id="modal-content"></div>
     </section>
   </div>
+
+  <div id="guide-overlay" class="guide-overlay" hidden>
+    <section id="guide-modal" class="guide-modal" role="dialog" aria-modal="true" aria-labelledby="guide-title" tabindex="-1">
+      <button id="guide-close" class="modal-close guide-close" type="button" aria-label="关闭使用说明">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+      <p class="guide-modal__note">FUEN ATLAS</p>
+      <h2 id="guide-title">使用说明</h2>
+      <div id="guide-content" class="guide-content">
+        <p>1. 在图鉴页可按名称、类型、活动、平台、年份、材质和尺寸检索，也可点击柄图封面筛选。</p>
+        <p>2. 打开任意制品详情，点击“入库”或“心愿”即可加入个人列表，再次点击可移除。</p>
+        <p>3. 仓库和心愿单只保存在当前浏览器，不会上传。清除网站数据、使用无痕模式或更换设备后，记录可能无法恢复。</p>
+        <p>4. 仓库和心愿页支持导出、导入备份。导入会合并记录，不会覆盖现有数据。</p>
+        <p>5. 本站仅供图鉴参考，图片版权归官方所有。</p>
+      </div>
+    </section>
+  </div>
+
+  <input id="backup-file" type="file" accept="application/json,.json" hidden>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
   <script type="module" src="./js/app.js"></script>
 </body>
