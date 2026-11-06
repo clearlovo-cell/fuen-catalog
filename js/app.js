@@ -2,7 +2,7 @@ import { filterGoods, splitMaterials, uniqueValues } from "./filter.js";
 import { bindImageFallbacks, escapeHtml, renderCard, renderImage, renderModal } from "./render.js";
 
 const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
-const state = { goods: [], series: [], filters: emptyFilters(), loaded: false };
+const state = { goods: [], series: [], filters: emptyFilters(), loaded: false, reverse: false };
 // 前端下拉菜单的自定义显示顺序
 const filterOrders = {
   type: [ "吧唧", "立牌", "透卡", "色纸", "挂件", "相卡", "拍立得", "留言卡", "ID卡", "书签", "镭射票", "珠光卡", "杂志", "杯垫", "其他"],
@@ -33,7 +33,7 @@ const els = {
   panel: $("#filters-panel"), toggle: $("#filters-toggle"), filterCount: $("#filter-count"), moreFilters: $("#more-filters"),
   materialChips: $("#material-chips"), materialMore: $("#material-more"), materialField: $("#material-field"), sizeField: $("#size-field"),
   size: $("#filter-size"), overlay: $("#lightbox-overlay"), modal: $("#lightbox"), modalContent: $("#modal-content"), modalClose: $("#modal-close"),
-  fab: $("#back-to-top"), fabBottom: $("#go-to-bottom")
+  orderToggle: $("#reverse-order"), fab: $("#back-to-top"), fabBottom: $("#go-to-bottom")
 };
 const desktopQuery = window.matchMedia("(min-width: 768px)");
 let lastFocusedElement = null;
@@ -75,6 +75,7 @@ async function loadData() {
     const seriesMap = new Map(state.series.map(item => [item.slug, item.name]));
     state.goods = goods.map((item, index) => ({ ...item, id: item.id || `goods-${index}`, seriesName: seriesMap.get(item.series) || item.series }));
     state.loaded = true;
+    els.orderToggle.disabled = false;
     els.total.textContent = String(state.goods.length);
     initialiseFilters();
     renderSeriesRail();
@@ -128,15 +129,16 @@ function renderSeriesRail() {
 function applyFilters() {
   if (!state.loaded) return;
   const filtered = filterGoods(state.goods, state.filters);
+  const orderedGoods = state.reverse ? [...filtered].reverse() : filtered;
   els.loading.hidden = true;
   els.error.hidden = true;
   els.grid.hidden = filtered.length === 0;
   els.empty.hidden = filtered.length !== 0;
-  els.grid.innerHTML = filtered.map(renderCard).join("");
+  els.grid.innerHTML = orderedGoods.map(renderCard).join("");
   bindImageFallbacks(els.grid);
   const selectedSeries = state.series.find(item => item.slug === state.filters.seriesId);
   els.catalogTitle.textContent = selectedSeries ? selectedSeries.name : "全部谷子";
-  els.result.textContent = `找到 ${filtered.length} 件谷子`;
+  els.result.textContent = `找到 ${filtered.length} 件谷子${state.reverse ? " · 已倒序" : ""}`;
   updateFilterIndicators();
   requestAnimationFrame(updateScrollButtons);
 }
@@ -271,6 +273,14 @@ document.addEventListener("keydown", event => {
   }
 });
 const getScrollBehavior = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+els.orderToggle.addEventListener("click", () => {
+  state.reverse = !state.reverse;
+  els.orderToggle.setAttribute("aria-pressed", String(state.reverse));
+  els.orderToggle.setAttribute("aria-label", state.reverse ? "关闭倒序查看，恢复正序" : "开启倒序查看");
+  els.orderToggle.title = state.reverse ? "恢复当前图鉴列表的正序排列" : "将当前图鉴列表倒序排列";
+  els.orderToggle.querySelector("span").textContent = state.reverse ? "正序" : "倒序";
+  applyFilters();
+});
 els.fab.addEventListener("click", () => window.scrollTo({ top: 0, behavior: getScrollBehavior() }));
 els.fabBottom.addEventListener("click", () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: getScrollBehavior() }));
 
