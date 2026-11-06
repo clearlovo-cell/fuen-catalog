@@ -50,12 +50,9 @@ export function renderCard(item) {
   }).join("");
 
   const platformName = (item.platforms || []).join(" / ") || "平台待定";
-const platformAndEvent = item.event
-  ? `${platformName}  ·  ${item.event}`
-  : platformName;
 
-const platforms = CARD_FIELDS.includes("platforms")
-  ? `<p class="card__platform">${escapeHtml(platformAndEvent)}</p>`
+  const platforms = CARD_FIELDS.includes("platforms")
+  ? `<p class="card__platform card__meta"><span>${escapeHtml(platformName)}</span>${item.event ? `<span>${escapeHtml(item.event)}</span>` : ""}</p>`
   : "";
 
   // 单独读取尺寸，没有填写时显示提示
