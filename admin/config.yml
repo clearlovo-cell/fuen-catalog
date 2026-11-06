@@ -45,6 +45,7 @@ collections:
           - name: goods
             label: 谷子
             widget: list
+            add_to_top: true
             fields:
               - { name: name, label: 制品名称, widget: string }
               - { name: id, label: 唯一 ID, widget: uuid }
