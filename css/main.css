@@ -112,6 +112,10 @@
 .footer__inner > div { display: flex; align-items: center; justify-content: center; gap: var(--sp-2); margin-bottom: var(--sp-2); color: var(--c-text); }
 .footer__mark { color: var(--c-primary-strong); font-size: var(--fs-xl); }
 .footer__sample { margin-top: var(--sp-1); opacity: .85; }
+.order-toggle { position: fixed; right: max(var(--sp-4), env(safe-area-inset-right)); bottom: calc(max(var(--sp-4), env(safe-area-inset-bottom)) + 112px); z-index: var(--z-fab); min-height: 44px; padding: 0 var(--sp-4); display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--c-primary-strong); border-radius: var(--r-pill); background: var(--c-surface); box-shadow: var(--sh-2); font-size: var(--fs-xs); font-weight: 600; transition: transform var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease);}
+.order-toggle:hover { transform: translateY(-2px);}
+.order-toggle:active { transform: translateY(0);}
+.order-toggle[aria-pressed="true"] { background: var(--c-primary);}
 .fab { position: fixed; right: max(var(--sp-4),env(safe-area-inset-right)); bottom: max(var(--sp-4),env(safe-area-inset-bottom)); z-index: var(--z-fab); width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--c-primary-strong); border-radius: 50%; background: var(--c-primary); box-shadow: var(--sh-2); opacity: 0; transform: translateY(8px); pointer-events: none; transition: transform var(--dur-2) var(--ease), opacity var(--dur-2) var(--ease); }
 .fab--up { bottom: calc(max(var(--sp-4), env(safe-area-inset-bottom)) + 56px); }
 .fab.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
