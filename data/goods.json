@@ -748,7 +748,7 @@
       "platforms": [
         "Otomate"
       ],
-      "size": "580×44mm",
+      "size": "80×44mm",
       "material": "亚克力",
       "character": "斐恩",
       "name": "25秋风糖果吧唧立牌",
@@ -844,7 +844,7 @@
       "event": "AGF",
       "type": "透卡",
       "id": "bf1203c9-0c38-4871-986e-1208f71edf33",
-      "image": "assets/img/uploads/25agf小透卡.jpg",
+      "image": "assets/img/uploads/25AGF小透卡.png",
       "year": 2025
     },
     {
@@ -878,7 +878,7 @@
       "event": "OTP",
       "type": "吧唧",
       "id": "12988acb-a136-4253-8569-e96943cf844f",
-      "image": "assets/img/uploads/img_3356.jpeg",
+      "image": "assets/img/uploads/25OTP饼干吧唧.png",
       "year": 2025
     },
     {
@@ -1157,7 +1157,7 @@
       "event": "冬市",
       "type": "杯垫",
       "id": "37698163-2d98-4480-bd8e-ea731ec4e02c",
-      "image": "assets/img/uploads/25冬市杯垫.jpg",
+      "image": "assets/img/uploads/25冬市杯垫.png",
       "year": 2025
     },
     {
