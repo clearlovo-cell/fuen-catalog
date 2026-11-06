@@ -14,21 +14,31 @@
   --c-primary: #FFD966;
   --c-primary-soft: #F2DFA4;
   --c-primary-strong: #C9A84C;
-  /* 在售 */
+    /* 长期通贩（原“在售”的颜色，不变） */
   --c-on-bg: #E3F3E7;
   --c-on-fg: #1F6B41;
   --c-on-bd: #BCE0C8;
   --c-on-dot: #3D8B5E;
-  /* 预售 */
+  /* 受付中（原“预售”的颜色，不变） */
   --c-pre-bg: #FCEEDC;
   --c-pre-fg: #8C4A0B;
   --c-pre-bd: #F2D4AE;
   --c-pre-dot: #C1681B;
-  /* 完售 */
+  /* 完售（不变） */
   --c-out-bg: #ECE8E1;
   --c-out-fg: #6B6055;
   --c-out-bd: #DAD3C7;
   --c-out-dot: #8A7B6A;
+  /* 情报公开 */
+  --c-info-bg: #A8C7E6;
+  --c-info-fg: #2F5D8C;
+  --c-info-bd: #C9DAEF;
+  --c-info-dot: #6E9BC6;
+  /* 受注终了（雪青） */
+  --c-end-bg: #AAA1CE;
+  --c-end-fg: #5B4E85;
+  --c-end-bd: #C9C3E2;
+  --c-end-dot: #8B7FB5;
 
   --font-display: "LXGW WenKai", "ZCOOL KuaiLe", "Kaiti SC", "STKaiti", "KaiTi", "Noto Serif CJK SC", serif;
   --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
