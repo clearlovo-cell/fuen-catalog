@@ -270,7 +270,7 @@ function updateRoute({ initial = false } = {}) {
   els.homeStats.hidden = state.route !== "catalog";
   els.collectionHero.hidden = state.route === "catalog";
   els.collectionTitle.textContent = route.heading || "斐恩官周图鉴";
-  els.filterTitle.textContent = state.route === "catalog" ? "图鉴检索" : "筛选";
+  els.filterTitle.textContent = "图鉴检索";
   syncFilterControls();
   if (state.loaded) {
     renderSeriesRail();
