@@ -80,9 +80,9 @@ export function renderModal(item, personal = { owned: false, wishlist: false }) 
     ["柄图系列", item.seriesName], ["制品类型", item.type], ["发售平台", (item.platforms || []).join(" / ")],
     ["活动", item.event], ["发售年份", item.year], ["具体发售日", item.date],
     ["日元定价", item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : ""], ["发售性质", item.release_type],
-    ["尺寸", item.size], ["材质", item.material]
+    ["材质", item.material, true], ["尺寸", item.size, true]
   ];
-  const details = rows.map(([label, value]) => `<div class="detail-list__row"><dt>${label}</dt><dd>${escapeHtml(value || "待补充")}</dd></div>`).join("");
+  const details = rows.map(([label, value, full]) => `<div class="detail-list__row${full ? " detail-list__row--full" : ""}"><dt>${label}</dt><dd>${escapeHtml(value || "待补充")}</dd></div>`).join("");
   const note = `<div class="detail-list__row detail-list__row--full"><dt>备注</dt><dd>${escapeHtml(item.note || "暂无备注")}</dd></div>`;
   const actions = `<div class="modal-actions" aria-label="个人列表操作">${renderPersonalAction("owned", personal.owned)}${renderPersonalAction("wishlist", personal.wishlist)}</div>`;
   return `${renderImage({ src: item.image, alt: `${item.name}详情图`, className: "lightbox__img", width: 1200, mode: "contain" })}
