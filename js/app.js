@@ -564,11 +564,6 @@ els.rail.addEventListener("mousemove", event => {
 });
 
 $("#current-year").textContent = String(new Date().getFullYear());
-if (desktopQuery.matches) {
-  els.toggle.setAttribute("aria-expanded", "true");
-  els.panel.dataset.expanded = "true";
-  updateFilterIndicators();
-}
 if (location.hash !== `#/${initialRoute}`) history.replaceState(null, "", `#/${initialRoute}`);
 updateRoute({ initial: true });
 updateScrollButtons();
