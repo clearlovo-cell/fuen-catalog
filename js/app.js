@@ -37,11 +37,11 @@ const els = {
   rail: $("#series-rail"), grid: $("#goods-grid"), result: $("#result-count"), catalogTitle: $("#catalog-title"),
   loading: $("#loading-state"), error: $("#error-state"), empty: $("#empty-state"), emptyTitle: $("#empty-title"),
   emptyDescription: $("#empty-description"), emptyReset: $("#empty-reset"), search: $("#search-input"), reset: $("#reset-filters"),
-  panel: $("#filters-panel"), toggle: $("#filters-toggle"), filterCount: $("#filter-count"), moreFilters: $("#more-filters"),
+  panel: $("#filters-panel"), toggle: $("#filters-toggle"), toggleLabel: $("#filters-toggle-label"), filterCount: $("#filter-count"), moreFilters: $("#more-filters"), resetDivider: $("#reset-divider"),
   materialChips: $("#material-chips"), materialMore: $("#material-more"), materialField: $("#material-field"), sizeField: $("#size-field"),
   size: $("#filter-size"), overlay: $("#lightbox-overlay"), modal: $("#lightbox"), modalContent: $("#modal-content"), modalClose: $("#modal-close"),
-  orderToggle: $("#reverse-order"), fab: $("#back-to-top"), fabBottom: $("#go-to-bottom"), filterTitle: $("#filter-title"),
-  catalogHero: $("#catalog-hero"), collectionHero: $("#collection-hero"), homeStats: $("#home-stats"),
+  orderToggle: $("#reverse-order"), fab: $("#back-to-top"), fabBottom: $("#go-to-bottom"),
+  catalogHero: $("#catalog-hero"), collectionHero: $("#collection-hero"),
   collectionTitle: $("#collection-title"), collectionCount: $("#collection-count"), collectionTotal: $("#collection-total"),
   collectionProgress: $("#collection-progress"), collectionProgressFill: $("#collection-progress-fill"), collectionPercent: $("#collection-percent"),
   guideOverlay: $("#guide-overlay"), guideModal: $("#guide-modal"), guideClose: $("#guide-close"), guideContent: $("#guide-content"),
@@ -136,10 +136,25 @@ function initialiseFilters() {
 }
 
 function renderSeriesRail() {
-  const allIcon = `<span class="rail__cover rail__cover--all"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="9" rx="4" ry="8"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(72 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(144 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(216 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(288 16 16)"/></g></svg></span>`;
-  const allButton = `<button class="rail__item" type="button" data-series="" aria-pressed="${state.filters.seriesId === ""}">${allIcon}<span class="rail__name">全部</span></button>`;
-  const items = state.series.map(series => `<button class="rail__item" type="button" data-series="${escapeHtml(series.slug)}" aria-pressed="${state.filters.seriesId === series.slug}" title="${escapeHtml(series.note || series.name)}">
-    ${renderImage({ src: series.cover, alt: "", className: "rail__cover", width: 160, height: 160 })}<span class="rail__name">${escapeHtml(series.name)}</span></button>`).join("");
+  const seriesCount = state.goods.reduce((map, item) => {
+    const key = item.series || "";
+    map.set(key, (map.get(key) || 0) + 1);
+    return map;
+  }, new Map());
+  const renderItem = ({ slug, name, cover, note, index, count }) => {
+    const pressed = state.filters.seriesId === slug;
+    const coverHtml = cover
+      ? renderImage({ src: cover, alt: "", className: "rail__cover", width: 208, height: 208 })
+      : `<span class="rail__cover rail__cover--all"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="9" rx="4" ry="8"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(72 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(144 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(216 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(288 16 16)"/></g></svg></span>`;
+    return `<button class="rail__item" type="button" data-series="${escapeHtml(slug)}" aria-pressed="${pressed}" title="${escapeHtml(note || name)}">
+    <span class="rail__tag" aria-hidden="true">当前</span>
+    ${coverHtml}<span class="rail__title"><span class="rail__name">${escapeHtml(name)}</span><span class="rail__index" aria-hidden="true">${String(index).padStart(2, "0")}</span></span><span class="rail__count">已整理 ${count} 件周边</span></button>`;
+  };
+  const allButton = renderItem({ slug: "", name: "全部", cover: null, index: 1, count: state.goods.length });
+  const items = state.series.map((series, index) => renderItem({
+    slug: series.slug, name: series.name, cover: series.cover, note: series.note,
+    index: index + 2, count: seriesCount.get(series.slug) || 0
+  })).join("");
   els.rail.innerHTML = `<div class="rail__track">${allButton}${items}</div>`;
   bindImageFallbacks(els.rail);
 }
@@ -161,8 +176,7 @@ function applyFilters() {
   els.grid.innerHTML = orderedGoods.map(renderCard).join("");
   bindImageFallbacks(els.grid);
 
-  const selectedSeries = state.series.find(item => item.slug === state.filters.seriesId);
-  els.catalogTitle.textContent = selectedSeries ? selectedSeries.name : ROUTES[state.route].listTitle;
+  els.catalogTitle.textContent = state.route === "catalog" ? "图鉴目录" : ROUTES[state.route].listTitle;
   els.result.textContent = `找到 ${filtered.length} 件谷子${state.reverse ? " · 已逆序" : ""}`;
 
   const route = ROUTES[state.route];
@@ -176,14 +190,17 @@ function applyFilters() {
 
 function activeFilterCount() {
   const f = state.filters;
-  return [f.seriesId, f.type, f.event, f.year, f.release_type, f.search, f.hasSize].filter(Boolean).length + f.platforms.length + f.materials.length;
+  return [f.seriesId, f.type, f.event, f.year, f.release_type, f.hasSize].filter(Boolean).length + f.platforms.length + f.materials.length;
 }
 
 function updateFilterIndicators() {
   const count = activeFilterCount();
-  els.filterCount.hidden = count === 0;
+  const expanded = els.toggle.getAttribute("aria-expanded") === "true";
+  els.toggleLabel.textContent = expanded ? `收起筛选${count ? `（${count}）` : ""}` : "筛选";
+  els.filterCount.hidden = expanded || count === 0;
   els.filterCount.textContent = String(count);
   els.reset.hidden = count === 0;
+  els.resetDivider.hidden = count === 0;
 }
 
 function setFilters(patch) {
@@ -204,7 +221,8 @@ function syncFilterControls() {
 }
 
 function resetFilters() {
-  state.filters = emptyFilters();
+  const search = state.filters.search;
+  state.filters = { ...emptyFilters(), search };
   state.filtersByRoute[state.route] = state.filters;
   syncFilterControls();
   renderSeriesRail();
@@ -267,10 +285,8 @@ function updateRoute({ initial = false } = {}) {
     else link.removeAttribute("aria-current");
   });
   els.catalogHero.hidden = state.route !== "catalog";
-  els.homeStats.hidden = state.route !== "catalog";
   els.collectionHero.hidden = state.route === "catalog";
   els.collectionTitle.textContent = route.heading || "斐恩官周图鉴";
-  els.filterTitle.textContent = "图鉴检索";
   syncFilterControls();
   if (state.loaded) {
     renderSeriesRail();
@@ -444,13 +460,14 @@ els.toggle.addEventListener("click", () => {
   const expanded = els.toggle.getAttribute("aria-expanded") !== "true";
   els.toggle.setAttribute("aria-expanded", String(expanded));
   els.panel.dataset.expanded = String(expanded);
+  updateFilterIndicators();
   updateMoreFiltersVisibility();
 });
 els.moreFilters.addEventListener("click", () => {
   const expanded = !els.panel.classList.contains("show-all");
   els.panel.classList.toggle("show-all", expanded);
   els.moreFilters.setAttribute("aria-expanded", String(expanded));
-  els.moreFilters.firstChild.textContent = expanded ? "收起更多筛选" : "展开更多筛选";
+  els.moreFilters.firstChild.textContent = expanded ? "收起更多选项" : "更多筛选选项在此展开";
   requestAnimationFrame(updateMaterialMoreVisibility);
 });
 els.reset.addEventListener("click", resetFilters);
@@ -547,6 +564,11 @@ els.rail.addEventListener("mousemove", event => {
 });
 
 $("#current-year").textContent = String(new Date().getFullYear());
+if (desktopQuery.matches) {
+  els.toggle.setAttribute("aria-expanded", "true");
+  els.panel.dataset.expanded = "true";
+  updateFilterIndicators();
+}
 if (location.hash !== `#/${initialRoute}`) history.replaceState(null, "", `#/${initialRoute}`);
 updateRoute({ initial: true });
 updateScrollButtons();
