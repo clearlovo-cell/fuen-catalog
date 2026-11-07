@@ -376,6 +376,9 @@ function stepModal(direction) {
   bindImageFallbacks(els.modalContent);
   els.modal.scrollTop = 0;
   updateModalNav();
+  els.modalContent.classList.remove("is-step-next", "is-step-prev");
+  void els.modalContent.offsetWidth;
+  els.modalContent.classList.add(direction === "next" ? "is-step-next" : "is-step-prev");
 }
 
 function renderGuide(text) {
@@ -519,6 +522,21 @@ els.overlay.addEventListener("click", event => {
   if (nav) { stepModal(nav.dataset.modalNav); return; }
   if (event.target === els.overlay) closeModal();
 });
+
+let touchStartX = 0;
+let touchStartY = 0;
+els.modal.addEventListener("touchstart", event => {
+  if (event.touches.length !== 1) return;
+  touchStartX = event.touches[0].clientX;
+  touchStartY = event.touches[0].clientY;
+}, { passive: true });
+els.modal.addEventListener("touchend", event => {
+  if (!currentGoodsId || visibleGoodsIds.length < 2) return;
+  const dx = event.changedTouches[0].clientX - touchStartX;
+  const dy = event.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+  stepModal(dx < 0 ? "next" : "prev");
+}, { passive: true });
 els.modalContent.addEventListener("click", event => {
   const button = event.target.closest("[data-personal-action]");
   if (!button || !currentGoodsId) return;
