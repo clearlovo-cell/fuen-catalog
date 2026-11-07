@@ -78,7 +78,7 @@ function renderPersonalAction(kind, active) {
 export function renderModal(item, personal = { owned: false, wishlist: false }) {
   const rows = [
     ["柄图系列", item.seriesName], ["制品类型", item.type], ["发售平台", (item.platforms || []).join(" / ")],
-    ["活动", item.event], ["发售年份", item.year], ["具体发售日", item.date],
+    ["event", item.event], ["发售年份", item.year], ["具体发售日", item.date],
     ["日元定价", item.price ? `¥${Number(item.price).toLocaleString("ja-JP")}` : ""], ["发售性质", item.release_type],
     ["材质", item.material, true], ["尺寸", item.size, true]
   ];
