@@ -198,12 +198,6 @@ body[data-route="catalog"] .series-section { display: block; }
 .modal-close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; }
 .modal-nav { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--c-active-bd); border-radius: 50%; background: var(--c-active-bg); box-shadow: var(--sh-2); transition: transform var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease); }
 .modal-nav[hidden] { display: none; }
-@media (prefers-reduced-motion: no-preference) {
-  #modal-content.is-step-next { animation: step-next var(--dur-2) var(--ease); }
-  #modal-content.is-step-prev { animation: step-prev var(--dur-2) var(--ease); }
-}
-@keyframes step-next { from { opacity: .2; transform: translateX(28px); } to { opacity: 1; transform: none; } }
-@keyframes step-prev { from { opacity: .2; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
 .modal-nav:hover { transform: translateY(-2px); }
 .modal-nav svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
 .lightbox__media { width: 100%; display: flex; align-items: center; justify-content: center; gap: var(--sp-3); }
