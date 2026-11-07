@@ -30,13 +30,32 @@
   </header>
 
   <main id="main-content">
-    <header class="site-header lace-bottom">
+    <div class="band lace-bottom">
+    <header class="site-header">
       <div id="catalog-hero" class="container hero">
         <div class="hero__copy">
-          <p class="hero__eyebrow"><span lang="ja">
           <h1>斐恩<span>官周图鉴</span></h1>
           <p class="hero__intro" lang="ja">お前の顔を、絵にして残したい、そう思ったよ。</p>
         </div>
+        <aside class="idcard" aria-label="图鉴与个人统计">
+          <div class="idcard__media">
+            <img src="./assets/img/uploads/series-stand.png" alt="斐恩代表立绘" width="240" height="320" loading="lazy" decoding="async">
+          </div>
+          <div class="idcard__stats">
+            <div class="idcard__row">
+              <span class="idcard__label">已收录</span>
+              <strong class="idcard__number"><span id="total-count">—</span><small> 件</small></strong>
+            </div>
+            <a class="idcard__row idcard__row--link" href="#/warehouse">
+              <span class="idcard__label">已入库</span>
+              <strong class="idcard__number"><span id="owned-count">0</span><small>／<span id="owned-total">—</span> 件</small></strong>
+            </a>
+            <a class="idcard__row idcard__row--link" href="#/wishlist">
+              <span class="idcard__label">心愿单</span>
+              <strong class="idcard__number"><span id="wishlist-count">0</span><small>／<span id="wishlist-total">—</span> 件</small></strong>
+            </a>
+          </div>
+        </aside>
       </div>
 
       <div id="collection-hero" class="container collection-hero" hidden>
@@ -57,38 +76,33 @@
       </div>
     </header>
 
-    <section id="home-stats" class="stats-bar container" aria-label="图鉴与个人统计">
-      <div class="stats__item">
-        <span class="stats__label">已收录</span>
-        <strong class="stats__number"><span id="total-count">—</span><small> 件</small></strong>
+    <section class="series-section container" aria-labelledby="series-title">
+      <div class="section-heading">
+        <h2 id="series-title">按柄图翻阅</h2>
+        <span>左右滑动查看更多柄图</span>
       </div>
-      <a class="stats__item" href="#/warehouse">
-        <span class="stats__label">已入库</span>
-        <strong class="stats__number"><span id="owned-count">0</span><small>／<span id="owned-total">—</span> 件</small></strong>
-      </a>
-      <a class="stats__item" href="#/wishlist">
-        <span class="stats__label">心愿单</span>
-        <strong class="stats__number"><span id="wishlist-count">0</span><small>／<span id="wishlist-total">—</span> 件</small></strong>
-      </a>
+      <div id="series-rail" class="rail" aria-label="按柄图筛选">
+        <div class="rail__skeleton" aria-hidden="true"></div>
+      </div>
     </section>
 
-    <section class="filter-section lace-bottom" aria-labelledby="filter-title">
+    <section class="filter-section">
       <div class="container">
-        <div class="section-heading section-heading--filter">
-          <h2 id="filter-title">图鉴检索</h2>
-          <button id="reset-filters" class="text-button" type="button" hidden>清除全部筛选</button>
-        </div>
-
-        <div class="filters__bar">
+        <div class="toolbar">
           <div class="search">
             <label class="sr-only" for="search-input">搜索谷子名称、店铺、event</label>
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
             <input id="search-input" class="search__input" type="search" placeholder="搜索名称、店铺、event…" autocomplete="off">
           </div>
-          <button id="filters-toggle" class="filters__toggle" type="button" aria-expanded="false" aria-controls="filters-panel">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-            筛选<span id="filter-count" class="filter-count" hidden>0</span>
-          </button>
+          <span class="toolbar__divider" aria-hidden="true"></span>
+          <div class="toolbar__actions">
+            <button id="filters-toggle" class="filters__toggle" type="button" aria-expanded="false" aria-controls="filters-panel">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              <span id="filters-toggle-label">筛选</span><span id="filter-count" class="filter-count" hidden>0</span>
+            </button>
+            <span id="reset-divider" class="toolbar__divider" aria-hidden="true" hidden></span>
+            <button id="reset-filters" class="text-button" type="button" hidden>清除筛选</button>
+          </div>
         </div>
 
         <div id="filters-panel" class="filters__panel" data-expanded="false">
@@ -112,6 +126,7 @@
             <label class="field__label" for="filter-release">发售情况</label>
             <select id="filter-release" class="select" data-filter="release_type"><option value="">全部</option></select>
           </div>
+          <button id="more-filters" class="more-filters" type="button" aria-expanded="false" hidden>更多筛选选项在此展开<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
           <div id="material-field" class="field field--full filters-extra" data-dimension="material">
             <div class="field__label-row">
               <span class="field__label" id="material-label">材质 <small>可多选</small></span>
@@ -128,23 +143,16 @@
             </label>
           </div>
         </div>
-        <button id="more-filters" class="more-filters" type="button" aria-expanded="false" hidden>展开更多筛选<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
       </div>
     </section>
-
-    <section class="series-section container" aria-labelledby="series-title">
-      <div class="section-heading">
-        <h2 id="series-title">柄图</h2>
-        <span>左右滑动选择柄图</span>
-      </div>
-      <div id="series-rail" class="rail" aria-label="按柄图筛选">
-        <div class="rail__skeleton" aria-hidden="true"></div>
-      </div>
-    </section>
+    </div>
 
     <section id="catalog" class="catalog container" aria-labelledby="catalog-title">
       <div class="catalog__heading">
-        <h2 id="catalog-title">全部谷子</h2>
+        <div class="catalog__title-group">
+          <h2 id="catalog-title">图鉴目录</h2>
+          <span class="catalog__subtitle" aria-hidden="true">ALL GOODS</span>
+        </div>
         <p id="result-count" role="status" aria-live="polite">正在整理图鉴…</p>
       </div>
 
