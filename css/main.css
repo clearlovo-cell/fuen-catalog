@@ -38,7 +38,7 @@
 .hero__intro { margin: var(--sp-4) 0 0; max-width: 34em; color: var(--c-text-2); font-size: var(--fs-sm); line-height: 1.75; }
 
 /* 角色 ID 卡 */
-.idcard { padding: var(--sp-4); border: 1px solid rgba(201,168,76,.24); border-radius: var(--r-sheet); background: rgba(242,240,233,.92); box-shadow: var(--sh-1); }
+.idcard { padding: var(--sp-4); border: 1px solid rgba(201,168,76,.24); border-radius: var(--r-sheet); background: rgba(253,252,247,.78); box-shadow: var(--sh-1); }
 .idcard__title { margin: 0 0 var(--sp-3); font-size: var(--fs-sm); font-weight: 700; letter-spacing: .06em; color: var(--c-text); }
 .idcard__body { display: flex; align-items: stretch; gap: var(--sp-4); }
 .idcard__media { flex: 0 0 112px; }
@@ -129,7 +129,7 @@ a.idcard__row:hover { background: rgba(255,217,102,.12); }
 .rail__cover--all svg { width: 36px; height: 36px; }
 .rail__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--c-text); font-size: var(--fs-sm); font-weight: 700; line-height: 1.4; }
 .rail__count { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; line-height: 1.4; }
-.rail__item[aria-pressed="true"] { border-color: var(--c-active-bd); background: var(--c-active-bg); }
+.rail__item[aria-pressed="true"] { border-color: var(--c-active-bd); background: rgba(253,252,247,.78); }
 .rail__item[aria-pressed="true"] .rail__tag { display: inline-flex; }
 .rail__item[aria-pressed="true"] .rail__cover { border-color: var(--c-primary-strong); }
 .rail__skeleton { width: 100%; height: 152px; border: 1px dashed var(--c-line); border-radius: var(--r-card); background: transparent; }
@@ -195,7 +195,7 @@ a.idcard__row:hover { background: rgba(255,217,102,.12); }
 .modal-close { position: sticky; top: 0; z-index: 3; float: right; width: 44px; height: 44px; margin: -8px -8px var(--sp-2) var(--sp-2); display: grid; place-items: center; border: 1px solid var(--c-line); border-radius: 50%; background: var(--c-surface); box-shadow: var(--sh-1); transition: transform var(--dur-1) var(--ease); }
 .modal-close:hover { transform: rotate(5deg); }
 .modal-close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; }
-.lightbox__img { width: 100%; max-height: 48dvh; object-fit: contain; border: 1px solid var(--c-line); border-radius: var(--r-media); background: var(--c-surface); }
+.lightbox__img { display: block; width: min(300px, 72vw); height: auto; margin-inline: auto; aspect-ratio: 1; object-fit: contain; padding: 12px; border: 1px solid var(--c-line); border-radius: var(--r-media); background: var(--c-surface); }
 .lightbox__body { padding-top: var(--sp-5); }
 .lightbox__series { margin-bottom: var(--sp-1); color: var(--c-text-2); font-size: var(--fs-xs); letter-spacing: .08em; }
 .lightbox__title { padding-right: 44px; font-family: var(--font-display); font-size: var(--fs-2xl); font-weight: 600; }
@@ -255,9 +255,8 @@ a.idcard__row:hover { background: rgba(255,217,102,.12); }
   .goods-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--sp-5); }
   .card__title { font-size: var(--fs-base); }
   .lightbox-overlay { align-items: center; padding: var(--sp-6); }
-  .lightbox { width: 720px; max-height: 90dvh; padding: var(--sp-6); border-radius: var(--r-card); transform: scale(.96); }
+  .lightbox { width: 600px; max-height: 90dvh; padding: var(--sp-6); border-radius: var(--r-card); transform: scale(.96); }
   .lightbox-overlay.is-open .lightbox { transform: scale(1); }
-  .lightbox__img { max-height: 46dvh; }
   .detail-list { column-gap: var(--sp-6); }
   .modal-actions { bottom: calc(-1 * var(--sp-6)); margin: var(--sp-5) calc(-1 * var(--sp-6)) calc(-1 * var(--sp-6)); padding: var(--sp-3) var(--sp-6); }
   .guide-modal { padding: var(--sp-8); }
