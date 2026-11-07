@@ -113,7 +113,8 @@ a.idcard__row:hover { background: rgba(255,217,102,.12); }
 .size-switch input:checked + .size-switch__track { background: var(--c-active-bg); border-color: var(--c-active-bd); }
 .size-switch input:checked + .size-switch__track span { background: var(--c-text); transform: translateX(16px); }
 /* 按柄图翻阅 */
-.series-section { position: relative; padding-block: var(--sp-6) var(--sp-4); }
+.series-section { display: none; position: relative; padding-block: var(--sp-6) var(--sp-4); }
+body[data-route="catalog"] .series-section { display: block; }
 .series-section::before { content: ""; position: absolute; top: 0; left: var(--gutter); right: var(--gutter); height: 1px; background: var(--c-line); }
 .rail { position: relative; padding-block: var(--sp-3) var(--sp-2); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; cursor: grab; scrollbar-width: none; }
 .rail::-webkit-scrollbar { display: none; }
