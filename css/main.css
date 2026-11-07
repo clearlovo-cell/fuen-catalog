@@ -196,11 +196,11 @@ body[data-route="catalog"] .series-section { display: block; }
 .modal-close { position: sticky; top: 0; z-index: 3; float: right; width: 44px; height: 44px; margin: -8px -8px var(--sp-2) var(--sp-2); display: grid; place-items: center; border: 1px solid var(--c-line); border-radius: 50%; background: var(--c-surface); box-shadow: var(--sh-1); transition: transform var(--dur-1) var(--ease); }
 .modal-close:hover { transform: rotate(5deg); }
 .modal-close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; }
-.modal-nav { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--c-active-bd); border-radius: 50%; background: var(--c-active-bg); box-shadow: var(--sh-2); transition: transform var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease); }
+.modal-nav { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--c-active-bd); border-radius: 50%; background: var(--c-active-bg); box-shadow: var(--sh-2); transition: transform var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease); }
 .modal-nav[hidden] { display: none; }
 .modal-nav:hover { transform: translateY(-2px); }
 .modal-nav svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
-.lightbox__media { display: flex; align-items: center; justify-content: center; gap: var(--sp-3); }
+.lightbox__media { width: 100%; display: flex; align-items: center; justify-content: center; gap: var(--sp-3); }
 .lightbox__media .lightbox__img { position: static; left: auto; transform: none; flex: 0 1 auto; min-width: 0; }
 
 /* 手机端：只显示贴着图片框的一对 */
@@ -209,7 +209,7 @@ body[data-route="catalog"] .series-section { display: block; }
 /* 桌面端：只显示贴在弹窗两侧的一对 */
 @media (min-width: 768px) {
   .modal-nav--mobile { display: none; }
-  .modal-nav:not(.modal-nav--mobile) { position: absolute; top: 50%; z-index: 2; }
+  .modal-nav:not(.modal-nav--mobile) { display: grid; position: absolute; top: 50%; z-index: 2; }
   .modal-nav--prev { left: max(var(--sp-4), calc(50% - 380px)); transform: translateY(-50%); }
   .modal-nav--next { right: max(var(--sp-4), calc(50% - 380px)); transform: translateY(-50%); }
   .modal-nav--prev:hover { transform: translateY(calc(-50% - 2px)); }
