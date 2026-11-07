@@ -149,7 +149,7 @@ function renderSeriesRail() {
       : `<span class="rail__cover rail__cover--all"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="9" rx="4" ry="8"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(72 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(144 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(216 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(288 16 16)"/></g></svg></span>`;
     return `<button class="rail__item" type="button" data-series="${escapeHtml(slug)}" aria-pressed="${pressed}" title="${escapeHtml(note || name)}">
     <span class="rail__tag" aria-hidden="true">当前</span>
-    ${coverHtml}<span class="rail__title"><span class="rail__name">${escapeHtml(name)}</span><span class="rail__index" aria-hidden="true">${String(index).padStart(2, "0")}</span></span><span class="rail__count">已整理 ${count} 件周边</span></button>`;
+    ${coverHtml}<span class="rail__title"><span class="rail__name">${escapeHtml(name)}</span><span class="rail__index" aria-hidden="true">${String(index).padStart(2, "0")}</span></span><span class="rail__count">已收录 ${count} 件</span></button>`;
   };
   const allButton = renderItem({ slug: "", name: "全部", cover: null, index: 1, count: state.goods.length });
   const items = state.series.map((series, index) => renderItem({
