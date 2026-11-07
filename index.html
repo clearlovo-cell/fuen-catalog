@@ -38,6 +38,8 @@
           <p class="hero__intro" lang="ja">お前の顔を、絵にして残したい、そう思ったよ。</p>
         </div>
         <aside class="idcard" aria-label="图鉴与个人统计">
+          <p class="idcard__title">我的收藏记录</p>
+          <div class="idcard__body">
           <div class="idcard__media">
             <img src="./assets/img/uploads/series-stand.png" alt="斐恩代表立绘" width="240" height="320" loading="lazy" decoding="async">
           </div>
@@ -54,6 +56,7 @@
               <span class="idcard__label">心愿单</span>
               <strong class="idcard__number"><span id="wishlist-count">0</span><small>／<span id="wishlist-total">—</span> 件</small></strong>
             </a>
+          </div>
           </div>
         </aside>
       </div>
@@ -126,7 +129,6 @@
             <label class="field__label" for="filter-release">发售情况</label>
             <select id="filter-release" class="select" data-filter="release_type"><option value="">全部</option></select>
           </div>
-          <button id="more-filters" class="more-filters" type="button" aria-expanded="false" hidden>更多筛选选项在此展开<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
           <div id="material-field" class="field field--full filters-extra" data-dimension="material">
             <div class="field__label-row">
               <span class="field__label" id="material-label">材质 <small>可多选</small></span>
@@ -136,12 +138,16 @@
           </div>
           <div id="size-field" class="field field--size filters-extra" data-dimension="size">
             <span class="field__label">尺寸信息</span>
-            <label class="size-switch">
-              <input id="filter-size" type="checkbox">
-              <span class="size-switch__track" aria-hidden="true"><span></span></span>
-              <span>仅看有尺寸信息</span>
-            </label>
+            <span class="size-switch">
+              <label class="size-switch__control">
+                <input id="filter-size" type="checkbox">
+                <span class="size-switch__track" aria-hidden="true"><span></span></span>
+                <span class="sr-only">仅看有尺寸信息</span>
+              </label>
+              <span class="size-switch__text" aria-hidden="true">仅看有尺寸信息</span>
+            </span>
           </div>
+          <button id="more-filters" class="more-filters" type="button" aria-expanded="false" hidden>更多筛选选项在此展开<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></button>
         </div>
       </div>
     </section>
