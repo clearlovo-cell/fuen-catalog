@@ -4,9 +4,9 @@ import { createBackup, getIds, hasItem, importBackup, isStorageAvailable, subscr
 
 const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
 const ROUTES = {
-  catalog: { title: "茉莉花之炯｜斐恩官周图鉴", listTitle: "全部谷子" },
-  warehouse: { kind: "owned", title: "已入库｜斐恩官周图鉴", heading: "已入库", listTitle: "仓库", emptyTitle: "仓库还是空的", emptyText: "打开图鉴，把已经拥有的谷子收进来吧。" },
-  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "加入心愿单", listTitle: "心愿单", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" }
+  catalog: { title: "茉莉花之炯｜斐恩官周图鉴", listTitle: "全部谷子", subtitle: "ALL GOODS" },
+  warehouse: { kind: "owned", title: "已入库｜斐恩官周图鉴", heading: "已入库", listTitle: "仓库", subtitle: "WAREHOUSE", emptyTitle: "仓库还是空的", emptyText: "打开图鉴，把已经拥有的谷子收进来吧。" },
+  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "加入心愿单", listTitle: "心愿单", subtitle: "WISHLIST", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" }
 };
 const filterOrders = {
   type: ["吧唧", "立牌", "透卡", "色纸", "挂件", "相卡", "拍立得", "留言卡", "ID卡", "书签", "镭射票", "珠光卡", "杂志", "杯垫", "其他"],
@@ -34,7 +34,7 @@ state.filters = state.filtersByRoute[initialRoute];
 
 const $ = selector => document.querySelector(selector);
 const els = {
-  rail: $("#series-rail"), grid: $("#goods-grid"), result: $("#result-count"), catalogTitle: $("#catalog-title"),
+  rail: $("#series-rail"), grid: $("#goods-grid"), result: $("#result-count"), catalogTitle: $("#catalog-title"), subtitle: $(".catalog__subtitle"),
   loading: $("#loading-state"), error: $("#error-state"), empty: $("#empty-state"), emptyTitle: $("#empty-title"),
   emptyDescription: $("#empty-description"), emptyReset: $("#empty-reset"), search: $("#search-input"), reset: $("#reset-filters"),
   panel: $("#filters-panel"), toggle: $("#filters-toggle"), toggleLabel: $("#filters-toggle-label"), filterCount: $("#filter-count"), moreFilters: $("#more-filters"), resetDivider: $("#reset-divider"),
@@ -176,7 +176,10 @@ function applyFilters() {
   els.grid.innerHTML = orderedGoods.map(renderCard).join("");
   bindImageFallbacks(els.grid);
 
-  els.catalogTitle.textContent = state.route === "catalog" ? "图鉴目录" : ROUTES[state.route].listTitle;
+  const seriesSelected = state.series.find(item => item.slug === state.filters.seriesId);
+  els.catalogTitle.textContent = seriesSelected ? seriesSelected.name : (state.route === "catalog" ? "图鉴目录" : ROUTES[state.route].listTitle);
+  els.subtitle.textContent = ROUTES[state.route].subtitle || "ALL GOODS";
+  els.subtitle.hidden = state.route === "catalog" && activeFilterCount() > 0;
   els.result.textContent = `找到 ${filtered.length} 件谷子${state.reverse ? " · 已逆序" : ""}`;
 
   const route = ROUTES[state.route];
