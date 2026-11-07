@@ -5,8 +5,8 @@ import { createBackup, getIds, hasItem, importBackup, isStorageAvailable, subscr
 const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
 const ROUTES = {
   catalog: { title: "茉莉花之炯｜斐恩官周图鉴", listTitle: "全部谷子" },
-  warehouse: { kind: "owned", title: "已入库｜斐恩官周图鉴", heading: "已入库", listTitle: "已入库谷子", emptyTitle: "仓库还是空的", emptyText: "打开图鉴，把已经拥有的谷子收进来吧。" },
-  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "加入心愿单", listTitle: "心愿谷子", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" }
+  warehouse: { kind: "owned", title: "已入库｜斐恩官周图鉴", heading: "已入库", listTitle: "仓库", emptyTitle: "仓库还是空的", emptyText: "打开图鉴，把已经拥有的谷子收进来吧。" },
+  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "加入心愿单", listTitle: "心愿单", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" }
 };
 const filterOrders = {
   type: ["吧唧", "立牌", "透卡", "色纸", "挂件", "相卡", "拍立得", "留言卡", "ID卡", "书签", "镭射票", "珠光卡", "杂志", "杯垫", "其他"],
