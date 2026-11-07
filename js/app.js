@@ -51,6 +51,7 @@ const desktopQuery = window.matchMedia("(min-width: 768px)");
 let lastFocusedElement = null;
 let guideLastFocusedElement = null;
 let currentGoodsId = null;
+let visibleGoodsIds = [];
 let modalTimer;
 let guideTimer;
 let toastTimer;
@@ -175,6 +176,8 @@ function applyFilters() {
   els.empty.hidden = filtered.length !== 0;
   els.grid.innerHTML = orderedGoods.map(renderCard).join("");
   bindImageFallbacks(els.grid);
+  visibleGoodsIds = orderedGoods.map(item => String(item.id));
+  updateModalNav();
 
   const seriesSelected = state.series.find(item => item.slug === state.filters.seriesId);
   els.catalogTitle.textContent = seriesSelected ? seriesSelected.name : (state.route === "catalog" ? "图鉴目录" : ROUTES[state.route].listTitle);
@@ -324,6 +327,7 @@ function openModal(id) {
   lastFocusedElement = document.activeElement;
   els.modalContent.innerHTML = renderModal(item, { owned: hasItem("owned", id), wishlist: hasItem("wishlist", id) });
   bindImageFallbacks(els.modalContent);
+  updateModalNav();
   els.overlay.hidden = false;
   document.body.classList.add("is-modal-open");
   els.modal.scrollTop = 0;
@@ -342,10 +346,36 @@ function closeModal() {
     els.overlay.hidden = true;
     els.modalContent.innerHTML = "";
     currentGoodsId = null;
+    updateModalNav();
     if (els.guideOverlay.hidden) document.body.classList.remove("is-modal-open");
     if (lastFocusedElement?.isConnected) lastFocusedElement.focus();
     else document.querySelector(`[data-route-link="${state.route}"]`)?.focus();
   }, delay);
+}
+
+function modalNavButtons() {
+  return [...els.overlay.querySelectorAll(":scope > [data-modal-nav]"), ...els.modalContent.querySelectorAll("[data-modal-nav]")];
+}
+
+function updateModalNav() {
+  const show = Boolean(currentGoodsId) && visibleGoodsIds.length > 1;
+  modalNavButtons().forEach(button => { button.hidden = !show; });
+}
+
+function stepModal(direction) {
+  if (!currentGoodsId || visibleGoodsIds.length < 2) return;
+  const index = visibleGoodsIds.indexOf(currentGoodsId);
+  if (index === -1) return;
+  const length = visibleGoodsIds.length;
+  const nextIndex = (index + (direction === "next" ? 1 : -1) + length) % length;
+  const nextId = visibleGoodsIds[nextIndex];
+  const item = state.goods.find(goods => String(goods.id) === nextId);
+  if (!item) return;
+  currentGoodsId = nextId;
+  els.modalContent.innerHTML = renderModal(item, { owned: hasItem("owned", nextId), wishlist: hasItem("wishlist", nextId) });
+  bindImageFallbacks(els.modalContent);
+  els.modal.scrollTop = 0;
+  updateModalNav();
 }
 
 function renderGuide(text) {
@@ -484,7 +514,11 @@ els.grid.addEventListener("click", event => {
   if (card) openModal(card.dataset.goodsId);
 });
 els.modalClose.addEventListener("click", closeModal);
-els.overlay.addEventListener("click", event => { if (event.target === els.overlay) closeModal(); });
+els.overlay.addEventListener("click", event => {
+  const nav = event.target.closest("[data-modal-nav]");
+  if (nav) { stepModal(nav.dataset.modalNav); return; }
+  if (event.target === els.overlay) closeModal();
+});
 els.modalContent.addEventListener("click", event => {
   const button = event.target.closest("[data-personal-action]");
   if (!button || !currentGoodsId) return;
@@ -505,6 +539,8 @@ document.addEventListener("keydown", event => {
   }
   if (els.overlay.hidden) return;
   if (event.key === "Escape") { event.preventDefault(); closeModal(); }
+  if (event.key === "ArrowLeft") { event.preventDefault(); stepModal("prev"); }
+  if (event.key === "ArrowRight") { event.preventDefault(); stepModal("next"); }
   if (event.key === "Tab") trapFocus(event, els.modal);
 });
 
