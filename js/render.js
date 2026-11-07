@@ -85,6 +85,14 @@ export function renderModal(item, personal = { owned: false, wishlist: false }) 
   const details = rows.map(([label, value, full]) => `<div class="detail-list__row${full ? " detail-list__row--full" : ""}"><dt>${label}</dt><dd>${escapeHtml(value || "待补充")}</dd></div>`).join("");
   const note = `<div class="detail-list__row detail-list__row--full"><dt>备注</dt><dd>${escapeHtml(item.note || "暂无备注")}</dd></div>`;
   const actions = `<div class="modal-actions" aria-label="个人列表操作">${renderPersonalAction("owned", personal.owned)}${renderPersonalAction("wishlist", personal.wishlist)}</div>`;
-  return `${renderImage({ src: item.image, alt: `${item.name}详情图`, className: "lightbox__img", width: 1200, mode: "contain" })}
+  return `<div class="lightbox__media">
+    <button class="modal-nav modal-nav--mobile modal-nav--prev" type="button" data-modal-nav="prev" aria-label="查看上一个制品详情" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+    </button>
+    ${renderImage({ src: item.image, alt: `${item.name}详情图`, className: "lightbox__img", width: 1200, mode: "contain" })}
+    <button class="modal-nav modal-nav--mobile modal-nav--next" type="button" data-modal-nav="next" aria-label="查看下一个制品详情" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg>
+    </button>
+  </div>
     <div class="lightbox__body"><p class="lightbox__series">${escapeHtml(item.seriesName || "未分系列")}</p><h2 id="modal-title" class="lightbox__title">${escapeHtml(item.name)}</h2><span class="badge lightbox__status badge--${statusClass(item.status)}">${escapeHtml(item.status)}</span><dl class="detail-list">${details}${note}</dl>${actions}</div>`;
 }
