@@ -4,6 +4,143 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "Φ96mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26冬市杯垫",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "杯垫",
+      "id": "54a694a8-3293-46ad-865a-63eec6d0a329",
+      "image": "assets/img/uploads/26冬市杯垫.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "size": "63×89mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "26冬市珠光卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "珠光卡",
+      "id": "36c71645-c344-438f-adaa-74bb1dc91ecc",
+      "image": "assets/img/uploads/26冬市珠光卡.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "size": "亚克力52×48mm；毛球35~40mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26冬市挂件",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "挂件",
+      "id": "9ab0b2ae-a342-4feb-85ad-8989bb75b6ff",
+      "image": "assets/img/uploads/26冬市挂件.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "size": "80×120mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26冬市大透卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "透卡",
+      "id": "40af8814-1561-406c-98a3-44f5b0ee5c5f",
+      "image": "assets/img/uploads/26冬市大透卡.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "size": "54×86mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26冬市小透卡",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "透卡",
+      "id": "77cf5161-38e1-4746-b545-e48e3fd28590",
+      "image": "assets/img/uploads/26冬市小透卡.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "size": "50×47mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26冬市茶包小立牌（夹子）",
+      "release_type": "初版",
+      "note": "背后有小夹子可以立住",
+      "status": "预售",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "立牌",
+      "id": "ccc62297-4ec7-4c67-a8d2-383c524b0b37",
+      "image": "assets/img/uploads/26冬市茶包小立牌.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "size": "组合时113×117×43mm；本体72×102mm；底座49×43mm；吊饰25×25mm",
+      "material": "亚克力",
+      "character": "斐恩",
+      "name": "26冬市立牌",
+      "release_type": "初版",
+      "status": "预售",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "立牌",
+      "id": "4f1005e8-af3d-4cb6-b3c9-f5ba58d143e3",
+      "image": "assets/img/uploads/26冬市立牌.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
+      "size": "Φ54mm",
+      "material": "马口铁",
+      "character": "斐恩",
+      "name": "26冬市吧唧",
+      "release_type": "初版",
+      "status": "情报公开",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "吧唧",
+      "id": "c1155137-a234-4e6c-a02f-c16a86d3eefe",
+      "image": "assets/img/uploads/26冬市吧唧.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
       "material": "马口铁",
       "character": "斐恩",
       "name": "27甜品趴",
@@ -15,22 +152,6 @@
       "id": "b88d9ac0-187d-4d9c-a057-c09bb6201bc9",
       "image": "assets/img/uploads/甜品趴预览.png",
       "year": 2027
-    },
-    {
-      "platforms": [
-        "Otomate"
-      ],
-      "material": "马口铁",
-      "character": "斐恩",
-      "name": "26冬市吧唧",
-      "release_type": "初版",
-      "status": "情报公开",
-      "series": "qita",
-      "event": "冬市",
-      "type": "吧唧",
-      "id": "c1155137-a234-4e6c-a02f-c16a86d3eefe",
-      "image": "assets/img/uploads/loading.png",
-      "year": 2026
     },
     {
       "platforms": [
