@@ -21,6 +21,23 @@
       "platforms": [
         "Otomate"
       ],
+      "size": "25×34mm",
+      "material": "纸",
+      "character": "斐恩",
+      "name": "26冬市贴纸",
+      "release_type": "初版",
+      "status": "情报公开",
+      "series": "maomao",
+      "event": "冬市",
+      "type": "其他",
+      "id": "6d69b41b-1607-4969-ba18-2f31bda5e68c",
+      "image": "assets/img/uploads/26冬市贴纸.png",
+      "year": 2026
+    },
+    {
+      "platforms": [
+        "Otomate"
+      ],
       "size": "63×89mm",
       "material": "纸",
       "character": "斐恩",
