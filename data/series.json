@@ -62,6 +62,12 @@
     },
     {
       "order": 11,
+      "name": "猫猫柄",
+      "cover": "assets/img/uploads/猫猫柄.png",
+      "slug": "maomao"
+    },
+    {
+      "order": 12,
       "name": "其他",
       "slug": "qita",
       "cover": "assets/img/uploads/series-other.png"
