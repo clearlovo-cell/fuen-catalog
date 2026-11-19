@@ -14,10 +14,6 @@
   --c-primary: #FFD966;
   --c-primary-soft: #F2DFA4;
   --c-primary-strong: #C9A84C;
-  /* 个人状态角标与仓库／心愿卡片金额 */
-  --c-owned-badge: #6B5A48;
-  --c-wishlist-badge: #A86F7C;
-  --c-card-price: #FFFFFF;
   /* 长期通贩（原“在售”的颜色，不变） */
   --c-on-bg: #E3F3E7;
   --c-on-fg: #1F6B41;
