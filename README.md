@@ -13,6 +13,13 @@
 
 前台每次加载 JSON 都附加时间戳并使用 `cache: "no-cache"`，避免 CDN 或浏览器长期保留旧数据。COS 如另外配置了强缓存，请给 `data/*.json` 设置较短的缓存时间。
 
+### 访客本地记录与备份
+
+- `js/storage.js` 保存仓库和心愿单，个人列表数据结构保持不变。
+- `js/prices.js` 使用独立存储键保存访客自行填写的人民币单价和数量，并负责跨标签页同步。
+- `js/backup.js` 将个人列表和金额数量组合为同一个备份文件；旧版无金额备份及纯数字金额记录均可导入。
+- 金额为空时不参与合计，取消入库或移出心愿单会清除对应金额数量。所有访客记录仅保存在当前浏览器，不会上传服务器。
+
 ## 2. GitHub Actions 同步 COS
 
 工作流位于 `.github/workflows/deploy.yml`，使用腾讯云官方 [`TencentCloud/cos-action`](https://github.com/TencentCloud/cos-action)。
