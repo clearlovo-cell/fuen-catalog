@@ -1,6 +1,8 @@
 import { filterGoods, splitMaterials, uniqueValues } from "./filter.js";
-import { bindImageFallbacks, escapeHtml, renderCard, renderImage, renderModal } from "./render.js";
-import { createBackup, getIds, hasItem, importBackup, isStorageAvailable, subscribe, toggleItem } from "./storage.js";
+import { bindImageFallbacks, escapeHtml, formatAmount, renderCard, renderCardPrice, renderImage, renderModal, renderPriceEditors } from "./render.js";
+import { getIds, hasItem, isStorageAvailable, subscribe, toggleItem } from "./storage.js";
+import { getPriceRecord, removePriceRecord, savePriceRecord, subscribePrices } from "./prices.js";
+import { createBackup, importBackup } from "./backup.js";
 
 const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
 const ROUTES = {
@@ -23,6 +25,7 @@ function routeFromHash() {
 const initialRoute = routeFromHash();
 const state = {
   goods: [],
+  goodsById: new Map(),
   series: [],
   route: initialRoute,
   filtersByRoute: { catalog: emptyFilters(), warehouse: emptyFilters(), wishlist: emptyFilters() },
@@ -43,6 +46,7 @@ const els = {
   orderToggle: $("#reverse-order"), fab: $("#back-to-top"), fabBottom: $("#go-to-bottom"),
   catalogHero: $("#catalog-hero"), collectionHero: $("#collection-hero"),
   collectionTitle: $("#collection-title"), collectionCount: $("#collection-count"), collectionTotal: $("#collection-total"),
+  collectionAmount: $("#collection-amount"), collectionAmountLabel: $("#collection-amount-label"),
   collectionProgress: $("#collection-progress"), collectionProgressFill: $("#collection-progress-fill"), collectionPercent: $("#collection-percent"),
   guideOverlay: $("#guide-overlay"), guideModal: $("#guide-modal"), guideClose: $("#guide-close"), guideContent: $("#guide-content"),
   backupFile: $("#backup-file"), toast: $("#toast")
@@ -51,7 +55,6 @@ const desktopQuery = window.matchMedia("(min-width: 768px)");
 let lastFocusedElement = null;
 let guideLastFocusedElement = null;
 let currentGoodsId = null;
-let visibleGoodsIds = [];
 let modalTimer;
 let guideTimer;
 let toastTimer;
@@ -92,6 +95,7 @@ async function loadData() {
     state.series = series.sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
     const seriesMap = new Map(state.series.map(item => [item.slug, item.name]));
     state.goods = goods.map((item, index) => ({ ...item, id: item.id || `goods-${index}`, seriesName: seriesMap.get(item.series) || item.series }));
+    state.goodsById = new Map(state.goods.map(item => [String(item.id), item]));
     state.loaded = true;
     els.orderToggle.disabled = false;
     initialiseFilters();
@@ -149,7 +153,7 @@ function renderSeriesRail() {
       : `<span class="rail__cover rail__cover--all"><svg viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="16" cy="9" rx="4" ry="8"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(72 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(144 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(216 16 16)"/><ellipse cx="16" cy="9" rx="4" ry="8" transform="rotate(288 16 16)"/></g></svg></span>`;
     return `<button class="rail__item" type="button" data-series="${escapeHtml(slug)}" aria-pressed="${pressed}" title="${escapeHtml(note || name)}">
     <span class="rail__tag" aria-hidden="true">当前</span>
-    ${coverHtml}<span class="rail__title"><span class="rail__name">${escapeHtml(name)}</span><span class="rail__index" aria-hidden="true">${String(index).padStart(2, "0")}</span></span><span class="rail__count">已收录 ${count} 件</span></button>`;
+    ${coverHtml}<span class="rail__title"><span class="rail__name">${escapeHtml(name)}</span><span class="rail__index" aria-hidden="true">${String(index).padStart(2, "0")}</span></span><span class="rail__count">已整理 ${count} 件周边</span></button>`;
   };
   const allButton = renderItem({ slug: "", name: "全部", cover: null, index: 1, count: state.goods.length });
   const items = state.series.map((series, index) => renderItem({
@@ -165,6 +169,17 @@ function baseGoodsForRoute() {
   return kind ? state.goods.filter(item => hasItem(kind, item.id)) : state.goods;
 }
 
+function cardOptions(item) {
+  const kind = ROUTES[state.route].kind;
+  return {
+    showPersonal: state.route === "catalog",
+    owned: hasItem("owned", item.id),
+    wishlist: hasItem("wishlist", item.id),
+    showPrice: Boolean(kind),
+    priceRecord: kind ? getPriceRecord(kind, item.id) : null
+  };
+}
+
 function applyFilters() {
   if (!state.loaded) return;
   const baseGoods = baseGoodsForRoute();
@@ -174,10 +189,8 @@ function applyFilters() {
   els.error.hidden = true;
   els.grid.hidden = filtered.length === 0;
   els.empty.hidden = filtered.length !== 0;
-  els.grid.innerHTML = orderedGoods.map(renderCard).join("");
+  els.grid.innerHTML = orderedGoods.map(item => renderCard(item, cardOptions(item))).join("");
   bindImageFallbacks(els.grid);
-  visibleGoodsIds = orderedGoods.map(item => String(item.id));
-  updateModalNav();
 
   const seriesSelected = state.series.find(item => item.slug === state.filters.seriesId);
   els.catalogTitle.textContent = seriesSelected ? seriesSelected.name : (state.route === "catalog" ? "图鉴目录" : ROUTES[state.route].listTitle);
@@ -250,6 +263,7 @@ function updateStats() {
   $("#owned-total").textContent = state.loaded ? String(total) : "—";
   $("#wishlist-total").textContent = state.loaded ? String(total) : "—";
 
+  updateAmountStat();
   const kind = ROUTES[state.route].kind;
   if (!kind) return;
   const count = kind === "owned" ? owned : wishlist;
@@ -262,22 +276,65 @@ function updateStats() {
   els.collectionProgress.setAttribute("aria-valuetext", `${count}／${total} 件，${percent}%`);
 }
 
+function updateAmountStat() {
+  const kind = ROUTES[state.route].kind;
+  if (!kind) return;
+  // 仅遍历当前个人记录，已删除制品及空金额均不进入合计。
+  const total = getIds(kind).reduce((sum, id) => {
+    if (!state.goodsById.has(String(id))) return sum;
+    const record = getPriceRecord(kind, id);
+    return record?.price === null || !record ? sum : sum + record.price * record.qty;
+  }, 0);
+  els.collectionAmountLabel.textContent = kind === "owned" ? "总金额" : "总预算";
+  els.collectionAmount.textContent = formatAmount(total);
+}
+
 function updateModalActions() {
   if (!currentGoodsId || els.overlay.hidden) return;
+  const personal = { owned: hasItem("owned", currentGoodsId), wishlist: hasItem("wishlist", currentGoodsId) };
   els.modalContent.querySelectorAll("[data-personal-action]").forEach(button => {
     const kind = button.dataset.personalAction;
-    const active = hasItem(kind, currentGoodsId);
+    const active = personal[kind];
     const owned = kind === "owned";
     button.setAttribute("aria-pressed", String(active));
     button.querySelector("span").textContent = active ? (owned ? "已入库" : "已加入心愿") : (owned ? "入库" : "心愿");
     button.querySelector("small").textContent = active ? "再次点击可移除" : (owned ? "加入个人仓库" : "加入个人心愿单");
   });
+  const priceRecords = { owned: getPriceRecord("owned", currentGoodsId), wishlist: getPriceRecord("wishlist", currentGoodsId) };
+  const editors = els.modalContent.querySelector(".price-editors");
+  if (editors) editors.innerHTML = renderPriceEditors(personal, priceRecords);
 }
 
 function updatePersonalUI() {
   updateStats();
   applyFilters();
   updateModalActions();
+}
+
+function updatePriceUI(detail = { kind: "", id: "" }) {
+  updateAmountStat();
+  const routeKind = ROUTES[state.route].kind;
+  if (routeKind && (!detail.kind || detail.kind === routeKind)) {
+    els.grid.querySelectorAll("[data-goods-id]").forEach(card => {
+      if (detail.id && card.dataset.goodsId !== String(detail.id)) return;
+      const price = card.querySelector("[data-card-price]");
+      if (!price) return;
+      const html = renderCardPrice(getPriceRecord(routeKind, card.dataset.goodsId));
+      price.innerHTML = html;
+      price.hidden = !html;
+    });
+  }
+
+  if (!currentGoodsId || els.overlay.hidden || (detail.id && detail.id !== currentGoodsId)) return;
+  ["owned", "wishlist"].forEach(kind => {
+    if (detail.kind && detail.kind !== kind) return;
+    const record = getPriceRecord(kind, currentGoodsId);
+    const priceInput = els.modalContent.querySelector(`[data-price-kind="${kind}"][data-price-field="price"]`);
+    const qtyInput = els.modalContent.querySelector(`[data-price-kind="${kind}"][data-price-field="qty"]`);
+    // 跨标签页同步不打断当前正在编辑的输入框。
+    if (priceInput && document.activeElement !== priceInput) priceInput.value = record?.price ?? "";
+    if (qtyInput && document.activeElement !== qtyInput) qtyInput.value = String(record?.qty || 1);
+  });
 }
 
 function updateRoute({ initial = false } = {}) {
@@ -325,9 +382,10 @@ function openModal(id) {
   clearTimeout(modalTimer);
   currentGoodsId = String(id);
   lastFocusedElement = document.activeElement;
-  els.modalContent.innerHTML = renderModal(item, { owned: hasItem("owned", id), wishlist: hasItem("wishlist", id) });
+  const personal = { owned: hasItem("owned", id), wishlist: hasItem("wishlist", id) };
+  const priceRecords = { owned: getPriceRecord("owned", id), wishlist: getPriceRecord("wishlist", id) };
+  els.modalContent.innerHTML = renderModal(item, personal, priceRecords);
   bindImageFallbacks(els.modalContent);
-  updateModalNav();
   els.overlay.hidden = false;
   document.body.classList.add("is-modal-open");
   els.modal.scrollTop = 0;
@@ -346,39 +404,10 @@ function closeModal() {
     els.overlay.hidden = true;
     els.modalContent.innerHTML = "";
     currentGoodsId = null;
-    updateModalNav();
     if (els.guideOverlay.hidden) document.body.classList.remove("is-modal-open");
     if (lastFocusedElement?.isConnected) lastFocusedElement.focus();
     else document.querySelector(`[data-route-link="${state.route}"]`)?.focus();
   }, delay);
-}
-
-function modalNavButtons() {
-  return [...els.overlay.querySelectorAll(":scope > [data-modal-nav]"), ...els.modalContent.querySelectorAll("[data-modal-nav]")];
-}
-
-function updateModalNav() {
-  const show = Boolean(currentGoodsId) && visibleGoodsIds.length > 1;
-  modalNavButtons().forEach(button => { button.hidden = !show; });
-}
-
-function stepModal(direction) {
-  if (!currentGoodsId || visibleGoodsIds.length < 2) return;
-  const index = visibleGoodsIds.indexOf(currentGoodsId);
-  if (index === -1) return;
-  const length = visibleGoodsIds.length;
-  const nextIndex = (index + (direction === "next" ? 1 : -1) + length) % length;
-  const nextId = visibleGoodsIds[nextIndex];
-  const item = state.goods.find(goods => String(goods.id) === nextId);
-  if (!item) return;
-  currentGoodsId = nextId;
-  els.modalContent.innerHTML = renderModal(item, { owned: hasItem("owned", nextId), wishlist: hasItem("wishlist", nextId) });
-  bindImageFallbacks(els.modalContent);
-  els.modal.scrollTop = 0;
-  updateModalNav();
-  els.modalContent.classList.remove("is-step-next", "is-step-prev");
-  void els.modalContent.offsetWidth;
-  els.modalContent.classList.add(direction === "next" ? "is-step-next" : "is-step-prev");
 }
 
 function renderGuide(text) {
@@ -449,6 +478,46 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => { els.toast.hidden = true; }, 3000);
 }
 
+function commitPriceInput(input) {
+  if (!currentGoodsId) return;
+  const kind = input.dataset.priceKind;
+  const field = input.dataset.priceField;
+  const current = getPriceRecord(kind, currentGoodsId) || { price: null, qty: 1 };
+  let price = current.price;
+  let qty = current.qty || 1;
+
+  if (field === "price") {
+    const value = input.value.trim();
+    const numeric = Number(value);
+    if (input.validity.badInput || (value && (!Number.isFinite(numeric) || numeric < 0))) {
+      input.value = current.price ?? "";
+      showToast("金额需为大于或等于 0 的数字");
+      return;
+    }
+    price = value === "" ? null : numeric;
+  } else if (field === "qty") {
+    const value = input.value.trim();
+    const numeric = Number(value);
+    if (input.validity.badInput || (value && (!Number.isSafeInteger(numeric) || numeric < 1))) {
+      input.value = String(qty);
+      showToast("数量需为大于或等于 1 的整数");
+      return;
+    }
+    qty = value === "" ? 1 : numeric;
+  } else {
+    return;
+  }
+
+  try {
+    const { persisted } = savePriceRecord(kind, currentGoodsId, { price, qty });
+    input.value = field === "price" ? (price ?? "") : String(qty);
+    if (!persisted) showToast("记录已更新，但仅在本次页面中有效");
+  } catch (error) {
+    input.value = field === "price" ? (current.price ?? "") : String(qty);
+    showToast(error.message || "记录保存失败，请检查输入");
+  }
+}
+
 function exportPersonalData() {
   const blob = new Blob([JSON.stringify(createBackup(), null, 2)], { type: "application/json;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -517,33 +586,24 @@ els.grid.addEventListener("click", event => {
   if (card) openModal(card.dataset.goodsId);
 });
 els.modalClose.addEventListener("click", closeModal);
-els.overlay.addEventListener("click", event => {
-  const nav = event.target.closest("[data-modal-nav]");
-  if (nav) { stepModal(nav.dataset.modalNav); return; }
-  if (event.target === els.overlay) closeModal();
-});
-
-let touchStartX = 0;
-let touchStartY = 0;
-els.modal.addEventListener("touchstart", event => {
-  if (event.touches.length !== 1) return;
-  touchStartX = event.touches[0].clientX;
-  touchStartY = event.touches[0].clientY;
-}, { passive: true });
-els.modal.addEventListener("touchend", event => {
-  if (!currentGoodsId || visibleGoodsIds.length < 2) return;
-  const dx = event.changedTouches[0].clientX - touchStartX;
-  const dy = event.changedTouches[0].clientY - touchStartY;
-  if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
-  stepModal(dx < 0 ? "next" : "prev");
-}, { passive: true });
+els.overlay.addEventListener("click", event => { if (event.target === els.overlay) closeModal(); });
 els.modalContent.addEventListener("click", event => {
   const button = event.target.closest("[data-personal-action]");
   if (!button || !currentGoodsId) return;
   const kind = button.dataset.personalAction;
   const { added, persisted } = toggleItem(kind, currentGoodsId);
+  const pricePersisted = added ? true : removePriceRecord(kind, currentGoodsId).persisted;
   const actionName = kind === "owned" ? (added ? "已加入仓库" : "已移出仓库") : (added ? "已加入心愿单" : "已移出心愿单");
-  showToast(persisted ? actionName : `${actionName}，但仅在本次页面中有效`);
+  showToast(persisted && pricePersisted ? actionName : `${actionName}，但仅在本次页面中有效`);
+});
+
+els.modalContent.addEventListener("change", event => {
+  const input = event.target.closest("[data-price-field]");
+  if (input) commitPriceInput(input);
+});
+els.modalContent.addEventListener("focusout", event => {
+  const input = event.target.closest("[data-price-field]");
+  if (input) commitPriceInput(input);
 });
 
 $("#open-guide").addEventListener("click", openGuide);
@@ -557,8 +617,6 @@ document.addEventListener("keydown", event => {
   }
   if (els.overlay.hidden) return;
   if (event.key === "Escape") { event.preventDefault(); closeModal(); }
-  if (event.key === "ArrowLeft") { event.preventDefault(); stepModal("prev"); }
-  if (event.key === "ArrowRight") { event.preventDefault(); stepModal("next"); }
   if (event.key === "Tab") trapFocus(event, els.modal);
 });
 
@@ -602,6 +660,7 @@ window.addEventListener("resize", () => requestAnimationFrame(() => { updateMore
 window.addEventListener("hashchange", () => updateRoute());
 desktopQuery.addEventListener("change", updateMoreFiltersVisibility);
 subscribe(updatePersonalUI);
+subscribePrices(updatePriceUI);
 
 // 柄图系列：电脑端鼠标拖拽滚动。
 let isDraggingRail = false;
