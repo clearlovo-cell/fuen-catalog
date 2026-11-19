@@ -45,7 +45,7 @@
           </div>
           <div class="idcard__stats">
             <div class="idcard__row">
-              <span class="idcard__label">已收录</span>
+              <span class="idcard__label">总收录</span>
               <strong class="idcard__number"><span id="total-count">—</span><small> 件</small></strong>
             </div>
             <a class="idcard__row idcard__row--link" href="#/warehouse">
@@ -65,7 +65,6 @@
         <p class="collection-hero__note">只保存在这台设备上</p>
         <h1 id="collection-title">已入库</h1>
         <p class="collection-hero__count"><strong id="collection-count">0</strong><span>／</span><span id="collection-total">0</span><span> 件</span></p>
-        <p class="collection-hero__amount" role="status" aria-live="polite"><span id="collection-amount-label">总金额</span><strong id="collection-amount">0</strong><span> 元</span></p>
         <div class="progress-row">
           <div id="collection-progress" class="progress-track" role="progressbar" aria-label="图鉴完成度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
             <span id="collection-progress-fill"></span>
@@ -197,6 +196,12 @@
   <button id="go-to-bottom" class="fab" type="button" aria-label="前往底部" title="前往底部"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 10 6 6 6-6"/></svg></button>
 
   <div id="lightbox-overlay" class="lightbox-overlay" hidden>
+    <button class="modal-nav modal-nav--prev" type="button" data-modal-nav="prev" aria-label="查看上一个制品详情" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+    </button>
+    <button class="modal-nav modal-nav--next" type="button" data-modal-nav="next" aria-label="查看下一个制品详情" hidden>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg>
+    </button>
     <section id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
       <button id="modal-close" class="modal-close" type="button" aria-label="关闭详情">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
@@ -212,13 +217,7 @@
       </button>
       <p class="guide-modal__note">FUEN ATLAS</p>
       <h2 id="guide-title">使用说明</h2>
-      <div id="guide-content" class="guide-content">
-        <p>1. 在图鉴页可按名称、类型、活动、平台、年份、材质和尺寸检索，也可点击柄图封面筛选。</p>
-        <p>2. 打开任意制品详情，点击“入库”或“心愿”即可加入个人列表，再次点击可移除。</p>
-        <p>3. 仓库和心愿单只保存在当前浏览器，不会上传。清除网站数据、使用无痕模式或更换设备后，记录可能无法恢复。</p>
-        <p>4. 仓库和心愿页支持导出、导入备份。导入会合并记录，不会覆盖现有数据。</p>
-        <p>5. 本站仅供图鉴参考，图片版权归官方所有。</p>
-      </div>
+      <div id="guide-content" class="guide-content"></div>
     </section>
   </div>
 
