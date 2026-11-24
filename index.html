@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="./css/tokens.css">
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/screenshot.css">
+  <link rel="stylesheet" href="./css/nickname.css">
 </head>
 <body id="top" data-route="catalog">
   <a class="skip-link" href="#catalog">跳至当前谷子列表</a>
@@ -38,7 +40,7 @@
           <p class="hero__intro" lang="ja">お前の顔を、絵にして残したい、そう思ったよ。</p>
         </div>
         <aside class="idcard" aria-label="图鉴与个人统计">
-          <p class="idcard__title">我的收藏记录</p>
+          <p id="collection-record-title" class="idcard__title">我的收藏记录</p>
           <div class="idcard__body">
           <div class="idcard__media">
             <img src="./assets/img/uploads/series-stand.png" alt="斐恩代表立绘" width="240" height="320" loading="lazy" decoding="async">
@@ -62,7 +64,10 @@
       </div>
 
       <div id="collection-hero" class="container collection-hero" hidden>
-        <p class="collection-hero__note">只保存在这台设备上</p>
+       <div class="nickname-entry">
+        <button id="nickname-open" class="btn btn--small" type="button" aria-haspopup="dialog" aria-controls="nickname-overlay">Nickname</button>
+       </div>
+       <p class="collection-hero__note">只保存在这台设备上</p>
         <h1 id="collection-title">已入库</h1>
         <p class="collection-hero__count"><strong id="collection-count">0</strong><span>／</span><span id="collection-total">0</span><span> 件</span></p>
         <p class="collection-hero__amount" role="status" aria-live="polite"><span id="collection-amount-label">总金额</span><strong id="collection-amount">0</strong><span> 元</span></p>
@@ -72,9 +77,28 @@
           </div>
           <span id="collection-percent" class="progress-percent">0%</span>
         </div>
-        <div id="collection-tools" class="collection-tools" aria-label="本地数据备份">
-          <button class="btn btn--small" type="button" data-backup-action="export">导出备份</button>
-          <button class="btn btn--small btn--secondary" type="button" data-backup-action="import">导入备份</button>
+        <div id="collection-tools" class="collection-tools" aria-label="个人列表工具">
+         <input id="visitor-id" type="hidden">
+
+          <button
+            class="btn btn--small"
+            type="button"
+            data-screenshot-start
+            disabled
+          >截图</button>
+
+          <button
+            class="btn btn--small btn--secondary"
+            type="button"
+            data-backup-action="export"
+          >导出备份</button>
+
+          <button
+            class="btn btn--small btn--secondary"
+            type="button"
+            data-backup-action="import"
+          >导入备份</button>
+
           <span>导入会合并记录，不覆盖现有数据</span>
         </div>
       </div>
@@ -222,9 +246,62 @@
     </section>
   </div>
 
-  <input id="backup-file" type="file" accept="application/json,.json" hidden>
-  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="nickname-overlay" class="nickname-overlay" hidden>
+  <section class="nickname-dialog" role="dialog" aria-modal="true" aria-label="设置 Nickname" tabindex="-1">
+    <label class="sr-only" for="nickname-input">Nickname</label>
+    <input id="nickname-input" type="text" maxlength="16" autocomplete="off" placeholder="最多可输入16个字符">
+  </section>
+</div>
+  <div id="screenshot-toolbar" class="screenshot-toolbar" hidden>
+    <div class="container screenshot-toolbar__inner">
+      <strong
+        class="screenshot-toolbar__count"
+        data-screenshot-count
+      >已选 0 件</strong>
+
+      <button
+        class="btn btn--small btn--secondary"
+        type="button"
+        data-screenshot-action="all"
+      >全选</button>
+
+      <button
+        class="btn btn--small btn--secondary"
+        type="button"
+        data-screenshot-action="clear"
+      >清除</button>
+
+      <button
+        class="btn btn--small btn--secondary"
+        type="button"
+        data-screenshot-action="cancel"
+      >取消</button>
+
+      <button
+        class="btn btn--small"
+        type="button"
+        data-screenshot-action="export"
+      >导出</button>
+    </div>
+  </div>
+
+  <input
+    id="backup-file"
+    type="file"
+    accept="application/json,.json"
+    hidden
+  >
+
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite"
+    hidden
+  ></div>
 
   <script type="module" src="./js/app.js"></script>
+  <script type="module" src="./js/nickname.js"></script>
+  <script type="module" src="./js/screenshot.js"></script>
 </body>
 </html>
