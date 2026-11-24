@@ -1,15 +1,28 @@
-/* Nickname 按钮位于个人页头内部，随页面自然滚动。 */
+/* CN 按钮只在个人页头内定位，不占据额外一行，随页面自然滚动。 */
 .nickname-entry {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: var(--sp-4);
-}
-
-.nickname-entry .btn {
+  position: absolute;
+  top: var(--sp-8);
+  right: var(--gutter);
   margin: 0;
 }
 
+.nickname-entry .btn {
+  position: relative;
+  min-height: 32px;
+  margin: 0;
+  padding-inline: 8px;
+  font-size: 11px;
+}
+
+/* 视觉上是小按钮，实际点击区域仍保持充足。 */
+.nickname-entry .btn::before {
+  content: "";
+  position: absolute;
+  inset: -6px -4px;
+}
+
 .collection-hero h1 {
+  padding-inline: 44px;
   overflow-wrap: anywhere;
 }
 
@@ -60,20 +73,16 @@
 
 @media (min-width: 768px) {
   .nickname-entry {
-    position: absolute;
     top: var(--sp-10);
-    right: var(--gutter);
-    margin: 0;
   }
 
-  /* 给右上角按钮留出空间，长昵称也不会与它重叠。 */
-  .collection-hero__note {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .nickname-entry .btn {
+    min-height: 36px;
+    padding-inline: 10px;
+    font-size: var(--fs-xs);
   }
 
+  /* 长昵称换行时也不会进入右上角按钮区域。 */
   .collection-hero h1 {
     padding-inline: 120px;
   }
