@@ -298,3 +298,72 @@ body.is-screenshot-selecting #goods-grid .card__title {
     padding-inline: 10px;
   }
 }
+
+/* 电脑端与手机端共用的底部选择操作栏。 */
+.screenshot-toolbar {
+  position: fixed;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 1px solid rgba(201, 168, 76, .35);
+  border-bottom: 0;
+  background: rgba(253, 252, 247, .97);
+  box-shadow: 0 -4px 16px rgba(74, 63, 53, .08);
+}
+
+/* 给最后一行卡片和页脚留出空间，避免被操作栏遮挡。 */
+body.is-screenshot-selecting {
+  padding-bottom: calc(88px + env(safe-area-inset-bottom));
+}
+
+/* 选择期间隐藏其他悬浮按钮，避免互相遮挡。 */
+body.is-screenshot-selecting .order-toggle,
+body.is-screenshot-selecting .fab {
+  display: none;
+}
+
+/* 删除原来的整根分割线和带底色的伪元素星星。 */
+.screenshot-export-header {
+  border-bottom: 0;
+}
+
+.screenshot-export-header::after {
+  content: none;
+}
+
+/* 左右两段虚线夹住透明星星。 */
+.screenshot-export-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -11px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.screenshot-export-rule > span {
+  flex: 1;
+  border-top: 1px dashed #C9BC9F;
+}
+
+.screenshot-export-rule > i {
+  position: relative;
+  top: -10px;
+  width: 42px;
+  flex: 0 0 42px;
+  color: #C9A84C;
+  font-size: 22px;
+  font-style: normal;
+  line-height: 1;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  body.is-screenshot-selecting {
+    padding-bottom: calc(124px + env(safe-area-inset-bottom));
+  }
+}
