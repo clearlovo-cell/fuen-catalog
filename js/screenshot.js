@@ -2,7 +2,7 @@ const VISITOR_ID_KEY = "fuen-catalog:visitor-id:v1";
 const EXPORT_SCALE = 2;
 const MAX_CANVAS_AREA = 16000000;
 const MAX_CANVAS_DIMENSION = 12000;
-const HTML2CANVAS_URL = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+const HTML2CANVAS_URL = "./js/vendor/html2canvas.min.js";
 
 const grid = document.querySelector("#goods-grid");
 const startButton = document.querySelector("[data-screenshot-start]");
@@ -196,33 +196,52 @@ function initialiseScreenshotFeature() {
   }
 
   function ensureHtml2Canvas() {
-    if (window.html2canvas) {
-      return Promise.resolve(window.html2canvas);
+  if (window.html2canvas) return Promise.resolve(window.html2canvas);
+  if (html2canvasPromise) return html2canvasPromise;
+
+  html2canvasPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    let settled = false;
+
+    const timer = window.setTimeout(() => {
+      fail(new Error("截图组件加载超时，请刷新页面后重试"));
+    }, 20000);
+
+    function fail(error) {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timer);
+      script.remove();
+
+      // 失败后允许再次点击导出重试。
+      html2canvasPromise = null;
+      reject(error);
     }
 
-    if (html2canvasPromise) return html2canvasPromise;
+    script.src = HTML2CANVAS_URL;
 
-    html2canvasPromise = new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      script.src = HTML2CANVAS_URL;
+    script.onload = () => {
+      if (settled) return;
 
-      script.onload = () => {
-        if (window.html2canvas) {
-          resolve(window.html2canvas);
-        } else {
-          reject(new Error("截图组件加载失败"));
-        }
-      };
+      if (!window.html2canvas) {
+        fail(new Error("截图组件文件内容异常，请重新上传组件文件"));
+        return;
+      }
 
-      script.onerror = () => {
-        reject(new Error("截图组件加载失败，请检查网络后重试"));
-      };
+      settled = true;
+      window.clearTimeout(timer);
+      resolve(window.html2canvas);
+    };
 
-      document.head.append(script);
-    });
+    script.onerror = () => {
+      fail(new Error("截图组件读取失败，请确认 js/vendor/html2canvas.min.js 已上传"));
+    };
 
-    return html2canvasPromise;
-  }
+    document.head.append(script);
+  });
+
+  return html2canvasPromise;
+}
 
   // 返回的宽高均为 CSS px，导出时再固定放大 2 倍。
   function chooseExportLayout(count) {
