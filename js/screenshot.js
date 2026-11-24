@@ -424,7 +424,18 @@ function initialiseScreenshotFeature() {
     const heading = document.createElement("h1");
     heading.textContent = title;
 
-    header.append(heading);
+// 左右两段虚线夹住透明星星，不再用矩形色块遮住背景。
+const rule = document.createElement("div");
+rule.className = "screenshot-export-rule";
+rule.setAttribute("aria-hidden", "true");
+
+const leftRule = document.createElement("span");
+const star = document.createElement("i");
+star.textContent = "✦";
+const rightRule = document.createElement("span");
+
+rule.append(leftRule, star, rightRule);
+header.append(heading, rule);
 
     const exportGrid = document.createElement("div");
     exportGrid.className = "screenshot-export-grid";
