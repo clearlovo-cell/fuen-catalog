@@ -1,0 +1,300 @@
+/* 选择模式顶部操作栏 */
+.screenshot-toolbar {
+  position: sticky;
+  top: 60px;
+  z-index: 45;
+  border-bottom: 1px solid rgba(201, 168, 76, .35);
+  background: rgba(253, 252, 247, .97);
+  box-shadow: var(--sh-1);
+}
+
+.screenshot-toolbar__inner {
+  min-height: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding-block: var(--sp-2);
+}
+
+.screenshot-toolbar__count {
+  margin-right: auto;
+  color: var(--c-text);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.screenshot-toolbar .btn {
+  min-height: 44px;
+  margin: 0;
+  padding-inline: var(--sp-3);
+  font-size: var(--fs-xs);
+}
+
+/* 选择模式中，只保留图片、名称、单价和数量。 */
+body.is-screenshot-selecting .filter-section,
+body.is-screenshot-selecting .series-section {
+  opacity: .55;
+}
+
+body.is-screenshot-selecting #goods-grid .card {
+  cursor: pointer;
+  transform: none;
+}
+
+body.is-screenshot-selecting #goods-grid .card:hover,
+body.is-screenshot-selecting #goods-grid .card:hover .card__img {
+  transform: none;
+}
+
+body.is-screenshot-selecting #goods-grid .card[aria-pressed="true"] {
+  border-color: var(--c-primary-strong);
+  box-shadow:
+    0 0 0 3px rgba(255, 217, 102, .42),
+    var(--sh-1);
+}
+
+body.is-screenshot-selecting #goods-grid .card__media > .badge,
+body.is-screenshot-selecting #goods-grid .card__personal-badges,
+body.is-screenshot-selecting #goods-grid .card__size,
+body.is-screenshot-selecting #goods-grid .card__meta,
+body.is-screenshot-selecting #goods-grid .card__platform {
+  display: none;
+}
+
+body.is-screenshot-selecting #goods-grid .card__title {
+  display: block;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: unset;
+}
+
+.screenshot-check {
+  position: absolute;
+  top: var(--sp-2);
+  right: var(--sp-2);
+  z-index: 4;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--c-primary-strong);
+  border-radius: 50%;
+  background: rgba(253, 252, 247, .94);
+  box-shadow: var(--sh-1);
+  pointer-events: none;
+}
+
+.card[aria-pressed="true"] .screenshot-check {
+  background: var(--c-primary);
+}
+
+.card[aria-pressed="true"] .screenshot-check::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 4px;
+  width: 8px;
+  height: 13px;
+  border: solid var(--c-text);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* 离屏导出区域 */
+.screenshot-export-host {
+  position: fixed;
+  left: -20000px;
+  top: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.screenshot-export-sheet {
+  --export-pad: 40px;
+  width: 1000px;
+  padding: var(--export-pad);
+  color: #4A3F35;
+  background-color: #FDFCF7;
+  background-image:
+    linear-gradient(#F3EBD8 1px, transparent 1px),
+    linear-gradient(90deg, #F3EBD8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body);
+}
+
+.screenshot-export-header {
+  position: relative;
+  margin: 0 0 30px;
+  padding: 4px 0 27px;
+  border-bottom: 1px dashed #C9BC9F;
+  text-align: center;
+}
+
+.screenshot-export-header h1 {
+  max-width: 100%;
+  margin: 0;
+  overflow: visible;
+  text-overflow: clip;
+  text-overflow: ellipsis;
+  color: #4A3F35;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .08em;
+}
+
+.screenshot-export-header::after {
+  content: "✦";
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  transform: translateX(-50%);
+  padding: 0 13px;
+  background: #FDFCF7;
+  color: #C9A84C;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.screenshot-export-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(var(--export-columns), minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+.screenshot-export-sheet .card {
+  display: block;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  transform: none;
+  border: 1px solid #E9E1CF;
+  border-radius: 12px;
+  background: #FFF;
+  box-shadow:
+    0 1px 2px rgba(74, 63, 53, .06),
+    0 2px 8px rgba(74, 63, 53, .05);
+  text-align: left;
+}
+
+.screenshot-export-sheet .card:hover,
+.screenshot-export-sheet .card:hover .card__img {
+  transform: none;
+}
+
+.screenshot-export-sheet .card__media {
+  aspect-ratio: 1;
+  background: #F6F1E6;
+}
+
+.screenshot-export-sheet .card__body {
+  padding: 10px 11px 12px;
+  border-top: 1px dashed #E9E1CF;
+  background: #FFF;
+}
+
+.screenshot-export-sheet .card__title {
+  display: block;
+  min-height: 0;
+  margin: 0;
+  overflow: visible;
+  white-space: nowrap;
+  text-overflow: clip;
+  color: #4A3F35;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: .01em;
+  -webkit-line-clamp: unset;
+}
+
+.screenshot-export-sheet .card__price {
+  left: 8px;
+  bottom: 8px;
+  display: flex;
+  gap: 5px;
+  color: #FFF;
+  text-shadow:
+    0 1px 4px rgba(74, 63, 53, .95),
+    0 0 2px rgba(74, 63, 53, .85);
+}
+
+.screenshot-export-sheet .card__price strong {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.screenshot-export-sheet .card__price small,
+.screenshot-export-sheet .card__price > span {
+  font-size: 12px;
+}
+
+/* 单件时收窄海报 */
+.screenshot-export-sheet--single {
+  --export-pad: 48px;
+  width: 600px;
+}
+
+.screenshot-export-sheet--single .screenshot-export-header {
+  margin-bottom: 32px;
+  padding-bottom: 29px;
+}
+
+.screenshot-export-sheet--single .screenshot-export-header h1 {
+  font-size: 32px;
+}
+
+.screenshot-export-sheet--single .screenshot-export-grid {
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0 !important;
+}
+
+.screenshot-export-sheet--single .card__body {
+  padding: 15px 17px 17px;
+}
+
+.screenshot-export-sheet--single .card__title {
+  font-size: 19px;
+}
+
+.screenshot-export-sheet--single .card__price {
+  left: 14px;
+  bottom: 14px;
+  gap: 7px;
+}
+
+.screenshot-export-sheet--single .card__price strong {
+  font-size: 23px;
+}
+
+.screenshot-export-sheet--single .card__price small,
+.screenshot-export-sheet--single .card__price > span {
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  .screenshot-toolbar {
+    top: 68px;
+  }
+}
+
+@media (max-width: 560px) {
+  .screenshot-toolbar__count {
+    flex-basis: 100%;
+    margin: 0;
+    text-align: center;
+  }
+
+  .screenshot-toolbar__inner {
+    gap: 6px;
+  }
+
+  .screenshot-toolbar .btn {
+    padding-inline: 10px;
+  }
+}
