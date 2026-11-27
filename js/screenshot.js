@@ -484,6 +484,17 @@ header.append(heading, rule);
     return { host, sheet };
   }
 
+  function withTimeout(promise, milliseconds, message) {
+    let timer;
+    const timeout = new Promise((_, reject) => {
+      timer = window.setTimeout(() => reject(new Error(message)), milliseconds);
+    });
+
+    return Promise.race([promise, timeout]).finally(() => {
+      window.clearTimeout(timer);
+    });
+  }
+
   function waitForImage(image) {
     if (image.complete) return Promise.resolve();
 
@@ -539,7 +550,11 @@ header.append(heading, rule);
     );
 
     if (document.fonts?.ready) {
-      await document.fonts.ready;
+      await withTimeout(
+        document.fonts.ready,
+        15000,
+        "字体准备超时（document.fonts.ready），请刷新页面后重试"
+      );
     }
   }
 
@@ -570,18 +585,22 @@ header.append(heading, rule);
 
       const html2canvas = await ensureHtml2Canvas();
 
-      const canvas = await html2canvas(sheet, {
-        backgroundColor: "#FDFCF7",
-        scale: EXPORT_SCALE,
-        useCORS: true,
-        allowTaint: false,
-        logging: false,
-        imageTimeout: 20000,
-        width: layout.width,
-        height: actualHeight,
-        windowWidth: layout.width,
-        windowHeight: actualHeight
-      });
+      const canvas = await withTimeout(
+        html2canvas(sheet, {
+          backgroundColor: "#FDFCF7",
+          scale: EXPORT_SCALE,
+          useCORS: true,
+          allowTaint: false,
+          logging: false,
+          imageTimeout: 20000,
+          width: layout.width,
+          height: actualHeight,
+          windowWidth: layout.width,
+          windowHeight: actualHeight
+        }),
+        90000,
+        "截图组件渲染超时（html2canvas），请重试"
+      );
 
       if (
         canvas.width > 2000 ||
@@ -608,9 +627,13 @@ header.append(heading, rule);
   }
 
   async function downloadCanvas(canvas, filename) {
-    const blob = await new Promise(resolve => {
-      canvas.toBlob(resolve, "image/png");
-    });
+    const blob = await withTimeout(
+      new Promise(resolve => {
+        canvas.toBlob(resolve, "image/png");
+      }),
+      30000,
+      "PNG 编码超时（canvas.toBlob），请重试"
+    );
 
     if (!blob) {
       throw new Error(
