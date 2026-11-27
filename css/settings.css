@@ -7,8 +7,8 @@
   box-shadow: var(--sh-1);
   text-align: center;
 }
-.settings-site-card > p:first-child { color: #a07a13; font-size: 11px; font-weight: 700; letter-spacing: .18em; }
-.settings-site-card > strong { display: block; margin-top: var(--sp-2); font-size: var(--fs-lg); }
+.settings-site-card > p:first-child { color: #a07a13; font-size: var(--fs-lg); font-weight: 700; letter-spacing: .18em; }
+.settings-site-card > strong { display: block; margin-top: var(--sp-2); font-size: 11px; }
 #settings-contact { margin-top: var(--sp-2); display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-2); color: var(--c-text-2); font-size: var(--fs-sm); }
 #settings-contact a { text-decoration: underline; text-decoration-color: var(--c-primary-strong); text-underline-offset: 3px; overflow-wrap: anywhere; }
 #settings-updated-at { margin-top: var(--sp-2); color: var(--c-text-2); font-size: var(--fs-sm); }

@@ -47,7 +47,7 @@ body[data-route="title"] .fab { display: none; }
   .title-view__artwork img { object-position: center top; }
 }
 @media (min-width: 768px) {
-  .title-logo { top: 43%; bottom: auto; left: 25%; width: 46%; transform: translate(-50%, -50%); }
+  .title-logo { top: 43%; bottom: auto; left: 30%; width: 46%; transform: translate(-50%, -50%); }
   .title-menu {
     position: absolute;
     left: 50%;
