@@ -30,7 +30,7 @@ function safeExternalUrl(value) {
 
 function renderSite(site, meta) {
   siteCard.querySelector(":scope > p").textContent = site.siteName || "FUEN ATLAS";
-  siteCard.querySelector(":scope > strong").textContent = site.signature || "💜 CLEARLOVO";
+  siteCard.querySelector(":scope > strong").textContent = site.signature || "🎐 clearlovo";
   const email = String(site.email || "").trim();
   const xiaohongshu = safeExternalUrl(site.xiaohongshu);
   contact.innerHTML = [
