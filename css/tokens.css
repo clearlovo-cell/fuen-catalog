@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
   /* 基底 */
-  --c-bg: #FDFCF7;
+  --c-bg: #F7F3EC;
   --c-surface: #FFFFFF;
   --c-surface-sunken: #F6F1E6;
   --c-line: #E9E1CF;
@@ -15,7 +15,13 @@
   --c-panel-strong: rgba(253, 252, 247, .97);
   --c-band-start: rgba(254, 249, 245, .94);
   --c-band-end: rgba(255, 255, 255, .82);
-  --c-card-media: #FDFCF7;
+  --c-card-bg: rgba(255, 255, 255, .7);
+  --c-card-body-bg: rgba(255, 255, 255, .86);
+  --c-card-media: #F6F1E6;
+  --c-card-bd: rgba(201, 168, 76, .24);
+  --c-card-shadow: 0 8px 24px rgba(74, 63, 53, .1), 0 2px 6px rgba(74, 63, 53, .05);
+  --c-card-shadow-hover: 0 14px 32px rgba(74, 63, 53, .14), 0 4px 10px rgba(74, 63, 53, .07);
+  --c-price-tag-bg: rgba(74, 63, 53, .92);
   --c-overlay: rgba(74, 63, 53, .62);
   --c-overlay-soft: rgba(74, 63, 53, .36);
   --c-accent-text: #A07A13;
@@ -131,7 +137,13 @@
     --c-panel-strong: rgba(48, 48, 48, .97);
     --c-band-start: rgba(48, 48, 48, .96);
     --c-band-end: rgba(58, 57, 55, .84);
-    --c-card-media: #303030;
+    --c-card-bg: rgba(66, 64, 60, .68);
+    --c-card-body-bg: rgba(58, 57, 55, .9);
+    --c-card-media: #3A3937;
+    --c-card-bd: rgba(248, 243, 233, .14);
+    --c-card-shadow: 0 8px 24px rgba(0, 0, 0, .26), 0 2px 6px rgba(0, 0, 0, .18);
+    --c-card-shadow-hover: 0 14px 32px rgba(0, 0, 0, .34), 0 4px 10px rgba(0, 0, 0, .22);
+    --c-price-tag-bg: rgba(20, 19, 18, .94);
     --c-overlay: rgba(0, 0, 0, .72);
     --c-overlay-soft: rgba(0, 0, 0, .5);
     --c-accent-text: #F0D789;

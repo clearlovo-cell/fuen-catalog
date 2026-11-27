@@ -210,22 +210,24 @@ body.is-screenshot-selecting #goods-grid .card__title {
 .screenshot-export-sheet .card__price {
   left: 8px;
   bottom: 8px;
-  display: flex;
-  gap: 5px;
-  color: #FFF;
-  text-shadow:
-    0 1px 4px rgba(74, 63, 53, .95),
-    0 0 2px rgba(74, 63, 53, .85);
+  display: block;
+  padding: 5px 10px;
+  color: var(--c-card-price);
+  line-height: 1.2;
 }
 
 .screenshot-export-sheet .card__price strong {
-  font-size: 16px;
+  font-size: var(--export-price-size,18px);
   line-height: 1.2;
 }
 
 .screenshot-export-sheet .card__price small,
 .screenshot-export-sheet .card__price > span {
-  font-size: 12px;
+  font-size: var(--export-price-meta-size,13px);
+}
+
+.screenshot-export-sheet .card__price > span {
+  margin-left: 6px;
 }
 
 /* 单件时收窄海报 */
@@ -259,16 +261,11 @@ body.is-screenshot-selecting #goods-grid .card__title {
 .screenshot-export-sheet--single .card__price {
   left: 14px;
   bottom: 14px;
-  gap: 7px;
+  padding: 8px 14px;
 }
 
-.screenshot-export-sheet--single .card__price strong {
-  font-size: 23px;
-}
-
-.screenshot-export-sheet--single .card__price small,
 .screenshot-export-sheet--single .card__price > span {
-  font-size: 15px;
+  margin-left: 10px;
 }
 
 @media (min-width: 768px) {
