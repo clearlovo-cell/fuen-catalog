@@ -479,6 +479,15 @@ header.append(heading, rule);
     sheet.append(header, exportGrid);
     host.append(sheet);
     document.body.append(host);
+
+    const cardWidth = exportGrid.querySelector(".card")?.getBoundingClientRect().width || 0;
+    if (cardWidth) {
+      const priceSize = Math.max(17, Math.min(34, cardWidth * 0.075));
+      const priceMetaSize = Math.max(13, Math.min(20, cardWidth * 0.04));
+      sheet.style.setProperty("--export-price-size", `${priceSize}px`);
+      sheet.style.setProperty("--export-price-meta-size", `${priceMetaSize}px`);
+    }
+
     fitExportText(heading);
     sheet.querySelectorAll(".card__title").forEach(fitExportText);
     return { host, sheet };
@@ -646,7 +655,9 @@ header.append(heading, rule);
       startX += (rect.width - textWidth) / 2;
     }
 
-    const baseline = rect.y + rect.height;
+    const baseline = options.verticalCenter
+      ? rect.y + rect.height / 2
+      : rect.y + rect.height;
     const paint = () => {
       let x = startX;
       characters.forEach((character, index) => {
@@ -717,6 +728,35 @@ header.append(heading, rule);
     context.restore();
   }
 
+  function drawNativePrice(context, card, sheetRect) {
+    const price = card.querySelector(".card__price");
+    if (!price || price.hidden) return;
+
+    const priceRect = canvasRect(price, sheetRect);
+    const priceStyle = getComputedStyle(price);
+    const priceRadius = Math.min(
+      Number.parseFloat(priceStyle.borderTopLeftRadius) || 0,
+      priceRect.height / 2
+    );
+
+    context.save();
+    context.fillStyle = priceStyle.backgroundColor;
+    roundedCanvasPath(context, priceRect, priceRadius);
+    context.fill();
+    context.restore();
+
+    price.querySelectorAll("strong, small, :scope > span").forEach(element => {
+      const text = element.tagName === "STRONG"
+        ? [...element.childNodes]
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+          .map(node => node.textContent)
+          .join("")
+        : element.textContent;
+
+      paintCanvasText(context, element, sheetRect, { text, verticalCenter: true });
+    });
+  }
+
   function drawNativeCard(context, card, sheetRect) {
     const rect = canvasRect(card, sheetRect);
     const style = getComputedStyle(card);
@@ -773,25 +813,7 @@ header.append(heading, rule);
     const title = card.querySelector(".card__title");
     if (title) paintCanvasText(context, title, sheetRect);
 
-    const price = card.querySelector(".card__price");
-    if (price && !price.hidden) {
-      price.querySelectorAll("strong, small, :scope > span").forEach(element => {
-        const text = element.tagName === "STRONG"
-          ? [...element.childNodes]
-            .filter(node => node.nodeType === Node.TEXT_NODE)
-            .map(node => node.textContent)
-            .join("")
-          : element.textContent;
-
-        paintCanvasText(context, element, sheetRect, {
-          text,
-          shadows: [
-            { blur: 4, y: 1, color: "rgba(74, 63, 53, .95)" },
-            { blur: 2, color: "rgba(74, 63, 53, .85)" }
-          ]
-        });
-      });
-    }
+    drawNativePrice(context, card, sheetRect);
   }
 
   function renderSheetNatively(sheet) {
@@ -875,11 +897,28 @@ header.append(heading, rule);
             width: layout.width,
             height: actualHeight,
             windowWidth: layout.width,
-            windowHeight: actualHeight
+            windowHeight: actualHeight,
+            onclone: clonedDocument => {
+              clonedDocument.querySelectorAll(".screenshot-export-sheet .card__price").forEach(price => {
+                price.style.visibility = "hidden";
+              });
+            }
           }),
           90000,
           "截图组件渲染超时（html2canvas），请重试"
         );
+
+        const context = canvas.getContext("2d");
+        if (context) {
+          const sheetRect = sheet.getBoundingClientRect();
+          context.save();
+          context.setTransform(1, 0, 0, 1, 0, 0);
+          context.scale(EXPORT_SCALE, EXPORT_SCALE);
+          sheet.querySelectorAll(".card").forEach(card => {
+            drawNativePrice(context, card, sheetRect);
+          });
+          context.restore();
+        }
       }
 
       if (
