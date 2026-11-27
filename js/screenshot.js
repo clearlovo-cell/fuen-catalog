@@ -2,7 +2,6 @@ const VISITOR_ID_KEY = "fuen-catalog:visitor-id:v1";
 const EXPORT_SCALE = 2;
 const MAX_CANVAS_AREA = 16000000;
 const MAX_CANVAS_DIMENSION = 12000;
-const IMAGE_TIMEOUT = 20000;
 const HTML2CANVAS_URL = "./js/vendor/html2canvas.min.js";
 
 const grid = document.querySelector("#goods-grid");
@@ -260,6 +259,15 @@ function initialiseScreenshotFeature() {
     const fixedHeight = 188;
     const nameHeight = 43.5;
 
+    if (count === 2) {
+      const cardWidth = (contentWidth - gap) / 2;
+      return {
+        width,
+        columns: 2,
+        height: fixedHeight + cardWidth + nameHeight
+      };
+    }
+
     let best = null;
 
     for (let columns = 1; columns <= 6; columns += 1) {
@@ -387,24 +395,17 @@ function initialiseScreenshotFeature() {
       )
       .forEach(element => element.remove());
 
-    const originalImages = [...original.querySelectorAll("img")];
-
-    card.querySelectorAll("img").forEach((image, index) => {
-      const source = originalImages[index];
+    card.querySelectorAll("img").forEach(image => {
+      const source = original.querySelector("img");
       const currentSource = source?.currentSrc || source?.src;
-
-      if (source?.dataset.fallbackApplied === "true") {
-        throw new Error("卡片原图加载失败，请重新加载图片后再导出");
-      }
-
-      image.removeAttribute("src");
-      image.removeAttribute("srcset");
-      image.loading = "eager";
-      image.decoding = "sync";
 
       if (currentSource) {
         image.src = currentSource;
       }
+
+      image.removeAttribute("srcset");
+      image.loading = "eager";
+      image.decoding = "sync";
     });
 
     return card;
@@ -484,11 +485,7 @@ header.append(heading, rule);
   }
 
   function waitForImage(image) {
-    if (image.complete) {
-      return image.naturalWidth > 0
-        ? Promise.resolve()
-        : Promise.reject(new Error("卡片原图加载失败，请重新加载图片后再导出"));
-    }
+    if (image.complete) return Promise.resolve();
 
     return new Promise((resolve, reject) => {
       const finish = error => {
@@ -497,21 +494,18 @@ header.append(heading, rule);
         image.removeEventListener("error", onError);
         error ? reject(error) : resolve();
       };
-      const onLoad = () => {
-        if (image.naturalWidth > 0) finish();
-        else finish(new Error("卡片原图加载失败，请重新加载图片后再导出"));
-      };
+      const onLoad = () => finish();
       const onError = () => {
         finish(new Error("卡片原图加载失败，请重新加载图片后再导出"));
       };
       const timer = window.setTimeout(() => {
         finish(new Error("图片加载超时，请检查网络后重试"));
-      }, IMAGE_TIMEOUT);
+      }, 20000);
 
       image.addEventListener("load", onLoad);
       image.addEventListener("error", onError);
 
-      if (image.complete) onLoad();
+      if (image.complete) finish();
     });
   }
 
@@ -523,7 +517,7 @@ header.append(heading, rule);
       };
       const timer = window.setTimeout(() => {
         reject(new Error("图片处理超时，请重试"));
-      }, IMAGE_TIMEOUT);
+      }, 20000);
 
       image.decode().then(finish, finish);
     });
@@ -535,6 +529,11 @@ header.append(heading, rule);
     await Promise.all(
       images.map(async image => {
         await waitForImage(image);
+
+        if (image.naturalWidth === 0) {
+          throw new Error("卡片原图加载失败，请重新加载图片后再导出");
+        }
+
         await decodeImage(image);
       })
     );
@@ -577,8 +576,7 @@ header.append(heading, rule);
         useCORS: true,
         allowTaint: false,
         logging: false,
-        imageTimeout: IMAGE_TIMEOUT,
-        ignoreElements: element => element.id === "goods-grid",
+        imageTimeout: 20000,
         width: layout.width,
         height: actualHeight,
         windowWidth: layout.width,
@@ -800,4 +798,8 @@ header.append(heading, rule);
 
   loadVisitorId();
   updateStartButton();
+
+  ensureHtml2Canvas().catch(error => {
+    console.warn("截图组件预加载失败", error);
+  });
 }
