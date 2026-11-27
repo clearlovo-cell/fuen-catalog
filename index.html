@@ -112,24 +112,23 @@
         <div class="collection-hero__summary">
           <p class="collection-hero__count"><strong id="collection-count">0</strong><span>／</span><span id="collection-total">0</span><span> 件</span></p>
           <p class="collection-hero__amount" role="status" aria-live="polite"><span id="collection-amount-label">总金额</span><strong id="collection-amount">0</strong><span> 元</span></p>
+          <div id="collection-tools" class="collection-tools" aria-label="个人列表工具">
+            <input id="visitor-id" type="hidden">
+            <button
+              class="btn btn--small btn--icon"
+              type="button"
+              data-screenshot-start
+              aria-label="截图"
+              title="截图"
+              disabled
+            ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5h-5L7.7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.7L14.5 5Z"/><circle cx="12" cy="13" r="4"/></svg></button>
+          </div>
         </div>
         <div class="progress-row">
           <div id="collection-progress" class="progress-track" role="progressbar" aria-label="图鉴完成度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
             <span id="collection-progress-fill"></span>
           </div>
           <span id="collection-percent" class="progress-percent">0%</span>
-        </div>
-        <div id="collection-tools" class="collection-tools" aria-label="个人列表工具">
-         <input id="visitor-id" type="hidden">
-
-          <button
-            class="btn btn--small btn--icon"
-            type="button"
-            data-screenshot-start
-            aria-label="截图"
-            title="截图"
-            disabled
-          ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5h-5L7.7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.7L14.5 5Z"/><circle cx="12" cy="13" r="4"/></svg></button>
         </div>
       </div>
     </header>
