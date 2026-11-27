@@ -558,8 +558,291 @@ header.append(heading, rule);
     }
   }
 
+  function useNativeRenderer() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  }
+
+  function prepareNativeImages(scope) {
+    scope.querySelectorAll("img").forEach(image => {
+      const source = image.src;
+      image.removeAttribute("src");
+      image.crossOrigin = "anonymous";
+      image.src = source;
+    });
+  }
+
+  function canvasRect(element, sheetRect) {
+    const rect = element.getBoundingClientRect();
+    return {
+      x: rect.left - sheetRect.left,
+      y: rect.top - sheetRect.top,
+      width: rect.width,
+      height: rect.height
+    };
+  }
+
+  function roundedCanvasPath(context, rect, radius) {
+    const r = Math.min(radius, rect.width / 2, rect.height / 2);
+    context.beginPath();
+    context.moveTo(rect.x + r, rect.y);
+    context.lineTo(rect.x + rect.width - r, rect.y);
+    context.quadraticCurveTo(
+      rect.x + rect.width, rect.y,
+      rect.x + rect.width, rect.y + r
+    );
+    context.lineTo(rect.x + rect.width, rect.y + rect.height - r);
+    context.quadraticCurveTo(
+      rect.x + rect.width, rect.y + rect.height,
+      rect.x + rect.width - r, rect.y + rect.height
+    );
+    context.lineTo(rect.x + r, rect.y + rect.height);
+    context.quadraticCurveTo(
+      rect.x, rect.y + rect.height,
+      rect.x, rect.y + rect.height - r
+    );
+    context.lineTo(rect.x, rect.y + r);
+    context.quadraticCurveTo(
+      rect.x, rect.y,
+      rect.x + r, rect.y
+    );
+    context.closePath();
+  }
+
+  function dashedCanvasLine(context, start, end, color) {
+    context.save();
+    context.strokeStyle = color;
+    context.lineWidth = 1;
+    context.setLineDash([4, 3]);
+    context.beginPath();
+    context.moveTo(start.x, start.y + 0.5);
+    context.lineTo(end.x, end.y + 0.5);
+    context.stroke();
+    context.restore();
+  }
+
+  function paintCanvasText(context, element, sheetRect, options = {}) {
+    const text = options.text ?? element.textContent ?? "";
+    if (!text) return;
+
+    const rect = canvasRect(element, sheetRect);
+    const style = getComputedStyle(element);
+    const characters = Array.from(text);
+    const tracking = Number.parseFloat(style.letterSpacing) || 0;
+
+    context.save();
+    context.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+    context.fillStyle = style.color;
+    context.textBaseline = "middle";
+
+    const widths = characters.map(character =>
+      context.measureText(character).width
+    );
+    const textWidth = widths.reduce((total, width) => total + width, 0) +
+      tracking * Math.max(0, characters.length - 1);
+
+    let startX = rect.x;
+    if (style.textAlign === "center") {
+      startX += (rect.width - textWidth) / 2;
+    }
+
+    const baseline = rect.y + rect.height;
+    const paint = () => {
+      let x = startX;
+      characters.forEach((character, index) => {
+        context.fillText(character, x, baseline);
+        x += widths[index] + tracking;
+      });
+    };
+
+    const shadows = options.shadows || [null];
+    shadows.forEach(shadow => {
+      context.shadowColor = shadow?.color || "transparent";
+      context.shadowBlur = (shadow?.blur || 0) * EXPORT_SCALE;
+      context.shadowOffsetX = (shadow?.x || 0) * EXPORT_SCALE;
+      context.shadowOffsetY = (shadow?.y || 0) * EXPORT_SCALE;
+      paint();
+    });
+
+    context.restore();
+  }
+
+  function drawCanvasImage(context, image, rect) {
+    const style = getComputedStyle(image);
+    const naturalWidth = image.naturalWidth;
+    const naturalHeight = image.naturalHeight;
+    if (!naturalWidth || !naturalHeight) return;
+
+    context.save();
+    context.beginPath();
+    context.rect(rect.x, rect.y, rect.width, rect.height);
+    context.clip();
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
+
+    if (style.objectFit === "contain") {
+      const scale = Math.min(
+        rect.width / naturalWidth,
+        rect.height / naturalHeight
+      );
+      const width = naturalWidth * scale;
+      const height = naturalHeight * scale;
+      context.drawImage(
+        image,
+        rect.x + (rect.width - width) / 2,
+        rect.y + (rect.height - height) / 2,
+        width,
+        height
+      );
+    } else {
+      const scale = Math.max(
+        rect.width / naturalWidth,
+        rect.height / naturalHeight
+      );
+      const sourceWidth = rect.width / scale;
+      const sourceHeight = rect.height / scale;
+      context.drawImage(
+        image,
+        (naturalWidth - sourceWidth) / 2,
+        (naturalHeight - sourceHeight) / 2,
+        sourceWidth,
+        sourceHeight,
+        rect.x,
+        rect.y,
+        rect.width,
+        rect.height
+      );
+    }
+
+    context.restore();
+  }
+
+  function drawNativeCard(context, card, sheetRect) {
+    const rect = canvasRect(card, sheetRect);
+    const style = getComputedStyle(card);
+    const radius = Number.parseFloat(style.borderTopLeftRadius) || 0;
+
+    [
+      { blur: 2, y: 1, color: "rgba(74, 63, 53, .06)" },
+      { blur: 8, y: 2, color: "rgba(74, 63, 53, .05)" }
+    ].forEach(shadow => {
+      context.save();
+      context.shadowBlur = shadow.blur * EXPORT_SCALE;
+      context.shadowOffsetY = shadow.y * EXPORT_SCALE;
+      context.shadowColor = shadow.color;
+      context.fillStyle = style.backgroundColor;
+      roundedCanvasPath(context, rect, radius);
+      context.fill();
+      context.restore();
+    });
+
+    const media = card.querySelector(".card__media");
+    const body = card.querySelector(".card__body");
+    const image = card.querySelector(".card__img");
+    const mediaRect = canvasRect(media, sheetRect);
+    const bodyRect = canvasRect(body, sheetRect);
+
+    context.save();
+    roundedCanvasPath(context, rect, radius);
+    context.clip();
+    context.fillStyle = getComputedStyle(media).backgroundColor;
+    context.fillRect(mediaRect.x, mediaRect.y, mediaRect.width, mediaRect.height);
+    drawCanvasImage(context, image, canvasRect(image, sheetRect));
+    context.fillStyle = getComputedStyle(body).backgroundColor;
+    context.fillRect(bodyRect.x, bodyRect.y, bodyRect.width, bodyRect.height);
+    dashedCanvasLine(
+      context,
+      { x: bodyRect.x, y: bodyRect.y },
+      { x: bodyRect.x + bodyRect.width, y: bodyRect.y },
+      getComputedStyle(body).borderTopColor
+    );
+    context.restore();
+
+    context.save();
+    context.strokeStyle = style.borderTopColor;
+    context.lineWidth = 1;
+    roundedCanvasPath(context, {
+      x: rect.x + 0.5,
+      y: rect.y + 0.5,
+      width: rect.width - 1,
+      height: rect.height - 1
+    }, radius);
+    context.stroke();
+    context.restore();
+
+    const title = card.querySelector(".card__title");
+    if (title) paintCanvasText(context, title, sheetRect);
+
+    const price = card.querySelector(".card__price");
+    if (price && !price.hidden) {
+      price.querySelectorAll("strong, small, :scope > span").forEach(element => {
+        const text = element.tagName === "STRONG"
+          ? [...element.childNodes]
+            .filter(node => node.nodeType === Node.TEXT_NODE)
+            .map(node => node.textContent)
+            .join("")
+          : element.textContent;
+
+        paintCanvasText(context, element, sheetRect, {
+          text,
+          shadows: [
+            { blur: 4, y: 1, color: "rgba(74, 63, 53, .95)" },
+            { blur: 2, color: "rgba(74, 63, 53, .85)" }
+          ]
+        });
+      });
+    }
+  }
+
+  function renderSheetNatively(sheet) {
+    const sheetRect = sheet.getBoundingClientRect();
+    const style = getComputedStyle(sheet);
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.ceil(sheetRect.width) * EXPORT_SCALE;
+    canvas.height = Math.ceil(sheetRect.height) * EXPORT_SCALE;
+
+    const context = canvas.getContext("2d");
+    if (!context) throw new Error("无法创建原生 Canvas 画布");
+
+    context.scale(EXPORT_SCALE, EXPORT_SCALE);
+    context.fillStyle = style.backgroundColor;
+    context.fillRect(0, 0, sheetRect.width, sheetRect.height);
+
+    const gridSize = Number.parseFloat(style.backgroundSize) || 24;
+    context.fillStyle = "#F3EBD8";
+    for (let x = 0; x <= sheetRect.width; x += gridSize) {
+      context.fillRect(x, 0, 1, sheetRect.height);
+    }
+    for (let y = 0; y <= sheetRect.height; y += gridSize) {
+      context.fillRect(0, y, sheetRect.width, 1);
+    }
+
+    const heading = sheet.querySelector(".screenshot-export-header h1");
+    paintCanvasText(context, heading, sheetRect);
+
+    sheet.querySelectorAll(".screenshot-export-rule > span").forEach(rule => {
+      const rect = canvasRect(rule, sheetRect);
+      dashedCanvasLine(
+        context,
+        { x: rect.x, y: rect.y },
+        { x: rect.x + rect.width, y: rect.y },
+        getComputedStyle(rule).borderTopColor
+      );
+    });
+
+    const star = sheet.querySelector(".screenshot-export-rule > i");
+    paintCanvasText(context, star, sheetRect);
+
+    sheet.querySelectorAll(".screenshot-export-grid > .card").forEach(card => {
+      drawNativeCard(context, card, sheetRect);
+    });
+
+    return canvas;
+  }
+
   async function renderBatch(cards, title) {
     const layout = chooseExportLayout(cards.length);
+    const nativeRenderer = useNativeRenderer();
 
     const { host, sheet } = buildExportSheet(
       cards,
@@ -568,6 +851,7 @@ header.append(heading, rule);
     );
 
     try {
+      if (nativeRenderer) prepareNativeImages(sheet);
       await waitForImages(sheet);
 
       const actualHeight = Math.ceil(
@@ -583,24 +867,29 @@ header.append(heading, rule);
         );
       }
 
-      const html2canvas = await ensureHtml2Canvas();
+      let canvas;
 
-      const canvas = await withTimeout(
-        html2canvas(sheet, {
-          backgroundColor: "#FDFCF7",
-          scale: EXPORT_SCALE,
-          useCORS: true,
-          allowTaint: false,
-          logging: false,
-          imageTimeout: 20000,
-          width: layout.width,
-          height: actualHeight,
-          windowWidth: layout.width,
-          windowHeight: actualHeight
-        }),
-        90000,
-        "截图组件渲染超时（html2canvas），请重试"
-      );
+      if (nativeRenderer) {
+        canvas = renderSheetNatively(sheet);
+      } else {
+        const html2canvas = await ensureHtml2Canvas();
+        canvas = await withTimeout(
+          html2canvas(sheet, {
+            backgroundColor: "#FDFCF7",
+            scale: EXPORT_SCALE,
+            useCORS: true,
+            allowTaint: false,
+            logging: false,
+            imageTimeout: 20000,
+            width: layout.width,
+            height: actualHeight,
+            windowWidth: layout.width,
+            windowHeight: actualHeight
+          }),
+          90000,
+          "截图组件渲染超时（html2canvas），请重试"
+        );
+      }
 
       if (
         canvas.width > 2000 ||
@@ -822,7 +1111,9 @@ header.append(heading, rule);
   loadVisitorId();
   updateStartButton();
 
-  ensureHtml2Canvas().catch(error => {
-    console.warn("截图组件预加载失败", error);
-  });
+  if (!useNativeRenderer()) {
+    ensureHtml2Canvas().catch(error => {
+      console.warn("截图组件预加载失败", error);
+    });
+  }
 }
