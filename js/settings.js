@@ -35,10 +35,10 @@ function renderSite(site, meta) {
   const xiaohongshu = safeExternalUrl(site.xiaohongshu);
   contact.innerHTML = [
     email ? `<a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a>` : "",
-    xiaohongshu ? `<a href="${escapeHtml(xiaohongshu)}" target="_blank" rel="noopener noreferrer">小红书</a>` : ""
+    xiaohongshu ? `<a href="${escapeHtml(xiaohongshu)}" target="_blank" rel="noopener noreferrer">照雪</a>` : ""
   ].filter(Boolean).join("<span aria-hidden=\"true\"> · </span>");
   updatedAt.textContent = `数据更新日期：${meta?.updatedAt ? String(meta.updatedAt).slice(0, 10) : "暂无记录"}`;
-  siteCard.querySelector(":scope > small").textContent = site.disclaimer || "本站仅供图鉴参考，图片版权归官方所有";
+  siteCard.querySelector(":scope > small").textContent = site.disclaimer || "本站仅供图鉴参考 图片版权归官方所有";
 }
 
 function renderSections(sections) {
