@@ -77,22 +77,22 @@ body[data-route="title"] .fab { display: none; }
   .title-menu a + a { border-left: 1px solid rgba(201, 168, 76, .18); }
 }
 @media (prefers-color-scheme: dark) {
-  body[data-route="title"] { background-color: #303030; }
-  .title-view { background: #303030; }
-  .title-view__shade { background: linear-gradient(180deg, transparent 55%, rgba(48, 48, 48, .4) 100%); }
-  .title-logo { color: #f8f3e9; }
+  body[data-route="title"] { background-color: #2E2B2C; }
+  .title-view { background: #2E2B2C; }
+  .title-view__shade { background: linear-gradient(180deg, transparent 55%, rgba(46, 43, 44, .4) 100%); }
+  .title-logo { color: #F7F0F0; }
   .title-logo > span { text-shadow: 0 1px 12px rgba(0, 0, 0, .65); }
   .title-menu {
-    border-color: rgba(248, 243, 233, .24);
-    background: rgba(48, 48, 48, .82);
+    border-color: rgba(247, 240, 240, .24);
+    background: rgba(46, 43, 44, .82);
   }
-  .title-menu a { color: #f8f3e9; }
+  .title-menu a { color: #F7F0F0; }
   .title-menu a:hover, .title-menu a:focus-visible { color: #fff; }
-  .title-menu a + a { border-left-color: rgba(248, 243, 233, .16); }
+  .title-menu a + a { border-left-color: rgba(247, 240, 240, .16); }
   body[data-route="title"] .menu-toggle {
-    border-color: rgba(248, 243, 233, .24);
-    background: rgba(48, 48, 48, .94);
-    color: #f8f3e9;
+    border-color: rgba(247, 240, 240, .24);
+    background: rgba(46, 43, 44, .94);
+    color: #F7F0F0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
