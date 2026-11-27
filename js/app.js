@@ -31,12 +31,12 @@ function explicitRouteFromHash() {
 }
 
 function routeFromHash() {
-  return explicitRouteFromHash() || (hasTitleVisited() ? "catalog" : "title");
+  return explicitRouteFromHash() || "title";
 }
 
 const initialExplicitRoute = explicitRouteFromHash();
-const firstTitleVisit = !hasTitleVisited() && (!initialExplicitRoute || initialExplicitRoute === "title");
-const initialRoute = initialExplicitRoute || (firstTitleVisit ? "title" : "catalog");
+const initialRoute = initialExplicitRoute || "title";
+const firstTitleVisit = initialRoute === "title" && !hasTitleVisited();
 const state = {
   goods: [],
   goodsById: new Map(),
