@@ -11,8 +11,6 @@
   box-shadow: var(--sh-1);
 }
 .special-card + .special-card { margin-top: var(--sp-5); }
-.special-lace { width: 100%; height: 32px; margin-block: var(--sp-3); fill: none; stroke: #C9A227; stroke-width: 1; opacity: .65; }
-.special-lace path:last-child { stroke-width: .6; }
 .special-record-card { padding: 0; border: 0; background: transparent; box-shadow: none; }
 .special-record-card .idcard { background: rgba(253, 252, 247, .9); }
 .asset-card__numbers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-3); text-align: center; }
