@@ -2,6 +2,7 @@ const VISITOR_ID_KEY = "fuen-catalog:visitor-id:v1";
 const EXPORT_SCALE = 2;
 const MAX_CANVAS_AREA = 16000000;
 const MAX_CANVAS_DIMENSION = 12000;
+const IMAGE_TIMEOUT = 20000;
 const HTML2CANVAS_URL = "./js/vendor/html2canvas.min.js";
 
 const grid = document.querySelector("#goods-grid");
@@ -386,17 +387,24 @@ function initialiseScreenshotFeature() {
       )
       .forEach(element => element.remove());
 
-    card.querySelectorAll("img").forEach(image => {
-      const source = original.querySelector("img");
+    const originalImages = [...original.querySelectorAll("img")];
+
+    card.querySelectorAll("img").forEach((image, index) => {
+      const source = originalImages[index];
       const currentSource = source?.currentSrc || source?.src;
+
+      if (source?.dataset.fallbackApplied === "true") {
+        throw new Error("卡片原图加载失败，请重新加载图片后再导出");
+      }
+
+      image.removeAttribute("src");
+      image.removeAttribute("srcset");
+      image.loading = "eager";
+      image.decoding = "sync";
 
       if (currentSource) {
         image.src = currentSource;
       }
-
-      image.removeAttribute("srcset");
-      image.loading = "eager";
-      image.decoding = "sync";
     });
 
     return card;
@@ -475,49 +483,59 @@ header.append(heading, rule);
     return { host, sheet };
   }
 
+  function waitForImage(image) {
+    if (image.complete) {
+      return image.naturalWidth > 0
+        ? Promise.resolve()
+        : Promise.reject(new Error("卡片原图加载失败，请重新加载图片后再导出"));
+    }
+
+    return new Promise((resolve, reject) => {
+      const finish = error => {
+        window.clearTimeout(timer);
+        image.removeEventListener("load", onLoad);
+        image.removeEventListener("error", onError);
+        error ? reject(error) : resolve();
+      };
+      const onLoad = () => {
+        if (image.naturalWidth > 0) finish();
+        else finish(new Error("卡片原图加载失败，请重新加载图片后再导出"));
+      };
+      const onError = () => {
+        finish(new Error("卡片原图加载失败，请重新加载图片后再导出"));
+      };
+      const timer = window.setTimeout(() => {
+        finish(new Error("图片加载超时，请检查网络后重试"));
+      }, IMAGE_TIMEOUT);
+
+      image.addEventListener("load", onLoad);
+      image.addEventListener("error", onError);
+
+      if (image.complete) onLoad();
+    });
+  }
+
+  function decodeImage(image) {
+    return new Promise((resolve, reject) => {
+      const finish = () => {
+        window.clearTimeout(timer);
+        resolve();
+      };
+      const timer = window.setTimeout(() => {
+        reject(new Error("图片处理超时，请重试"));
+      }, IMAGE_TIMEOUT);
+
+      image.decode().then(finish, finish);
+    });
+  }
+
   async function waitForImages(scope) {
     const images = [...scope.querySelectorAll("img")];
 
     await Promise.all(
       images.map(async image => {
-        try {
-          if (!image.complete) {
-            await new Promise(resolve => {
-              image.addEventListener("load", resolve, {
-                once: true
-              });
-              image.addEventListener("error", resolve, {
-                once: true
-              });
-            });
-          }
-
-          if (
-            image.naturalWidth === 0 &&
-            !image.dataset.exportFallback
-          ) {
-            image.dataset.exportFallback = "true";
-            image.src = "./assets/img/placeholder.png";
-
-            await new Promise(resolve => {
-              image.addEventListener("load", resolve, {
-                once: true
-              });
-              image.addEventListener("error", resolve, {
-                once: true
-              });
-            });
-          }
-
-          if (image.naturalWidth > 0) {
-            await image.decode().catch(() => {});
-          }
-        } catch (error) {
-          console.warn(
-            "一张卡片图片未能完整加载，将使用兜底图",
-            error
-          );
-        }
+        await waitForImage(image);
+        await decodeImage(image);
       })
     );
 
@@ -559,7 +577,8 @@ header.append(heading, rule);
         useCORS: true,
         allowTaint: false,
         logging: false,
-        imageTimeout: 20000,
+        imageTimeout: IMAGE_TIMEOUT,
+        ignoreElements: element => element.id === "goods-grid",
         width: layout.width,
         height: actualHeight,
         windowWidth: layout.width,
