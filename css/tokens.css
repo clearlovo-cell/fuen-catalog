@@ -1,11 +1,30 @@
 :root {
+  color-scheme: light;
   /* 基底 */
   --c-bg: #FDFCF7;
   --c-surface: #FFFFFF;
   --c-surface-sunken: #F6F1E6;
-  --c-grid: #F3EBD8;
   --c-line: #E9E1CF;
   --c-line-input: #C9BC9F;
+  --c-nav-bg: rgba(253, 252, 247, .94);
+  --c-topbar-bg: rgba(253, 252, 247, .78);
+  --c-control-bg: var(--c-nav-bg);
+  --c-control-hover: #FFFFFF;
+  --c-panel: rgba(253, 252, 247, .9);
+  --c-panel-soft: rgba(253, 252, 247, .78);
+  --c-panel-strong: rgba(253, 252, 247, .97);
+  --c-band-start: rgba(254, 249, 245, .94);
+  --c-band-end: rgba(255, 255, 255, .82);
+  --c-card-media: #FDFCF7;
+  --c-overlay: rgba(74, 63, 53, .62);
+  --c-overlay-soft: rgba(74, 63, 53, .36);
+  --c-accent-text: #A07A13;
+  --c-active-bg: rgba(255, 217, 102, .32);
+  --c-active-bd: rgba(201, 168, 76, .35);
+  --c-hover-bg: rgba(255, 217, 102, .18);
+  --c-hover-soft: rgba(255, 217, 102, .12);
+  --c-gold-bd: rgba(201, 168, 76, .28);
+  --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234A3F35' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   /* 文字 */
   --c-text: #4A3F35;
   --c-text-2: #7A6A58;
@@ -88,4 +107,65 @@
   --z-modal: 100;
   --w-max: 1120px;
   --gutter: var(--sp-4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --c-bg: #303030;
+    --c-surface: #3A3937;
+    --c-surface-sunken: #42403C;
+    --c-line: #575148;
+    --c-line-input: #766B5C;
+    --c-text: #F8F3E9;
+    --c-text-2: #C9C0B2;
+    --c-text-3: #A79B8B;
+    --c-primary: #E5C568;
+    --c-primary-soft: #665A38;
+    --c-primary-strong: #E0C375;
+    --c-nav-bg: rgba(48, 48, 48, .94);
+    --c-topbar-bg: rgba(48, 48, 48, .82);
+    --c-control-hover: #3A3937;
+    --c-panel: rgba(48, 48, 48, .9);
+    --c-panel-soft: rgba(48, 48, 48, .78);
+    --c-panel-strong: rgba(48, 48, 48, .97);
+    --c-band-start: rgba(48, 48, 48, .96);
+    --c-band-end: rgba(58, 57, 55, .84);
+    --c-card-media: #303030;
+    --c-overlay: rgba(0, 0, 0, .72);
+    --c-overlay-soft: rgba(0, 0, 0, .5);
+    --c-accent-text: #F0D789;
+    --c-active-bg: rgba(229, 197, 104, .2);
+    --c-active-bd: rgba(224, 195, 117, .48);
+    --c-hover-bg: rgba(229, 197, 104, .16);
+    --c-hover-soft: rgba(229, 197, 104, .1);
+    --c-gold-bd: rgba(224, 195, 117, .32);
+    --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F8F3E9' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    --c-owned-badge: #D2C4B4;
+    --c-wishlist-badge: #E0A7B3;
+    --c-on-bg: #284335;
+    --c-on-fg: #B9E3C6;
+    --c-on-bd: #3D6249;
+    --c-on-dot: #83BD96;
+    --c-pre-bg: #4B3824;
+    --c-pre-fg: #F1C795;
+    --c-pre-bd: #725236;
+    --c-pre-dot: #D89B5E;
+    --c-out-bg: #41403D;
+    --c-out-fg: #C9C1B7;
+    --c-out-bd: #5E5952;
+    --c-out-dot: #A79B8B;
+    --c-info-bg: #30465D;
+    --c-info-fg: #C0D9F1;
+    --c-info-bd: #48647F;
+    --c-info-dot: #8EB6DA;
+    --c-end-bg: #403A55;
+    --c-end-fg: #D5CDEF;
+    --c-end-bd: #5E547E;
+    --c-end-dot: #AA9ACB;
+    --sh-1: 0 1px 2px rgba(0, 0, 0, .18), 0 2px 8px rgba(0, 0, 0, .16);
+    --sh-2: 0 2px 4px rgba(0, 0, 0, .2), 0 6px 16px rgba(0, 0, 0, .24);
+    --sh-3: 0 16px 48px rgba(0, 0, 0, .48);
+    --sh-focus: 0 0 0 3px rgba(229, 197, 104, .4);
+  }
 }

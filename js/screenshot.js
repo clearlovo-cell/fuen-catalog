@@ -808,15 +808,6 @@ header.append(heading, rule);
     context.fillStyle = style.backgroundColor;
     context.fillRect(0, 0, sheetRect.width, sheetRect.height);
 
-    const gridSize = Number.parseFloat(style.backgroundSize) || 24;
-    context.fillStyle = "#F3EBD8";
-    for (let x = 0; x <= sheetRect.width; x += gridSize) {
-      context.fillRect(x, 0, 1, sheetRect.height);
-    }
-    for (let y = 0; y <= sheetRect.height; y += gridSize) {
-      context.fillRect(0, y, sheetRect.width, 1);
-    }
-
     const heading = sheet.querySelector(".screenshot-export-header h1");
     paintCanvasText(context, heading, sheetRect);
 
@@ -875,7 +866,7 @@ header.append(heading, rule);
         const html2canvas = await ensureHtml2Canvas();
         canvas = await withTimeout(
           html2canvas(sheet, {
-            backgroundColor: "#FDFCF7",
+            backgroundColor: getComputedStyle(sheet).backgroundColor,
             scale: EXPORT_SCALE,
             useCORS: true,
             allowTaint: false,

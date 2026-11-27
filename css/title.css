@@ -73,7 +73,7 @@ body[data-route="title"] .fab { display: none; }
     letter-spacing: .08em;
     transition: color var(--dur-1) var(--ease);
   }
-  .title-menu a:hover, .title-menu a:focus-visible { color: #a07a13; }
+  .title-menu a:hover, .title-menu a:focus-visible { color: var(--c-accent-text); }
   .title-menu a + a { border-left: 1px solid rgba(201, 168, 76, .18); }
 }
 @media (prefers-color-scheme: dark) {

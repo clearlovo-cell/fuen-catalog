@@ -16,4 +16,4 @@
 }
 .nickname-card input::placeholder { color: var(--c-text-3); opacity: 1; }
 .nickname-card input:focus { border-color: var(--c-primary-strong); box-shadow: var(--sh-focus); }
-.nickname-card > p { margin-top: var(--sp-2); color: #a07a13; font-family: "Brush Script MT", "Segoe Script", cursive; font-size: var(--fs-md); }
+.nickname-card > p { margin-top: var(--sp-2); color: var(--c-accent-text); font-family: "Brush Script MT", "Segoe Script", cursive; font-size: var(--fs-md); }

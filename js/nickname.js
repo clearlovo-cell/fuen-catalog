@@ -18,10 +18,10 @@ function readNickname() {
 
 function syncNicknameUI() {
   const route = document.body.dataset.route;
-  const collectionTitle = document.querySelector("#collection-title");
+  const collectionTitle = document.querySelector("#collection-title-text");
   if (collectionTitle) {
-    if (route === "warehouse") collectionTitle.textContent = nickname ? `${nickname}的仓库` : "已入库";
-    if (route === "wishlist") collectionTitle.textContent = nickname ? `${nickname}的心愿单` : "加入心愿单";
+    if (route === "warehouse") collectionTitle.textContent = nickname ? `${nickname}的仓库` : "仓库";
+    if (route === "wishlist") collectionTitle.textContent = nickname ? `${nickname}的心愿单` : "心愿单";
   }
   const recordTitle = nickname ? `${nickname}的收藏记录` : "我的收藏记录";
   const catalogRecordTitle = document.querySelector("#collection-record-title");

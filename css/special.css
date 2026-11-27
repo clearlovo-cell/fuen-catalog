@@ -1,18 +1,18 @@
 .special-view, .settings-view { padding-block: var(--sp-8) var(--sp-12); }
 .page-heading { margin-bottom: var(--sp-6); text-align: center; }
 .page-heading h1 { font-size: clamp(2rem, 7vw, 3rem); font-weight: 600; letter-spacing: .08em; }
-.page-heading h1 span { display: block; margin-top: var(--sp-1); color: var(--c-text-2); font-size: var(--fs-xs); font-weight: 500; letter-spacing: .22em; }
+.page-heading h1 small { display: block; margin-top: var(--sp-1); color: var(--c-text-2); font-size: var(--fs-xs); font-weight: 500; letter-spacing: .22em; }
 .special-view { max-width: 880px; }
 .special-card {
   padding: var(--sp-5);
-  border: 1px solid rgba(201, 168, 76, .28);
+  border: 1px solid var(--c-gold-bd);
   border-radius: var(--r-sheet);
-  background: rgba(253, 252, 247, .9);
+  background: var(--c-panel);
   box-shadow: var(--sh-1);
 }
 .special-card + .special-card { margin-top: var(--sp-5); }
 .special-record-card { padding: 0; border: 0; background: transparent; box-shadow: none; }
-.special-record-card .idcard { background: rgba(253, 252, 247, .9); }
+.special-record-card .idcard { background: var(--c-panel); }
 .asset-card__numbers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-3); text-align: center; }
 .asset-card__numbers > div { min-width: 0; }
 .asset-card__numbers span { display: block; color: var(--c-text-2); font-size: var(--fs-xs); }
@@ -33,7 +33,7 @@
   display: grid;
   place-items: center;
   padding: var(--sp-4);
-  background: rgba(74, 63, 53, .36);
+  background: var(--c-overlay-soft);
   backdrop-filter: blur(3px);
 }
 .clear-data-dialog { width: min(100%, 440px); padding: var(--sp-6); border-radius: var(--r-sheet); background: var(--c-surface); box-shadow: var(--sh-3); outline: none; }

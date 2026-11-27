@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="《茉莉花之炯》斐恩官方周边中文图鉴，支持检索、个人仓库、心愿单与本地备份。">
-  <meta name="theme-color" content="#FDFCF7">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FDFCF7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#303030">
   <title>斐恩官周图鉴</title>
   <link rel="icon" href="./favicon.png" type="image/png">
   <link rel="stylesheet" href="./css/tokens.css">
@@ -105,10 +106,13 @@
       </div>
 
       <div id="collection-hero" class="container collection-hero" hidden>
-       <p class="collection-hero__note">只保存在这台设备上</p>
-        <h1 id="collection-title">已入库</h1>
-        <p class="collection-hero__count"><strong id="collection-count">0</strong><span>／</span><span id="collection-total">0</span><span> 件</span></p>
-        <p class="collection-hero__amount" role="status" aria-live="polite"><span id="collection-amount-label">总金额</span><strong id="collection-amount">0</strong><span> 元</span></p>
+        <div class="page-heading collection-hero__heading">
+          <h1 id="collection-title"><span id="collection-title-text">仓库</span><small id="collection-subtitle">WAREHOUSE</small></h1>
+        </div>
+        <div class="collection-hero__summary">
+          <p class="collection-hero__count"><strong id="collection-count">0</strong><span>／</span><span id="collection-total">0</span><span> 件</span></p>
+          <p class="collection-hero__amount" role="status" aria-live="polite"><span id="collection-amount-label">总金额</span><strong id="collection-amount">0</strong><span> 元</span></p>
+        </div>
         <div class="progress-row">
           <div id="collection-progress" class="progress-track" role="progressbar" aria-label="图鉴完成度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
             <span id="collection-progress-fill"></span>
@@ -119,11 +123,13 @@
          <input id="visitor-id" type="hidden">
 
           <button
-            class="btn btn--small"
+            class="btn btn--small btn--icon"
             type="button"
             data-screenshot-start
+            aria-label="截图"
+            title="截图"
             disabled
-          >截图</button>
+          ><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5h-5L7.7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.7L14.5 5Z"/><circle cx="12" cy="13" r="4"/></svg></button>
         </div>
       </div>
     </header>
@@ -295,7 +301,7 @@
 
     <section id="settings-view" class="settings-view container" aria-labelledby="settings-title" hidden>
       <header class="page-heading">
-        <h1 id="settings-title">设置 <span>SETTINGS</span></h1>
+        <h1 id="settings-title">设置 <small>SETTINGS</small></h1>
       </header>
       <section id="settings-site-card" class="settings-site-card" aria-label="网站信息">
         <p>FUEN ATLAS</p>

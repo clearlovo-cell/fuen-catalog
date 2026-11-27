@@ -12,8 +12,8 @@ const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", 
 const ROUTES = {
   title: { title: "斐恩官周图鉴" },
   catalog: { title: "茉莉花之炯｜斐恩官周图鉴", listTitle: "全部谷子", subtitle: "ALL GOODS" },
-  warehouse: { kind: "owned", title: "已入库｜斐恩官周图鉴", heading: "已入库", listTitle: "仓库", subtitle: "WAREHOUSE", emptyTitle: "仓库还是空的", emptyText: "打开图鉴，把已经拥有的谷子收进来吧。" },
-  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "加入心愿单", listTitle: "心愿单", subtitle: "WISHLIST", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" },
+  warehouse: { kind: "owned", title: "仓库｜斐恩官周图鉴", heading: "仓库", listTitle: "仓库", subtitle: "WAREHOUSE", emptyTitle: "仓库还是空的", emptyText: "打开图鉴，把已经拥有的谷子收进来吧。" },
+  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "心愿单", listTitle: "心愿单", subtitle: "WISHLIST", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" },
   special: { title: "Special｜斐恩官周图鉴" },
   settings: { title: "设置｜斐恩官周图鉴" }
 };
@@ -59,7 +59,7 @@ const els = {
   size: $("#filter-size"), overlay: $("#lightbox-overlay"), modal: $("#lightbox"), modalContent: $("#modal-content"), modalClose: $("#modal-close"),
   orderToggle: $("#reverse-order"), fab: $("#back-to-top"), fabBottom: $("#go-to-bottom"),
   catalogHero: $("#catalog-hero"), collectionHero: $("#collection-hero"),
-  collectionTitle: $("#collection-title"), collectionCount: $("#collection-count"), collectionTotal: $("#collection-total"),
+  collectionTitle: $("#collection-title-text"), collectionSubtitle: $("#collection-subtitle"), collectionCount: $("#collection-count"), collectionTotal: $("#collection-total"),
   collectionAmount: $("#collection-amount"), collectionAmountLabel: $("#collection-amount-label"),
   collectionProgress: $("#collection-progress"), collectionProgressFill: $("#collection-progress-fill"), collectionPercent: $("#collection-percent"),
   collectionView: $("#collection-view"), titleView: $("#title-view"), specialView: $("#special-view"), settingsView: $("#settings-view"),
@@ -361,6 +361,7 @@ function updateRoute({ initial = false, intro = false } = {}) {
     els.catalogHero.hidden = state.route !== "catalog";
     els.collectionHero.hidden = state.route === "catalog";
     els.collectionTitle.textContent = route.heading || "斐恩官周图鉴";
+    els.collectionSubtitle.textContent = route.subtitle || "";
     syncFilterControls();
     if (state.loaded) {
       renderSeriesRail();

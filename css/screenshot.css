@@ -3,8 +3,8 @@
   position: sticky;
   top: 60px;
   z-index: 45;
-  border-bottom: 1px solid rgba(201, 168, 76, .35);
-  background: rgba(253, 252, 247, .97);
+  border-bottom: 1px solid var(--c-active-bd);
+  background: var(--c-panel-strong);
   box-shadow: var(--sh-1);
 }
 
@@ -83,7 +83,7 @@ body.is-screenshot-selecting #goods-grid .card__title {
   height: 28px;
   border: 2px solid var(--c-primary-strong);
   border-radius: 50%;
-  background: rgba(253, 252, 247, .94);
+  background: var(--c-control-bg);
   box-shadow: var(--sh-1);
   pointer-events: none;
 }
@@ -117,12 +117,8 @@ body.is-screenshot-selecting #goods-grid .card__title {
   --export-pad: 40px;
   width: 1000px;
   padding: var(--export-pad);
-  color: #4A3F35;
-  background-color: #FDFCF7;
-  background-image:
-    linear-gradient(#F3EBD8 1px, transparent 1px),
-    linear-gradient(90deg, #F3EBD8 1px, transparent 1px);
-  background-size: 24px 24px;
+  color: var(--c-text);
+  background: var(--c-bg);
   font-family: var(--font-body);
 }
 
@@ -130,7 +126,7 @@ body.is-screenshot-selecting #goods-grid .card__title {
   position: relative;
   margin: 0 0 30px;
   padding: 4px 0 27px;
-  border-bottom: 1px dashed #C9BC9F;
+  border-bottom: 1px dashed var(--c-line-input);
   text-align: center;
 }
 
@@ -140,7 +136,7 @@ body.is-screenshot-selecting #goods-grid .card__title {
   overflow: visible;
   text-overflow: clip;
   text-overflow: ellipsis;
-  color: #4A3F35;
+  color: var(--c-text);
   font-size: 34px;
   font-weight: 600;
   line-height: 1.35;
@@ -154,8 +150,8 @@ body.is-screenshot-selecting #goods-grid .card__title {
   bottom: -14px;
   transform: translateX(-50%);
   padding: 0 13px;
-  background: #FDFCF7;
-  color: #C9A84C;
+  background: var(--c-bg);
+  color: var(--c-primary-strong);
   font-size: 22px;
   line-height: 1;
 }
@@ -173,12 +169,10 @@ body.is-screenshot-selecting #goods-grid .card__title {
   padding: 0;
   overflow: hidden;
   transform: none;
-  border: 1px solid #E9E1CF;
+  border: 1px solid var(--c-line);
   border-radius: 12px;
-  background: #FFF;
-  box-shadow:
-    0 1px 2px rgba(74, 63, 53, .06),
-    0 2px 8px rgba(74, 63, 53, .05);
+  background: var(--c-surface);
+  box-shadow: var(--sh-1);
   text-align: left;
 }
 
@@ -189,13 +183,13 @@ body.is-screenshot-selecting #goods-grid .card__title {
 
 .screenshot-export-sheet .card__media {
   aspect-ratio: 1;
-  background: #F6F1E6;
+  background: var(--c-card-media);
 }
 
 .screenshot-export-sheet .card__body {
   padding: 10px 11px 12px;
-  border-top: 1px dashed #E9E1CF;
-  background: #FFF;
+  border-top: 1px dashed var(--c-line);
+  background: var(--c-surface);
 }
 
 .screenshot-export-sheet .card__title {
@@ -205,7 +199,7 @@ body.is-screenshot-selecting #goods-grid .card__title {
   overflow: visible;
   white-space: nowrap;
   text-overflow: clip;
-  color: #4A3F35;
+  color: var(--c-text);
   font-size: 14px;
   font-weight: 700;
   line-height: 1.45;
@@ -308,9 +302,9 @@ body.is-screenshot-selecting #goods-grid .card__title {
   bottom: 0;
   z-index: 60;
   padding-bottom: env(safe-area-inset-bottom);
-  border-top: 1px solid rgba(201, 168, 76, .35);
+  border-top: 1px solid var(--c-active-bd);
   border-bottom: 0;
-  background: rgba(253, 252, 247, .97);
+  background: var(--c-panel-strong);
   box-shadow: 0 -4px 16px rgba(74, 63, 53, .08);
 }
 
@@ -347,7 +341,7 @@ body.is-screenshot-selecting .fab {
 
 .screenshot-export-rule > span {
   flex: 1;
-  border-top: 1px dashed #C9BC9F;
+  border-top: 1px dashed var(--c-line-input);
 }
 
 .screenshot-export-rule > i {
@@ -355,7 +349,7 @@ body.is-screenshot-selecting .fab {
   top: -10px;
   width: 42px;
   flex: 0 0 42px;
-  color: #C9A84C;
+  color: var(--c-primary-strong);
   font-size: 22px;
   font-style: normal;
   line-height: 1;

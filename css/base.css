@@ -10,9 +10,6 @@ body {
   line-height: 1.65;
   color: var(--c-text);
   background-color: var(--c-bg);
-  background-image: linear-gradient(var(--c-grid) 1px, transparent 1px), linear-gradient(90deg, var(--c-grid) 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
 body.is-modal-open { overflow: hidden; }
