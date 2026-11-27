@@ -189,8 +189,8 @@ body[data-route="catalog"] .series-section { display: block; }
 .fab svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; }
 
 /* 制品详情 */
-.lightbox-overlay, .guide-overlay { position: fixed; inset: 0; z-index: var(--z-modal); display: flex; align-items: flex-end; justify-content: center; padding: 0; background: rgba(74,63,53,.62); backdrop-filter: blur(4px); opacity: 0; transition: opacity var(--dur-2) var(--ease); }
-.lightbox-overlay.is-open, .guide-overlay.is-open { opacity: 1; }
+.lightbox-overlay { position: fixed; inset: 0; z-index: var(--z-modal); display: flex; align-items: flex-end; justify-content: center; padding: 0; background: rgba(74,63,53,.62); backdrop-filter: blur(4px); opacity: 0; transition: opacity var(--dur-2) var(--ease); }
+.lightbox-overlay.is-open { opacity: 1; }
 .lightbox { position: relative; width: 100%; max-height: 92dvh; padding: var(--sp-5); overflow-y: auto; overscroll-behavior: contain; border: 0; border-top: 4px solid var(--c-primary); border-radius: var(--r-sheet) var(--r-sheet) 0 0; outline: none; background-color: var(--c-bg); background-image: linear-gradient(var(--c-grid) 1px,transparent 1px),linear-gradient(90deg,var(--c-grid) 1px,transparent 1px); background-size: 24px 24px; box-shadow: var(--sh-3); transform: translateY(100%); transition: transform var(--dur-2) var(--ease); }
 .lightbox-overlay.is-open .lightbox { transform: translateY(0); }
 .modal-close { position: sticky; top: 0; z-index: 3; float: right; width: 44px; height: 44px; margin: -8px -8px var(--sp-2) var(--sp-2); display: grid; place-items: center; border: 1px solid var(--c-line); border-radius: 50%; background: var(--c-surface); box-shadow: var(--sh-1); transition: transform var(--dur-1) var(--ease); }
@@ -231,16 +231,10 @@ body[data-route="catalog"] .series-section { display: block; }
 .personal-action[aria-pressed="true"] { background: var(--c-active-bg); }
 .personal-action small { display: block; font-size: 10px; font-weight: 500; line-height: 1.2; color: var(--c-text-2); }
 
-/* 后台可编辑的使用说明 */
-.guide-overlay { align-items: center; padding: var(--sp-4); }
-.guide-modal { position: relative; width: min(100%,680px); max-height: 84dvh; padding: var(--sp-6); overflow-y: auto; overscroll-behavior: contain; border: 2px solid var(--c-primary); border-radius: var(--r-sheet); outline: none; background: var(--c-surface); box-shadow: var(--sh-3); transform: scale(.96); transition: transform var(--dur-2) var(--ease); }
-.guide-overlay.is-open .guide-modal { transform: scale(1); }
-.guide-close { position: absolute; top: 12px; right: 12px; float: none; margin: 0; }
-.guide-modal__note { margin-bottom: var(--sp-2); color: var(--c-primary-strong); font-size: 11px; font-weight: 700; letter-spacing: .16em; }
-.guide-modal h2 { padding-right: 48px; font-family: var(--font-display); font-size: var(--fs-2xl); font-weight: 600; }
-.guide-content { margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px dashed var(--c-line-input); color: var(--c-text); font-size: 15px; line-height: 1.85; overflow-wrap: anywhere; }
-.guide-content p + p { margin-top: var(--sp-3); }
-.guide-content .guide-error { color: var(--c-text-2); }
+body[data-route="special"] .order-toggle,
+body[data-route="special"] .fab,
+body[data-route="settings"] .order-toggle,
+body[data-route="settings"] .fab { display: none; }
 .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); z-index: calc(var(--z-modal) + 10); width: max-content; max-width: calc(100% - 32px); padding: 10px 16px; border: 1px solid rgba(255,217,102,.4); border-radius: var(--r-pill); background: var(--c-text); color: var(--c-bg); box-shadow: var(--sh-2); font-size: var(--fs-sm); text-align: center; transform: translateX(-50%); }
 
 @media (min-width: 560px) {
@@ -279,8 +273,6 @@ body[data-route="catalog"] .series-section { display: block; }
   .lightbox-overlay.is-open .lightbox { transform: scale(1); }
   .detail-list { column-gap: var(--sp-6); }
   .modal-actions { bottom: calc(-1 * var(--sp-6)); margin: var(--sp-5) calc(-1 * var(--sp-6)) calc(-1 * var(--sp-6)); padding: var(--sp-3) var(--sp-6); }
-  .guide-modal { padding: var(--sp-8); }
-  .guide-content { font-size: var(--fs-base); }
 }
 @media (min-width: 1024px) {
   .goods-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }

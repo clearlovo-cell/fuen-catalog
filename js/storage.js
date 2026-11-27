@@ -123,6 +123,13 @@ function mergeRecords(current, incoming) {
   return merged;
 }
 
+export function clearPersonalData() {
+  data = emptyData();
+  const persisted = persist();
+  notify();
+  return { persisted };
+}
+
 export function importBackup(text) {
   const parsed = JSON.parse(text);
   if (!parsed || parsed.type !== BACKUP_TYPE) throw new Error("这不是斐恩图鉴的备份文件");

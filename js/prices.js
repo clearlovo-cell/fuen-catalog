@@ -160,6 +160,13 @@ function mergeRecords(current, incoming) {
   return merged;
 }
 
+export function clearPriceData() {
+  data = emptyData();
+  const persisted = persist();
+  notify();
+  return { persisted };
+}
+
 export function importPriceBackup(parsed) {
   validatePriceBackup(parsed);
   if (!parsed?.prices) return { owned: 0, wishlist: 0, imported: false };

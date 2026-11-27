@@ -6,6 +6,9 @@
 
 - `data/series.json`：柄图系列数组，`order` 越小越靠前。
 - `data/goods.json`：谷子数组，`series` 保存对应系列的 `slug`。
+- `data/site.json`：设置页的站长信息、联系方式和版权声明。
+- `data/guide.json`：设置页结构化说明板块与独立 QA 条目，可在 CMS 中新增、删除和排序。
+- `data/meta.json`：部署时根据谷子与系列数据的最近 Git 修改时间自动生成，无需手工维护。
 - `js/filter.js`：材质拆分与 `filterGoods(allData, filters)` 纯函数。
 - `js/render.js`：`imgUrl`、`renderImage`、卡片与详情渲染；`CARD_FIELDS` 集中控制卡面字段。
 - `assets/img/`：本地演示图与兜底图；正式图片建议全部托管到 Cloudinary。
@@ -17,8 +20,9 @@
 
 - `js/storage.js` 保存仓库和心愿单，个人列表数据结构保持不变。
 - `js/prices.js` 使用独立存储键保存访客自行填写的人民币单价和数量，并负责跨标签页同步。
-- `js/backup.js` 将个人列表和金额数量组合为同一个备份文件；旧版无金额备份及纯数字金额记录均可导入。
+- `js/backup.js` 将个人列表、金额数量和 CN 组合为同一个备份文件；旧版无金额、无 CN 备份及纯数字金额记录均可导入。
 - 金额为空时不参与合计，取消入库或移出心愿单会清除对应金额数量。所有访客记录仅保存在当前浏览器，不会上传服务器。
+- CN 统一在 Special 页维护。清空个人数据会清除仓库、心愿单、金额、数量和 CN，但保留标题页首访标记。
 
 ## 2. GitHub Actions 同步 COS
 
@@ -69,6 +73,16 @@
 
 默认兜底为 `assets/img/fallback.svg`，同时提供 `assets/img/fallback.png`。替换 SVG 可直接保持文件名覆盖；若要改用 PNG，覆盖 PNG 后把 `js/render.js` 顶部的 `FALLBACK_IMAGE` 改为 `./assets/img/fallback.png`。建议保持 800×800px，浅金底并保留“图片待补”字样。
 
+### 替换标题页素材
+
+将终稿放入 `assets/img/` 并保持以下文件名，无需修改代码：
+
+- `title-mobile.webp`：移动端竖版底图，建议 1080×1920。
+- `title-desktop.webp`：桌面端横版底图，建议 1920×1080、500KB 以内。
+- `title-logo.webp`：透明背景站名 Logo，用于双端标题页。
+
+素材未放入时，标题页显示奶油纸底与文字站名，不影响其他页面使用。
+
 ### 新增筛选维度
 
 1. **CMS**：在 `admin/config.yml` 的谷子字段中新增字段，例如 `collection` 或 `shop_limit`。
@@ -80,7 +94,7 @@
 
 ## 8. 发布边界
 
-公开浏览部分完全静态，无用户系统、收藏、订单或跨设备个人数据。只有站长使用 CMS 时需要 GitHub 授权。
+公开浏览部分完全静态，无用户系统、订单或跨设备个人数据；收藏等访客记录仅保存在浏览器 localStorage。只有站长使用 CMS 时需要 GitHub 授权。
 
 2026-11-07：更新仓库、心愿单与备份功能。
 <!-- 重新触发 GitHub Pages 部署 -->

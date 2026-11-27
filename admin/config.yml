@@ -15,16 +15,55 @@ public_folder: "./assets/img/uploads"
 collections:
   - name: settings
     label: 网站设置
-    description: 维护前台使用说明，保存后随网站一起更新。
+    description: 维护设置页信息、说明板块与常见问答，保存后随网站一起更新。
     files:
       - name: site
-        label: 使用说明
+        label: 网站信息
         file: data/site.json
         fields:
-          - name: guide
-            label: 使用说明正文
-            widget: text
-            hint: "直接填写说明文字；空一行可分段。访客点击顶部“说明”即可看到。"
+          - { name: siteName, label: 网站英文标识, widget: string, default: FUEN ATLAS }
+          - { name: signature, label: 站长署名, widget: string, default: "💜 CLEARLOVO" }
+          - { name: email, label: 联系邮箱, widget: string }
+          - { name: xiaohongshu, label: 小红书链接, widget: string }
+          - { name: disclaimer, label: 非官方声明, widget: text }
+      - name: guide
+        label: 设置板块
+        file: data/guide.json
+        fields:
+          - name: sections
+            label: 板块列表
+            label_singular: 板块
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: 板块标题, widget: string }
+              - name: kind
+                label: 板块类型
+                widget: select
+                options:
+                  - { label: 功能说明, value: guide }
+                  - { label: 常见问答, value: qa }
+                default: guide
+              - name: items
+                label: 功能条目
+                label_singular: 条目
+                widget: list
+                required: false
+                summary: "{{fields.title}}"
+                hint: "功能说明板块使用；前台序号会根据当前顺序自动生成。"
+                fields:
+                  - { name: title, label: 小标题, widget: string }
+                  - { name: body, label: 正文, widget: text }
+              - name: qa
+                label: 问答条目
+                label_singular: 问答
+                widget: list
+                required: false
+                summary: "{{fields.question}}"
+                hint: "仅常见问答板块使用。"
+                fields:
+                  - { name: question, label: 问题, widget: string }
+                  - { name: answer, label: 回答, widget: text }
 
   - name: series
     label: 柄图系列

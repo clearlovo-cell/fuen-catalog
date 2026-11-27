@@ -1,15 +1,23 @@
 import { filterGoods, splitMaterials, uniqueValues } from "./filter.js";
 import { bindImageFallbacks, escapeHtml, formatAmount, renderCard, renderCardPrice, renderImage, renderModal, renderPriceEditors } from "./render.js";
-import { getIds, hasItem, isStorageAvailable, subscribe, toggleItem } from "./storage.js";
+import { hasItem, isStorageAvailable, subscribe, toggleItem } from "./storage.js";
 import { getPriceRecord, removePriceRecord, savePriceRecord, subscribePrices } from "./prices.js";
-import { createBackup, importBackup } from "./backup.js";
+import { hasTitleVisited, markTitleVisited, playTitleIntro, showTitleStatic } from "./title.js";
+import { initialiseSpecial, updateSpecial } from "./special.js";
+import { getCollectionStats } from "./stats.js";
+import { subscribeNickname } from "./nickname.js";
+import { loadSettings } from "./settings.js";
 
 const emptyFilters = () => ({ seriesId: "", type: "", platforms: [], event: "", year: "", release_type: "", search: "", materials: [], hasSize: false });
 const ROUTES = {
+  title: { title: "斐恩官周图鉴" },
   catalog: { title: "茉莉花之炯｜斐恩官周图鉴", listTitle: "全部谷子", subtitle: "ALL GOODS" },
   warehouse: { kind: "owned", title: "已入库｜斐恩官周图鉴", heading: "已入库", listTitle: "仓库", subtitle: "WAREHOUSE", emptyTitle: "仓库还是空的", emptyText: "打开图鉴，把已经拥有的谷子收进来吧。" },
-  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "加入心愿单", listTitle: "心愿单", subtitle: "WISHLIST", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" }
+  wishlist: { kind: "wishlist", title: "心愿单｜斐恩官周图鉴", heading: "加入心愿单", listTitle: "心愿单", subtitle: "WISHLIST", emptyTitle: "心愿单还是空的", emptyText: "打开图鉴，把想拥有的谷子加入心愿吧。" },
+  special: { title: "Special｜斐恩官周图鉴" },
+  settings: { title: "设置｜斐恩官周图鉴" }
 };
+const COLLECTION_ROUTES = new Set(["catalog", "warehouse", "wishlist"]);
 const filterOrders = {
   type: ["吧唧", "立牌", "透卡", "色纸", "挂件", "相卡", "拍立得", "留言卡", "ID卡", "书签", "镭射票", "珠光卡", "杂志", "杯垫", "其他"],
   platforms: ["Otomate", "Joyoland", "StellaWorth", "Alice", "Ebten", "oioi", "Wondergoo", "Neowing", "Gamecity", "Trader", "Challe", "B's-log", "Coolb", "宝岛", "乐天", "Trangle Teezer", "Lovaroma", "其他"],
@@ -17,12 +25,18 @@ const filterOrders = {
   materials: ["马口铁", "亚克力", "纸", "PET", "涤纶", "其他"]
 };
 
-function routeFromHash() {
+function explicitRouteFromHash() {
   const route = location.hash.replace(/^#\/?/, "").split(/[/?]/)[0];
-  return Object.hasOwn(ROUTES, route) ? route : "catalog";
+  return Object.hasOwn(ROUTES, route) ? route : "";
 }
 
-const initialRoute = routeFromHash();
+function routeFromHash() {
+  return explicitRouteFromHash() || (hasTitleVisited() ? "catalog" : "title");
+}
+
+const initialExplicitRoute = explicitRouteFromHash();
+const firstTitleVisit = !hasTitleVisited() && (!initialExplicitRoute || initialExplicitRoute === "title");
+const initialRoute = initialExplicitRoute || (firstTitleVisit ? "title" : "catalog");
 const state = {
   goods: [],
   goodsById: new Map(),
@@ -33,7 +47,7 @@ const state = {
   loaded: false,
   reverse: false
 };
-state.filters = state.filtersByRoute[initialRoute];
+state.filters = state.filtersByRoute[initialRoute] || state.filtersByRoute.catalog;
 
 const $ = selector => document.querySelector(selector);
 const els = {
@@ -48,18 +62,15 @@ const els = {
   collectionTitle: $("#collection-title"), collectionCount: $("#collection-count"), collectionTotal: $("#collection-total"),
   collectionAmount: $("#collection-amount"), collectionAmountLabel: $("#collection-amount-label"),
   collectionProgress: $("#collection-progress"), collectionProgressFill: $("#collection-progress-fill"), collectionPercent: $("#collection-percent"),
-  guideOverlay: $("#guide-overlay"), guideModal: $("#guide-modal"), guideClose: $("#guide-close"), guideContent: $("#guide-content"),
-  backupFile: $("#backup-file"), toast: $("#toast")
+  collectionView: $("#collection-view"), titleView: $("#title-view"), specialView: $("#special-view"), settingsView: $("#settings-view"),
+  toast: $("#toast")
 };
 const desktopQuery = window.matchMedia("(min-width: 768px)");
 let lastFocusedElement = null;
-let guideLastFocusedElement = null;
 let currentGoodsId = null;
 let visibleGoodsIds = [];
 let modalTimer;
-let guideTimer;
 let toastTimer;
-let guideRequest = 0;
 
 function sortByCustomOrder(values, order) {
   const rank = new Map(order.map((value, index) => [value, index]));
@@ -250,45 +261,32 @@ function resetFilters() {
   applyFilters();
 }
 
-function validPersonalCount(kind) {
-  const goodsIds = new Set(state.goods.map(item => String(item.id)));
-  return getIds(kind).filter(id => goodsIds.has(String(id))).length;
-}
-
 function updateStats() {
-  const total = state.goods.length;
-  const owned = validPersonalCount("owned");
-  const wishlist = validPersonalCount("wishlist");
-  $("#total-count").textContent = state.loaded ? String(total) : "—";
-  $("#owned-count").textContent = String(owned);
-  $("#wishlist-count").textContent = String(wishlist);
-  $("#owned-total").textContent = state.loaded ? String(total) : "—";
-  $("#wishlist-total").textContent = state.loaded ? String(total) : "—";
+  const stats = getCollectionStats(state.goods);
+  $("#total-count").textContent = state.loaded ? String(stats.total) : "—";
+  $("#owned-count").textContent = String(stats.owned);
+  $("#wishlist-count").textContent = String(stats.wishlist);
+  $("#owned-total").textContent = state.loaded ? String(stats.total) : "—";
+  $("#wishlist-total").textContent = state.loaded ? String(stats.total) : "—";
 
-  updateAmountStat();
+  updateAmountStat(stats);
   const kind = ROUTES[state.route].kind;
   if (!kind) return;
-  const count = kind === "owned" ? owned : wishlist;
-  const percent = total ? Math.round(count / total * 100) : 0;
+  const count = kind === "owned" ? stats.owned : stats.wishlist;
+  const percent = kind === "owned" ? stats.ownedPercent : stats.wishlistPercent;
   els.collectionCount.textContent = String(count);
-  els.collectionTotal.textContent = state.loaded ? String(total) : "—";
+  els.collectionTotal.textContent = state.loaded ? String(stats.total) : "—";
   els.collectionPercent.textContent = `${percent}%`;
   els.collectionProgressFill.style.width = `${percent}%`;
   els.collectionProgress.setAttribute("aria-valuenow", String(percent));
-  els.collectionProgress.setAttribute("aria-valuetext", `${count}／${total} 件，${percent}%`);
+  els.collectionProgress.setAttribute("aria-valuetext", `${count}／${stats.total} 件，${percent}%`);
 }
 
-function updateAmountStat() {
+function updateAmountStat(stats = getCollectionStats(state.goods)) {
   const kind = ROUTES[state.route].kind;
   if (!kind) return;
-  // 仅遍历当前个人记录，已删除制品及空金额均不进入合计。
-  const total = getIds(kind).reduce((sum, id) => {
-    if (!state.goodsById.has(String(id))) return sum;
-    const record = getPriceRecord(kind, id);
-    return record?.price === null || !record ? sum : sum + record.price * record.qty;
-  }, 0);
   els.collectionAmountLabel.textContent = kind === "owned" ? "总金额" : "总预算";
-  els.collectionAmount.textContent = formatAmount(total);
+  els.collectionAmount.textContent = formatAmount(kind === "owned" ? stats.ownedAmount : stats.wishlistAmount);
 }
 
 function updateModalActions() {
@@ -308,12 +306,14 @@ function updateModalActions() {
 
 function updatePersonalUI() {
   updateStats();
-  applyFilters();
+  if (COLLECTION_ROUTES.has(state.route)) applyFilters();
+  updateSpecial(state.goods);
   updateModalActions();
 }
 
 function updatePriceUI(detail = { kind: "", id: "" }) {
   updateAmountStat();
+  updateSpecial(state.goods);
   const routeKind = ROUTES[state.route].kind;
   if (routeKind && (!detail.kind || detail.kind === routeKind)) {
     els.grid.querySelectorAll("[data-goods-id]").forEach(card => {
@@ -338,25 +338,36 @@ function updatePriceUI(detail = { kind: "", id: "" }) {
   });
 }
 
-function updateRoute({ initial = false } = {}) {
+function updateRoute({ initial = false, intro = false } = {}) {
   state.route = routeFromHash();
-  state.filters = state.filtersByRoute[state.route];
+  state.filters = state.filtersByRoute[state.route] || state.filtersByRoute.catalog;
   const route = ROUTES[state.route];
+  const isCollectionRoute = COLLECTION_ROUTES.has(state.route);
   document.body.dataset.route = state.route;
   document.title = route.title;
   document.querySelectorAll("[data-route-link]").forEach(link => {
     if (link.dataset.routeLink === state.route) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   });
-  els.catalogHero.hidden = state.route !== "catalog";
-  els.collectionHero.hidden = state.route === "catalog";
-  els.collectionTitle.textContent = route.heading || "斐恩官周图鉴";
-  syncFilterControls();
-  if (state.loaded) {
-    renderSeriesRail();
-    updatePersonalUI();
-  } else {
-    updateStats();
+  els.collectionView.hidden = !isCollectionRoute;
+  els.titleView.hidden = state.route !== "title";
+  els.specialView.hidden = state.route !== "special";
+  els.settingsView.hidden = state.route !== "settings";
+  showTitleStatic();
+  if (state.route === "title" && intro) playTitleIntro();
+  if (state.route === "special") updateSpecial(state.goods);
+  if (state.route === "settings") loadSettings();
+  if (isCollectionRoute) {
+    els.catalogHero.hidden = state.route !== "catalog";
+    els.collectionHero.hidden = state.route === "catalog";
+    els.collectionTitle.textContent = route.heading || "斐恩官周图鉴";
+    syncFilterControls();
+    if (state.loaded) {
+      renderSeriesRail();
+      updatePersonalUI();
+    } else {
+      updateStats();
+    }
   }
   if (!initial) window.scrollTo({ top: 0, behavior: "auto" });
 }
@@ -407,7 +418,7 @@ function closeModal() {
     els.modalContent.innerHTML = "";
     currentGoodsId = null;
     updateModalNav();
-    if (els.guideOverlay.hidden) document.body.classList.remove("is-modal-open");
+    document.body.classList.remove("is-modal-open");
     if (lastFocusedElement?.isConnected) lastFocusedElement.focus();
     else document.querySelector(`[data-route-link="${state.route}"]`)?.focus();
   }, delay);
@@ -441,48 +452,6 @@ function stepModal(direction) {
   els.modalContent.classList.remove("is-step-next", "is-step-prev");
   void els.modalContent.offsetWidth;
   els.modalContent.classList.add(direction === "next" ? "is-step-next" : "is-step-prev");
-}
-
-function renderGuide(text) {
-  const paragraphs = String(text || "").trim().split(/\n\s*\n/).filter(Boolean);
-  if (!paragraphs.length) return;
-  els.guideContent.innerHTML = paragraphs.map(paragraph => `<p>${escapeHtml(paragraph).replace(/\n/g, "<br>")}</p>`).join("");
-}
-
-async function loadGuideText() {
-  const request = ++guideRequest;
-  try {
-    const site = await fetchJson("./data/site.json");
-    if (request === guideRequest && typeof site.guide === "string") renderGuide(site.guide);
-  } catch (error) {
-    console.warn("使用说明远程内容加载失败，保留默认说明", error);
-  }
-}
-
-function openGuide() {
-  clearTimeout(guideTimer);
-  guideLastFocusedElement = document.activeElement;
-  els.guideOverlay.hidden = false;
-  document.body.classList.add("is-modal-open");
-  els.guideModal.scrollTop = 0;
-  loadGuideText();
-  requestAnimationFrame(() => {
-    els.guideOverlay.classList.add("is-open");
-    els.guideClose.focus();
-  });
-}
-
-function closeGuide() {
-  if (els.guideOverlay.hidden) return;
-  clearTimeout(guideTimer);
-  guideRequest += 1;
-  els.guideOverlay.classList.remove("is-open");
-  const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 220;
-  guideTimer = window.setTimeout(() => {
-    els.guideOverlay.hidden = true;
-    if (els.overlay.hidden) document.body.classList.remove("is-modal-open");
-    if (guideLastFocusedElement?.isConnected) guideLastFocusedElement.focus();
-  }, delay);
 }
 
 function trapFocus(event, container) {
@@ -549,19 +518,6 @@ function commitPriceInput(input) {
     input.value = field === "price" ? (current.price ?? "") : String(qty);
     showToast(error.message || "记录保存失败，请检查输入");
   }
-}
-
-function exportPersonalData() {
-  const blob = new Blob([JSON.stringify(createBackup(), null, 2)], { type: "application/json;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `斐恩图鉴备份-${new Date().toISOString().slice(0, 10)}.json`;
-  document.body.append(link);
-  link.click();
-  link.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-  showToast("备份已导出，请妥善保存文件");
 }
 
 els.rail.addEventListener("click", event => {
@@ -658,39 +614,12 @@ showToast(persisted && pricePersisted ? actionName : `${actionName}，但仅在�
     if (input) commitPriceInput(input);
 });
 
-$("#open-guide").addEventListener("click", openGuide);
-els.guideClose.addEventListener("click", closeGuide);
-els.guideOverlay.addEventListener("click", event => { if (event.target === els.guideOverlay) closeGuide(); });
 document.addEventListener("keydown", event => {
-  if (!els.guideOverlay.hidden) {
-    if (event.key === "Escape") { event.preventDefault(); closeGuide(); }
-    if (event.key === "Tab") trapFocus(event, els.guideModal);
-    return;
-  }
   if (els.overlay.hidden) return;
   if (event.key === "Escape") { event.preventDefault(); closeModal(); }
   if (event.key === "ArrowLeft") { event.preventDefault(); stepModal("prev"); }
   if (event.key === "ArrowRight") { event.preventDefault(); stepModal("next"); }
   if (event.key === "Tab") trapFocus(event, els.modal);
-});
-
-document.querySelectorAll('[data-backup-action="export"]').forEach(button => button.addEventListener("click", exportPersonalData));
-document.querySelectorAll('[data-backup-action="import"]').forEach(button => button.addEventListener("click", () => {
-  els.backupFile.value = "";
-  els.backupFile.click();
-}));
-els.backupFile.addEventListener("change", async () => {
-  const file = els.backupFile.files?.[0];
-  if (!file) return;
-  try {
-    if (file.size > 2 * 1024 * 1024) throw new Error("备份文件过大，请选择本网站导出的 JSON 文件");
-    const counts = importBackup(await file.text());
-    showToast(`备份已合并：仓库 ${counts.owned} 条，心愿 ${counts.wishlist} 条`);
-  } catch (error) {
-    showToast(error.message || "备份导入失败，请检查文件");
-  } finally {
-    els.backupFile.value = "";
-  }
 });
 
 const getScrollBehavior = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
@@ -734,7 +663,10 @@ els.rail.addEventListener("mousemove", event => {
 });
 
 $("#current-year").textContent = String(new Date().getFullYear());
+if (firstTitleVisit) markTitleVisited();
 if (location.hash !== `#/${initialRoute}`) history.replaceState(null, "", `#/${initialRoute}`);
-updateRoute({ initial: true });
+initialiseSpecial({ toast: showToast });
+subscribeNickname(() => updateSpecial(state.goods));
+updateRoute({ initial: true, intro: firstTitleVisit });
 updateScrollButtons();
 loadData();
