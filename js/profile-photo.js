@@ -84,10 +84,12 @@ async function loadImage(url) {
 }
 
 function sizeCanvasToCard() {
-  const rect = specialImage.getBoundingClientRect();
+  const rect = openButton.parentElement.getBoundingClientRect();
   const ratio = rect.width > 0 && rect.height > 0 ? rect.width / rect.height : 0.64;
   canvas.width = 480;
-  canvas.height = Math.min(900, Math.max(480, Math.round(canvas.width / ratio)));
+  canvas.height = Math.round(canvas.width / ratio);
+  canvas.style.setProperty("--photo-crop-ratio", `${rect.width} / ${rect.height}`);
+  canvas.style.setProperty("--photo-crop-width", `${Math.min(320, window.innerHeight * 0.48 * ratio)}px`);
 }
 
 async function prepareEditor(url) {

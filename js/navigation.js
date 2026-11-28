@@ -1,9 +1,7 @@
 const toggle = document.querySelector("#menu-toggle");
 const menu = document.querySelector("#mobile-menu");
-const flash = document.querySelector("#page-flash");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let lastFocusedElement = null;
-let flashTimer;
 
 function focusableLinks() {
   return [...menu.querySelectorAll("a[href]")];
@@ -25,15 +23,6 @@ function openMenu() {
   toggle.setAttribute("aria-label", "关闭导航菜单");
   document.body.classList.add("is-menu-open");
   requestAnimationFrame(() => focusableLinks()[0]?.focus());
-}
-
-function playPageFlash() {
-  if (reducedMotion.matches) return;
-  clearTimeout(flashTimer);
-  flash.classList.remove("is-active");
-  void flash.offsetWidth;
-  flash.classList.add("is-active");
-  flashTimer = window.setTimeout(() => flash.classList.remove("is-active"), 300);
 }
 
 toggle.addEventListener("click", () => {
@@ -62,10 +51,7 @@ document.addEventListener("keydown", event => {
     first.focus();
   }
 });
-window.addEventListener("hashchange", () => {
-  closeMenu({ restoreFocus: false });
-  playPageFlash();
-});
+window.addEventListener("hashchange", () => closeMenu({ restoreFocus: false }));
 window.matchMedia("(min-width: 768px)").addEventListener("change", event => {
   if (event.matches) closeMenu({ restoreFocus: false });
 });

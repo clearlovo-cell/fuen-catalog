@@ -48,12 +48,11 @@
 .mobile-menu__nav a small { color: var(--c-accent-text); font-size: var(--fs-xs); letter-spacing: .12em; }
 .mobile-menu__nav a[aria-current="page"] span { color: var(--c-accent-text); }
 body.is-menu-open { overflow: hidden; }
-.page-flash { position: fixed; inset: 0; z-index: calc(var(--z-modal) + 100); pointer-events: none; background: var(--c-bg); opacity: 0; }
-.page-flash.is-active { animation: page-flash 300ms ease-out; }
-@keyframes page-flash { 0% { opacity: 0; } 35% { opacity: .8; } 100% { opacity: 0; } }
-body.is-title-booting .menu-toggle { animation: title-control-in 500ms 1.1s both; }
-@keyframes title-control-in { from { opacity: 0; } to { opacity: 1; } }
-
+body.is-title-booting .menu-toggle { animation: title-control-in 500ms 3s both; }
+@keyframes title-control-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 @media (max-width: 767px) {
   .topbar__nav { display: none; }
   .topbar__inner { padding-right: 58px; }
@@ -62,5 +61,5 @@ body.is-title-booting .menu-toggle { animation: title-control-in 500ms 1.1s both
   .menu-toggle, .mobile-menu { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .page-flash.is-active { animation: none; }
+  body.is-title-booting .menu-toggle { animation: none; }
 }

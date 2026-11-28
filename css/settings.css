@@ -52,10 +52,10 @@
 .segmented-control button[aria-pressed="true"] { background: var(--c-active-bg); color: var(--c-accent-text); }
 .segmented-control--theme { width: var(--preference-control-width); display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
 .segmented-control--theme button { width: 100%; min-width: 0; }
-.music-switch { flex: 0 0 auto; min-height: 44px; margin: 0; }
-.music-switch .size-switch__track { width: calc(var(--preference-control-width) * .6667); height: 44px; padding: 5px; background: var(--c-panel-soft); }
-.music-switch .size-switch__track span { width: 32px; height: 32px; }
-.music-switch input:checked + .size-switch__track span { transform: translateX(calc(var(--preference-control-width) * .6667 - 44px)); }
+.sound-switch { flex: 0 0 auto; min-height: 44px; margin: 0; }
+.sound-switch .size-switch__track { width: 80px; height: 40px; padding: 4px; background: var(--c-panel-soft); }
+.sound-switch .size-switch__track span { width: 30px; height: 30px; }
+.sound-switch input:checked + .size-switch__track span { transform: translateX(40px); }
 @media (max-width: 480px) {
   .settings-preferences { --preference-control-width: 190px; padding: var(--sp-3); }
   .settings-preference { gap: var(--sp-2); }

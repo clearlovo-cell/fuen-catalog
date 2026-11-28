@@ -28,7 +28,7 @@ h1, h2, h3 { line-height: 1.25; text-wrap: balance; }
 .skip-link { position: fixed; top: 8px; left: 8px; z-index: var(--z-modal); padding: 8px 16px; border-radius: var(--r-btn); background: var(--c-text); color: var(--c-bg); transform: translateY(-160%); transition: transform var(--dur-1) var(--ease); }
 .skip-link:focus { transform: translateY(0); }
 :focus-visible { outline: 2px solid var(--c-text); outline-offset: 3px; box-shadow: var(--sh-focus); }
-::selection { background: var(--c-primary); color: var(--c-text); }
+::selection { background: var(--c-active-bg); color: var(--c-accent-text); }
 .lace-bottom { position: relative; }
 .lace-bottom::after {
   content: "";

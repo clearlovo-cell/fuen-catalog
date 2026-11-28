@@ -110,8 +110,9 @@
 .local-modal__description { margin-top: var(--sp-2); color: var(--c-text-2); font-size: var(--fs-sm); }
 .local-modal__actions { margin-top: var(--sp-5); display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--sp-2); }
 .photo-crop {
-  width: min(100%, 320px);
-  max-height: 48dvh;
+  width: min(100%, var(--photo-crop-width, 320px));
+  height: auto;
+  aspect-ratio: var(--photo-crop-ratio, 3 / 4);
   margin: var(--sp-4) auto 0;
   display: block;
   border: 1px solid var(--c-line-input);

@@ -1,5 +1,5 @@
 const TITLE_VISIT_KEY = "fuen-catalog:title-visited:v1";
-const INTRO_DURATION = 2100;
+const INTRO_DURATION = 4200;
 
 const view = document.querySelector("#title-view");
 const artwork = document.querySelector("#title-artwork");
