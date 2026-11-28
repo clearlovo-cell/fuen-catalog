@@ -1,4 +1,5 @@
 import { validateAudioFile } from "./audio-file.js";
+import { preparePlayback, setPlaybackVolume } from "./audio-engine.js";
 import { MEDIA_IDS, getMediaRecord, removeMediaRecord, saveMediaRecord, subscribeMedia } from "./local-media.js";
 import { getSoundPreferences, setMenuVoiceEnabled, setMenuVoiceVolume, subscribeSound } from "./sound.js";
 
@@ -11,10 +12,12 @@ const status = document.querySelector("#menu-voice-status");
 const rows = [...document.querySelectorAll("[data-voice-slot]")];
 const records = new Map();
 const objectUrls = new Map();
+const voiceAudio = new Audio();
 let selectedSlot = 1;
-let currentAudio = null;
 let lastFallbackId = "";
 let refreshSequence = 0;
+let playSequence = 0;
+let voicePlaying = false;
 
 function showStatus(message = "") {
   status.textContent = message;
@@ -30,7 +33,7 @@ function syncPreferences() {
   enabledInput.checked = preferences.menuVoiceEnabled;
   volumeInput.value = String(Math.round(preferences.menuVoiceVolume * 100));
   volumeOutput.textContent = `${volumeInput.value}%`;
-  if (currentAudio) currentAudio.volume = preferences.menuVoiceVolume;
+  setPlaybackVolume(voiceAudio, preferences.menuVoiceVolume);
 }
 
 function syncRows() {
@@ -51,12 +54,10 @@ function setVoicePlaying(playing) {
 }
 
 function stopVoice() {
-  if (!currentAudio) return;
-  const audio = currentAudio;
-  currentAudio = null;
-  audio.pause();
-  audio.removeAttribute("src");
-  audio.load();
+  playSequence += 1;
+  voiceAudio.pause();
+  if (!voicePlaying) return;
+  voicePlaying = false;
   setVoicePlaying(false);
 }
 
@@ -82,33 +83,35 @@ async function playSlot(slot, { preview = false } = {}) {
     lastFallbackId = selectedId;
   }
   stopVoice();
-  const audio = new Audio(voiceUrl(selectedId));
-  currentAudio = audio;
-  audio.volume = getSoundPreferences().menuVoiceVolume;
-  audio.addEventListener("ended", () => {
-    if (currentAudio !== audio) return;
-    currentAudio = null;
-    setVoicePlaying(false);
-  });
-  audio.addEventListener("error", () => {
-    if (currentAudio !== audio) return;
-    currentAudio = null;
-    setVoicePlaying(false);
-    showStatus("这条语音暂时无法播放，请检查音频文件");
-  });
+  const sequence = playSequence;
+  voiceAudio.src = voiceUrl(selectedId);
+  voiceAudio.load();
   try {
-    await audio.play();
-    if (currentAudio === audio) {
-      setVoicePlaying(true);
-      showStatus("");
-    }
+    await preparePlayback(voiceAudio, getSoundPreferences().menuVoiceVolume);
+    await voiceAudio.play();
+    if (sequence !== playSequence || voiceAudio.ended) return;
+    voicePlaying = true;
+    setVoicePlaying(true);
+    showStatus("");
   } catch (error) {
-    if (currentAudio !== audio) return;
-    currentAudio = null;
+    if (sequence !== playSequence) return;
+    voicePlaying = false;
     setVoicePlaying(false);
     showStatus(error.name === "NotAllowedError" ? "请再次点击后重试" : "这条语音暂时无法播放");
   }
 }
+
+voiceAudio.addEventListener("ended", () => {
+  voicePlaying = false;
+  setVoicePlaying(false);
+});
+
+voiceAudio.addEventListener("error", () => {
+  if (!voiceAudio.error) return;
+  voicePlaying = false;
+  setVoicePlaying(false);
+  showStatus("这条语音暂时无法播放，请检查音频文件");
+});
 
 async function refreshVoices() {
   const sequence = ++refreshSequence;

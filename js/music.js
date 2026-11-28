@@ -1,4 +1,5 @@
 import { validateAudioFile } from "./audio-file.js";
+import { preparePlayback, setPlaybackVolume } from "./audio-engine.js";
 import { confirmAction } from "./dialog.js";
 import { MEDIA_IDS, getMediaRecord, removeMediaRecord, saveMediaRecord, subscribeMedia } from "./local-media.js";
 import { getSoundPreferences, setBackgroundVolume, subscribeSound } from "./sound.js";
@@ -25,7 +26,7 @@ function showStatus(message = "") {
 
 function syncVolume() {
   const preferences = getSoundPreferences();
-  audio.volume = preferences.backgroundVolume * (voicePlaying ? 0.35 : 1);
+  setPlaybackVolume(audio, preferences.backgroundVolume * (voicePlaying ? 0.35 : 1));
   volumeInput.value = String(Math.round(preferences.backgroundVolume * 100));
   volumeOutput.textContent = `${volumeInput.value}%`;
 }
@@ -88,6 +89,7 @@ playButton.addEventListener("click", async () => {
     return;
   }
   try {
+    await preparePlayback(audio, getSoundPreferences().backgroundVolume * (voicePlaying ? 0.35 : 1));
     await audio.play();
     showStatus("");
   } catch (error) {
