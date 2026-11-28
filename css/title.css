@@ -76,24 +76,22 @@ body[data-route="title"] .fab { display: none; }
   .title-menu a:hover, .title-menu a:focus-visible { color: var(--c-accent-text); }
   .title-menu a + a { border-left: 1px solid rgba(201, 168, 76, .18); }
 }
-@media (prefers-color-scheme: dark) {
-  body[data-route="title"] { background-color: #2E2B2C; }
-  .title-view { background: #2E2B2C; }
-  .title-view__shade { background: linear-gradient(180deg, transparent 55%, rgba(46, 43, 44, .4) 100%); }
-  .title-logo { color: #F7F0F0; }
-  .title-logo > span { text-shadow: 0 1px 12px rgba(0, 0, 0, .65); }
-  .title-menu {
-    border-color: rgba(247, 240, 240, .24);
-    background: rgba(46, 43, 44, .82);
-  }
-  .title-menu a { color: #F7F0F0; }
-  .title-menu a:hover, .title-menu a:focus-visible { color: #fff; }
-  .title-menu a + a { border-left-color: rgba(247, 240, 240, .16); }
-  body[data-route="title"] .menu-toggle {
-    border-color: rgba(247, 240, 240, .24);
-    background: rgba(46, 43, 44, .94);
-    color: #F7F0F0;
-  }
+html[data-theme="dark"] body[data-route="title"] { background-color: #2E2B2C; }
+html[data-theme="dark"] .title-view { background: #2E2B2C; }
+html[data-theme="dark"] .title-view__shade { background: linear-gradient(180deg, transparent 55%, rgba(46, 43, 44, .4) 100%); }
+html[data-theme="dark"] .title-logo { color: #F7F0F0; }
+html[data-theme="dark"] .title-logo > span { text-shadow: 0 1px 12px rgba(0, 0, 0, .65); }
+html[data-theme="dark"] .title-menu {
+  border-color: rgba(247, 240, 240, .24);
+  background: rgba(46, 43, 44, .82);
+}
+html[data-theme="dark"] .title-menu a { color: #F7F0F0; }
+html[data-theme="dark"] .title-menu a:hover, html[data-theme="dark"] .title-menu a:focus-visible { color: #fff; }
+html[data-theme="dark"] .title-menu a + a { border-left-color: rgba(247, 240, 240, .16); }
+html[data-theme="dark"] body[data-route="title"] .menu-toggle {
+  border-color: rgba(247, 240, 240, .24);
+  background: rgba(46, 43, 44, .94);
+  color: #F7F0F0;
 }
 @media (prefers-reduced-motion: reduce) {
   .title-view.is-booting .title-view__artwork,

@@ -9,7 +9,7 @@
   display: grid;
   place-content: center;
   gap: 5px;
-  border: 1px solid var(--c-active-bd);
+  border: 1px solid var(--c-control-bd);
   border-radius: 50%;
   background: var(--c-control-bg);
   color: var(--c-text);
@@ -45,8 +45,8 @@
   border-bottom: 1px solid var(--c-line);
 }
 .mobile-menu__nav a span { font-size: 1.5rem; font-weight: 600; letter-spacing: .08em; }
-.mobile-menu__nav a small { color: var(--c-primary-strong); font-size: var(--fs-xs); letter-spacing: .12em; }
-.mobile-menu__nav a[aria-current="page"] span { color: var(--c-primary-strong); }
+.mobile-menu__nav a small { color: var(--c-accent-text); font-size: var(--fs-xs); letter-spacing: .12em; }
+.mobile-menu__nav a[aria-current="page"] span { color: var(--c-accent-text); }
 body.is-menu-open { overflow: hidden; }
 .page-flash { position: fixed; inset: 0; z-index: calc(var(--z-modal) + 100); pointer-events: none; background: var(--c-bg); opacity: 0; }
 .page-flash.is-active { animation: page-flash 300ms ease-out; }

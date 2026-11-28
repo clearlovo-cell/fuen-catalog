@@ -24,12 +24,15 @@
   --c-price-tag-bg: rgba(74, 64, 59, .92);
   --c-overlay: rgba(74, 63, 53, .62);
   --c-overlay-soft: rgba(74, 63, 53, .36);
-  --c-accent-text: #A07A13;
-  --c-active-bg: rgba(255, 217, 102, .32);
-  --c-active-bd: rgba(201, 168, 76, .35);
-  --c-hover-bg: rgba(255, 217, 102, .18);
-  --c-hover-soft: rgba(255, 217, 102, .12);
+  --c-accent-text: #965569;
+  --c-active-bg: #F2E3E8;
+  --c-active-bd: #D7ACB9;
+  --c-control-bd: rgba(201, 168, 76, .35);
+  --c-hover-bg: #F7EDF0;
+  --c-hover-soft: #F7EDF0;
   --c-gold-bd: rgba(201, 168, 76, .28);
+  --c-scrollbar-thumb: rgba(69, 63, 58, .38);
+  --c-scrollbar-hover: rgba(69, 63, 58, .58);
   --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23453F3A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   /* 文字 */
   --c-text: #453F3A;
@@ -103,7 +106,7 @@
   --sh-1: 0 1px 2px rgba(74,63,53,.06), 0 2px 8px rgba(74,63,53,.05);
   --sh-2: 0 2px 4px rgba(74,63,53,.06), 0 6px 16px rgba(74,63,53,.10);
   --sh-3: 0 16px 48px rgba(74,63,53,.22);
-  --sh-focus: 0 0 0 3px rgba(255,217,102,.55);
+  --sh-focus: 0 0 0 3px rgba(150, 85, 105, .24);
   --dur-1: 120ms;
   --dur-2: 220ms;
   --ease: cubic-bezier(.2,.7,.3,1);
@@ -115,8 +118,7 @@
   --gutter: var(--sp-4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+:root[data-theme="dark"] {
     color-scheme: dark;
     --c-bg: #2E2B2C;
     --c-surface: #383436;
@@ -146,12 +148,15 @@
     --c-price-tag-bg: rgba(24, 21, 22, .94);
     --c-overlay: rgba(0, 0, 0, .72);
     --c-overlay-soft: rgba(0, 0, 0, .5);
-    --c-accent-text: #F0D789;
-    --c-active-bg: rgba(229, 197, 104, .2);
-    --c-active-bd: rgba(224, 195, 117, .48);
-    --c-hover-bg: rgba(229, 197, 104, .16);
-    --c-hover-soft: rgba(229, 197, 104, .1);
+    --c-accent-text: #E9B8C6;
+    --c-active-bg: #49363D;
+    --c-active-bd: #8F626F;
+    --c-control-bd: rgba(224, 195, 117, .48);
+    --c-hover-bg: #3D3135;
+    --c-hover-soft: #3D3135;
     --c-gold-bd: rgba(224, 195, 117, .32);
+    --c-scrollbar-thumb: rgba(247, 240, 240, .38);
+    --c-scrollbar-hover: rgba(247, 240, 240, .58);
     --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23F7F0F0' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     --c-owned-badge: #D2C4B4;
     --c-wishlist-badge: #E0A7B3;
@@ -178,6 +183,5 @@
     --sh-1: 0 1px 2px rgba(0, 0, 0, .18), 0 2px 8px rgba(0, 0, 0, .16);
     --sh-2: 0 2px 4px rgba(0, 0, 0, .2), 0 6px 16px rgba(0, 0, 0, .24);
     --sh-3: 0 16px 48px rgba(0, 0, 0, .48);
-    --sh-focus: 0 0 0 3px rgba(229, 197, 104, .4);
-  }
+    --sh-focus: 0 0 0 3px rgba(233, 184, 198, .32);
 }
