@@ -871,7 +871,7 @@ function initialiseScreenshotFeature() {
     context.fillRect(0, 0, sheetRect.width, sheetRect.height);
 
     const heading = sheet.querySelector(".screenshot-export-header h1");
-    paintCanvasText(context, heading, sheetRect);
+    paintCanvasText(context, heading, sheetRect, { verticalCenter: true });
     const slogan = sheet.querySelector(".screenshot-export-slogan");
     if (slogan) paintWrappedCanvasText(context, slogan, sheetRect);
 
