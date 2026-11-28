@@ -33,7 +33,7 @@
 
 ## 2. GitHub Actions 同步 COS
 
-工作流位于 `.github/workflows/deploy.yml`，使用腾讯云官方 [`TencentCloud/cos-action`](https://github.com/TencentCloud/cos-action)。
+工作流位于 `.github/workflows/deploy.yml`，使用腾讯云官方 COS Python SDK。脚本只发布 `index.html`、`CNAME`、`favicon.png`、`assets/`、`css/`、`js/`、`data/` 和 `admin/`，不会上传工作流、云函数或项目文档；`assets/audio/` 不发布，成功后会清理 COS 上的旧音频。
 
 1. 在腾讯云创建 COS 存储桶，开启“静态网站”，首页设为 `index.html`。存储桶需允许公开读取、私有写入。
 2. 建议在访问管理（CAM）创建仅拥有目标存储桶所需权限的子用户 API 密钥，不要使用主账号密钥。
@@ -42,7 +42,7 @@
    - `TENCENT_CLOUD_SECRET_KEY`：腾讯云 API 密钥 SecretKey。
    - `COS_BUCKET`：完整存储桶名，例如 `your-bucket-1250000000`。
    - `COS_REGION`：存储桶地域，例如 `ap-guangzhou`。
-4. 推送 `main` 分支后，Actions 会把 `index.html`、前台资源、JSON 和 `admin/` 同步到 COS 根目录；也可在 Actions 页手动运行。
+4. 推送 `main` 分支后，Actions 会读取 COS 文件列表，仅上传新增或内容变化的文件，未变化文件直接跳过；也可在 Actions 页手动运行。临时网络错误会退避重试，整个上传步骤最长运行 20 分钟。
 5. 直接使用 COS 默认静态网站域名通常不要求为该域名另行备案；若绑定中国大陆自定义域名与 CDN，需按腾讯云要求完成 ICP 备案后再接入。
 
 ## 3. 腾讯云 SCF OAuth 部署
