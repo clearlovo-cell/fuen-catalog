@@ -10,56 +10,162 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Upload to Tencent COS
+        timeout-minutes: 20
         run: |
-          pip install -q cos-python-sdk-v5
+          pip install -q --disable-pip-version-check cos-python-sdk-v5
           python3 << 'PYEOF'
           import os
+          import json
+          import time
+          import hashlib
           import mimetypes
+          import subprocess
           from qcloud_cos import CosConfig, CosS3Client
+
+          ROOT_FILES = {'index.html', 'CNAME', 'favicon.png'}
+          PUBLIC_DIRS = {'assets', 'css', 'js', 'data', 'admin'}
+          MAX_ATTEMPTS = 4
+
+          for name in ('COS_REGION', 'COS_BUCKET', 'TENCENT_CLOUD_SECRET_ID', 'TENCENT_CLOUD_SECRET_KEY'):
+              if not os.environ.get(name):
+                  raise RuntimeError(f'Missing required secret: {name}')
+
+          updated_at = subprocess.check_output([
+              'git', 'log', '-1', '--format=%cI', '--',
+              'data/goods.json', 'data/series.json'
+          ], text=True).strip()
+          if updated_at:
+              with open('data/meta.json', 'w', encoding='utf-8') as meta_file:
+                  json.dump({'updatedAt': updated_at}, meta_file, ensure_ascii=False, indent=2)
+                  meta_file.write('\n')
 
           config = CosConfig(
               Region=os.environ['COS_REGION'],
               SecretId=os.environ['TENCENT_CLOUD_SECRET_ID'],
-              SecretKey=os.environ['TENCENT_CLOUD_SECRET_KEY']
+              SecretKey=os.environ['TENCENT_CLOUD_SECRET_KEY'],
+              Timeout=60
           )
           client = CosS3Client(config)
           bucket = os.environ['COS_BUCKET']
 
-          skip = {'.git', '.github', '__pycache__', 'node_modules'}
-          total = 0
+          def retryable(error):
+              message = f'{type(error).__name__}: {error}'.lower()
+              markers = (
+                  'usernetworktooslow', 'timeout', 'timed out', 'connectionerror',
+                  'connection error', 'connection reset', 'broken pipe',
+                  '502', '503', '504', '500'
+              )
+              return any(marker in message for marker in markers)
 
+          def with_retries(action, label):
+              for attempt in range(1, MAX_ATTEMPTS + 1):
+                  try:
+                      return action()
+                  except Exception as error:
+                      if attempt == MAX_ATTEMPTS or not retryable(error):
+                          raise
+                      delay = min(20, 2 ** attempt)
+                      print(f'{label}: attempt {attempt} failed, retrying in {delay}s: {error}', flush=True)
+                      time.sleep(delay)
+
+          def md5_file(path):
+              digest = hashlib.md5()
+              with open(path, 'rb') as file:
+                  for chunk in iter(lambda: file.read(1024 * 1024), b''):
+                      digest.update(chunk)
+              return digest.hexdigest()
+
+          local_files = {}
           for root, dirs, files in os.walk('.'):
-              dirs[:] = [d for d in dirs if d not in skip]
-              for f in files:
-                  local_path = os.path.join(root, f)
-                  remote_key = os.path.relpath(local_path)
+              dirs[:] = [directory for directory in dirs if directory not in {'.git', '.github', '__pycache__', 'node_modules'}]
+              for filename in files:
+                  path = os.path.relpath(os.path.join(root, filename)).replace(os.sep, '/')
+                  if path.startswith('assets/audio/'):
+                      continue
+                  parent = path.split('/', 1)[0]
+                  if path not in ROOT_FILES and parent not in PUBLIC_DIRS:
+                      continue
+                  local_files[path] = {
+                      'path': path,
+                      'size': os.path.getsize(path),
+                      'md5': md5_file(path),
+                      'type': mimetypes.guess_type(path)[0] or 'application/octet-stream'
+                  }
 
-                  content_type, _ = mimetypes.guess_type(local_path)
-                  if content_type is None:
-                      content_type = 'application/octet-stream'
+          for path, item in local_files.items():
+              if path.endswith('.html'):
+                  item['type'] = 'text/html'
+              elif path.endswith('.css'):
+                  item['type'] = 'text/css'
+              elif path.endswith('.js'):
+                  item['type'] = 'application/javascript'
+              elif path.endswith('.json'):
+                  item['type'] = 'application/json'
 
-                  if f.endswith('.html'):
-                      content_type = 'text/html'
-                  elif f.endswith('.css'):
-                      content_type = 'text/css'
-                  elif f.endswith('.js'):
-                      content_type = 'application/javascript'
-                  elif f.endswith('.json'):
-                      content_type = 'application/json'
+          def list_remote_files():
+              remote = {}
+              marker = ''
+              while True:
+                  response = with_retries(
+                      lambda: client.list_objects(Bucket=bucket, Marker=marker, MaxKeys=1000),
+                      'List remote files'
+                  )
+                  contents = response.get('Contents', [])
+                  if isinstance(contents, dict):
+                      contents = [contents]
+                  for item in contents:
+                      remote[item['Key']] = {
+                          'size': int(item.get('Size', 0)),
+                          'etag': item.get('ETag', '').strip('"')
+                      }
+                  if str(response.get('IsTruncated', 'false')).lower() != 'true':
+                      break
+                  if not contents:
+                      raise RuntimeError('Remote file pagination returned no entries')
+                  marker = response.get('NextMarker') or contents[-1]['Key']
+              return remote
 
-                  print(f'Uploading: {remote_key} ({content_type})')
-                  with open(local_path, 'rb') as fp:
-                      client.put_object(
+          remote_files = list_remote_files()
+          uploaded = 0
+          skipped = 0
+
+          for key, item in sorted(local_files.items()):
+              remote = remote_files.get(key)
+              if remote and remote['size'] == item['size'] and remote['etag'] == item['md5']:
+                  skipped += 1
+                  continue
+
+              print(f'Uploading: {key} ({item["type"]})', flush=True)
+
+              def upload(item=item, key=key):
+                  with open(item['path'], 'rb') as file:
+                      return client.put_object(
                           Bucket=bucket,
-                          Body=fp,
-                          Key=remote_key,
-                          ContentType=content_type
+                          Body=file,
+                          Key=key,
+                          ContentType=item['type']
                       )
-                  total += 1
 
-          print(f'\nDone! Total {total} files uploaded.')
+              with_retries(upload, f'Upload {key}')
+              uploaded += 1
+
+          legacy_audio = [key for key in remote_files if key.startswith('assets/audio/')]
+          for start in range(0, len(legacy_audio), 1000):
+              batch = legacy_audio[start:start + 1000]
+              with_retries(
+                  lambda batch=batch: client.delete_objects(
+                      Bucket=bucket,
+                      Delete={'Quiet': 'true', 'Object': [{'Key': key} for key in batch]}
+                  ),
+                  'Remove legacy audio'
+              )
+              print(f'Removed {len(batch)} legacy audio file(s)', flush=True)
+
+          print(f'\nDone! Uploaded {uploaded}, unchanged {skipped}, legacy audio removed {len(legacy_audio)}.', flush=True)
           PYEOF
         env:
           TENCENT_CLOUD_SECRET_ID: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
