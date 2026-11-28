@@ -4,8 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="《茉莉花之炯》斐恩官方周边中文图鉴，支持检索、个人仓库、心愿单与本地备份。">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FBF9F7">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2E2B2C">
+  <meta name="theme-color" id="theme-color" content="#FBF9F7">
+  <script>
+    (() => {
+      let preference = "light";
+      try {
+        const saved = localStorage.getItem("fuen-catalog:theme:v1");
+        if (["light", "dark", "system"].includes(saved)) preference = saved;
+      } catch {}
+      const isDark = preference === "dark" || (preference === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.dataset.themePreference = preference;
+      document.documentElement.dataset.theme = isDark ? "dark" : "light";
+    })();
+  </script>
   <title>斐恩官周图鉴</title>
   <link rel="icon" href="./favicon.png" type="image/png">
   <link rel="stylesheet" href="./css/tokens.css">
@@ -55,9 +66,9 @@
     <section id="title-view" class="title-view" aria-labelledby="title-heading">
       <h1 id="title-heading" class="sr-only">斐恩官周图鉴</h1>
       <picture id="title-artwork" class="title-view__artwork" hidden>
-        <source media="(prefers-color-scheme: dark) and (max-width: 767px)" srcset="./assets/img/title-mobile-night.webp">
-        <source media="(prefers-color-scheme: dark)" srcset="./assets/img/title-desktop-night.webp">
-        <source media="(max-width: 767px)" srcset="./assets/img/title-mobile.webp">
+        <source media="not all" data-artwork-theme="dark" data-viewport="mobile" srcset="./assets/img/title-mobile-night.webp">
+        <source media="not all" data-artwork-theme="dark" data-viewport="desktop" srcset="./assets/img/title-desktop-night.webp">
+        <source media="not all" data-artwork-theme="light" data-viewport="mobile" srcset="./assets/img/title-mobile.webp">
         <img src="./assets/img/title-desktop.webp" alt="" width="1920" height="1080" fetchpriority="high">
       </picture>
       <div class="title-view__shade" aria-hidden="true"></div>
@@ -246,7 +257,18 @@
         <h2 id="nickname-title">Nickname</h2>
         <label class="sr-only" for="nickname-input">Nickname</label>
         <input id="nickname-input" type="text" maxlength="16" autocomplete="off" placeholder="未署名访客">
-        <p lang="en">Sign your name</p>
+        <div class="nickname-connector">
+          <span id="title-connector-label">标题连接</span>
+          <div class="segmented-control" role="group" aria-labelledby="title-connector-label">
+            <button type="button" data-title-connector="de" aria-pressed="true">的</button>
+            <button type="button" data-title-connector="no" aria-pressed="false">の</button>
+            <button type="button" data-title-connector="dot" aria-pressed="false">·</button>
+            <button type="button" data-title-connector="none" aria-pressed="false">无</button>
+          </div>
+        </div>
+        <h2 class="nickname-card__slogan">Slogan</h2>
+        <label class="sr-only" for="slogan-input">Slogan</label>
+        <input id="slogan-input" type="text" maxlength="80" autocomplete="off" placeholder="お前の顔を、絵にして残したい、そう思ったよ。">
       </section>
 
       <section class="special-card special-record-card" aria-labelledby="special-record-title">
@@ -309,6 +331,24 @@
         <p id="settings-updated-at">数据更新日期：读取中…</p>
         <small>本站仅供图鉴参考，图片版权归官方所有</small>
       </section>
+      <section class="settings-preferences" aria-label="偏好设置">
+        <div class="settings-preference">
+          <h2>显示模式</h2>
+          <div class="segmented-control segmented-control--theme" role="group" aria-label="显示模式">
+            <button type="button" data-theme-choice="light" aria-pressed="true">浅色</button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">深色</button>
+            <button type="button" data-theme-choice="system" aria-pressed="false">跟随系统</button>
+          </div>
+        </div>
+        <div class="settings-preference">
+          <h2>背景音乐</h2>
+          <label class="size-switch size-switch__control music-switch">
+            <input id="music-enabled" type="checkbox" role="switch" aria-label="背景音乐">
+            <span class="size-switch__track" aria-hidden="true"><span></span></span>
+          </label>
+        </div>
+        <p id="music-status" class="settings-preference__status" role="status" aria-live="polite" hidden></p>
+      </section>
       <div id="settings-loading" class="state-panel" role="status"><p>正在读取设置…</p></div>
       <div id="settings-error" class="state-panel" role="alert" hidden>
         <p>设置内容暂时无法读取，请稍后重试。</p>
@@ -348,7 +388,7 @@
   <div id="clear-data-overlay" class="clear-data-overlay" hidden>
     <section id="clear-data-dialog" class="clear-data-dialog" role="dialog" aria-modal="true" aria-labelledby="clear-data-title" tabindex="-1">
       <h2 id="clear-data-title">确认清空个人数据？</h2>
-      <p>将清空仓库、心愿单、金额、数量和 CN。此操作无法撤销，建议先导出备份。</p>
+      <p>将清空仓库、心愿单、金额、数量、CN、Slogan 和标题连接样式。显示模式与背景音乐开关会保留。此操作无法撤销，建议先导出备份。</p>
       <div>
         <button id="clear-data-cancel" class="btn btn--small btn--secondary" type="button">取消</button>
         <button id="clear-data-confirm" class="btn btn--small btn--danger" type="button">确认清空</button>
@@ -404,6 +444,9 @@
     hidden
   ></div>
 
+  <audio id="background-music" src="./assets/audio/nourishedbymusic-mo-li-hua-chinese-jasmine-flower-356371.mp3" loop preload="none" aria-hidden="true"></audio>
+  <script type="module" src="./js/theme.js"></script>
+  <script type="module" src="./js/music.js"></script>
   <script type="module" src="./js/navigation.js"></script>
   <script type="module" src="./js/app.js"></script>
   <script type="module" src="./js/screenshot.js"></script>
