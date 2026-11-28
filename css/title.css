@@ -31,7 +31,13 @@ body[data-route="title"] .fab { display: none; }
 .title-logo > span { display: block; font-size: clamp(1.35rem, 5vw, 2.5rem); font-weight: 600; letter-spacing: .08em; text-shadow: 0 1px 12px rgba(255,255,255,.9); }
 .title-logo small { display: block; margin-top: var(--sp-2); font-size: .65em; letter-spacing: .3em; }
 .title-menu { display: none; }
-.title-view.is-booting .title-view__artwork { animation: title-artwork-in 2600ms cubic-bezier(.22,.61,.36,1) both; }
+.title-view.is-booting .title-view__artwork {
+  -webkit-mask-image: linear-gradient(135deg, #000 0%, #000 32%, transparent 68%, transparent 100%);
+  mask-image: linear-gradient(135deg, #000 0%, #000 32%, transparent 68%, transparent 100%);
+  -webkit-mask-size: 300% 300%;
+  mask-size: 300% 300%;
+  animation: title-artwork-in 2600ms cubic-bezier(.22,.61,.36,1) both;
+}
 .title-view.is-booting .title-logo { animation: title-logo-in 800ms 800ms both; }
 .title-view.is-booting .title-menu { animation: title-menu-shell-in 600ms 2400ms both; }
 .title-view.is-booting .title-menu a { animation: title-menu-in 550ms both; }
@@ -41,8 +47,18 @@ body[data-route="title"] .fab { display: none; }
 .title-view.is-booting .title-menu a:nth-child(4) { animation-delay: 3150ms; }
 .title-view.is-booting .title-menu a:nth-child(5) { animation-delay: 3300ms; }
 @keyframes title-artwork-in {
-  from { clip-path: polygon(100% 0, 100% 0, 100% 0, 100% 0); opacity: .35; }
-  to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; }
+  from {
+    -webkit-mask-position: 100% 0%;
+    mask-position: 100% 0%;
+    opacity: .35;
+    filter: blur(12px);
+  }
+  to {
+    -webkit-mask-position: 0% 100%;
+    mask-position: 0% 100%;
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 @keyframes title-logo-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes title-menu-shell-in { from { opacity: 0; } to { opacity: 1; } }

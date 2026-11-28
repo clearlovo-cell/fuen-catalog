@@ -141,6 +141,17 @@ body.is-screenshot-selecting #goods-grid .card__title {
   letter-spacing: .08em;
 }
 
+.screenshot-export-slogan {
+  max-width: 100%;
+  margin: 10px auto 0;
+  color: var(--c-text-2);
+  font-size: 18px;
+  line-height: 1.65;
+  letter-spacing: .03em;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
 .screenshot-export-header::after {
   content: "✦";
   position: absolute;

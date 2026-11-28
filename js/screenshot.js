@@ -1,4 +1,4 @@
-import { getPersonalizedTitle } from "./nickname.js";
+import { getPersonalizedTitle, getSlogan } from "./nickname.js";
 
 const VISITOR_ID_KEY = "fuen-catalog:visitor-id:v1";
 const EXPORT_SCALE = 2;
@@ -246,18 +246,19 @@ function initialiseScreenshotFeature() {
 
   // 返回的宽高均为 CSS px，导出时再固定放大 2 倍。
   function chooseExportLayout(count) {
+    const sloganHeight = getSlogan() ? 104 : 0;
     if (count === 1) {
       return {
         width: 600,
         columns: 1,
-        height: 770
+        height: 770 + sloganHeight
       };
     }
 
     const width = 1000;
     const contentWidth = 920;
     const gap = 12;
-    const fixedHeight = 188;
+    const fixedHeight = 188 + sloganHeight;
     const nameHeight = 43.5;
 
     if (count === 2) {
@@ -452,19 +453,27 @@ function initialiseScreenshotFeature() {
 
     const heading = document.createElement("h1");
     heading.textContent = title;
+    const sloganText = getSlogan();
+    let slogan = null;
+    if (sloganText) {
+      slogan = document.createElement("p");
+      slogan.className = "screenshot-export-slogan";
+      slogan.textContent = sloganText;
+    }
 
-// 左右两段虚线夹住透明星星，不再用矩形色块遮住背景。
-const rule = document.createElement("div");
-rule.className = "screenshot-export-rule";
-rule.setAttribute("aria-hidden", "true");
+    const rule = document.createElement("div");
+    rule.className = "screenshot-export-rule";
+    rule.setAttribute("aria-hidden", "true");
 
-const leftRule = document.createElement("span");
-const star = document.createElement("i");
-star.textContent = "✦";
-const rightRule = document.createElement("span");
+    const leftRule = document.createElement("span");
+    const star = document.createElement("i");
+    star.textContent = "✦";
+    const rightRule = document.createElement("span");
 
-rule.append(leftRule, star, rightRule);
-header.append(heading, rule);
+    rule.append(leftRule, star, rightRule);
+    header.append(heading);
+    if (slogan) header.append(slogan);
+    header.append(rule);
 
     const exportGrid = document.createElement("div");
     exportGrid.className = "screenshot-export-grid";
@@ -679,6 +688,36 @@ header.append(heading, rule);
     context.restore();
   }
 
+  function paintWrappedCanvasText(context, element, sheetRect) {
+    const rect = canvasRect(element, sheetRect);
+    const style = getComputedStyle(element);
+    const characters = Array.from(element.textContent || "");
+    if (!characters.length) return;
+
+    context.save();
+    context.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+    context.fillStyle = style.color;
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    const lines = [];
+    let line = "";
+    characters.forEach(character => {
+      const candidate = line + character;
+      if (line && context.measureText(candidate).width > rect.width) {
+        lines.push(line);
+        line = character;
+      } else {
+        line = candidate;
+      }
+    });
+    if (line) lines.push(line);
+    const lineHeight = Number.parseFloat(style.lineHeight) || rect.height / lines.length;
+    lines.forEach((text, index) => {
+      context.fillText(text, rect.x + rect.width / 2, rect.y + lineHeight * (index + 0.5));
+    });
+    context.restore();
+  }
+
   function drawCanvasImage(context, image, rect) {
     const style = getComputedStyle(image);
     const naturalWidth = image.naturalWidth;
@@ -833,6 +872,8 @@ header.append(heading, rule);
 
     const heading = sheet.querySelector(".screenshot-export-header h1");
     paintCanvasText(context, heading, sheetRect);
+    const slogan = sheet.querySelector(".screenshot-export-slogan");
+    if (slogan) paintWrappedCanvasText(context, slogan, sheetRect);
 
     sheet.querySelectorAll(".screenshot-export-rule > span").forEach(rule => {
       const rect = canvasRect(rule, sheetRect);

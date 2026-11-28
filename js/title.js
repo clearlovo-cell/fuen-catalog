@@ -1,4 +1,3 @@
-const TITLE_VISIT_KEY = "fuen-catalog:title-visited:v1";
 const INTRO_DURATION = 4200;
 
 const view = document.querySelector("#title-view");
@@ -6,23 +5,6 @@ const artwork = document.querySelector("#title-artwork");
 const artworkImage = artwork?.querySelector("img");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let introTimer;
-
-export function hasTitleVisited() {
-  try {
-    return localStorage.getItem(TITLE_VISIT_KEY) === "1";
-  } catch (error) {
-    console.warn("标题页访问状态暂时无法读取", error);
-    return false;
-  }
-}
-
-export function markTitleVisited() {
-  try {
-    localStorage.setItem(TITLE_VISIT_KEY, "1");
-  } catch (error) {
-    console.warn("标题页访问状态暂时无法保存", error);
-  }
-}
 
 function showArtwork() {
   if (artworkImage?.naturalWidth) artwork.hidden = false;

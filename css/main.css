@@ -234,8 +234,7 @@ body[data-route="catalog"] .series-section { display: block; }
 
 body[data-route="special"] .order-toggle,
 body[data-route="special"] .fab,
-body[data-route="settings"] .order-toggle,
-body[data-route="settings"] .fab { display: none; }
+body[data-route="settings"] .order-toggle { display: none; }
 .toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom)); z-index: calc(var(--z-modal) + 10); width: max-content; max-width: calc(100% - 32px); padding: 10px 16px; border: 1px solid rgba(255,217,102,.4); border-radius: var(--r-pill); background: var(--c-text); color: var(--c-bg); box-shadow: var(--sh-2); font-size: var(--fs-sm); text-align: center; transform: translateX(-50%); }
 
 @media (min-width: 560px) {

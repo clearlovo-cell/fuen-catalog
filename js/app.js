@@ -2,7 +2,7 @@ import { filterGoods, splitMaterials, uniqueValues } from "./filter.js";
 import { bindImageFallbacks, escapeHtml, formatAmount, renderCard, renderCardPrice, renderImage, renderModal, renderPriceEditors } from "./render.js";
 import { hasItem, isStorageAvailable, subscribe, toggleItem } from "./storage.js";
 import { getPriceRecord, removePriceRecord, savePriceRecord, subscribePrices } from "./prices.js";
-import { hasTitleVisited, markTitleVisited, playTitleIntro, showTitleStatic } from "./title.js";
+import { playTitleIntro, showTitleStatic } from "./title.js";
 import { initialiseSpecial, updateSpecial } from "./special.js";
 import { getCollectionStats } from "./stats.js";
 import { subscribeNickname } from "./nickname.js";
@@ -36,7 +36,7 @@ function routeFromHash() {
 
 const initialExplicitRoute = explicitRouteFromHash();
 const initialRoute = initialExplicitRoute || "title";
-const firstTitleVisit = initialRoute === "title" && !hasTitleVisited();
+const playInitialIntro = initialRoute === "title";
 const state = {
   goods: [],
   goodsById: new Map(),
@@ -664,10 +664,9 @@ els.rail.addEventListener("mousemove", event => {
 });
 
 $("#current-year").textContent = String(new Date().getFullYear());
-if (firstTitleVisit) markTitleVisited();
 if (location.hash !== `#/${initialRoute}`) history.replaceState(null, "", `#/${initialRoute}`);
 initialiseSpecial({ toast: showToast });
 subscribeNickname(() => updateSpecial(state.goods));
-updateRoute({ initial: true, intro: firstTitleVisit });
+updateRoute({ initial: true, intro: playInitialIntro });
 updateScrollButtons();
 loadData();
