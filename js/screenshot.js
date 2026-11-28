@@ -1,3 +1,5 @@
+import { getPersonalizedTitle } from "./nickname.js";
+
 const VISITOR_ID_KEY = "fuen-catalog:visitor-id:v1";
 const EXPORT_SCALE = 2;
 const MAX_CANVAS_AREA = 16000000;
@@ -77,8 +79,7 @@ function initialiseScreenshotFeature() {
 
   function exportTitle() {
     const route = routeKind();
-    const id = visitorIdInput.value.trim();
-    return `${id ? `${id}的` : ""}${route?.label || "仓库"}`;
+    return getPersonalizedTitle(route?.label || "仓库");
   }
 
   function cardName(card) {

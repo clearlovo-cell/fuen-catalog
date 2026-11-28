@@ -1,7 +1,7 @@
 import { createBackup, importBackup } from "./backup.js";
 import { clearPersonalData } from "./storage.js";
 import { clearPriceData } from "./prices.js";
-import { clearNickname } from "./nickname.js";
+import { clearProfile } from "./nickname.js";
 import { getCollectionStats } from "./stats.js";
 import { formatAmount } from "./render.js";
 
@@ -102,9 +102,9 @@ function closeClearDialog() {
 function clearAllPersonalData() {
   const personal = clearPersonalData();
   const prices = clearPriceData();
-  const nickname = clearNickname();
+  const profile = clearProfile();
   closeClearDialog();
-  showToast(personal.persisted && prices.persisted && nickname.persisted
+  showToast(personal.persisted && prices.persisted && profile.persisted
     ? "个人数据已清空"
     : "个人数据已清空，但浏览器未允许保存，请检查存储设置");
 }
