@@ -1,70 +1,138 @@
-const MUSIC_KEY = "fuen-catalog:music:v1";
+import { validateAudioFile } from "./audio-file.js";
+import { confirmAction } from "./dialog.js";
+import { MEDIA_IDS, getMediaRecord, removeMediaRecord, saveMediaRecord, subscribeMedia } from "./local-media.js";
+import { getSoundPreferences, setBackgroundVolume, subscribeSound } from "./sound.js";
+
+const MAX_MUSIC_SIZE = 40 * 1024 * 1024;
 const audio = document.querySelector("#background-music");
-const toggle = document.querySelector("#music-enabled");
-const status = document.querySelector("#music-status");
-let enabled = false;
+const selectButton = document.querySelector("#background-music-select");
+const playButton = document.querySelector("#background-music-play");
+const removeButton = document.querySelector("#background-music-remove");
+const fileInput = document.querySelector("#background-music-file");
+const nameLabel = document.querySelector("#background-music-name");
+const status = document.querySelector("#background-music-status");
+const volumeInput = document.querySelector("#background-music-volume");
+const volumeOutput = document.querySelector("#background-music-volume-value");
+let currentRecord = null;
+let objectUrl = "";
+let loadSequence = 0;
+let voicePlaying = false;
 
-try {
-  enabled = localStorage.getItem(MUSIC_KEY) === "on";
-} catch (error) {
-  console.warn("背景音乐设置暂时无法读取", error);
-}
-
-if (audio) audio.volume = 0.02;
-
-function syncControls() {
-  if (toggle) toggle.checked = enabled;
-}
-
-function showStatus(message) {
-  if (!status) return;
+function showStatus(message = "") {
   status.textContent = message;
   status.hidden = !message;
 }
 
-async function attemptPlayback() {
-  if (!audio || !enabled) return;
+function syncVolume() {
+  const preferences = getSoundPreferences();
+  audio.volume = preferences.backgroundVolume * (voicePlaying ? 0.35 : 1);
+  volumeInput.value = String(Math.round(preferences.backgroundVolume * 100));
+  volumeOutput.textContent = `${volumeInput.value}%`;
+}
+
+function syncControls() {
+  playButton.disabled = !currentRecord;
+  removeButton.disabled = !currentRecord;
+  selectButton.textContent = currentRecord ? "替换音乐" : "选择音乐";
+  playButton.textContent = audio.paused ? "播放" : "暂停";
+  nameLabel.textContent = currentRecord?.name || "未导入";
+  nameLabel.title = currentRecord?.name || "";
+}
+
+async function refreshMusic() {
+  const sequence = ++loadSequence;
+  try {
+    const record = await getMediaRecord(MEDIA_IDS.backgroundMusic);
+    if (sequence !== loadSequence) return;
+    currentRecord = record;
+    audio.pause();
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    objectUrl = record ? URL.createObjectURL(record.blob) : "";
+    if (record) audio.src = objectUrl;
+    else audio.removeAttribute("src");
+    syncControls();
+    syncVolume();
+  } catch (error) {
+    showStatus(error.message || "本地音乐读取失败");
+  }
+}
+
+selectButton.addEventListener("click", () => {
+  fileInput.value = "";
+  fileInput.click();
+});
+
+fileInput.addEventListener("change", async () => {
+  const file = fileInput.files?.[0];
+  if (!file) return;
+  try {
+    showStatus("正在读取音乐…");
+    await validateAudioFile(file, MAX_MUSIC_SIZE);
+    await saveMediaRecord(MEDIA_IDS.backgroundMusic, file, file.name);
+    showStatus("音乐已保存在当前浏览器");
+  } catch (error) {
+    showStatus(error.message || "音乐保存失败，请检查浏览器存储设置");
+  } finally {
+    fileInput.value = "";
+  }
+});
+
+playButton.addEventListener("click", async () => {
+  if (!currentRecord) return;
+  if (!audio.paused) {
+    audio.pause();
+    return;
+  }
+  if (!getSoundPreferences().enabled) {
+    showStatus("全站声音已关闭，请先开启“声音”");
+    return;
+  }
   try {
     await audio.play();
     showStatus("");
   } catch (error) {
-    showStatus(error.name === "NotAllowedError" ? "点击任意位置即可开启背景音乐" : "音乐暂时无法播放，请检查音频文件");
+    showStatus(error.name === "NotAllowedError" ? "请再次点击播放" : "音乐暂时无法播放，请检查音频文件");
   }
-}
-
-function persist() {
-  try {
-    localStorage.setItem(MUSIC_KEY, enabled ? "on" : "off");
-  } catch (error) {
-    console.warn("背景音乐设置暂时无法保存", error);
-  }
-}
-
-function setEnabled(value, save = true) {
-  enabled = value;
-  if (save) persist();
-  syncControls();
-  if (enabled) attemptPlayback();
-  else {
-    audio?.pause();
-    showStatus("");
-  }
-}
-
-toggle?.addEventListener("change", () => setEnabled(toggle.checked));
-
-function unlockPlayback() {
-  if (enabled && audio?.paused) attemptPlayback();
-}
-
-document.addEventListener("pointerdown", unlockPlayback, { passive: true });
-document.addEventListener("keydown", unlockPlayback);
-audio?.addEventListener("playing", () => showStatus(""));
-audio?.addEventListener("error", () => showStatus("音乐暂时无法播放，请检查音频文件"));
-window.addEventListener("storage", event => {
-  if (event.key !== MUSIC_KEY) return;
-  setEnabled(event.newValue === "on", false);
 });
 
+removeButton.addEventListener("click", async () => {
+  const confirmed = await confirmAction({
+    title: "移除背景音乐？",
+    description: "将从当前浏览器删除这首音乐，音量设置会保留。",
+    confirmLabel: "移除音乐",
+    danger: true
+  });
+  if (!confirmed) return;
+  try {
+    await removeMediaRecord(MEDIA_IDS.backgroundMusic);
+    showStatus("背景音乐已移除");
+  } catch (error) {
+    showStatus(error.message || "音乐移除失败");
+  }
+});
+
+volumeInput.addEventListener("input", () => setBackgroundVolume(Number(volumeInput.value) / 100));
+audio.addEventListener("play", syncControls);
+audio.addEventListener("pause", syncControls);
+audio.addEventListener("playing", () => showStatus(""));
+audio.addEventListener("error", () => {
+  if (currentRecord) showStatus("音乐暂时无法播放，请检查音频文件");
+});
+
+subscribeSound(preferences => {
+  if (!preferences.enabled) audio.pause();
+  syncVolume();
+});
+
+subscribeMedia(detail => {
+  if (detail.id === "*" || detail.id === MEDIA_IDS.backgroundMusic) refreshMusic();
+});
+
+window.addEventListener("fuen-menu-voice-state", event => {
+  voicePlaying = Boolean(event.detail?.playing);
+  syncVolume();
+});
+
+syncVolume();
 syncControls();
-if (enabled) attemptPlayback();
+refreshMusic();

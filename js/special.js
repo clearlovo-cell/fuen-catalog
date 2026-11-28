@@ -1,7 +1,9 @@
-import { createBackup, importBackup } from "./backup.js";
+import { applyBackup, createBackupArchive, getBackupMediaConflicts, readBackupFile } from "./backup.js";
 import { clearPersonalData } from "./storage.js";
 import { clearPriceData } from "./prices.js";
 import { clearProfile } from "./nickname.js";
+import { clearMediaRecords } from "./local-media.js";
+import { confirmAction } from "./dialog.js";
 import { getCollectionStats } from "./stats.js";
 import { formatAmount } from "./render.js";
 
@@ -36,9 +38,16 @@ export function initialiseSpecial({ toast }) {
       closeClearDialog();
     }
     if (event.key === "Tab") {
-      event.preventDefault();
-      const target = document.activeElement === cancelClearButton ? confirmClearButton : cancelClearButton;
-      target.focus();
+      const focusable = [document.querySelector("#clear-include-media"), cancelClearButton, confirmClearButton];
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
   });
 }
@@ -58,26 +67,41 @@ export function updateSpecial(goods) {
   $("#special-progress").setAttribute("aria-valuetext", `${stats.owned}／${stats.total} 件，${stats.ownedPercent}%`);
 }
 
-function exportPersonalData() {
-  const blob = new Blob([JSON.stringify(createBackup(), null, 2)], { type: "application/json;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = `斐恩图鉴备份-${new Date().toISOString().slice(0, 10)}.json`;
-  document.body.append(link);
-  link.click();
-  link.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-  showToast("备份已导出，请妥善保存文件");
+async function exportPersonalData() {
+  try {
+    const includeAudio = document.querySelector("#backup-include-audio").checked;
+    const blob = await createBackupArchive({ includeAudio });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `斐恩图鉴备份-${new Date().toISOString().slice(0, 10)}.zip`;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast("备份已导出，请妥善保存文件");
+  } catch (error) {
+    showToast(error.message || "备份导出失败，请检查浏览器存储设置");
+  }
 }
 
 async function importPersonalData() {
   const file = backupFile.files?.[0];
   if (!file) return;
   try {
-    if (file.size > 2 * 1024 * 1024) throw new Error("备份文件过大，请选择本网站导出的 JSON 文件");
-    const counts = importBackup(await file.text());
-    showToast(`备份已合并：仓库 ${counts.owned} 条，心愿 ${counts.wishlist} 条`);
+    const backup = await readBackupFile(file);
+    const conflicts = await getBackupMediaConflicts(backup);
+    if (conflicts.length) {
+      const confirmed = await confirmAction({
+        title: "替换现有本地媒体？",
+        description: `备份中有 ${conflicts.length} 项媒体与当前设备重复，继续导入将替换对应照片或音频。其他媒体会保留。`,
+        confirmLabel: "替换并导入",
+        danger: true
+      });
+      if (!confirmed) return;
+    }
+    const counts = await applyBackup(backup);
+    showToast(`备份已合并：仓库 ${counts.owned} 条，心愿 ${counts.wishlist} 条，媒体 ${backup.media.size} 项`);
   } catch (error) {
     showToast(error.message || "备份导入失败，请检查文件");
   } finally {
@@ -87,6 +111,7 @@ async function importPersonalData() {
 
 function openClearDialog() {
   clearLastFocusedElement = document.activeElement;
+  document.querySelector("#clear-include-media").checked = false;
   overlay.hidden = false;
   document.body.classList.add("is-modal-open");
   requestAnimationFrame(() => cancelClearButton.focus());
@@ -99,12 +124,20 @@ function closeClearDialog() {
   if (clearLastFocusedElement?.isConnected) clearLastFocusedElement.focus();
 }
 
-function clearAllPersonalData() {
+async function clearAllPersonalData() {
   const personal = clearPersonalData();
   const prices = clearPriceData();
   const profile = clearProfile();
+  let mediaCleared = true;
+  if (document.querySelector("#clear-include-media").checked) {
+    try {
+      await clearMediaRecords();
+    } catch {
+      mediaCleared = false;
+    }
+  }
   closeClearDialog();
-  showToast(personal.persisted && prices.persisted && profile.persisted
+  showToast(personal.persisted && prices.persisted && profile.persisted && mediaCleared
     ? "个人数据已清空"
-    : "个人数据已清空，但浏览器未允许保存，请检查存储设置");
+    : "个人数据已清空，但部分本地内容未能保存或删除，请检查存储设置");
 }

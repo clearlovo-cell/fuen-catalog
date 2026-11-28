@@ -28,22 +28,23 @@
   <link rel="stylesheet" href="./css/title.css">
   <link rel="stylesheet" href="./css/special.css">
   <link rel="stylesheet" href="./css/settings.css">
+  <link rel="stylesheet" href="./css/local-media.css">
 </head>
 <body id="top" data-route="title">
   <a class="skip-link" href="#main-content">跳至当前页面内容</a>
 
   <header class="topbar">
     <div class="container topbar__inner">
-      <a class="topbar__brand" href="#/title" aria-label="返回斐恩官周图鉴标题页">
+      <a class="topbar__brand" href="#/title" data-menu-voice-slot="1" aria-label="返回斐恩官周图鉴标题页">
         <span class="topbar__brand-full"><span lang="ja">マツリカの炯-kEi- </span><span aria-hidden="true"> · </span><span lang="ja">フエン</span></span>
         <span class="topbar__brand-short">マツリカの炯-kEi- · フエン</span>
       </a>
       <nav class="topbar__nav" aria-label="主导航">
-        <a href="#/catalog" data-route-link="catalog">图鉴</a>
-        <a href="#/warehouse" data-route-link="warehouse">仓库</a>
-        <a href="#/wishlist" data-route-link="wishlist">心愿单</a>
-        <a href="#/special" data-route-link="special">档案</a>
-        <a href="#/settings" data-route-link="settings">设置</a>
+        <a href="#/catalog" data-route-link="catalog" data-menu-voice-slot="2">图鉴</a>
+        <a href="#/warehouse" data-route-link="warehouse" data-menu-voice-slot="3">仓库</a>
+        <a href="#/wishlist" data-route-link="wishlist" data-menu-voice-slot="4">心愿单</a>
+        <a href="#/special" data-route-link="special" data-menu-voice-slot="5">档案</a>
+        <a href="#/settings" data-route-link="settings" data-menu-voice-slot="6">设置</a>
       </nav>
     </div>
   </header>
@@ -53,11 +54,11 @@
   </button>
   <div id="mobile-menu" class="mobile-menu" hidden>
     <nav class="mobile-menu__nav" aria-label="移动端主导航">
-      <a href="#/catalog" data-route-link="catalog"><span>图鉴</span><small>Start</small></a>
-      <a href="#/warehouse" data-route-link="warehouse"><span>仓库</span><small>Warehouse</small></a>
-      <a href="#/wishlist" data-route-link="wishlist"><span>心愿单</span><small>Wishlist</small></a>
-      <a href="#/special" data-route-link="special"><span>档案</span><small>Special</small></a>
-      <a href="#/settings" data-route-link="settings"><span>设置</span><small>Settings</small></a>
+      <a href="#/catalog" data-route-link="catalog" data-menu-voice-slot="2"><span>图鉴</span><small>Start</small></a>
+      <a href="#/warehouse" data-route-link="warehouse" data-menu-voice-slot="3"><span>仓库</span><small>Warehouse</small></a>
+      <a href="#/wishlist" data-route-link="wishlist" data-menu-voice-slot="4"><span>心愿单</span><small>Wishlist</small></a>
+      <a href="#/special" data-route-link="special" data-menu-voice-slot="5"><span>档案</span><small>Special</small></a>
+      <a href="#/settings" data-route-link="settings" data-menu-voice-slot="6"><span>设置</span><small>Settings</small></a>
     </nav>
   </div>
   <div id="page-flash" class="page-flash" aria-hidden="true"></div>
@@ -76,11 +77,11 @@
         <span lang="ja">マツリカの炯-kEi-<small>フエン</small></span>
       </div>
       <nav class="title-menu" aria-label="标题页导航">
-        <a href="#/catalog" data-route-link="catalog">图鉴</a>
-        <a href="#/warehouse" data-route-link="warehouse">仓库</a>
-        <a href="#/wishlist" data-route-link="wishlist">心愿单</a>
-        <a href="#/special" data-route-link="special">档案</a>
-        <a href="#/settings" data-route-link="settings">设置</a>
+        <a href="#/catalog" data-route-link="catalog" data-menu-voice-slot="2">图鉴</a>
+        <a href="#/warehouse" data-route-link="warehouse" data-menu-voice-slot="3">仓库</a>
+        <a href="#/wishlist" data-route-link="wishlist" data-menu-voice-slot="4">心愿单</a>
+        <a href="#/special" data-route-link="special" data-menu-voice-slot="5">档案</a>
+        <a href="#/settings" data-route-link="settings" data-menu-voice-slot="6">设置</a>
       </nav>
     </section>
 
@@ -96,7 +97,7 @@
           <p id="collection-record-title" class="idcard__title">我的收藏记录</p>
           <div class="idcard__body">
           <div class="idcard__media">
-            <img src="./assets/img/uploads/series-stand.png" alt="斐恩代表立绘" width="240" height="320" loading="lazy" decoding="async">
+            <img id="catalog-profile-photo" src="./assets/img/uploads/series-stand.png" alt="斐恩代表立绘" width="240" height="320" loading="lazy" decoding="async">
           </div>
           <div class="idcard__stats">
             <div class="idcard__row">
@@ -261,7 +262,7 @@
         <label class="sr-only" for="slogan-input">Slogan</label>
         <input id="slogan-input" type="text" maxlength="80" autocomplete="off" placeholder="お前の顔を、絵にして残したい、そう思ったよ。">
         <div class="nickname-connector">
-          <div class="segmented-control" role="group" aria-labelledby="标题连接">
+          <div class="segmented-control" role="group" aria-label="标题连接">
             <button type="button" data-title-connector="de" aria-pressed="true">的</button>
             <button type="button" data-title-connector="no" aria-pressed="false">の</button>
             <button type="button" data-title-connector="dot" aria-pressed="false">·</button>
@@ -274,8 +275,10 @@
         <aside class="idcard" aria-label="图鉴与个人统计">
           <p id="special-record-title" class="idcard__title">我的收藏记录</p>
           <div class="idcard__body">
-            <div class="idcard__media">
-              <img src="./assets/img/uploads/series-stand.png" alt="斐恩代表立绘" width="240" height="320" loading="lazy" decoding="async">
+            <div class="idcard__media idcard__media--editable">
+              <button id="profile-photo-open" class="profile-photo-trigger" type="button" aria-label="更换收藏卡照片">
+                <img id="special-profile-photo" src="./assets/img/uploads/series-stand.png" alt="斐恩代表立绘" width="240" height="320" loading="lazy" decoding="async">
+              </button>
             </div>
             <div class="idcard__stats">
               <div class="idcard__row">
@@ -310,12 +313,16 @@
       <section class="special-card data-card" aria-labelledby="data-card-title">
         <h2 id="data-card-title">数据管理</h2>
         <p>访客数据只保存在当前浏览器，请定期导出备份。</p>
+        <label class="clear-media-option backup-audio-option">
+          <input id="backup-include-audio" type="checkbox">
+          <span>导出时包含背景音乐和菜单语音</span>
+        </label>
         <div class="data-card__actions">
           <button class="btn btn--small" type="button" data-backup-action="import">导入备份</button>
           <button class="btn btn--small btn--secondary" type="button" data-backup-action="export">导出备份</button>
           <button id="clear-data-open" class="btn btn--small btn--danger" type="button">清空数据</button>
         </div>
-        <small>导入会合并记录，不覆盖现有数据</small>
+        <small>个人记录合并导入，重复媒体确认后替换</small>
       </section>
     </section>
 
@@ -325,10 +332,10 @@
       </header>
       <section id="settings-site-card" class="settings-site-card" aria-label="网站信息">
         <p>FUEN ATLAS</p>
-        <strong>🎐 clearlovo</strong>
+        <strong>💜 CLEARLOVO</strong>
         <div id="settings-contact"></div>
         <p id="settings-updated-at">数据更新日期：读取中…</p>
-        <small>本站仅供图鉴参考 图片版权归官方所有</small>
+        <small>本站仅供图鉴参考，图片版权归官方所有</small>
       </section>
       <section class="settings-preferences" aria-label="偏好设置">
         <div class="settings-preference">
@@ -340,13 +347,52 @@
           </div>
         </div>
         <div class="settings-preference">
-          <h2>背景音乐</h2>
+          <h2>声音</h2>
           <label class="size-switch size-switch__control music-switch">
-            <input id="music-enabled" type="checkbox" role="switch" aria-label="背景音乐">
+            <input id="sound-enabled" type="checkbox" role="switch" aria-label="全站声音" checked>
             <span class="size-switch__track" aria-hidden="true"><span></span></span>
           </label>
         </div>
-        <p id="music-status" class="settings-preference__status" role="status" aria-live="polite" hidden></p>
+      </section>
+      <section class="local-media-panel" aria-labelledby="background-music-title">
+        <div class="local-media-panel__heading">
+          <h2 id="background-music-title">背景音乐</h2>
+          <span id="background-music-name">未导入</span>
+        </div>
+        <div class="local-media-panel__actions">
+          <button id="background-music-select" class="btn btn--small" type="button">选择音乐</button>
+          <button id="background-music-play" class="btn btn--small btn--secondary" type="button" disabled>播放</button>
+          <button id="background-music-remove" class="btn btn--small btn--secondary" type="button" disabled>移除音乐</button>
+        </div>
+        <div class="volume-control">
+          <label for="background-music-volume">音量</label>
+          <input id="background-music-volume" type="range" min="0" max="100" step="1" value="35">
+          <output id="background-music-volume-value" for="background-music-volume">35%</output>
+        </div>
+        <p id="background-music-status" class="local-media-panel__status" role="status" aria-live="polite" hidden></p>
+      </section>
+      <section class="local-media-panel" aria-labelledby="menu-voice-title">
+        <div class="local-media-panel__heading">
+          <h2 id="menu-voice-title">菜单语音</h2>
+          <label class="size-switch size-switch__control">
+            <input id="menu-voice-enabled" type="checkbox" role="switch" aria-label="菜单语音" checked>
+            <span class="size-switch__track" aria-hidden="true"><span></span></span>
+          </label>
+        </div>
+        <div class="volume-control">
+          <label for="menu-voice-volume">音量</label>
+          <input id="menu-voice-volume" type="range" min="0" max="100" step="1" value="80">
+          <output id="menu-voice-volume-value" for="menu-voice-volume">80%</output>
+        </div>
+        <div class="voice-slots">
+          <div class="voice-slot" data-voice-slot="1"><strong>1</strong><span data-voice-state>未导入</span><div class="voice-slot__actions"><button class="btn btn--small" type="button" data-voice-action="select">选择</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="preview" disabled>试听</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="remove" disabled>移除</button></div></div>
+          <div class="voice-slot" data-voice-slot="2"><strong>2</strong><span data-voice-state>未导入</span><div class="voice-slot__actions"><button class="btn btn--small" type="button" data-voice-action="select">选择</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="preview" disabled>试听</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="remove" disabled>移除</button></div></div>
+          <div class="voice-slot" data-voice-slot="3"><strong>3</strong><span data-voice-state>未导入</span><div class="voice-slot__actions"><button class="btn btn--small" type="button" data-voice-action="select">选择</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="preview" disabled>试听</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="remove" disabled>移除</button></div></div>
+          <div class="voice-slot" data-voice-slot="4"><strong>4</strong><span data-voice-state>未导入</span><div class="voice-slot__actions"><button class="btn btn--small" type="button" data-voice-action="select">选择</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="preview" disabled>试听</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="remove" disabled>移除</button></div></div>
+          <div class="voice-slot" data-voice-slot="5"><strong>5</strong><span data-voice-state>未导入</span><div class="voice-slot__actions"><button class="btn btn--small" type="button" data-voice-action="select">选择</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="preview" disabled>试听</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="remove" disabled>移除</button></div></div>
+          <div class="voice-slot" data-voice-slot="6"><strong>6</strong><span data-voice-state>未导入</span><div class="voice-slot__actions"><button class="btn btn--small" type="button" data-voice-action="select">选择</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="preview" disabled>试听</button><button class="btn btn--small btn--secondary" type="button" data-voice-action="remove" disabled>移除</button></div></div>
+        </div>
+        <p id="menu-voice-status" class="local-media-panel__status" role="status" aria-live="polite" hidden></p>
       </section>
       <div id="settings-loading" class="state-panel" role="status"><p>正在读取设置…</p></div>
       <div id="settings-error" class="state-panel" role="alert" hidden>
@@ -384,10 +430,47 @@
     </section>
   </div>
 
+  <div id="profile-photo-overlay" class="local-modal-overlay" hidden>
+    <section id="profile-photo-dialog" class="local-modal" role="dialog" aria-modal="true" aria-labelledby="profile-photo-title" tabindex="-1">
+      <div class="local-modal__heading">
+        <h2 id="profile-photo-title">更换照片</h2>
+        <button id="profile-photo-close" class="btn btn--small btn--secondary" type="button">关闭</button>
+      </div>
+      <p class="local-modal__description">选择照片后拖动调整位置，也可以使用方向键微调。</p>
+      <canvas id="profile-photo-canvas" class="photo-crop" width="480" height="750" tabindex="0" aria-label="照片裁剪预览"></canvas>
+      <div class="volume-control">
+        <label for="profile-photo-zoom">缩放</label>
+        <input id="profile-photo-zoom" type="range" min="100" max="300" step="1" value="100">
+        <output id="profile-photo-zoom-value" for="profile-photo-zoom">100%</output>
+      </div>
+      <div class="local-modal__actions">
+        <button id="profile-photo-select" class="btn btn--small" type="button">选择照片</button>
+        <button id="profile-photo-save" class="btn btn--small" type="button" disabled>保存照片</button>
+        <button id="profile-photo-restore" class="btn btn--small btn--secondary" type="button">恢复默认图片</button>
+      </div>
+      <p id="profile-photo-status" class="local-media-panel__status" role="status" aria-live="polite" hidden></p>
+    </section>
+  </div>
+
+  <div id="confirm-overlay" class="local-modal-overlay" hidden>
+    <section id="confirm-dialog" class="local-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title" tabindex="-1">
+      <h2 id="confirm-title">确认操作？</h2>
+      <p id="confirm-description"></p>
+      <div class="local-modal__actions">
+        <button id="confirm-cancel" class="btn btn--small btn--secondary" type="button">取消</button>
+        <button id="confirm-accept" class="btn btn--small" type="button">确认</button>
+      </div>
+    </section>
+  </div>
+
   <div id="clear-data-overlay" class="clear-data-overlay" hidden>
     <section id="clear-data-dialog" class="clear-data-dialog" role="dialog" aria-modal="true" aria-labelledby="clear-data-title" tabindex="-1">
       <h2 id="clear-data-title">确认清空个人数据？</h2>
-      <p>将清空仓库、心愿单、金额、数量、CN、Slogan 和标题连接样式。显示模式与背景音乐开关会保留。此操作无法撤销，建议先导出备份。</p>
+      <p>将清空仓库、心愿单、金额、数量、Nickname、Slogan 和标题连接样式。显示模式、声音设置与标题页首访标记会保留。此操作无法撤销，建议先导出备份。</p>
+      <label class="clear-media-option">
+        <input id="clear-include-media" type="checkbox">
+        <span>同时删除收藏卡照片、背景音乐、菜单语音及槽位绑定</span>
+      </label>
       <div>
         <button id="clear-data-cancel" class="btn btn--small btn--secondary" type="button">取消</button>
         <button id="clear-data-confirm" class="btn btn--small btn--danger" type="button">确认清空</button>
@@ -428,12 +511,10 @@
     </div>
   </div>
 
-  <input
-    id="backup-file"
-    type="file"
-    accept="application/json,.json"
-    hidden
-  >
+  <input id="backup-file" type="file" accept="application/json,.json,application/zip,.zip" hidden>
+  <input id="background-music-file" type="file" accept="audio/*,.mp3,.m4a,.aac,.ogg,.wav,.flac" hidden>
+  <input id="menu-voice-file" type="file" accept="audio/*,.mp3,.m4a,.aac,.ogg,.wav,.flac" hidden>
+  <input id="profile-photo-file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
 
   <div
     id="toast"
@@ -443,9 +524,12 @@
     hidden
   ></div>
 
-  <audio id="background-music" src="./assets/audio/nourishedbymusic-mo-li-hua-chinese-jasmine-flower-356371.mp3" loop preload="none" aria-hidden="true"></audio>
+  <audio id="background-music" loop preload="none" aria-hidden="true"></audio>
   <script type="module" src="./js/theme.js"></script>
+  <script type="module" src="./js/sound.js"></script>
   <script type="module" src="./js/music.js"></script>
+  <script type="module" src="./js/menu-voice.js"></script>
+  <script type="module" src="./js/profile-photo.js"></script>
   <script type="module" src="./js/navigation.js"></script>
   <script type="module" src="./js/app.js"></script>
   <script type="module" src="./js/screenshot.js"></script>

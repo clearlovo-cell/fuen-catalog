@@ -130,10 +130,14 @@ export function clearPersonalData() {
   return { persisted };
 }
 
-export function importBackup(text) {
-  const parsed = JSON.parse(text);
+export function validateBackup(parsed) {
   if (!parsed || parsed.type !== BACKUP_TYPE) throw new Error("这不是斐恩图鉴的备份文件");
   if (Number(parsed.version) > VERSION) throw new Error("备份版本较新，请先更新网站");
+}
+
+export function importBackup(text) {
+  const parsed = JSON.parse(text);
+  validateBackup(parsed);
   const incoming = normalize(parsed);
   data = {
     version: VERSION,
