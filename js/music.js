@@ -10,7 +10,7 @@ try {
   console.warn("背景音乐设置暂时无法读取", error);
 }
 
-if (audio) audio.volume = 0.05;
+if (audio) audio.volume = 0.02;
 
 function syncControls() {
   if (toggle) toggle.checked = enabled;
