@@ -41,22 +41,24 @@
 .settings-item p, .settings-qa p { margin-top: var(--sp-2); color: var(--c-text-2); font-size: var(--fs-sm); line-height: 1.85; overflow-wrap: anywhere; }
 .settings-qa p { padding-left: 36px; }
 
-.settings-preferences { margin-top: var(--sp-5); padding: var(--sp-4); border: 1px solid var(--c-line); border-radius: var(--r-card); background: var(--c-panel); }
+.settings-preferences { --preference-control-width: 220px; margin-top: var(--sp-5); padding: var(--sp-4); border: 1px solid var(--c-line); border-radius: var(--r-card); background: var(--c-panel); }
 .settings-preference { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); }
 .settings-preference + .settings-preference { margin-top: var(--sp-3); }
 .settings-preference h2 { font-size: var(--fs-base); font-weight: 700; white-space: nowrap; }
 .settings-preference__status { margin-top: var(--sp-3); color: var(--c-text-2); font-size: var(--fs-xs); text-align: right; }
-.segmented-control { flex: 0 0 auto; display: inline-flex; align-items: center; padding: 3px; border: 1px solid var(--c-line); border-radius: var(--r-pill); background: var(--c-panel-soft); white-space: nowrap; }
+.segmented-control { flex: 0 0 auto; display: inline-flex; align-items: center; padding: 3px; border: 1px solid var(--c-line-input); border-radius: var(--r-pill); background: var(--c-panel-soft); white-space: nowrap; }
 .segmented-control button { min-width: 40px; min-height: 36px; padding: 0 var(--sp-2); border: 0; border-radius: var(--r-pill); background: transparent; color: var(--c-text-2); font-size: var(--fs-xs); font-weight: 600; transition: color var(--dur-1) var(--ease), background-color var(--dur-1) var(--ease); }
 .segmented-control button:hover { color: var(--c-accent-text); background: var(--c-hover-soft); }
 .segmented-control button[aria-pressed="true"] { background: var(--c-active-bg); color: var(--c-accent-text); }
-.segmented-control--theme { width: 220px; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+.segmented-control--theme { width: var(--preference-control-width); display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
 .segmented-control--theme button { width: 100%; min-width: 0; }
-.music-switch { flex: 0 0 auto; margin-block: 4px; }
+.music-switch { flex: 0 0 auto; min-height: 44px; margin: 0; }
+.music-switch .size-switch__track { width: calc(var(--preference-control-width) * .6667); height: 44px; padding: 5px; background: var(--c-panel-soft); }
+.music-switch .size-switch__track span { width: 32px; height: 32px; }
+.music-switch input:checked + .size-switch__track span { transform: translateX(calc(var(--preference-control-width) * .6667 - 44px)); }
 @media (max-width: 480px) {
-  .settings-preferences { padding: var(--sp-3); }
+  .settings-preferences { --preference-control-width: 190px; padding: var(--sp-3); }
   .settings-preference { gap: var(--sp-2); }
   .settings-preference h2 { font-size: var(--fs-sm); }
   .segmented-control button { padding-inline: 7px; }
-  .segmented-control--theme { width: 190px; }
 }

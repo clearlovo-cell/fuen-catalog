@@ -56,7 +56,7 @@ a.idcard__row:hover { background: var(--c-hover-soft); }
 .collection-hero__count strong { color: var(--c-text); font-family: var(--font-num); font-size: clamp(1.25rem,4vw,var(--fs-2xl)); font-variant-numeric: tabular-nums; }
 .progress-row { width: min(100%,560px); margin: var(--sp-4) auto 0; display: flex; align-items: center; gap: var(--sp-3); }
 .progress-track { flex: 1; height: 12px; overflow: hidden; border: 1px solid var(--c-line); border-radius: var(--r-pill); background: var(--c-surface); box-shadow: inset 0 1px 2px rgba(74,63,53,.04); }
-.progress-track > span { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--c-primary); transition: width var(--dur-2) var(--ease); }
+.progress-track > span { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--c-active-bg); transition: width var(--dur-2) var(--ease); }
 .progress-percent { min-width: 44px; text-align: right; color: var(--c-text-2); font-family: var(--font-num); font-size: var(--fs-sm); font-variant-numeric: tabular-nums; }
 .collection-tools { min-width: 0; display: flex; align-items: center; justify-content: flex-end; }
 
@@ -191,7 +191,7 @@ body[data-route="catalog"] .series-section { display: block; }
 /* 制品详情 */
 .lightbox-overlay { position: fixed; inset: 0; z-index: var(--z-modal); display: flex; align-items: flex-end; justify-content: center; padding: 0; background: var(--c-overlay); backdrop-filter: blur(4px); opacity: 0; transition: opacity var(--dur-2) var(--ease); }
 .lightbox-overlay.is-open { opacity: 1; }
-.lightbox { position: relative; width: 100%; max-height: 92dvh; padding: var(--sp-5); overflow-y: auto; overscroll-behavior: contain; border: 0; border-top: 4px solid var(--c-primary); border-radius: var(--r-sheet) var(--r-sheet) 0 0; outline: none; background: var(--c-bg); box-shadow: var(--sh-3); transform: translateY(100%); transition: transform var(--dur-2) var(--ease); }
+.lightbox { position: relative; width: 100%; max-height: 92dvh; padding: var(--sp-5); overflow-y: auto; overscroll-behavior: contain; border: 0; border-top: 4px solid var(--c-active-bg); border-radius: var(--r-sheet) var(--r-sheet) 0 0; outline: none; background: var(--c-bg); box-shadow: var(--sh-3); transform: translateY(100%); transition: transform var(--dur-2) var(--ease); }
 .lightbox-overlay.is-open .lightbox { transform: translateY(0); }
 .modal-close { position: sticky; top: 0; z-index: 3; float: right; width: 44px; height: 44px; margin: -8px -8px var(--sp-2) var(--sp-2); display: grid; place-items: center; border: 1px solid var(--c-line); border-radius: 50%; background: var(--c-surface); box-shadow: var(--sh-1); transition: transform var(--dur-1) var(--ease); }
 .modal-close:hover { transform: rotate(5deg); }

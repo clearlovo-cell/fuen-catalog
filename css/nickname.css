@@ -10,12 +10,13 @@
   border: 1px solid var(--c-line-input);
   border-radius: var(--r-btn);
   outline: none;
-  background: var(--c-bg);
+  background: var(--c-panel-soft);
   color: var(--c-text);
+  font-size: var(--fs-xs);
   text-align: center;
 }
-.nickname-card input::placeholder { color: var(--c-text-3); font-size: 13px; opacity: .65; }
+.nickname-card input::placeholder { color: var(--c-text-3); font-size: var(--fs-xs); opacity: .65; }
 .nickname-card input:focus { border-color: var(--c-accent-text); box-shadow: var(--sh-focus); }
-.nickname-connector { width: min(100%, 360px); margin: var(--sp-4) auto 0; display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); }
+.nickname-connector { width: min(100%, 360px); margin: var(--sp-4) auto 0; display: flex; align-items: center; justify-content: flex-start; gap: var(--sp-4); }
 .nickname-connector > span { color: var(--c-text-2); font-size: var(--fs-sm); font-weight: 600; white-space: nowrap; }
 .nickname-card__slogan { margin-top: var(--sp-5); }
